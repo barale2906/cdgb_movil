@@ -5,7 +5,7 @@ Reglas del proyecto. Se leen al iniciar cada sesión y **mandan sobre cualquier 
 ## 1. Contexto
 - App Flutter (Android primero; iOS diferido) para empleados de la Clínica Bojanini. Complementa el SGA web.
 - Consume la API REST del backend Laravel: `../back/sga-bojanini` (referencia viva en `../back/sga-bojanini/src/docs/app-movil/`, 342 endpoints; **el código del backend manda sobre la doc**).
-- Diseño: `../front/sga-bojanini-front/docs/app.md`. Planes: `docs/plan/` (`00`–`06`). Leer el plan del módulo en `docs/plan/04-plan-modulos.md` antes de tocarlo.
+- Diseño: `../front/sga-bojanini-front/docs/app.md`. Planes: `docs/plan/` (`00`–`06`), **solo locales: `docs/` no se versiona** (está en `.gitignore`; nunca agregarla al repositorio). Leer el plan del módulo en `docs/plan/04-plan-modulos.md` antes de tocarlo.
 - Distribución: **APK privado** descargado desde el servidor de la clínica (sin tiendas), con aviso de actualización vía `version.json`. **Nunca cambiar el keystore de firma ni bajar el `build number`**: los teléfonos dejarían de poder actualizar. Un solo desarrollador.
 - Idioma: **código e identificadores en inglés; textos de UI, mensajes y documentación en español** (trato de "usted").
 
@@ -76,7 +76,7 @@ Reglas del proyecto. Se leen al iniciar cada sesión y **mandan sobre cualquier 
 - Validar y sanear toda entrada del usuario antes de enviarla; confiar en el servidor para autorización, no en la UI.
 
 ## 10. Flujo de trabajo
-- **Git** (repositorio local por ahora, sin remoto ni CI: `tool/check.sh` hace de CI): ramas `main` (estable, siempre compila y pasa pruebas) / `develop` / `feature/<modulo>-<tema>`. Commits pequeños, **Conventional Commits** en español o inglés consistente (`feat(inventory): ...`, `fix:`, `test:`, `refactor:`, `docs:`, `chore:`). Sin commits ni push sin que el usuario lo pida.
+- **Git** (remoto `origin` = `github.com/barale2906/cdgb_movil`; sin CI por ahora: `tool/check.sh` hace de CI): ramas `main` (estable, siempre compila y pasa pruebas) / `develop` / `feature/<modulo>-<tema>`. Commits pequeños, **Conventional Commits** en español o inglés consistente (`feat(inventory): ...`, `fix:`, `test:`, `refactor:`, `docs:`, `chore:`). Sin commits ni push sin que el usuario lo pida.
 - **Antes de implementar una funcionalidad**: (1) leer su sección en `docs/plan/04`, (2) buscar lo existente reutilizable, (3) revisar el endpoint en la doc del back **y** confirmar en el código del back si hay duda, (4) listar archivos que se tocarán. Para cambios amplios, proponer plan breve y esperar visto bueno.
 - **Definición de terminado** (por funcionalidad): permisos aplicados · estados cargando/vacío/error/offline · errores 401/403/409/422 manejados · pruebas escritas y verdes · format+analyze limpios · sin hardcodeos de tema · docs del plan actualizadas si cambió algo.
 - Al terminar, informar: qué se hizo, qué se reutilizó, qué pruebas se agregaron y su resultado real, y cualquier pendiente o riesgo.
