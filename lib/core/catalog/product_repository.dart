@@ -24,6 +24,15 @@ class ProductRepository {
         return ApiResponse.list(response, GenericProduct.fromJson);
       });
 
+  /// Producto por código de barras (`generic-products.barcode`); lanza
+  /// `NotFoundException` si no existe.
+  Future<GenericProduct> byBarcode(String code) => apiCall(() async {
+    final response = await _dio.get<dynamic>(
+      '/generic-products/barcode/${Uri.encodeComponent(code)}',
+    );
+    return GenericProduct.fromJson(ApiResponse.object(response));
+  });
+
   Future<GenericProduct> product(int id) => apiCall(() async {
     final response = await _dio.get<dynamic>('/generic-products/$id');
     return GenericProduct.fromJson(ApiResponse.object(response));

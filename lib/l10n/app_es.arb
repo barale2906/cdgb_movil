@@ -261,5 +261,239 @@
   "supplierTypeInventory": "Inventario",
   "supplierTypeExpense": "Gasto",
   "notAvailable": "—",
-  "variantPresentation": "Presentación comercial"
+  "variantPresentation": "Presentación comercial",
+  "inventoryTabStock": "Existencias",
+  "inventoryTabBatches": "Lotes",
+  "inventoryTabDocuments": "Comprobantes",
+  "inventoryTabHistory": "Historial",
+  "inventorySelectWarehouse": "Seleccione un almacén activo en la barra superior para ver el inventario.",
+  "stockEmpty": "No hay existencias registradas en este almacén.",
+  "stockLowFilter": "Bajo mínimo",
+  "stockLowEmpty": "Ningún producto está por debajo del punto de reorden.",
+  "stockAvailable": "Disponible: {quantity}",
+  "@stockAvailable": {
+    "placeholders": {
+      "quantity": {
+        "type": "String"
+      }
+    }
+  },
+  "stockTotals": "Total: {total} · Reservado: {reserved}",
+  "@stockTotals": {
+    "placeholders": {
+      "total": {
+        "type": "String"
+      },
+      "reserved": {
+        "type": "String"
+      }
+    }
+  },
+  "batchFilterAll": "Todos",
+  "batchFilterExpiring": "Por vencer",
+  "batchFilterExpired": "Vencidos",
+  "batchesEmpty": "No hay lotes para mostrar.",
+  "batchLot": "Lote {lot}",
+  "@batchLot": {
+    "placeholders": {
+      "lot": {
+        "type": "String"
+      }
+    }
+  },
+  "batchExpires": "Vence {date}",
+  "@batchExpires": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "batchExpiresInDays": "Vence en {days, plural, =0{hoy} =1{1 día} other{{days} días}}",
+  "@batchExpiresInDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "batchStatusActive": "Vigente",
+  "batchStatusExpired": "Vencido",
+  "batchStatusDepleted": "Agotado",
+  "batchDetailTitle": "Lote",
+  "batchQuantity": "Cantidad disponible",
+  "batchManufacturing": "Fabricación",
+  "batchLocations": "Ubicaciones",
+  "batchNoLocations": "Sin ubicaciones con saldo.",
+  "documentsEmpty": "No hay comprobantes para mostrar.",
+  "documentFilterAll": "Todos",
+  "documentFilterPending": "Pendientes",
+  "documentFilterConfirmed": "Confirmados",
+  "documentStatusPending": "Pendiente de firma",
+  "documentStatusConfirmed": "Confirmado",
+  "historyEmpty": "No hay movimientos registrados.",
+  "movementEntry": "Entrada",
+  "movementExit": "Salida",
+  "movementTransfer": "Traslado",
+  "movementAdjustment": "Ajuste",
+  "movementReturn": "Devolución",
+  "movementWriteOff": "Baja por vencimiento",
+  "movementLoss": "Pérdida",
+  "movementEntryHint": "Ingreso de mercancía con lote y ubicación.",
+  "movementExitHint": "Despacho a un centro de costo o paciente.",
+  "movementTransferHint": "Envío de stock a otro almacén.",
+  "movementAdjustmentHint": "Corrección de cantidad con motivo.",
+  "movementReturnHint": "Reingreso de producto devuelto.",
+  "movementWriteOffHint": "Baja de un lote vencido.",
+  "movementLossHint": "Rotura, extravío u otra pérdida.",
+  "scanAction": "Escanear código",
+  "newMovementAction": "Nuevo movimiento",
+  "scanTitle": "Escanear producto",
+  "scanHint": "Apunte la cámara al código de barras del producto.",
+  "scanPermissionDenied": "Sin acceso a la cámara. Habilítelo en los ajustes del teléfono.",
+  "scanNotFound": "No se encontró un producto con el código {code}.",
+  "@scanNotFound": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "scanTorch": "Linterna",
+  "newMovementTitle": "Nuevo movimiento",
+  "newMovementChoose": "¿Qué desea registrar?",
+  "newMovementNone": "Su usuario no tiene permisos para registrar movimientos.",
+  "fieldWarehouse": "Almacén",
+  "fieldReason": "Motivo",
+  "fieldReasonOptional": "Motivo (opcional)",
+  "fieldNotes": "Notas (opcional)",
+  "fieldQuantity": "Cantidad",
+  "fieldLot": "Número de lote",
+  "fieldExpiration": "Fecha de vencimiento",
+  "fieldManufacturing": "Fecha de fabricación (opcional)",
+  "fieldLocation": "Ubicación",
+  "fieldLocationOptional": "Ubicación (opcional)",
+  "fieldCostCenter": "Centro de costo",
+  "fieldPatientDocument": "Documento del paciente (opcional)",
+  "fieldInvoice": "Factura (opcional)",
+  "fieldTemperature": "Temperatura de entrada, °C (opcional)",
+  "fieldProduct": "Producto",
+  "fieldVariant": "Variante",
+  "fieldBatch": "Lote",
+  "fieldBatchFefo": "Automático (primero en vencer)",
+  "fieldDestinationWarehouse": "Almacén destino",
+  "fieldPresentation": "Presentación",
+  "fieldBaseUnitDirect": "Unidad base",
+  "fieldSignedQuantity": "Cantidad (negativa para restar)",
+  "itemsTitle": "Productos",
+  "addItem": "Agregar producto",
+  "removeItem": "Quitar",
+  "itemsRequired": "Agregue al menos un producto.",
+  "selectProduct": "Seleccionar producto",
+  "selectOption": "Seleccionar",
+  "pickDate": "Elegir fecha",
+  "submitRegister": "Registrar",
+  "validationRequired": "Este campo es obligatorio.",
+  "validationPositive": "Ingrese una cantidad mayor que cero.",
+  "validationNonZero": "Ingrese una cantidad distinta de cero.",
+  "validationNumber": "Ingrese un número válido.",
+  "movementRegisteredDoc": "Comprobante {number} registrado.",
+  "@movementRegisteredDoc": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "movementRegistered": "Movimiento registrado.",
+  "movementPendingSignNote": "Quedó pendiente de firma: el stock cambia al confirmarlo.",
+  "movementTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, revise el historial: es posible que sí se haya registrado.",
+  "movementNeedsCostCenters": "Para registrar salidas se necesita poder consultar centros de costo.",
+  "noProductsFound": "No se encontraron productos.",
+  "noVariants": "Este producto no tiene variantes.",
+  "noLocations": "Este almacén no tiene ubicaciones.",
+  "noBatchesAvailable": "No hay lotes disponibles.",
+  "confirmTitle": "Confirmar comprobante",
+  "confirmDelivered": "Entrega",
+  "confirmUseMySignature": "Usar mi firma registrada",
+  "confirmNoSignature": "Aún no tiene firma registrada. Regístrela para poder entregar.",
+  "confirmRegisterSignature": "Registrar mi firma",
+  "confirmReceived": "Recibe",
+  "confirmModePin": "Usuario del sistema",
+  "confirmModeExternal": "Persona externa",
+  "fieldPin": "PIN de 3 dígitos",
+  "validationPin": "Ingrese los 3 dígitos del PIN.",
+  "fieldSignerName": "Nombre completo",
+  "fieldSignerDocument": "Documento",
+  "signHere": "Firme aquí",
+  "clearSignature": "Borrar firma",
+  "signatureRequired": "La firma es obligatoria.",
+  "confirmAction": "Confirmar y firmar",
+  "confirmedMessage": "Comprobante confirmado.",
+  "cancelPendingAction": "Cancelar comprobante",
+  "cancelPendingTitle": "¿Cancelar este comprobante?",
+  "cancelPendingBody": "Quedará anulado y el stock no cambiará.",
+  "cancelledMessage": "Comprobante cancelado.",
+  "documentDetailTitle": "Comprobante",
+  "documentWarehouse": "Almacén",
+  "documentDestination": "Almacén destino",
+  "documentCreatedBy": "Registrado por",
+  "documentDate": "Fecha",
+  "documentCostCenter": "Centro de costo",
+  "documentReason": "Motivo",
+  "documentLines": "Líneas",
+  "documentSignatures": "Firmas",
+  "signatureDelivered": "Entrega",
+  "signatureReceived": "Recibe",
+  "viewSignature": "Ver firma",
+  "documentLineQuantity": "{product} · {quantity}",
+  "@documentLineQuantity": {
+    "placeholders": {
+      "product": {
+        "type": "String"
+      },
+      "quantity": {
+        "type": "String"
+      }
+    }
+  },
+  "pdfView": "Ver PDF",
+  "pdfShare": "Compartir PDF",
+  "pdfTitle": "Comprobante en PDF",
+  "pdfError": "No se pudo cargar el PDF.",
+  "sendEmailAction": "Enviar por correo",
+  "fieldRecipients": "Correos (separados por coma)",
+  "validationEmails": "Ingrese correos válidos separados por comas.",
+  "emailSent": "Correo enviado.",
+  "signatureTitle": "Mi firma",
+  "signatureIntro": "Su firma se usa al entregar comprobantes. Necesita su contraseña para guardarla.",
+  "fieldDocumentType": "Tipo de documento",
+  "fieldDocumentNumber": "Número de documento",
+  "validationDocumentNumber": "Use entre 4 y 20 letras o números.",
+  "signatureSave": "Guardar firma",
+  "signatureSaved": "Firma guardada.",
+  "signatureNone": "Aún no ha registrado su firma.",
+  "signaturePinTitle": "Anote su PIN",
+  "signaturePinBody": "Este PIN de 3 dígitos permite recibir comprobantes con su firma. Se muestra una sola vez.",
+  "signaturePinConfirm": "Ya anoté mi PIN",
+  "signaturePinRegenerate": "Generar PIN nuevo",
+  "signaturePinRegenerateBody": "El PIN anterior dejará de funcionar. ¿Generar uno nuevo?",
+  "signatureRegisteredOn": "Registrada el {date}",
+  "@signatureRegisteredOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "signatureHasPin": "PIN activo",
+  "signatureNoPin": "Sin PIN",
+  "docTypeCC": "Cédula de ciudadanía",
+  "docTypeCE": "Cédula de extranjería",
+  "docTypeTI": "Tarjeta de identidad",
+  "docTypePA": "Pasaporte",
+  "docTypePPT": "Permiso por protección temporal",
+  "profileMySignature": "Mi firma",
+  "clearField": "Borrar",
+  "lineAdded": "Agregar"
 }

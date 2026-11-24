@@ -562,4 +562,535 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get variantPresentation => 'Presentación comercial';
+
+  @override
+  String get inventoryTabStock => 'Existencias';
+
+  @override
+  String get inventoryTabBatches => 'Lotes';
+
+  @override
+  String get inventoryTabDocuments => 'Comprobantes';
+
+  @override
+  String get inventoryTabHistory => 'Historial';
+
+  @override
+  String get inventorySelectWarehouse =>
+      'Seleccione un almacén activo en la barra superior para ver el inventario.';
+
+  @override
+  String get stockEmpty => 'No hay existencias registradas en este almacén.';
+
+  @override
+  String get stockLowFilter => 'Bajo mínimo';
+
+  @override
+  String get stockLowEmpty =>
+      'Ningún producto está por debajo del punto de reorden.';
+
+  @override
+  String stockAvailable(String quantity) {
+    return 'Disponible: $quantity';
+  }
+
+  @override
+  String stockTotals(String total, String reserved) {
+    return 'Total: $total · Reservado: $reserved';
+  }
+
+  @override
+  String get batchFilterAll => 'Todos';
+
+  @override
+  String get batchFilterExpiring => 'Por vencer';
+
+  @override
+  String get batchFilterExpired => 'Vencidos';
+
+  @override
+  String get batchesEmpty => 'No hay lotes para mostrar.';
+
+  @override
+  String batchLot(String lot) {
+    return 'Lote $lot';
+  }
+
+  @override
+  String batchExpires(String date) {
+    return 'Vence $date';
+  }
+
+  @override
+  String batchExpiresInDays(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: '$days días',
+      one: '1 día',
+      zero: 'hoy',
+    );
+    return 'Vence en $_temp0';
+  }
+
+  @override
+  String get batchStatusActive => 'Vigente';
+
+  @override
+  String get batchStatusExpired => 'Vencido';
+
+  @override
+  String get batchStatusDepleted => 'Agotado';
+
+  @override
+  String get batchDetailTitle => 'Lote';
+
+  @override
+  String get batchQuantity => 'Cantidad disponible';
+
+  @override
+  String get batchManufacturing => 'Fabricación';
+
+  @override
+  String get batchLocations => 'Ubicaciones';
+
+  @override
+  String get batchNoLocations => 'Sin ubicaciones con saldo.';
+
+  @override
+  String get documentsEmpty => 'No hay comprobantes para mostrar.';
+
+  @override
+  String get documentFilterAll => 'Todos';
+
+  @override
+  String get documentFilterPending => 'Pendientes';
+
+  @override
+  String get documentFilterConfirmed => 'Confirmados';
+
+  @override
+  String get documentStatusPending => 'Pendiente de firma';
+
+  @override
+  String get documentStatusConfirmed => 'Confirmado';
+
+  @override
+  String get historyEmpty => 'No hay movimientos registrados.';
+
+  @override
+  String get movementEntry => 'Entrada';
+
+  @override
+  String get movementExit => 'Salida';
+
+  @override
+  String get movementTransfer => 'Traslado';
+
+  @override
+  String get movementAdjustment => 'Ajuste';
+
+  @override
+  String get movementReturn => 'Devolución';
+
+  @override
+  String get movementWriteOff => 'Baja por vencimiento';
+
+  @override
+  String get movementLoss => 'Pérdida';
+
+  @override
+  String get movementEntryHint => 'Ingreso de mercancía con lote y ubicación.';
+
+  @override
+  String get movementExitHint => 'Despacho a un centro de costo o paciente.';
+
+  @override
+  String get movementTransferHint => 'Envío de stock a otro almacén.';
+
+  @override
+  String get movementAdjustmentHint => 'Corrección de cantidad con motivo.';
+
+  @override
+  String get movementReturnHint => 'Reingreso de producto devuelto.';
+
+  @override
+  String get movementWriteOffHint => 'Baja de un lote vencido.';
+
+  @override
+  String get movementLossHint => 'Rotura, extravío u otra pérdida.';
+
+  @override
+  String get scanAction => 'Escanear código';
+
+  @override
+  String get newMovementAction => 'Nuevo movimiento';
+
+  @override
+  String get scanTitle => 'Escanear producto';
+
+  @override
+  String get scanHint => 'Apunte la cámara al código de barras del producto.';
+
+  @override
+  String get scanPermissionDenied =>
+      'Sin acceso a la cámara. Habilítelo en los ajustes del teléfono.';
+
+  @override
+  String scanNotFound(String code) {
+    return 'No se encontró un producto con el código $code.';
+  }
+
+  @override
+  String get scanTorch => 'Linterna';
+
+  @override
+  String get newMovementTitle => 'Nuevo movimiento';
+
+  @override
+  String get newMovementChoose => '¿Qué desea registrar?';
+
+  @override
+  String get newMovementNone =>
+      'Su usuario no tiene permisos para registrar movimientos.';
+
+  @override
+  String get fieldWarehouse => 'Almacén';
+
+  @override
+  String get fieldReason => 'Motivo';
+
+  @override
+  String get fieldReasonOptional => 'Motivo (opcional)';
+
+  @override
+  String get fieldNotes => 'Notas (opcional)';
+
+  @override
+  String get fieldQuantity => 'Cantidad';
+
+  @override
+  String get fieldLot => 'Número de lote';
+
+  @override
+  String get fieldExpiration => 'Fecha de vencimiento';
+
+  @override
+  String get fieldManufacturing => 'Fecha de fabricación (opcional)';
+
+  @override
+  String get fieldLocation => 'Ubicación';
+
+  @override
+  String get fieldLocationOptional => 'Ubicación (opcional)';
+
+  @override
+  String get fieldCostCenter => 'Centro de costo';
+
+  @override
+  String get fieldPatientDocument => 'Documento del paciente (opcional)';
+
+  @override
+  String get fieldInvoice => 'Factura (opcional)';
+
+  @override
+  String get fieldTemperature => 'Temperatura de entrada, °C (opcional)';
+
+  @override
+  String get fieldProduct => 'Producto';
+
+  @override
+  String get fieldVariant => 'Variante';
+
+  @override
+  String get fieldBatch => 'Lote';
+
+  @override
+  String get fieldBatchFefo => 'Automático (primero en vencer)';
+
+  @override
+  String get fieldDestinationWarehouse => 'Almacén destino';
+
+  @override
+  String get fieldPresentation => 'Presentación';
+
+  @override
+  String get fieldBaseUnitDirect => 'Unidad base';
+
+  @override
+  String get fieldSignedQuantity => 'Cantidad (negativa para restar)';
+
+  @override
+  String get itemsTitle => 'Productos';
+
+  @override
+  String get addItem => 'Agregar producto';
+
+  @override
+  String get removeItem => 'Quitar';
+
+  @override
+  String get itemsRequired => 'Agregue al menos un producto.';
+
+  @override
+  String get selectProduct => 'Seleccionar producto';
+
+  @override
+  String get selectOption => 'Seleccionar';
+
+  @override
+  String get pickDate => 'Elegir fecha';
+
+  @override
+  String get submitRegister => 'Registrar';
+
+  @override
+  String get validationRequired => 'Este campo es obligatorio.';
+
+  @override
+  String get validationPositive => 'Ingrese una cantidad mayor que cero.';
+
+  @override
+  String get validationNonZero => 'Ingrese una cantidad distinta de cero.';
+
+  @override
+  String get validationNumber => 'Ingrese un número válido.';
+
+  @override
+  String movementRegisteredDoc(String number) {
+    return 'Comprobante $number registrado.';
+  }
+
+  @override
+  String get movementRegistered => 'Movimiento registrado.';
+
+  @override
+  String get movementPendingSignNote =>
+      'Quedó pendiente de firma: el stock cambia al confirmarlo.';
+
+  @override
+  String get movementTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, revise el historial: es posible que sí se haya registrado.';
+
+  @override
+  String get movementNeedsCostCenters =>
+      'Para registrar salidas se necesita poder consultar centros de costo.';
+
+  @override
+  String get noProductsFound => 'No se encontraron productos.';
+
+  @override
+  String get noVariants => 'Este producto no tiene variantes.';
+
+  @override
+  String get noLocations => 'Este almacén no tiene ubicaciones.';
+
+  @override
+  String get noBatchesAvailable => 'No hay lotes disponibles.';
+
+  @override
+  String get confirmTitle => 'Confirmar comprobante';
+
+  @override
+  String get confirmDelivered => 'Entrega';
+
+  @override
+  String get confirmUseMySignature => 'Usar mi firma registrada';
+
+  @override
+  String get confirmNoSignature =>
+      'Aún no tiene firma registrada. Regístrela para poder entregar.';
+
+  @override
+  String get confirmRegisterSignature => 'Registrar mi firma';
+
+  @override
+  String get confirmReceived => 'Recibe';
+
+  @override
+  String get confirmModePin => 'Usuario del sistema';
+
+  @override
+  String get confirmModeExternal => 'Persona externa';
+
+  @override
+  String get fieldPin => 'PIN de 3 dígitos';
+
+  @override
+  String get validationPin => 'Ingrese los 3 dígitos del PIN.';
+
+  @override
+  String get fieldSignerName => 'Nombre completo';
+
+  @override
+  String get fieldSignerDocument => 'Documento';
+
+  @override
+  String get signHere => 'Firme aquí';
+
+  @override
+  String get clearSignature => 'Borrar firma';
+
+  @override
+  String get signatureRequired => 'La firma es obligatoria.';
+
+  @override
+  String get confirmAction => 'Confirmar y firmar';
+
+  @override
+  String get confirmedMessage => 'Comprobante confirmado.';
+
+  @override
+  String get cancelPendingAction => 'Cancelar comprobante';
+
+  @override
+  String get cancelPendingTitle => '¿Cancelar este comprobante?';
+
+  @override
+  String get cancelPendingBody => 'Quedará anulado y el stock no cambiará.';
+
+  @override
+  String get cancelledMessage => 'Comprobante cancelado.';
+
+  @override
+  String get documentDetailTitle => 'Comprobante';
+
+  @override
+  String get documentWarehouse => 'Almacén';
+
+  @override
+  String get documentDestination => 'Almacén destino';
+
+  @override
+  String get documentCreatedBy => 'Registrado por';
+
+  @override
+  String get documentDate => 'Fecha';
+
+  @override
+  String get documentCostCenter => 'Centro de costo';
+
+  @override
+  String get documentReason => 'Motivo';
+
+  @override
+  String get documentLines => 'Líneas';
+
+  @override
+  String get documentSignatures => 'Firmas';
+
+  @override
+  String get signatureDelivered => 'Entrega';
+
+  @override
+  String get signatureReceived => 'Recibe';
+
+  @override
+  String get viewSignature => 'Ver firma';
+
+  @override
+  String documentLineQuantity(String product, String quantity) {
+    return '$product · $quantity';
+  }
+
+  @override
+  String get pdfView => 'Ver PDF';
+
+  @override
+  String get pdfShare => 'Compartir PDF';
+
+  @override
+  String get pdfTitle => 'Comprobante en PDF';
+
+  @override
+  String get pdfError => 'No se pudo cargar el PDF.';
+
+  @override
+  String get sendEmailAction => 'Enviar por correo';
+
+  @override
+  String get fieldRecipients => 'Correos (separados por coma)';
+
+  @override
+  String get validationEmails => 'Ingrese correos válidos separados por comas.';
+
+  @override
+  String get emailSent => 'Correo enviado.';
+
+  @override
+  String get signatureTitle => 'Mi firma';
+
+  @override
+  String get signatureIntro =>
+      'Su firma se usa al entregar comprobantes. Necesita su contraseña para guardarla.';
+
+  @override
+  String get fieldDocumentType => 'Tipo de documento';
+
+  @override
+  String get fieldDocumentNumber => 'Número de documento';
+
+  @override
+  String get validationDocumentNumber => 'Use entre 4 y 20 letras o números.';
+
+  @override
+  String get signatureSave => 'Guardar firma';
+
+  @override
+  String get signatureSaved => 'Firma guardada.';
+
+  @override
+  String get signatureNone => 'Aún no ha registrado su firma.';
+
+  @override
+  String get signaturePinTitle => 'Anote su PIN';
+
+  @override
+  String get signaturePinBody =>
+      'Este PIN de 3 dígitos permite recibir comprobantes con su firma. Se muestra una sola vez.';
+
+  @override
+  String get signaturePinConfirm => 'Ya anoté mi PIN';
+
+  @override
+  String get signaturePinRegenerate => 'Generar PIN nuevo';
+
+  @override
+  String get signaturePinRegenerateBody =>
+      'El PIN anterior dejará de funcionar. ¿Generar uno nuevo?';
+
+  @override
+  String signatureRegisteredOn(String date) {
+    return 'Registrada el $date';
+  }
+
+  @override
+  String get signatureHasPin => 'PIN activo';
+
+  @override
+  String get signatureNoPin => 'Sin PIN';
+
+  @override
+  String get docTypeCC => 'Cédula de ciudadanía';
+
+  @override
+  String get docTypeCE => 'Cédula de extranjería';
+
+  @override
+  String get docTypeTI => 'Tarjeta de identidad';
+
+  @override
+  String get docTypePA => 'Pasaporte';
+
+  @override
+  String get docTypePPT => 'Permiso por protección temporal';
+
+  @override
+  String get profileMySignature => 'Mi firma';
+
+  @override
+  String get clearField => 'Borrar';
+
+  @override
+  String get lineAdded => 'Agregar';
 }

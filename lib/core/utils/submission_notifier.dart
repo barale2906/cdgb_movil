@@ -19,16 +19,28 @@ abstract class SubmissionNotifier extends Notifier<SubmissionState> {
 
   /// Ejecuta [action]; devuelve `true` si terminó sin [ApiException].
   @protected
-  Future<bool> run(Future<void> Function() action) async {
-    if (state.isSubmitting) return false;
+  Future<bool> run(Future<void> Function() action) async =>
+      await runValue(() async {
+        await action();
+        return true;
+      }) ??
+      false;
+
+  /// Como [run], pero devuelve el resultado de [action] (o `null` si falló
+  /// o ya había un envío en curso).
+  @protected
+  Future<T?> runValue<T extends Object>(
+    Future<T> Function() action,
+  ) async {
+    if (state.isSubmitting) return null;
     state = const SubmissionState(isSubmitting: true);
     try {
-      await action();
+      final result = await action();
       if (ref.mounted) state = const SubmissionState();
-      return true;
+      return result;
     } on ApiException catch (error) {
       if (ref.mounted) state = SubmissionState(error: error);
-      return false;
+      return null;
     }
   }
 }
