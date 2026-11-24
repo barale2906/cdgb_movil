@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "message": "Listado de almacenes",
+  "data": [
+    { "id": 1, "name": "Bodega Central", "code": "BC", "address": null, "description": null, "is_active": true },
+    { "id": 2, "name": "Farmacia", "code": "FA", "address": null, "description": null, "is_active": true }
+  ]
+}

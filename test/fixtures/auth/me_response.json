@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "message": "Datos del usuario",
+  "data": {
+    "id": 42,
+    "name": "Usuario Prueba",
+    "email": "usuario.prueba@example.com",
+    "phone": null,
+    "is_active": true,
+    "roles": [{ "id": 3, "name": "jefe_almacen" }],
+    "permissions": ["almacenes.ver", "stock.ver", "generic-products.ver"],
+    "warehouses": [{ "id": 1, "name": "Bodega Central", "code": "BC" }],
+    "sensors": [],
+    "created_at": "2026-01-10T15:00:00-05:00",
+    "campo_nuevo_desconocido": true
+  }
+}

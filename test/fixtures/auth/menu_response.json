@@ -1,0 +1,62 @@
+{
+  "success": true,
+  "message": "Menú de navegación",
+  "data": [
+    {
+      "key": "dashboard",
+      "label": "Tablero",
+      "icon": "layout-dashboard",
+      "route": "dashboard",
+      "permission": "tablero.ver",
+      "actions": [],
+      "children": []
+    },
+    {
+      "key": "inventory-management",
+      "label": "Inventario",
+      "icon": "package-search",
+      "route": null,
+      "permission": null,
+      "actions": [],
+      "children": [
+        {
+          "key": "inventory",
+          "label": "Inventario",
+          "icon": "boxes",
+          "route": null,
+          "permission": null,
+          "actions": [],
+          "children": [
+            {
+              "key": "stock",
+              "label": "Existencias",
+              "icon": "package",
+              "route": "stock.index",
+              "permission": "stock.ver",
+              "actions": { "export": false },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "purchasing",
+      "label": "Compras",
+      "icon": "shopping-cart",
+      "route": null,
+      "permission": null,
+      "actions": [],
+      "children": [
+        {
+          "key": "purchase-orders",
+          "label": "Órdenes de compra",
+          "icon": "file-text",
+          "route": "purchase-orders.index",
+          "permission": "ordenes_compra.ver",
+          "actions": { "create": true, "approve": false }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "message": "Login exitoso",
+  "data": {
+    "token": "1|token-de-prueba",
+    "user": {
+      "id": 42,
+      "name": "Usuario Prueba",
+      "email": "usuario.prueba@example.com",
+      "phone": "3000000000",
+      "is_active": true,
+      "roles": [{ "id": 3, "name": "jefe_almacen" }],
+      "permissions": ["almacenes.ver", "stock.ver", "movimientos.entrada"],
+      "created_at": "2026-01-10T15:00:00-05:00"
+    }
+  }
+}

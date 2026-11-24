@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "message": "Los datos proporcionados no son válidos.",
+  "errors": { "email": ["El correo no es válido."], "items.0.quantity_base": ["Debe ser mayor que 0."] }
+}

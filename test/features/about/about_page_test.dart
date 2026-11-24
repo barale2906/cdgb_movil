@@ -27,6 +27,32 @@ void main() {
       },
     );
 
+    testWidgets('muestra versión y build instalados', (tester) async {
+      await tester.pumpApp(const AboutPage());
+      await tester.pump();
+
+      expect(find.text('0.1.0 (1)'), findsOneWidget);
+    });
+
+    testWidgets('en dev ofrece cambiar de servidor; en prod no', (
+      tester,
+    ) async {
+      await tester.pumpApp(const AboutPage());
+      expect(
+        find.text('Cambiar servidor', skipOffstage: false),
+        findsOneWidget,
+      );
+
+      await tester.pumpApp(
+        const AboutPage(),
+        environment: AppEnvironment.fromValues(
+          env: 'prod',
+          apiBaseUrl: 'https://api.example.com/api/v1',
+        ),
+      );
+      expect(find.text('Cambiar servidor', skipOffstage: false), findsNothing);
+    });
+
     testWidgets('muestra producción y la URL de actualización', (tester) async {
       await tester.pumpApp(
         const AboutPage(),
