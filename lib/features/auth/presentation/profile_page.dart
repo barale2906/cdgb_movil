@@ -48,6 +48,13 @@ class ProfilePage extends ConsumerWidget {
             ),
             const SizedBox(height: AppSpacing.lg),
             BojaniButton(
+              label: l10n.profileMySignature,
+              kind: BojaniButtonKind.secondary,
+              icon: Icons.draw_outlined,
+              onPressed: () => context.push('/profile/signature'),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            BojaniButton(
               label: l10n.profileChangePassword,
               kind: BojaniButtonKind.secondary,
               icon: Icons.key_outlined,
