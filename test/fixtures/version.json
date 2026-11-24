@@ -1,0 +1,8 @@
+{
+  "latest": "1.2.0",
+  "build": 12,
+  "min_build": 10,
+  "url": "https://files.example.com/sga-bojanini-1.2.0.apk",
+  "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "notes": "Mejoras de rendimiento."
+}

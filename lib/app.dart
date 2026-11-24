@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sga_bojanini/app_router.dart';
+import 'package:sga_bojanini/core/auth/inactivity_guard.dart';
 import 'package:sga_bojanini/core/theme/app_theme.dart';
-import 'package:sga_bojanini/features/about/presentation/about_page.dart';
+import 'package:sga_bojanini/core/update/update_widgets.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
-/// Raíz de la aplicación. En la fase 1 `home` se reemplaza por go_router.
-class SgaApp extends StatelessWidget {
+/// Raíz de la aplicación: tema, localización, rutas y bloqueo por
+/// inactividad.
+class SgaApp extends ConsumerWidget {
   const SgaApp({super.key});
 
   static const locale = Locale('es', 'CO');
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) => MaterialApp.router(
     onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
     debugShowCheckedModeBanner: false,
     theme: AppTheme.light(),
@@ -23,6 +27,9 @@ class SgaApp extends StatelessWidget {
       GlobalWidgetsLocalizations.delegate,
       GlobalCupertinoLocalizations.delegate,
     ],
-    home: const AboutPage(),
+    routerConfig: ref.watch(routerProvider),
+    builder: (context, child) => UpdateGate(
+      child: InactivityGuard(child: child ?? const SizedBox.shrink()),
+    ),
   );
 }

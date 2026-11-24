@@ -2,14 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/config/app_environment.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
+import 'package:sga_bojanini/core/config/app_restart.dart';
+import 'package:sga_bojanini/core/config/package_info_provider.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/theme/app_typography.dart';
-import 'package:sga_bojanini/core/theme/status_colors.dart';
 import 'package:sga_bojanini/core/widgets/app_brand_mark.dart';
+import 'package:sga_bojanini/core/widgets/bojani_button.dart';
+import 'package:sga_bojanini/core/widgets/status_chip.dart';
+import 'package:sga_bojanini/features/about/application/server_change.dart';
+import 'package:sga_bojanini/features/about/presentation/server_change_dialog.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
-/// "Acerca de": muestra ambiente y servidor activos. En la fase 0 es la
-/// pantalla inicial, para verificar a qué backend apunta cada build.
+/// "Acerca de": versión, ambiente y servidor activos (útil para soporte).
+/// En dev permite cambiar de servidor sin recompilar.
 class AboutPage extends ConsumerWidget {
   const AboutPage({super.key});
 
@@ -17,6 +22,7 @@ class AboutPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final environment = ref.watch(appEnvironmentProvider);
+    final version = ref.watch(packageInfoProvider).value;
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
@@ -46,6 +52,16 @@ class AboutPage extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    if (version != null) ...[
+                      _InfoRow(
+                        label: l10n.aboutVersion,
+                        child: Text(
+                          '${version.version} (${version.buildNumber})',
+                          style: AppTypography.code,
+                        ),
+                      ),
+                      const Divider(height: AppSpacing.lg),
+                    ],
                     _InfoRow(
                       label: l10n.aboutEnvironment,
                       child: _EnvironmentChip(env: environment.env),
@@ -80,15 +96,43 @@ class AboutPage extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: AppSpacing.lg),
-            Text(
-              l10n.setupInProgress,
-              textAlign: TextAlign.center,
-              style: textTheme.bodySmall,
+            if (environment.isDev) ...[
+              BojaniButton(
+                label: l10n.aboutChangeServer,
+                kind: BojaniButtonKind.secondary,
+                icon: Icons.dns_outlined,
+                onPressed: () => _changeServer(context, ref, environment),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+            ],
+            BojaniButton(
+              label: l10n.aboutLicenses,
+              kind: BojaniButtonKind.tertiary,
+              onPressed: () => showLicensePage(
+                context: context,
+                applicationName: l10n.appTitle,
+                applicationVersion: version?.version,
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _changeServer(
+    BuildContext context,
+    WidgetRef ref,
+    AppEnvironment environment,
+  ) async {
+    final restart = AppRestart.maybeOf(context)?.restart;
+    final choice = await showServerChangeDialog(
+      context,
+      currentUrl: environment.apiBaseUrl.toString(),
+    );
+    if (choice == null) return;
+    await changeServer(ref, choice.url);
+    await restart?.call();
   }
 }
 
@@ -117,26 +161,8 @@ class _EnvironmentChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final palette = env == AppEnv.prod
-        ? context.statusColors.success
-        : context.statusColors.warning;
-    final label = env == AppEnv.prod ? l10n.envProd : l10n.envDev;
-
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.sm + AppSpacing.xs,
-        vertical: AppSpacing.xs,
-      ),
-      decoration: BoxDecoration(
-        color: palette.chip,
-        borderRadius: BorderRadius.circular(AppRadius.pill),
-      ),
-      child: Text(
-        label.toUpperCase(),
-        style: Theme.of(
-          context,
-        ).textTheme.labelSmall?.copyWith(color: palette.chipText),
-      ),
-    );
+    return env == AppEnv.prod
+        ? StatusChip(label: l10n.envProd, kind: StatusKind.success)
+        : StatusChip(label: l10n.envDev, kind: StatusKind.warning);
   }
 }
