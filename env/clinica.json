@@ -1,0 +1,10 @@
+{
+  "ENV": "dev",
+  "API_BASE_URL": "https://sga.ad.bojaniniexperts.co/api/v1",
+  "UPDATE_URL": "",
+  "INACTIVITY_LOCK_MINUTES": "15",
+  "SESSION_MAX_HOURS": "12",
+  "HTTP_LOGS": "true",
+  "TLS_PINNED_CERT": "assets/certs/sga_clinica.pem",
+  "SERVER_PRESETS": "Producción clínica (datos reales)|https://sga.ad.bojaniniexperts.co/api/v1;Local USB (localhost:8000)|http://localhost:8000/api/v1;Emulador (10.0.2.2:8000)|http://10.0.2.2:8000/api/v1"
+}

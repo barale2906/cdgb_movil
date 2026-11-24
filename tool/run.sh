@@ -3,7 +3,8 @@
 #   tool/run.sh usb     teléfono por USB (adb reverse al backend local :8000)
 #   tool/run.sh local   emulador Android
 #   tool/run.sh lan     teléfono por Wi-Fi (requiere env/lan.json)
-#   tool/run.sh prod    servidor real (por VPN) — modo release no recomendado aquí
+#   tool/run.sh clinica app dev contra el servidor real de la clínica (VPN activa)
+#   tool/run.sh prod    flavor prod (HTTPS, URL fija) — modo release no recomendado aquí
 # Argumentos extra se pasan a `flutter run` (p. ej. -d <dispositivo>).
 source "$(dirname "$0")/_common.sh"
 

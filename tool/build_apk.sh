@@ -2,6 +2,7 @@
 # Compila un APK release para un destino y lo deja listo en dist/.
 #   tool/build_apk.sh prod   APK de producción firmado + version.json + sha256
 #   tool/build_apk.sh lan    APK dev (pruebas en teléfonos por Wi-Fi)
+#   tool/build_apk.sh clinica APK dev contra el servidor real de la clínica
 # Requiere el keystore fuera del repo: ~/.android-keys/sga-bojanini/key.properties
 # (o la variable SGA_KEY_PROPERTIES). Ver docs/plan/05-calidad-y-despliegue.md §5.
 source "$(dirname "$0")/_common.sh"

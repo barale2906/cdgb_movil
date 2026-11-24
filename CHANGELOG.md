@@ -2,6 +2,15 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [0.5.0+5] - 2026-11-24
+### Añadido
+- Cambio sencillo de servidor (flavor dev): en Acerca de se elige entre producción de la clínica, local por USB o emulador (`SERVER_PRESETS` en `env/*.json`) o una dirección propia; el login muestra el servidor activo.
+- Destino `clinica` (dev contra el servidor real) y `prod` apuntando a `https://sga.ad.bojaniniexperts.co/api/v1`.
+- Certificado del servidor anclado (`TLS_PINNED_CERT`): el servidor de la clínica usa un certificado autofirmado que Android no reconoce.
+
+### Cambiado
+- `env/prod.json` ya no apunta a `bojapp.gislasas.com` (dominio del web público) sino al servidor de la clínica.
+
 ## [0.4.0+4] - 2026-11-24
 ### Añadido
 - Fase 2B · Inventario: existencias del almacén activo (con filtro "Bajo mínimo"), lotes (todos, por vencer, vencidos) y detalle de lote con ubicaciones, comprobantes, historial de movimientos y escáner de código de barras que abre el producto.
