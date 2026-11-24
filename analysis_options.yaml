@@ -1,0 +1,15 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - lib/l10n/app_localizations*.dart
+  errors:
+    todo: ignore
+
+linter:
+  rules:
+    # Documentación pública obligatoria solo en paquetes publicados; aquí se
+    # documenta lo que no es evidente (CLAUDE.md §2.1).
+    public_member_api_docs: false

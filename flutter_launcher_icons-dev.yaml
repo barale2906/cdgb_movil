@@ -1,0 +1,8 @@
+# Icono provisional del flavor dev. Regenerar: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: assets/brand/app_icon_dev.png
+  adaptive_icon_background: "#FFCF01"
+  adaptive_icon_foreground: assets/brand/app_icon_foreground_dev.png
+  min_sdk_android: 21

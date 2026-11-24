@@ -1,0 +1,57 @@
+name: sga_bojanini
+description: "SGA Bojanini - app móvil para empleados de la Clínica Bojanini."
+publish_to: 'none'
+
+# x.y.z+build — el build SIEMPRE crece (Android no instala versiones menores).
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.10.8
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^3.3.2
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.5
+  very_good_analysis: ^10.1.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/brand/splash_mark.png
+
+  # Montserrat (OFL, ver assets/fonts/montserrat/OFL.txt). Decisión E: tipografía definitiva.
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat/Montserrat-Light.ttf
+          weight: 300
+        - asset: assets/fonts/montserrat/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/montserrat/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/montserrat/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/montserrat/Montserrat-Bold.ttf
+          weight: 700
+
+# Splash nativo (marca provisional sobre azul pizarra). Regenerar: dart run flutter_native_splash:create
+flutter_native_splash:
+  color: "#1E2A3B"
+  image: assets/brand/splash_mark.png
+  android_12:
+    color: "#1E2A3B"
+    image: assets/brand/splash_mark.png
+  ios: false
+  web: false

@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Solo el flavor dev permite HTTP sin cifrar (backend local en Docker).
+         prod hereda la política por defecto de Android: solo HTTPS. -->
+    <application android:networkSecurityConfig="@xml/network_security_config" />
+</manifest>

@@ -1,0 +1,8 @@
+{
+  "ENV": "prod",
+  "API_BASE_URL": "https://bojapp.gislasas.com/api/v1",
+  "UPDATE_URL": "",
+  "INACTIVITY_LOCK_MINUTES": "15",
+  "SESSION_MAX_HOURS": "12",
+  "HTTP_LOGS": "false"
+}

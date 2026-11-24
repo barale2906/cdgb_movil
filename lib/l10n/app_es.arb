@@ -1,0 +1,21 @@
+{
+  "@@locale": "es",
+  "appTitle": "SGA Bojanini",
+  "@appTitle": { "description": "Nombre visible de la aplicación." },
+  "brandSubtitle": "SISTEMA DE GESTIÓN DE ALMACÉN",
+  "aboutTitle": "Acerca de",
+  "aboutEnvironment": "Ambiente",
+  "aboutServer": "Servidor",
+  "aboutUpdates": "Actualizaciones",
+  "aboutUpdatesDisabled": "Desactivadas (ruta del APK pendiente)",
+  "aboutSessionPolicy": "Bloqueo por inactividad: {minutes} min · Cierre de sesión: {hours} h",
+  "@aboutSessionPolicy": {
+    "placeholders": {
+      "minutes": { "type": "int" },
+      "hours": { "type": "int" }
+    }
+  },
+  "envDev": "Desarrollo",
+  "envProd": "Producción",
+  "setupInProgress": "Fase 0: proyecto configurado. Los módulos se habilitan en las siguientes fases."
+}
