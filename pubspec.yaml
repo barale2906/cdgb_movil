@@ -3,7 +3,7 @@ description: "SGA Bojanini - app móvil para empleados de la Clínica Bojanini."
 publish_to: 'none'
 
 # x.y.z+build — el build SIEMPRE crece (Android no instala versiones menores).
-version: 0.4.0+4
+version: 0.5.0+5
 
 environment:
   sdk: ^3.10.8
@@ -47,6 +47,7 @@ flutter:
   assets:
     - assets/brand/splash_mark.png
     - assets/fonts/montserrat/OFL.txt
+    - assets/certs/sga_clinica.pem
 
   # Montserrat (OFL, ver assets/fonts/montserrat/OFL.txt). Decisión E: tipografía definitiva.
   fonts:

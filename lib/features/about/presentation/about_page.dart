@@ -69,9 +69,19 @@ class AboutPage extends ConsumerWidget {
                     const Divider(height: AppSpacing.lg),
                     _InfoRow(
                       label: l10n.aboutServer,
-                      child: SelectableText(
-                        environment.apiBaseUrl.toString(),
-                        style: AppTypography.code,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (environment.isDev)
+                            Text(
+                              environment.serverName,
+                              style: textTheme.titleSmall,
+                            ),
+                          SelectableText(
+                            environment.apiBaseUrl.toString(),
+                            style: AppTypography.code,
+                          ),
+                        ],
                       ),
                     ),
                     const Divider(height: AppSpacing.lg),
@@ -128,7 +138,7 @@ class AboutPage extends ConsumerWidget {
     final restart = AppRestart.maybeOf(context)?.restart;
     final choice = await showServerChangeDialog(
       context,
-      currentUrl: environment.apiBaseUrl.toString(),
+      environment: environment,
     );
     if (choice == null) return;
     await changeServer(ref, choice.url);

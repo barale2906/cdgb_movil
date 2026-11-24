@@ -15,19 +15,20 @@ class ServerChoice {
   final bool useDefault;
 }
 
-/// Pide la dirección del servidor (solo flavor dev).
+/// Elige el servidor (solo flavor dev): uno de los predefinidos en el
+/// archivo de destino (`SERVER_PRESETS`) u otra dirección escrita a mano.
 Future<ServerChoice?> showServerChangeDialog(
   BuildContext context, {
-  required String currentUrl,
+  required AppEnvironment environment,
 }) => showDialog<ServerChoice>(
   context: context,
-  builder: (_) => _ServerChangeDialog(currentUrl: currentUrl),
+  builder: (_) => _ServerChangeDialog(environment: environment),
 );
 
 class _ServerChangeDialog extends StatefulWidget {
-  const _ServerChangeDialog({required this.currentUrl});
+  const _ServerChangeDialog({required this.environment});
 
-  final String currentUrl;
+  final AppEnvironment environment;
 
   @override
   State<_ServerChangeDialog> createState() => _ServerChangeDialogState();
@@ -36,7 +37,7 @@ class _ServerChangeDialog extends StatefulWidget {
 class _ServerChangeDialogState extends State<_ServerChangeDialog> {
   final _formKey = GlobalKey<FormState>();
   late final TextEditingController _controller = TextEditingController(
-    text: widget.currentUrl,
+    text: widget.environment.apiBaseUrl.toString(),
   );
 
   @override
@@ -45,7 +46,7 @@ class _ServerChangeDialogState extends State<_ServerChangeDialog> {
     super.dispose();
   }
 
-  void _accept() {
+  void _acceptCustom() {
     if (!(_formKey.currentState?.validate() ?? false)) return;
     final url = AppEnvironment.tryParseBaseUrl(_controller.text);
     if (url != null) Navigator.of(context).pop(ServerChoice.url(url));
@@ -54,24 +55,54 @@ class _ServerChangeDialogState extends State<_ServerChangeDialog> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final environment = widget.environment;
+    final textTheme = Theme.of(context).textTheme;
+
     return AlertDialog(
       title: Text(l10n.aboutChangeServer),
-      content: Form(
-        key: _formKey,
+      content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(l10n.aboutChangeServerNotice),
+            Text(l10n.aboutServerRestartNote, style: textTheme.bodySmall),
+            if (environment.serverPresets.isNotEmpty) ...[
+              const SizedBox(height: AppSpacing.md),
+              Text(l10n.aboutServerPresets, style: textTheme.titleSmall),
+              for (final preset in environment.serverPresets)
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  minTileHeight: AppSizes.minTouchTarget,
+                  title: Text(preset.label),
+                  subtitle: Text(
+                    preset.url.toString(),
+                    style: textTheme.bodySmall,
+                  ),
+                  trailing: preset.url == environment.apiBaseUrl
+                      ? Tooltip(
+                          message: l10n.aboutServerCurrent,
+                          child: const Icon(Icons.check_circle),
+                        )
+                      : null,
+                  onTap: () => Navigator.of(
+                    context,
+                  ).pop(ServerChoice.url(preset.url)),
+                ),
+            ],
             const SizedBox(height: AppSpacing.md),
-            BojaniTextField(
-              label: l10n.aboutChangeServerHint,
-              controller: _controller,
-              keyboardType: TextInputType.url,
-              validator: (value) =>
-                  AppEnvironment.tryParseBaseUrl(value ?? '') == null
-                  ? l10n.aboutChangeServerInvalid
-                  : null,
+            Text(l10n.aboutServerCustom, style: textTheme.titleSmall),
+            const SizedBox(height: AppSpacing.sm),
+            Form(
+              key: _formKey,
+              child: BojaniTextField(
+                label: l10n.aboutChangeServerHint,
+                controller: _controller,
+                keyboardType: TextInputType.url,
+                validator: (value) =>
+                    AppEnvironment.tryParseBaseUrl(value ?? '') == null
+                    ? l10n.aboutChangeServerInvalid
+                    : null,
+              ),
             ),
           ],
         ),
@@ -79,7 +110,7 @@ class _ServerChangeDialogState extends State<_ServerChangeDialog> {
       actionsPadding: const EdgeInsets.all(AppSpacing.md),
       actionsOverflowDirection: VerticalDirection.down,
       actions: [
-        BojaniButton(label: l10n.actionAccept, onPressed: _accept),
+        BojaniButton(label: l10n.actionAccept, onPressed: _acceptCustom),
         const SizedBox(height: AppSpacing.sm),
         BojaniButton(
           label: l10n.aboutUseDefaultServer,

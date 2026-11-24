@@ -63,4 +63,42 @@ void main() {
       'http://192.168.1.10:8000/api/v1',
     );
   });
+
+  testWidgets('elegir "Producción clínica" cambia de servidor en un toque', (
+    tester,
+  ) async {
+    await openAbout(tester);
+    harness.adapter.on('POST', '/auth/logout', body: envelope(null));
+
+    await _tapChangeServer(tester);
+    await AppHarness.settle(tester, frames: 3);
+    expect(find.text('Servidores disponibles'), findsOneWidget);
+    expect(find.byIcon(Icons.check_circle), findsOneWidget, reason: 'en uso');
+    await tester.tap(find.text('Producción clínica'));
+    await AppHarness.settle(tester);
+
+    expect(find.text('Iniciar sesión'), findsOneWidget);
+    expect(harness.store.session, isNull);
+    expect(
+      ServerOverride(await harness.preferences()).current,
+      'https://sga.ad.bojaniniexperts.co/api/v1',
+    );
+  });
+
+  testWidgets('"Usar el servidor original" quita el cambio guardado', (
+    tester,
+  ) async {
+    await openAbout(tester);
+    harness.adapter.on('POST', '/auth/logout', body: envelope(null));
+    await ServerOverride(
+      await harness.preferences(),
+    ).save(Uri.parse('https://sga.ad.bojaniniexperts.co/api/v1'));
+
+    await _tapChangeServer(tester);
+    await AppHarness.settle(tester, frames: 3);
+    await tester.tap(find.text('Usar el servidor original'));
+    await AppHarness.settle(tester);
+
+    expect(ServerOverride(await harness.preferences()).current, isNull);
+  });
 }

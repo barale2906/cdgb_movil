@@ -2103,6 +2103,36 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Agregar'**
   String get lineAdded;
+
+  /// No description provided for @aboutServerPresets.
+  ///
+  /// In es, this message translates to:
+  /// **'Servidores disponibles'**
+  String get aboutServerPresets;
+
+  /// No description provided for @aboutServerCustom.
+  ///
+  /// In es, this message translates to:
+  /// **'Otra dirección'**
+  String get aboutServerCustom;
+
+  /// No description provided for @aboutServerCurrent.
+  ///
+  /// In es, this message translates to:
+  /// **'En uso'**
+  String get aboutServerCurrent;
+
+  /// No description provided for @aboutServerRestartNote.
+  ///
+  /// In es, this message translates to:
+  /// **'Al cambiar de servidor se cierra la sesión.'**
+  String get aboutServerRestartNote;
+
+  /// No description provided for @loginServerLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Servidor: {name}'**
+  String loginServerLabel(String name);
 }
 
 class _AppLocalizationsDelegate

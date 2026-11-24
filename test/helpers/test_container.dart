@@ -14,6 +14,10 @@ import 'in_memory_token_store.dart';
 final testEnvironment = AppEnvironment.fromValues(
   env: 'dev',
   apiBaseUrl: 'http://localhost:8000/api/v1',
+  serverPresets: [
+    'Producción clínica|https://sga.ad.bojaniniexperts.co/api/v1',
+    'Local USB|http://localhost:8000/api/v1',
+  ].join(';'),
 );
 
 /// Reloj manual para pruebas deterministas.

@@ -495,5 +495,17 @@
   "docTypePPT": "Permiso por protección temporal",
   "profileMySignature": "Mi firma",
   "clearField": "Borrar",
-  "lineAdded": "Agregar"
+  "lineAdded": "Agregar",
+  "aboutServerPresets": "Servidores disponibles",
+  "aboutServerCustom": "Otra dirección",
+  "aboutServerCurrent": "En uso",
+  "aboutServerRestartNote": "Al cambiar de servidor se cierra la sesión.",
+  "loginServerLabel": "Servidor: {name}",
+  "@loginServerLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
 }

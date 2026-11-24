@@ -27,7 +27,7 @@ final updateCheckProvider = FutureProvider<UpdateCheck>((ref) async {
       receiveTimeout: NetworkConfig.receiveTimeout,
     ),
   );
-  final adapter = ref.watch(httpClientAdapterProvider);
+  final adapter = ref.watch(httpAdapterProvider);
   if (adapter != null) dio.httpClientAdapter = adapter;
 
   return UpdateService(

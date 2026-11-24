@@ -49,7 +49,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final submission = ref.watch(loginControllerProvider);
-    final isProd = ref.watch(appEnvironmentProvider).env == AppEnv.prod;
+    final environment = ref.watch(appEnvironmentProvider);
+    final isProd = environment.env == AppEnv.prod;
     final notice = _noticeFor(l10n, ref.watch(sessionControllerProvider));
     final error = submission.error;
 
@@ -139,6 +140,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               isLoading: submission.isSubmitting,
                               onPressed: _submit,
                             ),
+                            if (environment.isDev) ...[
+                              const SizedBox(height: AppSpacing.md),
+                              _ServerBadge(name: environment.serverName),
+                            ],
                           ],
                         ),
                       ),
@@ -168,5 +173,32 @@ class _LoginPageState extends ConsumerState<LoginPage> {
       SessionEndReason.shiftEnded => l10n.sessionEndedShift,
       null => null,
     };
+  }
+}
+
+/// En dev, dice a qué servidor se va a conectar antes de escribir las
+/// credenciales (evita operar sin querer sobre datos reales).
+class _ServerBadge extends StatelessWidget {
+  const _ServerBadge({required this.name});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Icon(Icons.dns_outlined, size: AppSizes.iconCompact),
+        const SizedBox(width: AppSpacing.xs),
+        Flexible(
+          child: Text(
+            l10n.loginServerLabel(name),
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ),
+      ],
+    );
   }
 }

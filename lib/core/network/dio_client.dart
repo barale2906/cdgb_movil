@@ -8,6 +8,7 @@ import 'package:sga_bojanini/core/config/app_environment.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/interceptors.dart';
+import 'package:sga_bojanini/core/network/tls_adapter.dart';
 
 abstract final class NetworkConfig {
   static const connectTimeout = Duration(seconds: 15);
@@ -46,10 +47,21 @@ Dio createDio({
 /// por un servidor falso (sin red real).
 final httpClientAdapterProvider = Provider<HttpClientAdapter?>((ref) => null);
 
+/// Adaptador efectivo: el de pruebas, o el del certificado anclado, o el
+/// de producción por defecto (`null`).
+final httpAdapterProvider = Provider<HttpClientAdapter?>((ref) {
+  final environment = ref.watch(appEnvironmentProvider);
+  return ref.watch(httpClientAdapterProvider) ??
+      pinnedAdapter(
+        ref.watch(pinnedCertificateProvider),
+        strict: !environment.isDev,
+      );
+});
+
 final dioProvider = Provider<Dio>((ref) {
   return createDio(
     environment: ref.watch(appEnvironmentProvider),
-    adapter: ref.watch(httpClientAdapterProvider),
+    adapter: ref.watch(httpAdapterProvider),
     readToken: () => ref.read(authTokenProvider),
     onSessionInvalid: (error) => unawaited(
       ref.read(sessionControllerProvider.notifier).handleInvalidSession(error),

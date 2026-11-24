@@ -1093,4 +1093,22 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get lineAdded => 'Agregar';
+
+  @override
+  String get aboutServerPresets => 'Servidores disponibles';
+
+  @override
+  String get aboutServerCustom => 'Otra dirección';
+
+  @override
+  String get aboutServerCurrent => 'En uso';
+
+  @override
+  String get aboutServerRestartNote =>
+      'Al cambiar de servidor se cierra la sesión.';
+
+  @override
+  String loginServerLabel(String name) {
+    return 'Servidor: $name';
+  }
 }

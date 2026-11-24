@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart'
     show LicenseEntryWithLineBreaks, LicenseRegistry;
@@ -15,6 +16,7 @@ import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/config/app_restart.dart';
 import 'package:sga_bojanini/core/config/server_override.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
+import 'package:sga_bojanini/core/network/tls_adapter.dart';
 import 'package:sga_bojanini/core/utils/preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -25,11 +27,15 @@ class AppBootstrap {
     required this.environment,
     required this.preferences,
     required this.deviceName,
+    this.pinnedCertificate,
   });
 
   final AppEnvironment environment;
   final SharedPreferences preferences;
   final String deviceName;
+
+  /// Certificado del servidor (PEM) si el destino lo pide.
+  final Uint8List? pinnedCertificate;
 
   /// Falla al arrancar si el destino (env/*.json) es inválido: nunca se
   /// ejecuta contra un servidor desconocido.
@@ -42,7 +48,21 @@ class AppBootstrap {
       environment: ServerOverride(preferences).apply(base),
       preferences: preferences,
       deviceName: DeviceIdentity.deviceName(preferences),
+      pinnedCertificate: await _loadCertificate(base.tlsPinnedCert),
     );
+  }
+
+  /// Falla al arrancar si el asset declarado no existe: mejor un error
+  /// claro que una app que no conecta.
+  static Future<Uint8List?> _loadCertificate(String? asset) async {
+    if (asset == null) return null;
+    try {
+      return (await rootBundle.load(asset)).buffer.asUint8List();
+    } on Object {
+      throw AppEnvironmentException(
+        'TLS_PINNED_CERT apunta a un asset que no existe: "$asset".',
+      );
+    }
   }
 
   static bool _fontLicenseRegistered = false;
@@ -63,6 +83,7 @@ class AppBootstrap {
     appEnvironmentProvider.overrideWithValue(environment),
     sharedPreferencesProvider.overrideWithValue(preferences),
     deviceNameProvider.overrideWithValue(deviceName),
+    pinnedCertificateProvider.overrideWithValue(pinnedCertificate),
   ];
 }
 
