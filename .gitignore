@@ -1,0 +1,58 @@
+# --- Flutter / Dart ---
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+coverage/
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/settings.json
+
+# --- Android ---
+android/.gradle/
+android/captures/
+android/local.properties
+android/app/debug/
+android/app/profile/
+android/app/release/
+**/android/**/GeneratedPluginRegistrant.java
+**/android/gradle-wrapper.jar
+**/android/gradlew
+**/android/gradlew.bat
+
+# --- iOS / macOS ---
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+**/xcuserdata/
+**/DerivedData/
+
+# --- Secretos y firma (NUNCA al repositorio) ---
+*.jks
+*.keystore
+android/key.properties
+**/google-services.json
+**/GoogleService-Info.plist
+.deploy.env
+.env
+.env.*
+
+# --- Destinos locales (ver docs/plan/02-arquitectura.md §8) ---
+env/lan.json
+
+# --- Artefactos de distribución ---
+dist/
+
+# --- Varios ---
+.DS_Store
+*.log
+*.swp
+.claude/settings.local.json
