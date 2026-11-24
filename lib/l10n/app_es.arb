@@ -1,7 +1,9 @@
 {
   "@@locale": "es",
   "appTitle": "SGA Bojanini",
-  "@appTitle": { "description": "Nombre visible de la aplicación." },
+  "@appTitle": {
+    "description": "Nombre visible de la aplicación."
+  },
   "brandSubtitle": "SISTEMA DE GESTIÓN DE ALMACÉN",
   "aboutTitle": "Acerca de",
   "aboutEnvironment": "Ambiente",
@@ -11,11 +13,145 @@
   "aboutSessionPolicy": "Bloqueo por inactividad: {minutes} min · Cierre de sesión: {hours} h",
   "@aboutSessionPolicy": {
     "placeholders": {
-      "minutes": { "type": "int" },
-      "hours": { "type": "int" }
+      "minutes": {
+        "type": "int"
+      },
+      "hours": {
+        "type": "int"
+      }
     }
   },
   "envDev": "Desarrollo",
   "envProd": "Producción",
-  "setupInProgress": "Fase 0: proyecto configurado. Los módulos se habilitan en las siguientes fases."
+  "actionRetry": "Reintentar",
+  "actionCancel": "Cancelar",
+  "actionAccept": "Aceptar",
+  "actionClose": "Cerrar",
+  "actionContinue": "Continuar",
+  "actionSave": "Guardar",
+  "actionBack": "Volver",
+  "loading": "Cargando…",
+  "errorNetworkProd": "No se pudo conectar con el servidor. Verifique que la VPN de la clínica esté activa e intente de nuevo.",
+  "errorNetwork": "No se pudo conectar con el servidor. Revise su conexión a internet e intente de nuevo.",
+  "errorTimeout": "El servidor tardó demasiado en responder. Intente de nuevo.",
+  "errorServer": "El servidor no pudo completar la solicitud. Intente de nuevo en unos minutos.",
+  "errorRateLimited": "Demasiados intentos. Espere un momento e intente de nuevo.",
+  "errorForbidden": "No tiene permiso para realizar esta acción.",
+  "errorNotFound": "No se encontró la información solicitada.",
+  "errorUnauthenticated": "Su sesión terminó. Inicie sesión de nuevo.",
+  "errorGeneric": "Ocurrió un error inesperado. Intente de nuevo.",
+  "offlineBanner": "Sin conexión. Las acciones que guardan datos están deshabilitadas.",
+  "loginTitle": "Iniciar sesión",
+  "loginSubtitle": "Ingrese con su cuenta de la clínica.",
+  "fieldEmail": "Correo electrónico",
+  "fieldPassword": "Contraseña",
+  "loginButton": "Ingresar",
+  "validationEmailRequired": "Ingrese su correo electrónico.",
+  "validationEmailInvalid": "Ingrese un correo válido.",
+  "validationPasswordRequired": "Ingrese su contraseña.",
+  "showPassword": "Mostrar contraseña",
+  "hidePassword": "Ocultar contraseña",
+  "sessionEndedExpired": "Su sesión expiró. Inicie sesión de nuevo.",
+  "sessionEndedAccountDisabled": "Su cuenta fue desactivada. Comuníquese con el administrador.",
+  "sessionEndedShift": "Su turno terminó y la sesión se cerró por seguridad. Inicie sesión de nuevo.",
+  "restoreFailedTitle": "No se pudo verificar su sesión",
+  "lockedTitle": "Sesión bloqueada",
+  "lockedSubtitle": "Se bloqueó por inactividad. {name}, ingrese su contraseña para continuar.",
+  "@lockedSubtitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "lockedUnlock": "Desbloquear",
+  "lockedWrongPassword": "La contraseña no es correcta.",
+  "switchUser": "Cambiar de usuario",
+  "switchUserConfirmTitle": "¿Cambiar de usuario?",
+  "switchUserConfirmBody": "Se cerrará la sesión actual en este equipo.",
+  "logout": "Cerrar sesión",
+  "logoutConfirmTitle": "¿Cerrar sesión?",
+  "logoutConfirmBody": "Deberá ingresar de nuevo para usar la aplicación.",
+  "navHome": "Inicio",
+  "navMore": "Más",
+  "navInventory": "Inventario",
+  "navPurchasing": "Compras",
+  "navAssets": "Activos",
+  "navMaintenance": "Mantenimientos",
+  "navWarehouses": "Almacenes",
+  "navCatalog": "Catálogo",
+  "navServiceOrders": "Órdenes de servicio",
+  "navClinicalRecords": "Registros clínicos",
+  "navCostCenters": "Centros de costo",
+  "navMonitoring": "Monitoreo",
+  "navConsumptions": "Consumos",
+  "navReports": "Reportes",
+  "navAudit": "Auditoría",
+  "homeGreeting": "Hola, {name}",
+  "@homeGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "homeModules": "Módulos disponibles",
+  "homeNoModules": "Su usuario no tiene módulos habilitados. Comuníquese con el administrador.",
+  "comingSoonTitle": "Próximamente",
+  "comingSoonBody": "Este módulo estará disponible en una próxima versión de la aplicación.",
+  "menuLoadError": "No se pudieron cargar sus módulos.",
+  "moreTitle": "Más opciones",
+  "openProfile": "Abrir perfil",
+  "profileTitle": "Mi perfil",
+  "profileRoles": "Roles",
+  "profileWarehouses": "Almacenes asignados",
+  "profileNoWarehouses": "Sin almacenes asignados",
+  "profileChangePassword": "Cambiar contraseña",
+  "changePasswordTitle": "Cambiar contraseña",
+  "fieldCurrentPassword": "Contraseña actual",
+  "fieldNewPassword": "Nueva contraseña",
+  "fieldConfirmPassword": "Confirmar nueva contraseña",
+  "validationPasswordMinLength": "Use al menos {min} caracteres.",
+  "@validationPasswordMinLength": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "validationPasswordMismatch": "Las contraseñas no coinciden.",
+  "validationPasswordSame": "La nueva contraseña debe ser distinta de la actual.",
+  "passwordChanged": "Contraseña actualizada.",
+  "warehouseSelectTitle": "Almacén activo",
+  "warehouseNone": "Seleccionar almacén",
+  "warehouseEmpty": "No tiene almacenes asignados.",
+  "warehouseLoadError": "No se pudieron cargar los almacenes.",
+  "warehouseSelectorHint": "Cambiar almacén activo",
+  "updateAvailableTitle": "Hay una versión nueva",
+  "updateAvailableBody": "La versión {version} ya está disponible.",
+  "@updateAvailableBody": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "updateRequiredTitle": "Actualice la aplicación",
+  "updateRequiredBody": "Esta versión ya no es compatible. Descargue la versión {version} para continuar.",
+  "@updateRequiredBody": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "updateDownload": "Descargar",
+  "updateLater": "Más tarde",
+  "aboutVersion": "Versión",
+  "aboutChangeServer": "Cambiar servidor",
+  "aboutChangeServerHint": "Dirección del servidor",
+  "aboutChangeServerInvalid": "Ingrese una dirección válida, p. ej. http://192.168.1.10:8000/api/v1",
+  "aboutChangeServerNotice": "Se cerrará la sesión y la aplicación se reiniciará con el nuevo servidor.",
+  "aboutUseDefaultServer": "Usar el servidor original",
+  "aboutLicenses": "Licencias"
 }

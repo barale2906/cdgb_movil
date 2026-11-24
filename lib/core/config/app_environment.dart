@@ -47,8 +47,8 @@ class AppEnvironment {
     String? httpLogs,
   }) {
     final parsedEnv = AppEnv.parse(env.trim());
-    final baseUri = Uri.tryParse(apiBaseUrl.trim());
-    if (apiBaseUrl.trim().isEmpty || baseUri == null || !baseUri.hasAuthority) {
+    final baseUri = tryParseBaseUrl(apiBaseUrl);
+    if (baseUri == null) {
       throw AppEnvironmentException(
         'API_BASE_URL inválida: "$apiBaseUrl". '
         '¿Se ejecutó con --dart-define-from-file=env/<destino>.json?',
@@ -99,6 +99,13 @@ class AppEnvironment {
     httpLogs: const String.fromEnvironment('HTTP_LOGS'),
   );
 
+  /// URL base válida (esquema http/https con host), o `null`.
+  static Uri? tryParseBaseUrl(String raw) {
+    final uri = Uri.tryParse(raw.trim());
+    final validScheme = uri != null && {'http', 'https'}.contains(uri.scheme);
+    return validScheme && uri.hasAuthority ? uri : null;
+  }
+
   static const defaultInactivityLockMinutes = 15;
   static const defaultSessionMaxHours = 12;
 
@@ -117,6 +124,16 @@ class AppEnvironment {
   final bool httpLogs;
 
   bool get isDev => env == AppEnv.dev;
+
+  /// Mismo destino apuntando a otro servidor (cambio de servidor en dev).
+  AppEnvironment withApiBaseUrl(Uri baseUrl) => AppEnvironment(
+    env: env,
+    apiBaseUrl: _withoutTrailingSlash(baseUrl),
+    updateUrl: updateUrl,
+    inactivityLockMinutes: inactivityLockMinutes,
+    sessionMaxHours: sessionMaxHours,
+    httpLogs: httpLogs,
+  );
 
   static Uri _withoutTrailingSlash(Uri uri) {
     final path = uri.path.endsWith('/')
