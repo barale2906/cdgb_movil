@@ -2,6 +2,18 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [0.4.0+4] - 2026-11-24
+### Añadido
+- Fase 2B · Inventario: existencias del almacén activo (con filtro "Bajo mínimo"), lotes (todos, por vencer, vencidos) y detalle de lote con ubicaciones, comprobantes, historial de movimientos y escáner de código de barras que abre el producto.
+- Fase 2C · Mi firma: registro y cambio de firma en pantalla, PIN de 3 dígitos mostrado una sola vez y regeneración de PIN.
+- Fase 2D/2E · Movimientos: entrada (con lote, ubicación y presentación), salida (FEFO o lote elegido, centro de costo, paciente si es externo), traslado, ajuste, devolución, baja por vencimiento y pérdida. Aviso especial ante un timeout para no duplicar movimientos.
+- Fase 2E · Comprobantes: confirmar con firma registrada o en pantalla y PIN o firma de persona externa; cancelar pendientes; ver firmas.
+- Fase 2F · PDF del comprobante (ver y compartir sin dejar copia en el teléfono) y envío por correo.
+- Listas con scroll infinito, `SignaturePad` y visor de PDF reutilizables.
+
+### Cambiado
+- Catálogo de productos y capacidad de almacén movidos a `core/` para compartirlos con inventario.
+
 ## [0.3.0+3] - 2026-11-24
 ### Añadido
 - Fase 2A · Almacenes: lista de almacenes asignados y detalle con capacidad de volumen y peso por zona y ubicación (barras con porcentaje y nivel en texto).
