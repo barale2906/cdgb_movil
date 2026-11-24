@@ -24,12 +24,13 @@ Future<List<Override>> widgetTestOverrides({
   AppEnvironment? environment,
   FakeConnectivitySource? connectivity,
   String buildNumber = '1',
+  Map<String, Object> prefs = const {},
 }) async {
-  SharedPreferences.setMockInitialValues({});
-  final prefs = await SharedPreferences.getInstance();
+  SharedPreferences.setMockInitialValues(prefs);
+  final preferences = await SharedPreferences.getInstance();
   return [
     appEnvironmentProvider.overrideWithValue(environment ?? testEnvironment),
-    sharedPreferencesProvider.overrideWithValue(prefs),
+    sharedPreferencesProvider.overrideWithValue(preferences),
     deviceNameProvider.overrideWithValue('Equipo de pruebas'),
     connectivitySourceProvider.overrideWithValue(
       connectivity ?? FakeConnectivitySource(),

@@ -34,12 +34,12 @@ void main() {
   testWidgets('tocar un destino abre la sección con aviso "Próximamente"', (
     tester,
   ) async {
-    await signIn(tester, ['stock.ver']);
+    await signIn(tester, ['ordenes_compra.ver']);
 
     await tester.tap(
       find.descendant(
         of: find.byType(NavigationBar),
-        matching: find.text('Inventario'),
+        matching: find.text('Compras'),
       ),
     );
     await AppHarness.settle(tester);

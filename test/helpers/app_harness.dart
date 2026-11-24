@@ -5,6 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/app.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
+import 'package:sga_bojanini/core/widgets/barcode_scanner_view.dart';
+import 'package:sga_bojanini/core/widgets/pdf_viewer.dart';
+import 'package:sga_bojanini/features/inventory/application/document_actions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'fake_connectivity.dart';
@@ -16,7 +19,7 @@ import 'test_container.dart';
 
 /// App completa (router, guardas, sesión) contra un servidor falso.
 class AppHarness {
-  AppHarness({DateTime? now})
+  AppHarness({DateTime? now, this.initialPrefs = const {}})
     : adapter = FakeHttpAdapter(),
       store = InMemoryTokenStore(),
       connectivity = FakeConnectivitySource(),
@@ -26,6 +29,15 @@ class AppHarness {
   final InMemoryTokenStore store;
   final FakeConnectivitySource connectivity;
   final TestClock clock;
+
+  /// Preferencias iniciales (p. ej. almacén activo ya elegido).
+  final Map<String, Object> initialPrefs;
+
+  /// Código que devuelve el escáner simulado al pulsar "Simular lectura".
+  String scanCode = '100005';
+
+  /// Archivos que se "compartieron" (nombre y tamaño).
+  final List<(String, int)> sharedFiles = [];
 
   /// Respuestas habituales para un usuario con permisos de bodega.
   void stubSignedInUser({
@@ -47,6 +59,53 @@ class AppHarness {
       '/warehouses',
       body: fixture('auth/warehouses_response.json'),
     );
+  }
+
+  /// Lecturas habituales de inventario con el almacén 1 ya elegido.
+  void stubInventoryReads({Map<String, dynamic>? documentDetail}) {
+    final doc = fixture('inventory/document_response.json')['data'];
+    adapter
+      ..on('GET', '/stock', body: fixture('inventory/stock_response.json'))
+      ..on(
+        'GET',
+        '/stock/low',
+        body: envelope([
+          (fixture('inventory/stock_response.json')['data'] as List).first,
+        ]),
+      )
+      ..on('GET', '/batches', body: fixture('inventory/batches_response.json'))
+      ..on(
+        'GET',
+        '/batches/expiring',
+        body: envelope([
+          (fixture('inventory/batches_response.json')['data'] as List).first,
+        ]),
+      )
+      ..on(
+        'GET',
+        '/batches/expired',
+        body: envelope([
+          (fixture('inventory/batches_response.json')['data'] as List).last,
+        ]),
+      )
+      ..on(
+        'GET',
+        '/batches/70',
+        body: envelope(
+          (fixture('inventory/batches_response.json')['data'] as List).first,
+        ),
+      )
+      ..on('GET', '/movement-documents', body: pagedBody([doc]))
+      ..on(
+        'GET',
+        '/movement-documents/900',
+        body: documentDetail ?? fixture('inventory/document_response.json'),
+      )
+      ..on(
+        'GET',
+        '/movements',
+        body: pagedBody((doc as Map)['movements'] as List),
+      );
   }
 
   void stubLogin({List<String>? permissions}) {
@@ -85,6 +144,7 @@ class AppHarness {
   Future<void> pump(WidgetTester tester) async {
     final widgetOverrides = await widgetTestOverrides(
       connectivity: connectivity,
+      prefs: initialPrefs,
     );
     _prefs = widgetOverrides.whereType<Object>().isNotEmpty
         ? await SharedPreferences.getInstance()
@@ -92,6 +152,20 @@ class AppHarness {
     final overrides = <Override>[
       ...serverOverrides(adapter: adapter, store: store, clock: clock),
       ...widgetOverrides,
+      scannerBuilderProvider.overrideWithValue(
+        (context, onCode) => Center(
+          child: FilledButton(
+            onPressed: () => onCode(scanCode),
+            child: const Text('Simular lectura'),
+          ),
+        ),
+      ),
+      pdfViewBuilderProvider.overrideWithValue(
+        (context, bytes) => Center(child: Text('PDF ${bytes.length} bytes')),
+      ),
+      pdfSharerProvider.overrideWithValue((bytes, name) async {
+        sharedFiles.add((name, bytes.length));
+      }),
     ];
     await tester.pumpWidget(
       ProviderScope(

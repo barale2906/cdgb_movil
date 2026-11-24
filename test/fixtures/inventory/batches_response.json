@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "message": "OK",
+  "data": [
+    {
+      "id": 70, "product_variant_id": 50, "lot_number": "L-2026-01", "expiration_date": "2026-12-05", "manufacturing_date": "2025-12-05",
+      "quantity_received": 100, "quantity_available": "40.000", "total_quantity_available": 60, "accessible_quantity": 60,
+      "status": "active", "days_until_expiry": 11, "notes": null, "received_at": "2026-01-10T15:00:00-05:00",
+      "variant": { "id": 50, "lab_brand": "MarcaX", "generic": { "id": 5, "barcode": "100005", "name": "Gasa estéril 10x10", "category": { "id": 3, "name": "Curación" } } },
+      "locations": [
+        { "location_id": 100, "location_name": "Estante A1", "location_code": "A1", "quantity": "40.000",
+          "zone": { "zone_id": 10, "zone_name": "Zona fría", "zone_code": "ZF", "warehouse_id": 1, "warehouse_name": "Bodega Central", "warehouse_code": "BC" } }
+      ],
+      "warehouses": [ { "id": 1, "code": "BC", "name": "Bodega Central", "quantity": 40 } ]
+    },
+    {
+      "id": 71, "product_variant_id": 50, "lot_number": "L-2025-09", "expiration_date": "2026-11-01", "manufacturing_date": null,
+      "quantity_received": 10, "quantity_available": 2, "total_quantity_available": 2, "accessible_quantity": null,
+      "status": "expired", "days_until_expiry": -23, "notes": "Revisar", "received_at": null,
+      "variant": null, "locations": null, "warehouses": []
+    }
+  ],
+  "meta": { "current_page": 1, "last_page": 1, "per_page": 25, "total": 2 }
+}

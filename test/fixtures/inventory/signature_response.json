@@ -1,0 +1,5 @@
+{ "success": true, "message": "Mi firma", "data": {
+  "signature": { "signer_name": "Usuario Prueba", "document_type": "CC", "document_type_label": "Cédula de ciudadanía", "document_number": "1000000001",
+    "signature_data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==",
+    "has_pin": true, "pin_generated_at": "2026-11-01T10:00:00-05:00", "registered_at": "2026-11-01T10:00:00-05:00" },
+  "document_types": [ { "value": "CC", "label": "Cédula de ciudadanía" } ] } }

@@ -19,6 +19,16 @@ class FakeHttpAdapter implements HttpClientAdapter {
     _add(method, path, (_) => _json(status, body));
   }
 
+  /// Respuesta binaria (PDF, imágenes).
+  void onBytes(
+    String method,
+    String path,
+    List<int> bytes, {
+    int status = 200,
+  }) {
+    _add(method, path, (_) => ResponseBody.fromBytes(bytes, status));
+  }
+
   void onError(String method, String path, DioExceptionType type) {
     _add(method, path, (options) {
       throw DioException(requestOptions: options, type: type);
@@ -82,3 +92,20 @@ Map<String, dynamic> envelope(Object? data, {String message = 'OK'}) => {
 
 Map<String, dynamic> errorBody(String message, {Map<String, dynamic>? extra}) =>
     {'success': false, 'message': message, ...?extra};
+
+/// Respuesta paginada de la API (`data` + `meta`).
+Map<String, dynamic> pagedBody(
+  List<dynamic> data, {
+  int page = 1,
+  int lastPage = 1,
+}) => {
+  'success': true,
+  'message': 'OK',
+  'data': data,
+  'meta': {
+    'current_page': page,
+    'last_page': lastPage,
+    'per_page': 25,
+    'total': data.length,
+  },
+};

@@ -1,0 +1,10 @@
+{ "success": true, "message": "Menú de navegación", "data": [
+  { "key": "inventory-management", "label": "Inventario", "icon": "x", "route": null, "permission": null, "actions": [],
+    "children": [
+      { "key": "inventory", "label": "Inventario", "icon": "x", "route": null, "permission": null, "actions": [],
+        "children": [
+          { "key": "stock", "label": "Existencias", "icon": "x", "route": "stock.index", "permission": "stock.ver", "actions": [], "children": [] },
+          { "key": "batches", "label": "Lotes", "icon": "x", "route": "batches.index", "permission": "lotes.ver", "actions": [], "children": [] }
+        ] }
+    ] }
+] }

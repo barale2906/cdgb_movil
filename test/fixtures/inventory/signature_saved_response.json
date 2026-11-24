@@ -1,0 +1,3 @@
+{ "success": true, "message": "Firma registrada. Guarde su PIN: no se volverá a mostrar.", "data": {
+  "signature": { "signer_name": "Usuario Prueba", "document_type": "CC", "document_type_label": "Cédula de ciudadanía", "document_number": "1000000001", "signature_data": null, "has_pin": true, "pin_generated_at": "2026-11-24T10:00:00-05:00", "registered_at": "2026-11-24T10:00:00-05:00" },
+  "pin": "482" } }

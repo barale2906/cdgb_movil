@@ -1,0 +1,1 @@
+{ "success": true, "message": "Mi firma", "data": { "signature": null, "document_types": [ { "value": "CC", "label": "Cédula de ciudadanía" } ] } }

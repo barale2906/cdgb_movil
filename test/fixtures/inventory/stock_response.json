@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "message": "OK",
+  "data": [
+    {
+      "variant": { "id": 50, "lab_brand": "MarcaX", "generic": { "id": 5, "barcode": "100005", "name": "Gasa estéril 10x10", "category": { "id": 3, "name": "Curación" } } },
+      "warehouse": { "id": 1, "code": "BC", "name": "Bodega Central" },
+      "total_quantity": "120.000", "reserved_quantity": 0, "available_quantity": 120, "last_note": "Entrada inicial", "last_movement_at": "2026-11-20T09:00:00-05:00"
+    },
+    {
+      "variant": { "product_variant_id": 51 },
+      "warehouse": { "id": 1 },
+      "total_quantity": 3, "reserved_quantity": 1, "available_quantity": 2, "last_note": null, "last_movement_at": null
+    }
+  ],
+  "meta": { "current_page": 1, "last_page": 2, "per_page": 25, "total": 40 }
+}

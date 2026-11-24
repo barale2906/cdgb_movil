@@ -1,0 +1,4 @@
+{ "success": true, "message": "Listado de centros de costo", "data": [
+  { "id": 4, "code": "URG", "name": "Urgencias", "type": "internal", "type_label": "Interno", "is_external": false, "description": null, "is_active": true },
+  { "id": 5, "code": "CEX", "name": "Consulta externa", "type": "external", "type_label": "Externo (Pacientes)", "is_external": true, "description": null, "is_active": true }
+] }
