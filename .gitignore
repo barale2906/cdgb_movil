@@ -56,3 +56,6 @@ dist/
 *.log
 *.swp
 .claude/settings.local.json
+
+# --- Documentación local (sin control de versiones) ---
+docs/
