@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
+import 'package:sga_bojanini/core/warehouse/warehouse_capacity.dart';
 import 'package:sga_bojanini/core/widgets/usage_bar.dart';
-import 'package:sga_bojanini/features/warehouse/data/warehouse_capacity.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
 /// Barras de volumen y peso de un almacén, zona o ubicación.

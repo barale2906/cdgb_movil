@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sga_bojanini/core/catalog/generic_product.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
-import 'package:sga_bojanini/features/catalog/data/generic_product.dart';
+import 'package:sga_bojanini/core/warehouse/warehouse_capacity.dart';
 import 'package:sga_bojanini/features/catalog/data/supplier.dart';
-import 'package:sga_bojanini/features/warehouse/data/warehouse_capacity.dart';
 
 import '../../helpers/fixtures.dart';
 

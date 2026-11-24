@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/warehouse/active_warehouse.dart';
+import 'package:sga_bojanini/core/warehouse/warehouse_capacity.dart';
+import 'package:sga_bojanini/core/warehouse/warehouse_capacity_provider.dart';
 import 'package:sga_bojanini/core/warehouse/warehouse_summary.dart';
 import 'package:sga_bojanini/core/widgets/empty_state.dart';
 import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/info_row.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
-import 'package:sga_bojanini/features/warehouse/application/warehouse_providers.dart';
-import 'package:sga_bojanini/features/warehouse/data/warehouse_capacity.dart';
 import 'package:sga_bojanini/features/warehouse/presentation/capacity_bars.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:sga_bojanini/core/catalog/generic_product.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
-import 'package:sga_bojanini/features/catalog/data/generic_product.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
 /// Etiquetas de un producto: kit y cadena de frío.

@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sga_bojanini/core/catalog/product_repository.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
-import 'package:sga_bojanini/features/catalog/data/catalog_repository.dart';
-import 'package:sga_bojanini/features/warehouse/data/warehouse_capacity_repository.dart';
+import 'package:sga_bojanini/core/warehouse/warehouse_capacity_repository.dart';
+import 'package:sga_bojanini/features/catalog/data/supplier_repository.dart';
 
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/fixtures.dart';
@@ -34,7 +35,7 @@ void main() {
         '/generic-products',
         body: fixture('catalog/products_list_response.json'),
       );
-      final repository = container.read(catalogRepositoryProvider);
+      final repository = container.read(productRepositoryProvider);
 
       await repository.products();
       await repository.products(search: 'gasa');
@@ -51,7 +52,7 @@ void main() {
         body: fixture('catalog/product_detail_response.json'),
       );
       final product = await container
-          .read(catalogRepositoryProvider)
+          .read(productRepositoryProvider)
           .product(5);
       expect(product.variants, hasLength(1));
     });
@@ -64,7 +65,7 @@ void main() {
         body: errorBody('Producto genérico no encontrado'),
       );
       await expectLater(
-        container.read(catalogRepositoryProvider).product(99),
+        container.read(productRepositoryProvider).product(99),
         throwsA(isA<NotFoundException>()),
       );
     });
@@ -81,7 +82,7 @@ void main() {
           '/suppliers/1',
           body: envelope({'id': 1, 'name': 'Proveedor Uno S.A.S.'}),
         );
-      final repository = container.read(catalogRepositoryProvider);
+      final repository = container.read(supplierRepositoryProvider);
 
       expect(await repository.suppliers(search: 'uno'), hasLength(2));
       expect((await repository.supplier(1)).name, 'Proveedor Uno S.A.S.');

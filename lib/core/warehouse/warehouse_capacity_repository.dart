@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
-import 'package:sga_bojanini/features/warehouse/data/warehouse_capacity.dart';
+import 'package:sga_bojanini/core/warehouse/warehouse_capacity.dart';
 
 class WarehouseCapacityRepository {
   const WarehouseCapacityRepository(this._dio);

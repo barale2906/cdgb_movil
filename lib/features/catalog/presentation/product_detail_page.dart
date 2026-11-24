@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sga_bojanini/core/catalog/generic_product.dart';
+import 'package:sga_bojanini/core/catalog/product_providers.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/error_state.dart';
@@ -7,8 +9,6 @@ import 'package:sga_bojanini/core/widgets/info_row.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
-import 'package:sga_bojanini/features/catalog/application/catalog_providers.dart';
-import 'package:sga_bojanini/features/catalog/data/generic_product.dart';
 import 'package:sga_bojanini/features/catalog/presentation/product_widgets.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
