@@ -353,4 +353,213 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get aboutLicenses => 'Licencias';
+
+  @override
+  String get statusActive => 'Activo';
+
+  @override
+  String get statusInactive => 'Inactivo';
+
+  @override
+  String get warehouseDetailTitle => 'Almacén';
+
+  @override
+  String get warehouseCode => 'Código';
+
+  @override
+  String get warehouseAddress => 'Dirección';
+
+  @override
+  String get warehouseDescription => 'Descripción';
+
+  @override
+  String get capacityTitle => 'Capacidad';
+
+  @override
+  String get capacityVolume => 'Volumen';
+
+  @override
+  String get capacityWeight => 'Peso';
+
+  @override
+  String capacityUsedOfMax(String used, String max, String unit) {
+    return '$used de $max $unit';
+  }
+
+  @override
+  String capacityUsedOnly(String used, String unit) {
+    return 'En uso: $used $unit (sin límite definido)';
+  }
+
+  @override
+  String get capacityLevelLow => 'Disponible';
+
+  @override
+  String get capacityLevelMedium => 'Moderado';
+
+  @override
+  String get capacityLevelHigh => 'Casi lleno';
+
+  @override
+  String get capacityZones => 'Zonas';
+
+  @override
+  String get capacityNoZones => 'Este almacén no tiene zonas registradas.';
+
+  @override
+  String capacityLocationCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ubicaciones',
+      one: '1 ubicación',
+      zero: 'Sin ubicaciones',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get unitLiters => 'L';
+
+  @override
+  String get unitKg => 'kg';
+
+  @override
+  String get searchHint => 'Buscar';
+
+  @override
+  String get searchClear => 'Borrar búsqueda';
+
+  @override
+  String get noResults => 'No se encontraron resultados.';
+
+  @override
+  String get catalogTabProducts => 'Productos';
+
+  @override
+  String get catalogTabSuppliers => 'Proveedores';
+
+  @override
+  String get catalogSearchProducts => 'Buscar por nombre o código de barras';
+
+  @override
+  String get catalogSearchSuppliers => 'Buscar por nombre o NIT';
+
+  @override
+  String get catalogEmptyProducts => 'No hay productos para mostrar.';
+
+  @override
+  String get catalogEmptySuppliers => 'No hay proveedores para mostrar.';
+
+  @override
+  String get productDetailTitle => 'Producto';
+
+  @override
+  String get productTypeSimple => 'Simple';
+
+  @override
+  String get productTypeKit => 'Kit';
+
+  @override
+  String get productColdChain => 'Cadena de frío';
+
+  @override
+  String get productBarcode => 'Código de barras';
+
+  @override
+  String get productCategory => 'Categoría';
+
+  @override
+  String get productClassification => 'Clasificación';
+
+  @override
+  String get productBaseUnit => 'Unidad base';
+
+  @override
+  String get productPharmaceuticalForm => 'Forma farmacéutica';
+
+  @override
+  String get productConcentration => 'Concentración';
+
+  @override
+  String get productStockLevels => 'Niveles de stock';
+
+  @override
+  String get productMinStock => 'Mínimo';
+
+  @override
+  String get productMaxStock => 'Máximo';
+
+  @override
+  String get productReorderPoint => 'Punto de reorden';
+
+  @override
+  String get productReorderQuantity => 'Cantidad de reorden';
+
+  @override
+  String get productVariants => 'Variantes';
+
+  @override
+  String get productNoVariants => 'Sin variantes registradas.';
+
+  @override
+  String get variantBrand => 'Marca';
+
+  @override
+  String get variantSku => 'Referencia';
+
+  @override
+  String get variantRisk => 'Riesgo';
+
+  @override
+  String get variantSanitaryRegistration => 'Registro sanitario';
+
+  @override
+  String get sanitaryExpired => 'Vencido';
+
+  @override
+  String sanitaryExpiresOn(String date) {
+    return 'Vence $date';
+  }
+
+  @override
+  String get productKitComponents => 'Componentes del kit';
+
+  @override
+  String productKitQuantity(String quantity) {
+    return 'x$quantity';
+  }
+
+  @override
+  String get supplierDetailTitle => 'Proveedor';
+
+  @override
+  String get supplierTaxId => 'NIT';
+
+  @override
+  String get supplierContact => 'Contacto';
+
+  @override
+  String get supplierPhone => 'Teléfono';
+
+  @override
+  String get supplierEmail => 'Correo';
+
+  @override
+  String get supplierAddress => 'Dirección';
+
+  @override
+  String get supplierNotes => 'Notas';
+
+  @override
+  String get supplierTypeInventory => 'Inventario';
+
+  @override
+  String get supplierTypeExpense => 'Gasto';
+
+  @override
+  String get notAvailable => '—';
+
+  @override
+  String get variantPresentation => 'Presentación comercial';
 }

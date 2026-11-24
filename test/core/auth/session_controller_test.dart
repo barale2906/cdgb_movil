@@ -6,6 +6,7 @@ import 'package:sga_bojanini/core/auth/session_state.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
+import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/fixtures.dart';
@@ -20,6 +21,7 @@ void main() {
 
   Future<ProviderContainer> build() async {
     final container = ProviderContainer(
+      retry: noAutoRetry,
       overrides: await baseOverrides(
         adapter: adapter,
         store: store,

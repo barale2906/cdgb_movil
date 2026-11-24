@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/core/auth/auth_repository.dart';
 import 'package:sga_bojanini/core/auth/auth_token_provider.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
+import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/fixtures.dart';
@@ -18,6 +19,7 @@ void main() {
   setUp(() async {
     adapter = FakeHttpAdapter();
     container = ProviderContainer(
+      retry: noAutoRetry,
       overrides: await baseOverrides(
         adapter: adapter,
         store: InMemoryTokenStore(),

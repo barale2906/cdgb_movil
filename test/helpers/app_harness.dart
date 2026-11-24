@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/app.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
+import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'fake_connectivity.dart';
@@ -31,6 +32,7 @@ class AppHarness {
     List<String>? permissions,
     bool includeMe = true,
     bool includeMenu = true,
+    String menu = 'auth/menu_response.json',
   }) {
     final me = fixture('auth/me_response.json');
     if (permissions != null) {
@@ -38,7 +40,7 @@ class AppHarness {
     }
     if (includeMe) adapter.on('GET', '/auth/me', body: me);
     if (includeMenu) {
-      adapter.on('GET', '/auth/menu', body: fixture('auth/menu_response.json'));
+      adapter.on('GET', '/auth/menu', body: fixture(menu));
     }
     adapter.on(
       'GET',
@@ -92,7 +94,11 @@ class AppHarness {
       ...widgetOverrides,
     ];
     await tester.pumpWidget(
-      ProviderScope(overrides: overrides, child: const SgaApp()),
+      ProviderScope(
+        retry: noAutoRetry,
+        overrides: overrides,
+        child: const SgaApp(),
+      ),
     );
     await settle(tester);
   }

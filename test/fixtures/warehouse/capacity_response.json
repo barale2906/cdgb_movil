@@ -1,0 +1,37 @@
+{
+  "success": true,
+  "message": "Capacidad del almacén",
+  "data": {
+    "id": 1,
+    "name": "Bodega Central",
+    "code": "BC",
+    "capacity_volume": { "max_cm3": 2000000.0, "used_cm3": 500000.0, "available_cm3": 1500000.0, "usage_pct": 25.0 },
+    "capacity_weight": { "max_kg": 1000.0, "used_kg": 950.5, "available_kg": 49.5, "usage_pct": 95.05 },
+    "zones": [
+      {
+        "id": 10,
+        "name": "Zona fría",
+        "code": "ZF",
+        "capacity_volume": { "max_cm3": 1000000.0, "used_cm3": 400000.0, "available_cm3": 600000.0, "usage_pct": 40.0 },
+        "capacity_weight": { "max_kg": null, "used_kg": 12.0, "available_kg": null, "usage_pct": null },
+        "locations": [
+          {
+            "id": 100,
+            "name": "Estante A1",
+            "code": "A1",
+            "capacity_volume": { "max_cm3": 500000.0, "used_cm3": 450000.0, "available_cm3": 50000.0, "usage_pct": 90.0 },
+            "capacity_weight": { "max_kg": 200.0, "used_kg": 12.0, "available_kg": 188.0, "usage_pct": 6.0 }
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "name": "Zona seca",
+        "code": null,
+        "capacity_volume": { "max_cm3": null, "used_cm3": 0, "available_cm3": null, "usage_pct": null },
+        "capacity_weight": { "max_kg": null, "used_kg": 0, "available_kg": null, "usage_pct": null },
+        "locations": []
+      }
+    ]
+  }
+}

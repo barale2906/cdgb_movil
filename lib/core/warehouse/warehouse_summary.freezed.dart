@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$WarehouseSummary {
 
- int get id; String get name; String? get code; bool get isActive;
+ int get id; String get name; String? get code; String? get address; String? get description; bool get isActive;
 /// Create a copy of WarehouseSummary
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $WarehouseSummaryCopyWith<WarehouseSummary> get copyWith => _$WarehouseSummaryCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WarehouseSummary&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.code, code) || other.code == code)&&(identical(other.isActive, isActive) || other.isActive == isActive));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WarehouseSummary&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.code, code) || other.code == code)&&(identical(other.address, address) || other.address == address)&&(identical(other.description, description) || other.description == description)&&(identical(other.isActive, isActive) || other.isActive == isActive));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,code,isActive);
+int get hashCode => Object.hash(runtimeType,id,name,code,address,description,isActive);
 
 @override
 String toString() {
-  return 'WarehouseSummary(id: $id, name: $name, code: $code, isActive: $isActive)';
+  return 'WarehouseSummary(id: $id, name: $name, code: $code, address: $address, description: $description, isActive: $isActive)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $WarehouseSummaryCopyWith<$Res>  {
   factory $WarehouseSummaryCopyWith(WarehouseSummary value, $Res Function(WarehouseSummary) _then) = _$WarehouseSummaryCopyWithImpl;
 @useResult
 $Res call({
- int id, String name, String? code, bool isActive
+ int id, String name, String? code, String? address, String? description, bool isActive
 });
 
 
@@ -65,11 +65,13 @@ class _$WarehouseSummaryCopyWithImpl<$Res>
 
 /// Create a copy of WarehouseSummary
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? code = freezed,Object? isActive = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? code = freezed,Object? address = freezed,Object? description = freezed,Object? isActive = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
@@ -156,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String? code,  bool isActive)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String name,  String? code,  String? address,  String? description,  bool isActive)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _WarehouseSummary() when $default != null:
-return $default(_that.id,_that.name,_that.code,_that.isActive);case _:
+return $default(_that.id,_that.name,_that.code,_that.address,_that.description,_that.isActive);case _:
   return orElse();
 
 }
@@ -177,10 +179,10 @@ return $default(_that.id,_that.name,_that.code,_that.isActive);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String? code,  bool isActive)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String name,  String? code,  String? address,  String? description,  bool isActive)  $default,) {final _that = this;
 switch (_that) {
 case _WarehouseSummary():
-return $default(_that.id,_that.name,_that.code,_that.isActive);case _:
+return $default(_that.id,_that.name,_that.code,_that.address,_that.description,_that.isActive);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +199,10 @@ return $default(_that.id,_that.name,_that.code,_that.isActive);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String? code,  bool isActive)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String name,  String? code,  String? address,  String? description,  bool isActive)?  $default,) {final _that = this;
 switch (_that) {
 case _WarehouseSummary() when $default != null:
-return $default(_that.id,_that.name,_that.code,_that.isActive);case _:
+return $default(_that.id,_that.name,_that.code,_that.address,_that.description,_that.isActive);case _:
   return null;
 
 }
@@ -212,12 +214,14 @@ return $default(_that.id,_that.name,_that.code,_that.isActive);case _:
 @JsonSerializable()
 
 class _WarehouseSummary implements WarehouseSummary {
-  const _WarehouseSummary({required this.id, required this.name, this.code, this.isActive = true});
+  const _WarehouseSummary({required this.id, required this.name, this.code, this.address, this.description, this.isActive = true});
   factory _WarehouseSummary.fromJson(Map<String, dynamic> json) => _$WarehouseSummaryFromJson(json);
 
 @override final  int id;
 @override final  String name;
 @override final  String? code;
+@override final  String? address;
+@override final  String? description;
 @override@JsonKey() final  bool isActive;
 
 /// Create a copy of WarehouseSummary
@@ -233,16 +237,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WarehouseSummary&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.code, code) || other.code == code)&&(identical(other.isActive, isActive) || other.isActive == isActive));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WarehouseSummary&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.code, code) || other.code == code)&&(identical(other.address, address) || other.address == address)&&(identical(other.description, description) || other.description == description)&&(identical(other.isActive, isActive) || other.isActive == isActive));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,code,isActive);
+int get hashCode => Object.hash(runtimeType,id,name,code,address,description,isActive);
 
 @override
 String toString() {
-  return 'WarehouseSummary(id: $id, name: $name, code: $code, isActive: $isActive)';
+  return 'WarehouseSummary(id: $id, name: $name, code: $code, address: $address, description: $description, isActive: $isActive)';
 }
 
 
@@ -253,7 +257,7 @@ abstract mixin class _$WarehouseSummaryCopyWith<$Res> implements $WarehouseSumma
   factory _$WarehouseSummaryCopyWith(_WarehouseSummary value, $Res Function(_WarehouseSummary) _then) = __$WarehouseSummaryCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String name, String? code, bool isActive
+ int id, String name, String? code, String? address, String? description, bool isActive
 });
 
 
@@ -270,11 +274,13 @@ class __$WarehouseSummaryCopyWithImpl<$Res>
 
 /// Create a copy of WarehouseSummary
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? code = freezed,Object? isActive = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? code = freezed,Object? address = freezed,Object? description = freezed,Object? isActive = null,}) {
   return _then(_WarehouseSummary(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
 as bool,
   ));

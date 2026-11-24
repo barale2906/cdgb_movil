@@ -11,6 +11,8 @@ abstract class WarehouseSummary with _$WarehouseSummary {
     required int id,
     required String name,
     String? code,
+    String? address,
+    String? description,
     @Default(true) bool isActive,
   }) = _WarehouseSummary;
 

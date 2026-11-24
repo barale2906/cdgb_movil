@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/core/auth/session_controller.dart';
 import 'package:sga_bojanini/core/auth/session_state.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
+import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/utils/preferences.dart';
 import 'package:sga_bojanini/core/warehouse/active_warehouse.dart';
 
@@ -43,6 +44,7 @@ void main() {
       ),
     );
     container = ProviderContainer(
+      retry: noAutoRetry,
       overrides: await baseOverrides(
         adapter: adapter,
         store: store,

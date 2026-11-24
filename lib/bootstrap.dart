@@ -14,6 +14,7 @@ import 'package:sga_bojanini/core/config/app_environment.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/config/app_restart.dart';
 import 'package:sga_bojanini/core/config/server_override.dart';
+import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/utils/preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -94,6 +95,7 @@ class _RestartableAppState extends State<RestartableApp> {
     restart: _restart,
     child: ProviderScope(
       key: _scopeKey,
+      retry: noAutoRetry,
       overrides: _bootstrap.overrides,
       child: const SgaApp(),
     ),

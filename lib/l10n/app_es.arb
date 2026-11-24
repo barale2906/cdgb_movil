@@ -153,5 +153,113 @@
   "aboutChangeServerInvalid": "Ingrese una dirección válida, p. ej. http://192.168.1.10:8000/api/v1",
   "aboutChangeServerNotice": "Se cerrará la sesión y la aplicación se reiniciará con el nuevo servidor.",
   "aboutUseDefaultServer": "Usar el servidor original",
-  "aboutLicenses": "Licencias"
+  "aboutLicenses": "Licencias",
+  "statusActive": "Activo",
+  "statusInactive": "Inactivo",
+  "warehouseDetailTitle": "Almacén",
+  "warehouseCode": "Código",
+  "warehouseAddress": "Dirección",
+  "warehouseDescription": "Descripción",
+  "capacityTitle": "Capacidad",
+  "capacityVolume": "Volumen",
+  "capacityWeight": "Peso",
+  "capacityUsedOfMax": "{used} de {max} {unit}",
+  "@capacityUsedOfMax": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "capacityUsedOnly": "En uso: {used} {unit} (sin límite definido)",
+  "@capacityUsedOnly": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "capacityLevelLow": "Disponible",
+  "capacityLevelMedium": "Moderado",
+  "capacityLevelHigh": "Casi lleno",
+  "capacityZones": "Zonas",
+  "capacityNoZones": "Este almacén no tiene zonas registradas.",
+  "capacityLocationCount": "{count, plural, =0{Sin ubicaciones} =1{1 ubicación} other{{count} ubicaciones}}",
+  "@capacityLocationCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unitLiters": "L",
+  "unitKg": "kg",
+  "searchHint": "Buscar",
+  "searchClear": "Borrar búsqueda",
+  "noResults": "No se encontraron resultados.",
+  "catalogTabProducts": "Productos",
+  "catalogTabSuppliers": "Proveedores",
+  "catalogSearchProducts": "Buscar por nombre o código de barras",
+  "catalogSearchSuppliers": "Buscar por nombre o NIT",
+  "catalogEmptyProducts": "No hay productos para mostrar.",
+  "catalogEmptySuppliers": "No hay proveedores para mostrar.",
+  "productDetailTitle": "Producto",
+  "productTypeSimple": "Simple",
+  "productTypeKit": "Kit",
+  "productColdChain": "Cadena de frío",
+  "productBarcode": "Código de barras",
+  "productCategory": "Categoría",
+  "productClassification": "Clasificación",
+  "productBaseUnit": "Unidad base",
+  "productPharmaceuticalForm": "Forma farmacéutica",
+  "productConcentration": "Concentración",
+  "productStockLevels": "Niveles de stock",
+  "productMinStock": "Mínimo",
+  "productMaxStock": "Máximo",
+  "productReorderPoint": "Punto de reorden",
+  "productReorderQuantity": "Cantidad de reorden",
+  "productVariants": "Variantes",
+  "productNoVariants": "Sin variantes registradas.",
+  "variantBrand": "Marca",
+  "variantSku": "Referencia",
+  "variantRisk": "Riesgo",
+  "variantSanitaryRegistration": "Registro sanitario",
+  "sanitaryExpired": "Vencido",
+  "sanitaryExpiresOn": "Vence {date}",
+  "@sanitaryExpiresOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "productKitComponents": "Componentes del kit",
+  "productKitQuantity": "x{quantity}",
+  "@productKitQuantity": {
+    "placeholders": {
+      "quantity": {
+        "type": "String"
+      }
+    }
+  },
+  "supplierDetailTitle": "Proveedor",
+  "supplierTaxId": "NIT",
+  "supplierContact": "Contacto",
+  "supplierPhone": "Teléfono",
+  "supplierEmail": "Correo",
+  "supplierAddress": "Dirección",
+  "supplierNotes": "Notas",
+  "supplierTypeInventory": "Inventario",
+  "supplierTypeExpense": "Gasto",
+  "notAvailable": "—",
+  "variantPresentation": "Presentación comercial"
 }

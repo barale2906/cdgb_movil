@@ -9,6 +9,7 @@ import 'package:sga_bojanini/core/config/app_environment.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/config/package_info_provider.dart';
 import 'package:sga_bojanini/core/connectivity/connectivity_provider.dart';
+import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/theme/app_theme.dart';
 import 'package:sga_bojanini/core/utils/preferences.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
@@ -58,6 +59,7 @@ extension PumpApp on WidgetTester {
     );
     await pumpWidget(
       ProviderScope(
+        retry: noAutoRetry,
         overrides: [...base, ...overrides],
         child: MaterialApp(
           theme: AppTheme.light(),

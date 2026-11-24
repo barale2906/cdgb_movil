@@ -2,6 +2,15 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [0.3.0+3] - 2026-11-24
+### Añadido
+- Fase 2A · Almacenes: lista de almacenes asignados y detalle con capacidad de volumen y peso por zona y ubicación (barras con porcentaje y nivel en texto).
+- Fase 2A · Catálogo (consulta): búsqueda de productos por nombre, código de barras o referencia; detalle con categoría, unidad base, niveles de stock, variantes, registros sanitarios (vencidos señalados) y componentes de kit; proveedores (lista y detalle) para quien tenga `proveedores.ver`.
+- Componentes reutilizables: lista con búsqueda, campo de búsqueda con espera, barra de uso, fila de datos; formato es_CO de números y fechas.
+
+### Corregido
+- Los providers que fallan ya no se reintentan solos (Riverpod 3 lo hace por defecto): el error se muestra y el usuario reintenta.
+
 ## [0.2.0+2] - 2026-11-24
 ### Añadido
 - Fase 1 · Fundaciones: acceso con correo y contraseña, restauración de sesión y cierre seguro (token en almacenamiento cifrado).

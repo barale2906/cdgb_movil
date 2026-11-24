@@ -1,0 +1,46 @@
+{
+  "success": true,
+  "message": "Detalle del producto genérico",
+  "data": {
+    "id": 5,
+    "name": "Gasa estéril 10x10",
+    "barcode": "100005",
+    "description": "Gasa de algodón",
+    "product_type": "kit",
+    "concentration": null,
+    "pharmaceutical_form": null,
+    "volume_cm3": 12.5,
+    "weight_kg": "0.050",
+    "requires_cold_chain": false,
+    "reorder_point": "20.00",
+    "reorder_quantity": 100,
+    "min_stock": 10,
+    "max_stock": null,
+    "is_active": true,
+    "classification": { "id": 2, "code": "DM", "name": "Dispositivo médico", "has_sanitary_registration": true },
+    "category": { "id": 3, "name": "Curación", "code": "CUR" },
+    "base_unit": { "id": 1, "name": "Unidad", "abbreviation": "und" },
+    "variants": [
+      {
+        "id": 50,
+        "generic_product_id": 5,
+        "lab_brand": "MarcaX",
+        "brand_sku": "MX-10",
+        "commercial_presentation": "Caja x 100",
+        "serie_reference": null,
+        "useful_life": 24,
+        "risk_level": "I",
+        "is_active": true,
+        "sanitary_registrations": [
+          { "id": 7, "registration_number": "INVIMA 2024DM-0001", "expiry_date": "2027-05-01", "is_active": true, "is_expired": false },
+          { "id": 8, "registration_number": "INVIMA 2019DM-0009", "expiry_date": "2024-01-31", "is_active": true, "is_expired": true }
+        ]
+      }
+    ],
+    "components": [
+      { "id": 1, "component_generic_id": 9, "quantity_per_kit": "2.0000", "sort_order": 1,
+        "component": { "id": 9, "name": "Esparadrapo", "barcode": "100009" } }
+    ],
+    "created_at": "2026-01-10T15:00:00-05:00"
+  }
+}

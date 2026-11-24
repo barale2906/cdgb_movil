@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "message": "Menú de navegación",
+  "data": [
+    {
+      "key": "inventory-management", "label": "Inventario", "icon": "package-search", "route": null, "permission": null, "actions": [],
+      "children": [
+        { "key": "catalog", "label": "Catálogo", "icon": "x", "route": null, "permission": null, "actions": [],
+          "children": [
+            { "key": "products", "label": "Productos", "icon": "x", "route": "products.index", "permission": "productos.ver", "actions": [], "children": [] },
+            { "key": "suppliers", "label": "Proveedores", "icon": "x", "route": "suppliers.index", "permission": "proveedores.ver", "actions": [], "children": [] }
+          ] },
+        { "key": "warehouse", "label": "Almacén", "icon": "x", "route": null, "permission": null, "actions": [],
+          "children": [
+            { "key": "warehouses", "label": "Almacenes", "icon": "x", "route": "warehouses.index", "permission": "almacenes.ver", "actions": [], "children": [] }
+          ] }
+      ]
+    }
+  ]
+}

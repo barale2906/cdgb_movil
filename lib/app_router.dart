@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
@@ -13,10 +13,15 @@ import 'package:sga_bojanini/features/auth/presentation/locked_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/login_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/profile_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/splash_page.dart';
+import 'package:sga_bojanini/features/catalog/presentation/catalog_page.dart';
+import 'package:sga_bojanini/features/catalog/presentation/product_detail_page.dart';
+import 'package:sga_bojanini/features/catalog/presentation/supplier_detail_page.dart';
 import 'package:sga_bojanini/features/home/presentation/app_shell.dart';
 import 'package:sga_bojanini/features/home/presentation/home_page.dart';
 import 'package:sga_bojanini/features/home/presentation/more_page.dart';
 import 'package:sga_bojanini/features/home/presentation/section_placeholder_page.dart';
+import 'package:sga_bojanini/features/warehouse/presentation/warehouse_detail_page.dart';
+import 'package:sga_bojanini/features/warehouse/presentation/warehouses_page.dart';
 
 /// Mapa de rutas y guardas. Vive en la raíz (no en `core/`) porque es el
 /// único lugar que compone pantallas de varias features.
@@ -53,9 +58,27 @@ final routerProvider = Provider<GoRouter>((ref) {
             if (section != AppSection.dashboard)
               GoRoute(
                 path: section.path,
-                builder: (_, _) => SectionPlaceholderPage(section: section),
+                builder: (_, _) => _sectionPage(section),
               ),
         ],
+      ),
+      GoRoute(
+        path: '${AppSection.warehouses.path}/:id',
+        builder: (_, state) => WarehouseDetailPage(
+          warehouseId: int.parse(state.pathParameters['id']!),
+        ),
+      ),
+      GoRoute(
+        path: '${AppSection.catalog.path}/products/:id',
+        builder: (_, state) => ProductDetailPage(
+          productId: int.parse(state.pathParameters['id']!),
+        ),
+      ),
+      GoRoute(
+        path: '${AppSection.catalog.path}/suppliers/:id',
+        builder: (_, state) => SupplierDetailPage(
+          supplierId: int.parse(state.pathParameters['id']!),
+        ),
       ),
       GoRoute(
         path: Routes.profile,
@@ -73,3 +96,10 @@ final routerProvider = Provider<GoRouter>((ref) {
   ref.onDispose(router.dispose);
   return router;
 });
+
+/// Pantalla de cada sección; las de fases futuras muestran "Próximamente".
+Widget _sectionPage(AppSection section) => switch (section) {
+  AppSection.warehouses => const WarehousesPage(),
+  AppSection.catalog => const CatalogPage(),
+  _ => SectionPlaceholderPage(section: section),
+};

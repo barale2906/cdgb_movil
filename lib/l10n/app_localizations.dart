@@ -729,6 +729,390 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Licencias'**
   String get aboutLicenses;
+
+  /// No description provided for @statusActive.
+  ///
+  /// In es, this message translates to:
+  /// **'Activo'**
+  String get statusActive;
+
+  /// No description provided for @statusInactive.
+  ///
+  /// In es, this message translates to:
+  /// **'Inactivo'**
+  String get statusInactive;
+
+  /// No description provided for @warehouseDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Almacén'**
+  String get warehouseDetailTitle;
+
+  /// No description provided for @warehouseCode.
+  ///
+  /// In es, this message translates to:
+  /// **'Código'**
+  String get warehouseCode;
+
+  /// No description provided for @warehouseAddress.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección'**
+  String get warehouseAddress;
+
+  /// No description provided for @warehouseDescription.
+  ///
+  /// In es, this message translates to:
+  /// **'Descripción'**
+  String get warehouseDescription;
+
+  /// No description provided for @capacityTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Capacidad'**
+  String get capacityTitle;
+
+  /// No description provided for @capacityVolume.
+  ///
+  /// In es, this message translates to:
+  /// **'Volumen'**
+  String get capacityVolume;
+
+  /// No description provided for @capacityWeight.
+  ///
+  /// In es, this message translates to:
+  /// **'Peso'**
+  String get capacityWeight;
+
+  /// No description provided for @capacityUsedOfMax.
+  ///
+  /// In es, this message translates to:
+  /// **'{used} de {max} {unit}'**
+  String capacityUsedOfMax(String used, String max, String unit);
+
+  /// No description provided for @capacityUsedOnly.
+  ///
+  /// In es, this message translates to:
+  /// **'En uso: {used} {unit} (sin límite definido)'**
+  String capacityUsedOnly(String used, String unit);
+
+  /// No description provided for @capacityLevelLow.
+  ///
+  /// In es, this message translates to:
+  /// **'Disponible'**
+  String get capacityLevelLow;
+
+  /// No description provided for @capacityLevelMedium.
+  ///
+  /// In es, this message translates to:
+  /// **'Moderado'**
+  String get capacityLevelMedium;
+
+  /// No description provided for @capacityLevelHigh.
+  ///
+  /// In es, this message translates to:
+  /// **'Casi lleno'**
+  String get capacityLevelHigh;
+
+  /// No description provided for @capacityZones.
+  ///
+  /// In es, this message translates to:
+  /// **'Zonas'**
+  String get capacityZones;
+
+  /// No description provided for @capacityNoZones.
+  ///
+  /// In es, this message translates to:
+  /// **'Este almacén no tiene zonas registradas.'**
+  String get capacityNoZones;
+
+  /// No description provided for @capacityLocationCount.
+  ///
+  /// In es, this message translates to:
+  /// **'{count, plural, =0{Sin ubicaciones} =1{1 ubicación} other{{count} ubicaciones}}'**
+  String capacityLocationCount(int count);
+
+  /// No description provided for @unitLiters.
+  ///
+  /// In es, this message translates to:
+  /// **'L'**
+  String get unitLiters;
+
+  /// No description provided for @unitKg.
+  ///
+  /// In es, this message translates to:
+  /// **'kg'**
+  String get unitKg;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar'**
+  String get searchHint;
+
+  /// No description provided for @searchClear.
+  ///
+  /// In es, this message translates to:
+  /// **'Borrar búsqueda'**
+  String get searchClear;
+
+  /// No description provided for @noResults.
+  ///
+  /// In es, this message translates to:
+  /// **'No se encontraron resultados.'**
+  String get noResults;
+
+  /// No description provided for @catalogTabProducts.
+  ///
+  /// In es, this message translates to:
+  /// **'Productos'**
+  String get catalogTabProducts;
+
+  /// No description provided for @catalogTabSuppliers.
+  ///
+  /// In es, this message translates to:
+  /// **'Proveedores'**
+  String get catalogTabSuppliers;
+
+  /// No description provided for @catalogSearchProducts.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar por nombre o código de barras'**
+  String get catalogSearchProducts;
+
+  /// No description provided for @catalogSearchSuppliers.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar por nombre o NIT'**
+  String get catalogSearchSuppliers;
+
+  /// No description provided for @catalogEmptyProducts.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay productos para mostrar.'**
+  String get catalogEmptyProducts;
+
+  /// No description provided for @catalogEmptySuppliers.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay proveedores para mostrar.'**
+  String get catalogEmptySuppliers;
+
+  /// No description provided for @productDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Producto'**
+  String get productDetailTitle;
+
+  /// No description provided for @productTypeSimple.
+  ///
+  /// In es, this message translates to:
+  /// **'Simple'**
+  String get productTypeSimple;
+
+  /// No description provided for @productTypeKit.
+  ///
+  /// In es, this message translates to:
+  /// **'Kit'**
+  String get productTypeKit;
+
+  /// No description provided for @productColdChain.
+  ///
+  /// In es, this message translates to:
+  /// **'Cadena de frío'**
+  String get productColdChain;
+
+  /// No description provided for @productBarcode.
+  ///
+  /// In es, this message translates to:
+  /// **'Código de barras'**
+  String get productBarcode;
+
+  /// No description provided for @productCategory.
+  ///
+  /// In es, this message translates to:
+  /// **'Categoría'**
+  String get productCategory;
+
+  /// No description provided for @productClassification.
+  ///
+  /// In es, this message translates to:
+  /// **'Clasificación'**
+  String get productClassification;
+
+  /// No description provided for @productBaseUnit.
+  ///
+  /// In es, this message translates to:
+  /// **'Unidad base'**
+  String get productBaseUnit;
+
+  /// No description provided for @productPharmaceuticalForm.
+  ///
+  /// In es, this message translates to:
+  /// **'Forma farmacéutica'**
+  String get productPharmaceuticalForm;
+
+  /// No description provided for @productConcentration.
+  ///
+  /// In es, this message translates to:
+  /// **'Concentración'**
+  String get productConcentration;
+
+  /// No description provided for @productStockLevels.
+  ///
+  /// In es, this message translates to:
+  /// **'Niveles de stock'**
+  String get productStockLevels;
+
+  /// No description provided for @productMinStock.
+  ///
+  /// In es, this message translates to:
+  /// **'Mínimo'**
+  String get productMinStock;
+
+  /// No description provided for @productMaxStock.
+  ///
+  /// In es, this message translates to:
+  /// **'Máximo'**
+  String get productMaxStock;
+
+  /// No description provided for @productReorderPoint.
+  ///
+  /// In es, this message translates to:
+  /// **'Punto de reorden'**
+  String get productReorderPoint;
+
+  /// No description provided for @productReorderQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad de reorden'**
+  String get productReorderQuantity;
+
+  /// No description provided for @productVariants.
+  ///
+  /// In es, this message translates to:
+  /// **'Variantes'**
+  String get productVariants;
+
+  /// No description provided for @productNoVariants.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin variantes registradas.'**
+  String get productNoVariants;
+
+  /// No description provided for @variantBrand.
+  ///
+  /// In es, this message translates to:
+  /// **'Marca'**
+  String get variantBrand;
+
+  /// No description provided for @variantSku.
+  ///
+  /// In es, this message translates to:
+  /// **'Referencia'**
+  String get variantSku;
+
+  /// No description provided for @variantRisk.
+  ///
+  /// In es, this message translates to:
+  /// **'Riesgo'**
+  String get variantRisk;
+
+  /// No description provided for @variantSanitaryRegistration.
+  ///
+  /// In es, this message translates to:
+  /// **'Registro sanitario'**
+  String get variantSanitaryRegistration;
+
+  /// No description provided for @sanitaryExpired.
+  ///
+  /// In es, this message translates to:
+  /// **'Vencido'**
+  String get sanitaryExpired;
+
+  /// No description provided for @sanitaryExpiresOn.
+  ///
+  /// In es, this message translates to:
+  /// **'Vence {date}'**
+  String sanitaryExpiresOn(String date);
+
+  /// No description provided for @productKitComponents.
+  ///
+  /// In es, this message translates to:
+  /// **'Componentes del kit'**
+  String get productKitComponents;
+
+  /// No description provided for @productKitQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'x{quantity}'**
+  String productKitQuantity(String quantity);
+
+  /// No description provided for @supplierDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Proveedor'**
+  String get supplierDetailTitle;
+
+  /// No description provided for @supplierTaxId.
+  ///
+  /// In es, this message translates to:
+  /// **'NIT'**
+  String get supplierTaxId;
+
+  /// No description provided for @supplierContact.
+  ///
+  /// In es, this message translates to:
+  /// **'Contacto'**
+  String get supplierContact;
+
+  /// No description provided for @supplierPhone.
+  ///
+  /// In es, this message translates to:
+  /// **'Teléfono'**
+  String get supplierPhone;
+
+  /// No description provided for @supplierEmail.
+  ///
+  /// In es, this message translates to:
+  /// **'Correo'**
+  String get supplierEmail;
+
+  /// No description provided for @supplierAddress.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección'**
+  String get supplierAddress;
+
+  /// No description provided for @supplierNotes.
+  ///
+  /// In es, this message translates to:
+  /// **'Notas'**
+  String get supplierNotes;
+
+  /// No description provided for @supplierTypeInventory.
+  ///
+  /// In es, this message translates to:
+  /// **'Inventario'**
+  String get supplierTypeInventory;
+
+  /// No description provided for @supplierTypeExpense.
+  ///
+  /// In es, this message translates to:
+  /// **'Gasto'**
+  String get supplierTypeExpense;
+
+  /// No description provided for @notAvailable.
+  ///
+  /// In es, this message translates to:
+  /// **'—'**
+  String get notAvailable;
+
+  /// No description provided for @variantPresentation.
+  ///
+  /// In es, this message translates to:
+  /// **'Presentación comercial'**
+  String get variantPresentation;
 }
 
 class _AppLocalizationsDelegate

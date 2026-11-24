@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "message": "Listado de productos genéricos",
+  "data": [
+    { "id": 5, "category_id": 3, "classification_id": 2, "base_unit_id": 1, "product_type": "simple", "name": "Gasa estéril 10x10", "barcode": "100005", "description": null, "concentration": null, "pharmaceutical_form": null, "volume_cm3": null, "weight_kg": null, "requires_cold_chain": false, "reorder_point": null, "reorder_quantity": null, "min_stock": null, "max_stock": null, "is_active": true },
+    { "id": 6, "category_id": 4, "classification_id": 1, "base_unit_id": 2, "product_type": "tipo_nuevo", "name": "Insulina NPH", "barcode": "100006", "description": null, "concentration": "100 UI/mL", "pharmaceutical_form": "Suspensión", "volume_cm3": null, "weight_kg": null, "requires_cold_chain": true, "reorder_point": 10, "reorder_quantity": 40, "min_stock": 5, "max_stock": 80, "is_active": true }
+  ]
+}
