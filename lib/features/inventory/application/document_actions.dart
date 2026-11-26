@@ -2,11 +2,11 @@ import 'dart:typed_data';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
+import 'package:sga_bojanini/core/signing/signoff.dart';
 import 'package:sga_bojanini/core/utils/submission_notifier.dart';
 import 'package:sga_bojanini/features/inventory/application/inventory_providers.dart';
 import 'package:sga_bojanini/features/inventory/data/inventory_repository.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
-import 'package:sga_bojanini/features/inventory/data/movement_requests.dart';
 
 /// Confirma un comprobante con firma/PIN. Es una escritura: nunca se
 /// reintenta sola; tras un timeout hay que consultar el estado primero.
