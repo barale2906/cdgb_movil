@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:dio/dio.dart' show DioExceptionType;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
+import 'package:sga_bojanini/core/clinical/procedure_match.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/features/clinical/application/sale_controller.dart';
-import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_match.dart';
 
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/fixtures.dart';

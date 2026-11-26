@@ -290,7 +290,7 @@ as String?,
 /// @nodoc
 mixin _$MedsysPatient {
 
-@JsonKey(name: 'codigo') String get code;@JsonKey(name: 'documento') String get document;@JsonKey(name: 'nombre') String get name;@JsonKey(name: 'tipodoc') String? get documentType; List<MedsysAppointment> get recentAppointments;
+@JsonKey(name: 'codigo') String get code;@JsonKey(name: 'documento') String get document;@JsonKey(name: 'nombre') String get name;@JsonKey(name: 'tipodoc') String? get documentType; String? get email;@JsonKey(name: 'direccion') String? get address;@JsonKey(name: 'telcelular') String? get mobile;@JsonKey(name: 'telefono') String? get landline; List<MedsysAppointment> get recentAppointments;
 /// Create a copy of MedsysPatient
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -303,16 +303,16 @@ $MedsysPatientCopyWith<MedsysPatient> get copyWith => _$MedsysPatientCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MedsysPatient&&(identical(other.code, code) || other.code == code)&&(identical(other.document, document) || other.document == document)&&(identical(other.name, name) || other.name == name)&&(identical(other.documentType, documentType) || other.documentType == documentType)&&const DeepCollectionEquality().equals(other.recentAppointments, recentAppointments));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MedsysPatient&&(identical(other.code, code) || other.code == code)&&(identical(other.document, document) || other.document == document)&&(identical(other.name, name) || other.name == name)&&(identical(other.documentType, documentType) || other.documentType == documentType)&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.mobile, mobile) || other.mobile == mobile)&&(identical(other.landline, landline) || other.landline == landline)&&const DeepCollectionEquality().equals(other.recentAppointments, recentAppointments));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,document,name,documentType,const DeepCollectionEquality().hash(recentAppointments));
+int get hashCode => Object.hash(runtimeType,code,document,name,documentType,email,address,mobile,landline,const DeepCollectionEquality().hash(recentAppointments));
 
 @override
 String toString() {
-  return 'MedsysPatient(code: $code, document: $document, name: $name, documentType: $documentType, recentAppointments: $recentAppointments)';
+  return 'MedsysPatient(code: $code, document: $document, name: $name, documentType: $documentType, email: $email, address: $address, mobile: $mobile, landline: $landline, recentAppointments: $recentAppointments)';
 }
 
 
@@ -323,7 +323,7 @@ abstract mixin class $MedsysPatientCopyWith<$Res>  {
   factory $MedsysPatientCopyWith(MedsysPatient value, $Res Function(MedsysPatient) _then) = _$MedsysPatientCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'codigo') String code,@JsonKey(name: 'documento') String document,@JsonKey(name: 'nombre') String name,@JsonKey(name: 'tipodoc') String? documentType, List<MedsysAppointment> recentAppointments
+@JsonKey(name: 'codigo') String code,@JsonKey(name: 'documento') String document,@JsonKey(name: 'nombre') String name,@JsonKey(name: 'tipodoc') String? documentType, String? email,@JsonKey(name: 'direccion') String? address,@JsonKey(name: 'telcelular') String? mobile,@JsonKey(name: 'telefono') String? landline, List<MedsysAppointment> recentAppointments
 });
 
 
@@ -340,12 +340,16 @@ class _$MedsysPatientCopyWithImpl<$Res>
 
 /// Create a copy of MedsysPatient
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? code = null,Object? document = null,Object? name = null,Object? documentType = freezed,Object? recentAppointments = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? code = null,Object? document = null,Object? name = null,Object? documentType = freezed,Object? email = freezed,Object? address = freezed,Object? mobile = freezed,Object? landline = freezed,Object? recentAppointments = null,}) {
   return _then(_self.copyWith(
 code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,document: null == document ? _self.document : document // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,documentType: freezed == documentType ? _self.documentType : documentType // ignore: cast_nullable_to_non_nullable
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String?,mobile: freezed == mobile ? _self.mobile : mobile // ignore: cast_nullable_to_non_nullable
+as String?,landline: freezed == landline ? _self.landline : landline // ignore: cast_nullable_to_non_nullable
 as String?,recentAppointments: null == recentAppointments ? _self.recentAppointments : recentAppointments // ignore: cast_nullable_to_non_nullable
 as List<MedsysAppointment>,
   ));
@@ -432,10 +436,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'codigo')  String code, @JsonKey(name: 'documento')  String document, @JsonKey(name: 'nombre')  String name, @JsonKey(name: 'tipodoc')  String? documentType,  List<MedsysAppointment> recentAppointments)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'codigo')  String code, @JsonKey(name: 'documento')  String document, @JsonKey(name: 'nombre')  String name, @JsonKey(name: 'tipodoc')  String? documentType,  String? email, @JsonKey(name: 'direccion')  String? address, @JsonKey(name: 'telcelular')  String? mobile, @JsonKey(name: 'telefono')  String? landline,  List<MedsysAppointment> recentAppointments)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MedsysPatient() when $default != null:
-return $default(_that.code,_that.document,_that.name,_that.documentType,_that.recentAppointments);case _:
+return $default(_that.code,_that.document,_that.name,_that.documentType,_that.email,_that.address,_that.mobile,_that.landline,_that.recentAppointments);case _:
   return orElse();
 
 }
@@ -453,10 +457,10 @@ return $default(_that.code,_that.document,_that.name,_that.documentType,_that.re
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'codigo')  String code, @JsonKey(name: 'documento')  String document, @JsonKey(name: 'nombre')  String name, @JsonKey(name: 'tipodoc')  String? documentType,  List<MedsysAppointment> recentAppointments)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'codigo')  String code, @JsonKey(name: 'documento')  String document, @JsonKey(name: 'nombre')  String name, @JsonKey(name: 'tipodoc')  String? documentType,  String? email, @JsonKey(name: 'direccion')  String? address, @JsonKey(name: 'telcelular')  String? mobile, @JsonKey(name: 'telefono')  String? landline,  List<MedsysAppointment> recentAppointments)  $default,) {final _that = this;
 switch (_that) {
 case _MedsysPatient():
-return $default(_that.code,_that.document,_that.name,_that.documentType,_that.recentAppointments);case _:
+return $default(_that.code,_that.document,_that.name,_that.documentType,_that.email,_that.address,_that.mobile,_that.landline,_that.recentAppointments);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -473,10 +477,10 @@ return $default(_that.code,_that.document,_that.name,_that.documentType,_that.re
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'codigo')  String code, @JsonKey(name: 'documento')  String document, @JsonKey(name: 'nombre')  String name, @JsonKey(name: 'tipodoc')  String? documentType,  List<MedsysAppointment> recentAppointments)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'codigo')  String code, @JsonKey(name: 'documento')  String document, @JsonKey(name: 'nombre')  String name, @JsonKey(name: 'tipodoc')  String? documentType,  String? email, @JsonKey(name: 'direccion')  String? address, @JsonKey(name: 'telcelular')  String? mobile, @JsonKey(name: 'telefono')  String? landline,  List<MedsysAppointment> recentAppointments)?  $default,) {final _that = this;
 switch (_that) {
 case _MedsysPatient() when $default != null:
-return $default(_that.code,_that.document,_that.name,_that.documentType,_that.recentAppointments);case _:
+return $default(_that.code,_that.document,_that.name,_that.documentType,_that.email,_that.address,_that.mobile,_that.landline,_that.recentAppointments);case _:
   return null;
 
 }
@@ -488,13 +492,17 @@ return $default(_that.code,_that.document,_that.name,_that.documentType,_that.re
 @JsonSerializable()
 
 class _MedsysPatient extends MedsysPatient {
-  const _MedsysPatient({@JsonKey(name: 'codigo') required this.code, @JsonKey(name: 'documento') required this.document, @JsonKey(name: 'nombre') required this.name, @JsonKey(name: 'tipodoc') this.documentType, final  List<MedsysAppointment> recentAppointments = const []}): _recentAppointments = recentAppointments,super._();
+  const _MedsysPatient({@JsonKey(name: 'codigo') required this.code, @JsonKey(name: 'documento') required this.document, @JsonKey(name: 'nombre') required this.name, @JsonKey(name: 'tipodoc') this.documentType, this.email, @JsonKey(name: 'direccion') this.address, @JsonKey(name: 'telcelular') this.mobile, @JsonKey(name: 'telefono') this.landline, final  List<MedsysAppointment> recentAppointments = const []}): _recentAppointments = recentAppointments,super._();
   factory _MedsysPatient.fromJson(Map<String, dynamic> json) => _$MedsysPatientFromJson(json);
 
 @override@JsonKey(name: 'codigo') final  String code;
 @override@JsonKey(name: 'documento') final  String document;
 @override@JsonKey(name: 'nombre') final  String name;
 @override@JsonKey(name: 'tipodoc') final  String? documentType;
+@override final  String? email;
+@override@JsonKey(name: 'direccion') final  String? address;
+@override@JsonKey(name: 'telcelular') final  String? mobile;
+@override@JsonKey(name: 'telefono') final  String? landline;
  final  List<MedsysAppointment> _recentAppointments;
 @override@JsonKey() List<MedsysAppointment> get recentAppointments {
   if (_recentAppointments is EqualUnmodifiableListView) return _recentAppointments;
@@ -516,16 +524,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MedsysPatient&&(identical(other.code, code) || other.code == code)&&(identical(other.document, document) || other.document == document)&&(identical(other.name, name) || other.name == name)&&(identical(other.documentType, documentType) || other.documentType == documentType)&&const DeepCollectionEquality().equals(other._recentAppointments, _recentAppointments));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MedsysPatient&&(identical(other.code, code) || other.code == code)&&(identical(other.document, document) || other.document == document)&&(identical(other.name, name) || other.name == name)&&(identical(other.documentType, documentType) || other.documentType == documentType)&&(identical(other.email, email) || other.email == email)&&(identical(other.address, address) || other.address == address)&&(identical(other.mobile, mobile) || other.mobile == mobile)&&(identical(other.landline, landline) || other.landline == landline)&&const DeepCollectionEquality().equals(other._recentAppointments, _recentAppointments));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,code,document,name,documentType,const DeepCollectionEquality().hash(_recentAppointments));
+int get hashCode => Object.hash(runtimeType,code,document,name,documentType,email,address,mobile,landline,const DeepCollectionEquality().hash(_recentAppointments));
 
 @override
 String toString() {
-  return 'MedsysPatient(code: $code, document: $document, name: $name, documentType: $documentType, recentAppointments: $recentAppointments)';
+  return 'MedsysPatient(code: $code, document: $document, name: $name, documentType: $documentType, email: $email, address: $address, mobile: $mobile, landline: $landline, recentAppointments: $recentAppointments)';
 }
 
 
@@ -536,7 +544,7 @@ abstract mixin class _$MedsysPatientCopyWith<$Res> implements $MedsysPatientCopy
   factory _$MedsysPatientCopyWith(_MedsysPatient value, $Res Function(_MedsysPatient) _then) = __$MedsysPatientCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'codigo') String code,@JsonKey(name: 'documento') String document,@JsonKey(name: 'nombre') String name,@JsonKey(name: 'tipodoc') String? documentType, List<MedsysAppointment> recentAppointments
+@JsonKey(name: 'codigo') String code,@JsonKey(name: 'documento') String document,@JsonKey(name: 'nombre') String name,@JsonKey(name: 'tipodoc') String? documentType, String? email,@JsonKey(name: 'direccion') String? address,@JsonKey(name: 'telcelular') String? mobile,@JsonKey(name: 'telefono') String? landline, List<MedsysAppointment> recentAppointments
 });
 
 
@@ -553,12 +561,16 @@ class __$MedsysPatientCopyWithImpl<$Res>
 
 /// Create a copy of MedsysPatient
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? code = null,Object? document = null,Object? name = null,Object? documentType = freezed,Object? recentAppointments = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? code = null,Object? document = null,Object? name = null,Object? documentType = freezed,Object? email = freezed,Object? address = freezed,Object? mobile = freezed,Object? landline = freezed,Object? recentAppointments = null,}) {
   return _then(_MedsysPatient(
 code: null == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
 as String,document: null == document ? _self.document : document // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,documentType: freezed == documentType ? _self.documentType : documentType // ignore: cast_nullable_to_non_nullable
+as String?,email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String?,address: freezed == address ? _self.address : address // ignore: cast_nullable_to_non_nullable
+as String?,mobile: freezed == mobile ? _self.mobile : mobile // ignore: cast_nullable_to_non_nullable
+as String?,landline: freezed == landline ? _self.landline : landline // ignore: cast_nullable_to_non_nullable
 as String?,recentAppointments: null == recentAppointments ? _self._recentAppointments : recentAppointments // ignore: cast_nullable_to_non_nullable
 as List<MedsysAppointment>,
   ));

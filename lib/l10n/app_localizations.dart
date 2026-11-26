@@ -5193,6 +5193,306 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Venta registrada.'**
   String get saleDone;
+
+  /// No description provided for @serviceOrderTabOrders.
+  ///
+  /// In es, this message translates to:
+  /// **'Órdenes'**
+  String get serviceOrderTabOrders;
+
+  /// No description provided for @serviceOrderTabDiscounts.
+  ///
+  /// In es, this message translates to:
+  /// **'Descuentos'**
+  String get serviceOrderTabDiscounts;
+
+  /// No description provided for @serviceOrderLookupHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Número de orden'**
+  String get serviceOrderLookupHint;
+
+  /// No description provided for @serviceOrderLookupAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar orden'**
+  String get serviceOrderLookupAction;
+
+  /// No description provided for @serviceOrderLookupHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba el número completo, por ejemplo OS-20261126-000001.'**
+  String get serviceOrderLookupHelp;
+
+  /// No description provided for @serviceOrderNew.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva orden'**
+  String get serviceOrderNew;
+
+  /// No description provided for @serviceOrderTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden de servicio'**
+  String get serviceOrderTitle;
+
+  /// No description provided for @serviceOrderStatusApproved.
+  ///
+  /// In es, this message translates to:
+  /// **'Aprobada'**
+  String get serviceOrderStatusApproved;
+
+  /// No description provided for @serviceOrderStatusDiscountPending.
+  ///
+  /// In es, this message translates to:
+  /// **'Descuento por aprobar'**
+  String get serviceOrderStatusDiscountPending;
+
+  /// No description provided for @serviceOrderPatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Paciente'**
+  String get serviceOrderPatient;
+
+  /// No description provided for @serviceOrderProcedures.
+  ///
+  /// In es, this message translates to:
+  /// **'Procedimientos'**
+  String get serviceOrderProcedures;
+
+  /// No description provided for @serviceOrderTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total'**
+  String get serviceOrderTotal;
+
+  /// No description provided for @serviceOrderDiscount.
+  ///
+  /// In es, this message translates to:
+  /// **'Descuento'**
+  String get serviceOrderDiscount;
+
+  /// No description provided for @serviceOrderNetTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total neto'**
+  String get serviceOrderNetTotal;
+
+  /// No description provided for @serviceOrderApproveDiscount.
+  ///
+  /// In es, this message translates to:
+  /// **'Aprobar descuento'**
+  String get serviceOrderApproveDiscount;
+
+  /// No description provided for @serviceOrderApproveConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Se aprobará el descuento de {amount} de la orden {number}.'**
+  String serviceOrderApproveConfirm(String amount, String number);
+
+  /// No description provided for @serviceOrderApproved.
+  ///
+  /// In es, this message translates to:
+  /// **'Descuento aprobado.'**
+  String get serviceOrderApproved;
+
+  /// No description provided for @serviceOrderBill.
+  ///
+  /// In es, this message translates to:
+  /// **'Marcar como facturada'**
+  String get serviceOrderBill;
+
+  /// No description provided for @serviceOrderBillConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'La orden {number} quedará como facturada.'**
+  String serviceOrderBillConfirm(String number);
+
+  /// No description provided for @serviceOrderBilled.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden facturada.'**
+  String get serviceOrderBilled;
+
+  /// No description provided for @serviceOrderBillBlocked.
+  ///
+  /// In es, this message translates to:
+  /// **'Apruebe el descuento antes de facturar.'**
+  String get serviceOrderBillBlocked;
+
+  /// No description provided for @serviceOrderCancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Anular orden'**
+  String get serviceOrderCancel;
+
+  /// No description provided for @serviceOrderCancelConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Se anulará la orden {number}. Anular no devuelve al inventario los insumos que ya salieron.'**
+  String serviceOrderCancelConfirm(String number);
+
+  /// No description provided for @serviceOrderCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden anulada.'**
+  String get serviceOrderCancelled;
+
+  /// No description provided for @serviceOrderActionTimeout.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise el estado de la orden antes de repetirlo.'**
+  String get serviceOrderActionTimeout;
+
+  /// No description provided for @serviceOrderDiscountsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay descuentos pendientes de aprobación.'**
+  String get serviceOrderDiscountsEmpty;
+
+  /// No description provided for @serviceOrderDiscountOf.
+  ///
+  /// In es, this message translates to:
+  /// **'Descuento: {amount}'**
+  String serviceOrderDiscountOf(String amount);
+
+  /// No description provided for @serviceOrderFormTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva orden de servicio'**
+  String get serviceOrderFormTitle;
+
+  /// No description provided for @serviceOrderNotes.
+  ///
+  /// In es, this message translates to:
+  /// **'Observaciones (opcional)'**
+  String get serviceOrderNotes;
+
+  /// No description provided for @serviceOrderDiscountToggle.
+  ///
+  /// In es, this message translates to:
+  /// **'Aplicar descuento'**
+  String get serviceOrderDiscountToggle;
+
+  /// No description provided for @serviceOrderDiscountType.
+  ///
+  /// In es, this message translates to:
+  /// **'Tipo de descuento'**
+  String get serviceOrderDiscountType;
+
+  /// No description provided for @serviceOrderDiscountPercent.
+  ///
+  /// In es, this message translates to:
+  /// **'Porcentaje'**
+  String get serviceOrderDiscountPercent;
+
+  /// No description provided for @serviceOrderDiscountFixed.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor fijo'**
+  String get serviceOrderDiscountFixed;
+
+  /// No description provided for @serviceOrderDiscountPercentValue.
+  ///
+  /// In es, this message translates to:
+  /// **'Porcentaje (%)'**
+  String get serviceOrderDiscountPercentValue;
+
+  /// No description provided for @serviceOrderDiscountFixedValue.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor del descuento'**
+  String get serviceOrderDiscountFixedValue;
+
+  /// No description provided for @serviceOrderDiscountInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Debe ser mayor que cero y menor que el total del procedimiento.'**
+  String get serviceOrderDiscountInvalid;
+
+  /// No description provided for @serviceOrderDiscountPercentInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Debe estar entre 0 y 100.'**
+  String get serviceOrderDiscountPercentInvalid;
+
+  /// No description provided for @serviceOrderDiscountNote.
+  ///
+  /// In es, this message translates to:
+  /// **'Un descuento deja la orden pendiente hasta que un aprobador lo autorice.'**
+  String get serviceOrderDiscountNote;
+
+  /// No description provided for @serviceOrderSupplies.
+  ///
+  /// In es, this message translates to:
+  /// **'Insumos'**
+  String get serviceOrderSupplies;
+
+  /// No description provided for @serviceOrderAddSupply.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar insumo'**
+  String get serviceOrderAddSupply;
+
+  /// No description provided for @serviceOrderChooseSupply.
+  ///
+  /// In es, this message translates to:
+  /// **'Elegir insumo'**
+  String get serviceOrderChooseSupply;
+
+  /// No description provided for @serviceOrderSupplyWarehouse.
+  ///
+  /// In es, this message translates to:
+  /// **'Almacén de donde salen'**
+  String get serviceOrderSupplyWarehouse;
+
+  /// No description provided for @serviceOrderSupplyQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get serviceOrderSupplyQuantity;
+
+  /// No description provided for @serviceOrderSupplyNote.
+  ///
+  /// In es, this message translates to:
+  /// **'Los insumos salen del inventario al crear la orden.'**
+  String get serviceOrderSupplyNote;
+
+  /// No description provided for @serviceOrderSupplyWarehouseRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Elija el almacén de los insumos.'**
+  String get serviceOrderSupplyWarehouseRequired;
+
+  /// No description provided for @serviceOrderSubmit.
+  ///
+  /// In es, this message translates to:
+  /// **'Crear orden'**
+  String get serviceOrderSubmit;
+
+  /// No description provided for @serviceOrderCreated.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden {number} creada.'**
+  String serviceOrderCreated(String number);
+
+  /// No description provided for @serviceOrderUnconfirmed.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. La orden pudo haberse creado: revise los registros del paciente antes de repetirla.'**
+  String get serviceOrderUnconfirmed;
+
+  /// No description provided for @serviceOrderNotCreated.
+  ///
+  /// In es, this message translates to:
+  /// **'Ya revisé: no se creó, enviar de nuevo'**
+  String get serviceOrderNotCreated;
+
+  /// No description provided for @serviceOrderMaybePartial.
+  ///
+  /// In es, this message translates to:
+  /// **'Si el servidor falló al guardar, la orden pudo quedar a medias (con algunos procedimientos o insumos ya registrados). Revise los registros del paciente antes de repetirla.'**
+  String get serviceOrderMaybePartial;
 }
 
 class _AppLocalizationsDelegate

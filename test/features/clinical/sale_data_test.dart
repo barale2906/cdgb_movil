@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
+import 'package:sga_bojanini/core/clinical/procedure_match.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/features/clinical/data/clinical_repository.dart';
-import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_match.dart';
 import 'package:sga_bojanini/features/clinical/data/sale_request.dart';
 
 import '../../helpers/fake_http_adapter.dart';
@@ -118,22 +118,6 @@ void main() {
       );
       addTearDown(container.dispose);
       repository = container.read(clinicalRepositoryProvider);
-    });
-
-    test('busca procedimientos con el texto en `q`', () async {
-      adapter.on(
-        'GET',
-        '/medical-services/search',
-        body: fixture('clinical/procedures_response.json'),
-      );
-      expect(await repository.searchProcedures('cur'), hasLength(2));
-      expect(
-        adapter
-            .callsTo('GET', '/medical-services/search')
-            .single
-            .queryParameters,
-        {'q': 'cur'},
-      );
     });
 
     test('crear el registro devuelve lo guardado y envía el cuerpo', () async {

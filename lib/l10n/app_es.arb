@@ -1266,5 +1266,93 @@
   "saleLineUnconfirmedHelp": "El servidor no respondió y puede que sí se haya registrado. Revise los registros del paciente antes de enviarla de nuevo.",
   "saleLineNotRegistered": "No se registró, enviar de nuevo",
   "salePartialWarning": "Algunos servicios ya quedaron registrados y no se vuelven a enviar. Corrija lo pendiente y registre de nuevo.",
-  "saleDone": "Venta registrada."
+  "saleDone": "Venta registrada.",
+  "serviceOrderTabOrders": "Órdenes",
+  "serviceOrderTabDiscounts": "Descuentos",
+  "serviceOrderLookupHint": "Número de orden",
+  "serviceOrderLookupAction": "Buscar orden",
+  "serviceOrderLookupHelp": "Escriba el número completo, por ejemplo OS-20261126-000001.",
+  "serviceOrderNew": "Nueva orden",
+  "serviceOrderTitle": "Orden de servicio",
+  "serviceOrderStatusApproved": "Aprobada",
+  "serviceOrderStatusDiscountPending": "Descuento por aprobar",
+  "serviceOrderPatient": "Paciente",
+  "serviceOrderProcedures": "Procedimientos",
+  "serviceOrderTotal": "Total",
+  "serviceOrderDiscount": "Descuento",
+  "serviceOrderNetTotal": "Total neto",
+  "serviceOrderApproveDiscount": "Aprobar descuento",
+  "serviceOrderApproveConfirm": "Se aprobará el descuento de {amount} de la orden {number}.",
+  "@serviceOrderApproveConfirm": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "serviceOrderApproved": "Descuento aprobado.",
+  "serviceOrderBill": "Marcar como facturada",
+  "serviceOrderBillConfirm": "La orden {number} quedará como facturada.",
+  "@serviceOrderBillConfirm": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "serviceOrderBilled": "Orden facturada.",
+  "serviceOrderBillBlocked": "Apruebe el descuento antes de facturar.",
+  "serviceOrderCancel": "Anular orden",
+  "serviceOrderCancelConfirm": "Se anulará la orden {number}. Anular no devuelve al inventario los insumos que ya salieron.",
+  "@serviceOrderCancelConfirm": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "serviceOrderCancelled": "Orden anulada.",
+  "serviceOrderActionTimeout": "No se recibió respuesta del servidor. Revise el estado de la orden antes de repetirlo.",
+  "serviceOrderDiscountsEmpty": "No hay descuentos pendientes de aprobación.",
+  "serviceOrderDiscountOf": "Descuento: {amount}",
+  "@serviceOrderDiscountOf": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "serviceOrderFormTitle": "Nueva orden de servicio",
+  "serviceOrderNotes": "Observaciones (opcional)",
+  "serviceOrderDiscountToggle": "Aplicar descuento",
+  "serviceOrderDiscountType": "Tipo de descuento",
+  "serviceOrderDiscountPercent": "Porcentaje",
+  "serviceOrderDiscountFixed": "Valor fijo",
+  "serviceOrderDiscountPercentValue": "Porcentaje (%)",
+  "serviceOrderDiscountFixedValue": "Valor del descuento",
+  "serviceOrderDiscountInvalid": "Debe ser mayor que cero y menor que el total del procedimiento.",
+  "serviceOrderDiscountPercentInvalid": "Debe estar entre 0 y 100.",
+  "serviceOrderDiscountNote": "Un descuento deja la orden pendiente hasta que un aprobador lo autorice.",
+  "serviceOrderSupplies": "Insumos",
+  "serviceOrderAddSupply": "Agregar insumo",
+  "serviceOrderChooseSupply": "Elegir insumo",
+  "serviceOrderSupplyWarehouse": "Almacén de donde salen",
+  "serviceOrderSupplyQuantity": "Cantidad",
+  "serviceOrderSupplyNote": "Los insumos salen del inventario al crear la orden.",
+  "serviceOrderSupplyWarehouseRequired": "Elija el almacén de los insumos.",
+  "serviceOrderSubmit": "Crear orden",
+  "serviceOrderCreated": "Orden {number} creada.",
+  "@serviceOrderCreated": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "serviceOrderUnconfirmed": "No se recibió respuesta del servidor. La orden pudo haberse creado: revise los registros del paciente antes de repetirla.",
+  "serviceOrderNotCreated": "Ya revisé: no se creó, enviar de nuevo",
+  "serviceOrderMaybePartial": "Si el servidor falló al guardar, la orden pudo quedar a medias (con algunos procedimientos o insumos ya registrados). Revise los registros del paciente antes de repetirla."
 }

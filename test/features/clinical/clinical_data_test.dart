@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
+import 'package:sga_bojanini/core/clinical/procedure_record.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/features/clinical/data/clinical_repository.dart';
-import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_record.dart';
 
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/fixtures.dart';
@@ -45,8 +45,23 @@ void main() {
       expect(patients.last.recentAppointments, isEmpty);
     });
 
-    test('no conserva datos de contacto (mínimo necesario)', () {
-      expect(patients.first.toJson().keys, isNot(contains('email')));
+    test('lee el contacto solo para las órdenes: celular antes que fijo', () {
+      final patient = patients.first;
+      expect(patient.email, 'paciente.uno@example.com');
+      expect(patient.address, 'Calle 1 # 2-3');
+      expect(patient.phone, '3000000001');
+      expect(
+        const MedsysPatient(
+          code: 'P',
+          document: '1',
+          name: 'A',
+          mobile: ' ',
+          landline: '6040000',
+        ).phone,
+        '6040000',
+        reason: 'un celular vacío cae al fijo',
+      );
+      expect(patients.last.phone, isNull);
     });
   });
 
@@ -138,33 +153,6 @@ void main() {
       );
       addTearDown(container.dispose);
       repository = container.read(clinicalRepositoryProvider);
-    });
-
-    test('busca pacientes por texto y lee `data.patients`', () async {
-      adapter.on(
-        'GET',
-        '/medsys/patients',
-        body: fixture('clinical/patients_response.json'),
-      );
-      final patients = await repository.searchPatients('1000000001');
-      expect(patients, hasLength(2));
-      expect(
-        adapter.callsTo('GET', '/medsys/patients').single.queryParameters,
-        {'search': '1000000001'},
-      );
-    });
-
-    test('paciente no encontrado (404) llega como NotFoundException', () async {
-      adapter.on(
-        'GET',
-        '/medsys/patients',
-        status: 404,
-        body: errorBody('Paciente no encontrado'),
-      );
-      await expectLater(
-        repository.searchPatients('9999999'),
-        throwsA(isA<NotFoundException>()),
-      );
     });
 
     test('citas: el código del paciente va en la ruta y se codifica', () async {

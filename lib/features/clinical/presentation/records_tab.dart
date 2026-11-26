@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sga_bojanini/core/clinical/procedure_record.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
+import 'package:sga_bojanini/core/widgets/billing_chip.dart';
 import 'package:sga_bojanini/core/widgets/searchable_list.dart';
 import 'package:sga_bojanini/features/clinical/application/clinical_providers.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_record.dart';
 import 'package:sga_bojanini/features/clinical/presentation/clinical_labels.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 

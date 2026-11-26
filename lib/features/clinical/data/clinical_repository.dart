@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
+import 'package:sga_bojanini/core/clinical/procedure_record.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
-import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_match.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_record.dart';
 import 'package:sga_bojanini/features/clinical/data/sale_request.dart';
 
 /// Filtros de la lista de registros. El servidor no pagina esta lista: se
@@ -43,33 +42,12 @@ class RecordsQuery {
   int get hashCode => Object.hash(dateFrom, dateTo, document);
 }
 
-/// Pacientes de MedSys, registros de procedimientos e historial
+/// Citas de MedSys, registros de procedimientos, ventas e historial
 /// (`docs/app-movil/10-medsys.md` y `13-cost-center.md` del backend).
 class ClinicalRepository {
   const ClinicalRepository(this._dio);
 
-  /// Largo mínimo del término de búsqueda que acepta el servidor.
-  static const minSearchLength = 3;
-
-  /// Largo mínimo del texto al buscar procedimientos.
-  static const minProcedureSearchLength = 2;
-
   final Dio _dio;
-
-  /// Pacientes por documento (solo dígitos) o por nombre. El servidor
-  /// responde `{patients: [...]}` aunque la búsqueda sea por documento.
-  Future<List<MedsysPatient>> searchPatients(String term) => apiCall(() async {
-    final response = await _dio.get<dynamic>(
-      '/medsys/patients',
-      queryParameters: {'search': term},
-    );
-    final patients = ApiResponse.object(response)['patients'];
-    if (patients is! List<dynamic>) return const [];
-    return [
-      for (final item in patients)
-        MedsysPatient.fromJson(item as Map<String, dynamic>),
-    ];
-  });
 
   Future<List<MedsysAppointment>> appointments(String patientCode) =>
       apiCall(() async {
@@ -92,16 +70,6 @@ class ClinicalRepository {
     final response = await _dio.get<dynamic>('/patient-procedure-records/$id');
     return ProcedureRecord.fromJson(ApiResponse.object(response));
   });
-
-  /// Procedimientos por nombre o código, con su tarifa vigente.
-  Future<List<ProcedureMatch>> searchProcedures(String query) =>
-      apiCall(() async {
-        final response = await _dio.get<dynamic>(
-          '/medical-services/search',
-          queryParameters: {'q': query},
-        );
-        return ApiResponse.list(response, ProcedureMatch.fromJson);
-      });
 
   /// Registra una venta (escritura: nunca se reintenta sola).
   Future<ProcedureRecord> createRecord(SaleRecordRequest request) =>

@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
+import 'package:sga_bojanini/core/clinical/procedure_match.dart';
 import 'package:sga_bojanini/core/clock/clock.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/features/clinical/data/clinical_repository.dart';
-import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_match.dart';
 import 'package:sga_bojanini/features/clinical/data/sale_request.dart';
 
 /// Estado de una línea de la venta frente al servidor.
