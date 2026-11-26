@@ -825,7 +825,7 @@ as bool,
 /// @nodoc
 mixin _$AssetFilters {
 
- List<AssetSite> get sites; List<NamedRef> get users; List<CatalogOption> get transferTypes; List<CatalogOption> get maintenanceResults; List<CatalogOption> get documentTypes; List<CatalogOption> get settableStatuses;
+ List<AssetSite> get sites; List<NamedRef> get users; List<NamedRef> get suppliers; List<CatalogOption> get transferTypes; List<CatalogOption> get maintenanceResults; List<CatalogOption> get documentTypes; List<CatalogOption> get settableStatuses;
 /// Create a copy of AssetFilters
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -838,16 +838,16 @@ $AssetFiltersCopyWith<AssetFilters> get copyWith => _$AssetFiltersCopyWithImpl<A
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AssetFilters&&const DeepCollectionEquality().equals(other.sites, sites)&&const DeepCollectionEquality().equals(other.users, users)&&const DeepCollectionEquality().equals(other.transferTypes, transferTypes)&&const DeepCollectionEquality().equals(other.maintenanceResults, maintenanceResults)&&const DeepCollectionEquality().equals(other.documentTypes, documentTypes)&&const DeepCollectionEquality().equals(other.settableStatuses, settableStatuses));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AssetFilters&&const DeepCollectionEquality().equals(other.sites, sites)&&const DeepCollectionEquality().equals(other.users, users)&&const DeepCollectionEquality().equals(other.suppliers, suppliers)&&const DeepCollectionEquality().equals(other.transferTypes, transferTypes)&&const DeepCollectionEquality().equals(other.maintenanceResults, maintenanceResults)&&const DeepCollectionEquality().equals(other.documentTypes, documentTypes)&&const DeepCollectionEquality().equals(other.settableStatuses, settableStatuses));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(sites),const DeepCollectionEquality().hash(users),const DeepCollectionEquality().hash(transferTypes),const DeepCollectionEquality().hash(maintenanceResults),const DeepCollectionEquality().hash(documentTypes),const DeepCollectionEquality().hash(settableStatuses));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(sites),const DeepCollectionEquality().hash(users),const DeepCollectionEquality().hash(suppliers),const DeepCollectionEquality().hash(transferTypes),const DeepCollectionEquality().hash(maintenanceResults),const DeepCollectionEquality().hash(documentTypes),const DeepCollectionEquality().hash(settableStatuses));
 
 @override
 String toString() {
-  return 'AssetFilters(sites: $sites, users: $users, transferTypes: $transferTypes, maintenanceResults: $maintenanceResults, documentTypes: $documentTypes, settableStatuses: $settableStatuses)';
+  return 'AssetFilters(sites: $sites, users: $users, suppliers: $suppliers, transferTypes: $transferTypes, maintenanceResults: $maintenanceResults, documentTypes: $documentTypes, settableStatuses: $settableStatuses)';
 }
 
 
@@ -858,7 +858,7 @@ abstract mixin class $AssetFiltersCopyWith<$Res>  {
   factory $AssetFiltersCopyWith(AssetFilters value, $Res Function(AssetFilters) _then) = _$AssetFiltersCopyWithImpl;
 @useResult
 $Res call({
- List<AssetSite> sites, List<NamedRef> users, List<CatalogOption> transferTypes, List<CatalogOption> maintenanceResults, List<CatalogOption> documentTypes, List<CatalogOption> settableStatuses
+ List<AssetSite> sites, List<NamedRef> users, List<NamedRef> suppliers, List<CatalogOption> transferTypes, List<CatalogOption> maintenanceResults, List<CatalogOption> documentTypes, List<CatalogOption> settableStatuses
 });
 
 
@@ -875,10 +875,11 @@ class _$AssetFiltersCopyWithImpl<$Res>
 
 /// Create a copy of AssetFilters
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? sites = null,Object? users = null,Object? transferTypes = null,Object? maintenanceResults = null,Object? documentTypes = null,Object? settableStatuses = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? sites = null,Object? users = null,Object? suppliers = null,Object? transferTypes = null,Object? maintenanceResults = null,Object? documentTypes = null,Object? settableStatuses = null,}) {
   return _then(_self.copyWith(
 sites: null == sites ? _self.sites : sites // ignore: cast_nullable_to_non_nullable
 as List<AssetSite>,users: null == users ? _self.users : users // ignore: cast_nullable_to_non_nullable
+as List<NamedRef>,suppliers: null == suppliers ? _self.suppliers : suppliers // ignore: cast_nullable_to_non_nullable
 as List<NamedRef>,transferTypes: null == transferTypes ? _self.transferTypes : transferTypes // ignore: cast_nullable_to_non_nullable
 as List<CatalogOption>,maintenanceResults: null == maintenanceResults ? _self.maintenanceResults : maintenanceResults // ignore: cast_nullable_to_non_nullable
 as List<CatalogOption>,documentTypes: null == documentTypes ? _self.documentTypes : documentTypes // ignore: cast_nullable_to_non_nullable
@@ -968,10 +969,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<AssetSite> sites,  List<NamedRef> users,  List<CatalogOption> transferTypes,  List<CatalogOption> maintenanceResults,  List<CatalogOption> documentTypes,  List<CatalogOption> settableStatuses)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<AssetSite> sites,  List<NamedRef> users,  List<NamedRef> suppliers,  List<CatalogOption> transferTypes,  List<CatalogOption> maintenanceResults,  List<CatalogOption> documentTypes,  List<CatalogOption> settableStatuses)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AssetFilters() when $default != null:
-return $default(_that.sites,_that.users,_that.transferTypes,_that.maintenanceResults,_that.documentTypes,_that.settableStatuses);case _:
+return $default(_that.sites,_that.users,_that.suppliers,_that.transferTypes,_that.maintenanceResults,_that.documentTypes,_that.settableStatuses);case _:
   return orElse();
 
 }
@@ -989,10 +990,10 @@ return $default(_that.sites,_that.users,_that.transferTypes,_that.maintenanceRes
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<AssetSite> sites,  List<NamedRef> users,  List<CatalogOption> transferTypes,  List<CatalogOption> maintenanceResults,  List<CatalogOption> documentTypes,  List<CatalogOption> settableStatuses)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<AssetSite> sites,  List<NamedRef> users,  List<NamedRef> suppliers,  List<CatalogOption> transferTypes,  List<CatalogOption> maintenanceResults,  List<CatalogOption> documentTypes,  List<CatalogOption> settableStatuses)  $default,) {final _that = this;
 switch (_that) {
 case _AssetFilters():
-return $default(_that.sites,_that.users,_that.transferTypes,_that.maintenanceResults,_that.documentTypes,_that.settableStatuses);case _:
+return $default(_that.sites,_that.users,_that.suppliers,_that.transferTypes,_that.maintenanceResults,_that.documentTypes,_that.settableStatuses);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -1009,10 +1010,10 @@ return $default(_that.sites,_that.users,_that.transferTypes,_that.maintenanceRes
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<AssetSite> sites,  List<NamedRef> users,  List<CatalogOption> transferTypes,  List<CatalogOption> maintenanceResults,  List<CatalogOption> documentTypes,  List<CatalogOption> settableStatuses)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<AssetSite> sites,  List<NamedRef> users,  List<NamedRef> suppliers,  List<CatalogOption> transferTypes,  List<CatalogOption> maintenanceResults,  List<CatalogOption> documentTypes,  List<CatalogOption> settableStatuses)?  $default,) {final _that = this;
 switch (_that) {
 case _AssetFilters() when $default != null:
-return $default(_that.sites,_that.users,_that.transferTypes,_that.maintenanceResults,_that.documentTypes,_that.settableStatuses);case _:
+return $default(_that.sites,_that.users,_that.suppliers,_that.transferTypes,_that.maintenanceResults,_that.documentTypes,_that.settableStatuses);case _:
   return null;
 
 }
@@ -1024,7 +1025,7 @@ return $default(_that.sites,_that.users,_that.transferTypes,_that.maintenanceRes
 @JsonSerializable()
 
 class _AssetFilters implements AssetFilters {
-  const _AssetFilters({final  List<AssetSite> sites = const [], final  List<NamedRef> users = const [], final  List<CatalogOption> transferTypes = const [], final  List<CatalogOption> maintenanceResults = const [], final  List<CatalogOption> documentTypes = const [], final  List<CatalogOption> settableStatuses = const []}): _sites = sites,_users = users,_transferTypes = transferTypes,_maintenanceResults = maintenanceResults,_documentTypes = documentTypes,_settableStatuses = settableStatuses;
+  const _AssetFilters({final  List<AssetSite> sites = const [], final  List<NamedRef> users = const [], final  List<NamedRef> suppliers = const [], final  List<CatalogOption> transferTypes = const [], final  List<CatalogOption> maintenanceResults = const [], final  List<CatalogOption> documentTypes = const [], final  List<CatalogOption> settableStatuses = const []}): _sites = sites,_users = users,_suppliers = suppliers,_transferTypes = transferTypes,_maintenanceResults = maintenanceResults,_documentTypes = documentTypes,_settableStatuses = settableStatuses;
   factory _AssetFilters.fromJson(Map<String, dynamic> json) => _$AssetFiltersFromJson(json);
 
  final  List<AssetSite> _sites;
@@ -1039,6 +1040,13 @@ class _AssetFilters implements AssetFilters {
   if (_users is EqualUnmodifiableListView) return _users;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_users);
+}
+
+ final  List<NamedRef> _suppliers;
+@override@JsonKey() List<NamedRef> get suppliers {
+  if (_suppliers is EqualUnmodifiableListView) return _suppliers;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_suppliers);
 }
 
  final  List<CatalogOption> _transferTypes;
@@ -1083,16 +1091,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AssetFilters&&const DeepCollectionEquality().equals(other._sites, _sites)&&const DeepCollectionEquality().equals(other._users, _users)&&const DeepCollectionEquality().equals(other._transferTypes, _transferTypes)&&const DeepCollectionEquality().equals(other._maintenanceResults, _maintenanceResults)&&const DeepCollectionEquality().equals(other._documentTypes, _documentTypes)&&const DeepCollectionEquality().equals(other._settableStatuses, _settableStatuses));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AssetFilters&&const DeepCollectionEquality().equals(other._sites, _sites)&&const DeepCollectionEquality().equals(other._users, _users)&&const DeepCollectionEquality().equals(other._suppliers, _suppliers)&&const DeepCollectionEquality().equals(other._transferTypes, _transferTypes)&&const DeepCollectionEquality().equals(other._maintenanceResults, _maintenanceResults)&&const DeepCollectionEquality().equals(other._documentTypes, _documentTypes)&&const DeepCollectionEquality().equals(other._settableStatuses, _settableStatuses));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_sites),const DeepCollectionEquality().hash(_users),const DeepCollectionEquality().hash(_transferTypes),const DeepCollectionEquality().hash(_maintenanceResults),const DeepCollectionEquality().hash(_documentTypes),const DeepCollectionEquality().hash(_settableStatuses));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_sites),const DeepCollectionEquality().hash(_users),const DeepCollectionEquality().hash(_suppliers),const DeepCollectionEquality().hash(_transferTypes),const DeepCollectionEquality().hash(_maintenanceResults),const DeepCollectionEquality().hash(_documentTypes),const DeepCollectionEquality().hash(_settableStatuses));
 
 @override
 String toString() {
-  return 'AssetFilters(sites: $sites, users: $users, transferTypes: $transferTypes, maintenanceResults: $maintenanceResults, documentTypes: $documentTypes, settableStatuses: $settableStatuses)';
+  return 'AssetFilters(sites: $sites, users: $users, suppliers: $suppliers, transferTypes: $transferTypes, maintenanceResults: $maintenanceResults, documentTypes: $documentTypes, settableStatuses: $settableStatuses)';
 }
 
 
@@ -1103,7 +1111,7 @@ abstract mixin class _$AssetFiltersCopyWith<$Res> implements $AssetFiltersCopyWi
   factory _$AssetFiltersCopyWith(_AssetFilters value, $Res Function(_AssetFilters) _then) = __$AssetFiltersCopyWithImpl;
 @override @useResult
 $Res call({
- List<AssetSite> sites, List<NamedRef> users, List<CatalogOption> transferTypes, List<CatalogOption> maintenanceResults, List<CatalogOption> documentTypes, List<CatalogOption> settableStatuses
+ List<AssetSite> sites, List<NamedRef> users, List<NamedRef> suppliers, List<CatalogOption> transferTypes, List<CatalogOption> maintenanceResults, List<CatalogOption> documentTypes, List<CatalogOption> settableStatuses
 });
 
 
@@ -1120,10 +1128,11 @@ class __$AssetFiltersCopyWithImpl<$Res>
 
 /// Create a copy of AssetFilters
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? sites = null,Object? users = null,Object? transferTypes = null,Object? maintenanceResults = null,Object? documentTypes = null,Object? settableStatuses = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? sites = null,Object? users = null,Object? suppliers = null,Object? transferTypes = null,Object? maintenanceResults = null,Object? documentTypes = null,Object? settableStatuses = null,}) {
   return _then(_AssetFilters(
 sites: null == sites ? _self._sites : sites // ignore: cast_nullable_to_non_nullable
 as List<AssetSite>,users: null == users ? _self._users : users // ignore: cast_nullable_to_non_nullable
+as List<NamedRef>,suppliers: null == suppliers ? _self._suppliers : suppliers // ignore: cast_nullable_to_non_nullable
 as List<NamedRef>,transferTypes: null == transferTypes ? _self._transferTypes : transferTypes // ignore: cast_nullable_to_non_nullable
 as List<CatalogOption>,maintenanceResults: null == maintenanceResults ? _self._maintenanceResults : maintenanceResults // ignore: cast_nullable_to_non_nullable
 as List<CatalogOption>,documentTypes: null == documentTypes ? _self._documentTypes : documentTypes // ignore: cast_nullable_to_non_nullable

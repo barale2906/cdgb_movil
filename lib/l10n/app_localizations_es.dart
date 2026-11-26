@@ -2314,4 +2314,146 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get transferApplied => 'Traslado aplicado.';
+
+  @override
+  String get maintenanceStatusScheduled => 'Programado';
+
+  @override
+  String get maintenanceStatusOverdue => 'Vencido';
+
+  @override
+  String get maintenanceStatusInProgress => 'En curso';
+
+  @override
+  String get maintenanceStatusCompleted => 'Realizado';
+
+  @override
+  String get maintenanceStatusCancelled => 'Cancelado';
+
+  @override
+  String get maintenanceTypePreventive => 'Preventivo';
+
+  @override
+  String get maintenanceTypeCalibration => 'Calibración';
+
+  @override
+  String get maintenanceTypeMetrological => 'Verificación metrológica';
+
+  @override
+  String get maintenanceTypeInspection => 'Inspección';
+
+  @override
+  String get maintenanceTypeCorrective => 'Correctivo';
+
+  @override
+  String get maintenanceResultOperational => 'Operativo';
+
+  @override
+  String get maintenanceResultRestricted => 'Operativo con restricciones';
+
+  @override
+  String get maintenanceResultOutOfService => 'Fuera de servicio';
+
+  @override
+  String get maintenanceEmpty => 'No hay mantenimientos para mostrar.';
+
+  @override
+  String get maintenanceDetailTitle => 'Mantenimiento';
+
+  @override
+  String get maintenanceScheduledDate => 'Fecha programada';
+
+  @override
+  String get maintenanceStartedAt => 'Iniciado';
+
+  @override
+  String get maintenancePerformedAt => 'Fecha de ejecución';
+
+  @override
+  String get maintenanceReportedFailure => 'Falla reportada';
+
+  @override
+  String get maintenanceTechnician => 'Técnico';
+
+  @override
+  String get maintenanceActivities => 'Actividades realizadas';
+
+  @override
+  String get maintenanceFindings => 'Hallazgos (opcional)';
+
+  @override
+  String get maintenanceRecommendations => 'Recomendaciones (opcional)';
+
+  @override
+  String get maintenanceResult => 'Resultado';
+
+  @override
+  String get maintenanceCost => 'Costo (opcional)';
+
+  @override
+  String get maintenanceParts => 'Repuestos cambiados';
+
+  @override
+  String get maintenanceStart => 'Iniciar mantenimiento';
+
+  @override
+  String get maintenanceStartTitle => 'Iniciar mantenimiento';
+
+  @override
+  String get maintenanceStartBody =>
+      'El activo pasará a \"En mantenimiento\". ¿Desea continuar?';
+
+  @override
+  String get maintenanceStarted => 'Mantenimiento iniciado.';
+
+  @override
+  String get maintenanceComplete => 'Registrar ejecución';
+
+  @override
+  String get maintenanceCompleteAction => 'Registrar ejecución';
+
+  @override
+  String get maintenanceCompleted => 'Ejecución registrada.';
+
+  @override
+  String get maintenanceCancel => 'Cancelar mantenimiento';
+
+  @override
+  String get maintenanceCancelTitle => 'Cancelar mantenimiento';
+
+  @override
+  String get maintenanceCancelled => 'Mantenimiento cancelado.';
+
+  @override
+  String get maintenanceReport => 'Reporte del mantenimiento (PDF)';
+
+  @override
+  String get maintenanceTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, actualice el mantenimiento: es posible que el cambio sí se haya registrado.';
+
+  @override
+  String get maintenanceInternal => 'Técnico interno';
+
+  @override
+  String get maintenanceExternal => 'Proveedor externo';
+
+  @override
+  String get maintenanceExternalTechnician => 'Nombre del técnico externo';
+
+  @override
+  String get maintenancePartAdd => 'Agregar repuesto';
+
+  @override
+  String get maintenancePartName => 'Repuesto';
+
+  @override
+  String get maintenancePartRemove => 'Quitar repuesto';
+
+  @override
+  String get assetViewMaintenance => 'Ver mantenimiento';
+
+  @override
+  String maintenanceScheduledFor(String date) {
+    return 'Programado para el $date';
+  }
 }

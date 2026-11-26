@@ -4359,6 +4359,282 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Traslado aplicado.'**
   String get transferApplied;
+
+  /// No description provided for @maintenanceStatusScheduled.
+  ///
+  /// In es, this message translates to:
+  /// **'Programado'**
+  String get maintenanceStatusScheduled;
+
+  /// No description provided for @maintenanceStatusOverdue.
+  ///
+  /// In es, this message translates to:
+  /// **'Vencido'**
+  String get maintenanceStatusOverdue;
+
+  /// No description provided for @maintenanceStatusInProgress.
+  ///
+  /// In es, this message translates to:
+  /// **'En curso'**
+  String get maintenanceStatusInProgress;
+
+  /// No description provided for @maintenanceStatusCompleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Realizado'**
+  String get maintenanceStatusCompleted;
+
+  /// No description provided for @maintenanceStatusCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelado'**
+  String get maintenanceStatusCancelled;
+
+  /// No description provided for @maintenanceTypePreventive.
+  ///
+  /// In es, this message translates to:
+  /// **'Preventivo'**
+  String get maintenanceTypePreventive;
+
+  /// No description provided for @maintenanceTypeCalibration.
+  ///
+  /// In es, this message translates to:
+  /// **'Calibración'**
+  String get maintenanceTypeCalibration;
+
+  /// No description provided for @maintenanceTypeMetrological.
+  ///
+  /// In es, this message translates to:
+  /// **'Verificación metrológica'**
+  String get maintenanceTypeMetrological;
+
+  /// No description provided for @maintenanceTypeInspection.
+  ///
+  /// In es, this message translates to:
+  /// **'Inspección'**
+  String get maintenanceTypeInspection;
+
+  /// No description provided for @maintenanceTypeCorrective.
+  ///
+  /// In es, this message translates to:
+  /// **'Correctivo'**
+  String get maintenanceTypeCorrective;
+
+  /// No description provided for @maintenanceResultOperational.
+  ///
+  /// In es, this message translates to:
+  /// **'Operativo'**
+  String get maintenanceResultOperational;
+
+  /// No description provided for @maintenanceResultRestricted.
+  ///
+  /// In es, this message translates to:
+  /// **'Operativo con restricciones'**
+  String get maintenanceResultRestricted;
+
+  /// No description provided for @maintenanceResultOutOfService.
+  ///
+  /// In es, this message translates to:
+  /// **'Fuera de servicio'**
+  String get maintenanceResultOutOfService;
+
+  /// No description provided for @maintenanceEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay mantenimientos para mostrar.'**
+  String get maintenanceEmpty;
+
+  /// No description provided for @maintenanceDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantenimiento'**
+  String get maintenanceDetailTitle;
+
+  /// No description provided for @maintenanceScheduledDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha programada'**
+  String get maintenanceScheduledDate;
+
+  /// No description provided for @maintenanceStartedAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Iniciado'**
+  String get maintenanceStartedAt;
+
+  /// No description provided for @maintenancePerformedAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de ejecución'**
+  String get maintenancePerformedAt;
+
+  /// No description provided for @maintenanceReportedFailure.
+  ///
+  /// In es, this message translates to:
+  /// **'Falla reportada'**
+  String get maintenanceReportedFailure;
+
+  /// No description provided for @maintenanceTechnician.
+  ///
+  /// In es, this message translates to:
+  /// **'Técnico'**
+  String get maintenanceTechnician;
+
+  /// No description provided for @maintenanceActivities.
+  ///
+  /// In es, this message translates to:
+  /// **'Actividades realizadas'**
+  String get maintenanceActivities;
+
+  /// No description provided for @maintenanceFindings.
+  ///
+  /// In es, this message translates to:
+  /// **'Hallazgos (opcional)'**
+  String get maintenanceFindings;
+
+  /// No description provided for @maintenanceRecommendations.
+  ///
+  /// In es, this message translates to:
+  /// **'Recomendaciones (opcional)'**
+  String get maintenanceRecommendations;
+
+  /// No description provided for @maintenanceResult.
+  ///
+  /// In es, this message translates to:
+  /// **'Resultado'**
+  String get maintenanceResult;
+
+  /// No description provided for @maintenanceCost.
+  ///
+  /// In es, this message translates to:
+  /// **'Costo (opcional)'**
+  String get maintenanceCost;
+
+  /// No description provided for @maintenanceParts.
+  ///
+  /// In es, this message translates to:
+  /// **'Repuestos cambiados'**
+  String get maintenanceParts;
+
+  /// No description provided for @maintenanceStart.
+  ///
+  /// In es, this message translates to:
+  /// **'Iniciar mantenimiento'**
+  String get maintenanceStart;
+
+  /// No description provided for @maintenanceStartTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Iniciar mantenimiento'**
+  String get maintenanceStartTitle;
+
+  /// No description provided for @maintenanceStartBody.
+  ///
+  /// In es, this message translates to:
+  /// **'El activo pasará a \"En mantenimiento\". ¿Desea continuar?'**
+  String get maintenanceStartBody;
+
+  /// No description provided for @maintenanceStarted.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantenimiento iniciado.'**
+  String get maintenanceStarted;
+
+  /// No description provided for @maintenanceComplete.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar ejecución'**
+  String get maintenanceComplete;
+
+  /// No description provided for @maintenanceCompleteAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar ejecución'**
+  String get maintenanceCompleteAction;
+
+  /// No description provided for @maintenanceCompleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Ejecución registrada.'**
+  String get maintenanceCompleted;
+
+  /// No description provided for @maintenanceCancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar mantenimiento'**
+  String get maintenanceCancel;
+
+  /// No description provided for @maintenanceCancelTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar mantenimiento'**
+  String get maintenanceCancelTitle;
+
+  /// No description provided for @maintenanceCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantenimiento cancelado.'**
+  String get maintenanceCancelled;
+
+  /// No description provided for @maintenanceReport.
+  ///
+  /// In es, this message translates to:
+  /// **'Reporte del mantenimiento (PDF)'**
+  String get maintenanceReport;
+
+  /// No description provided for @maintenanceTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Antes de repetirlo, actualice el mantenimiento: es posible que el cambio sí se haya registrado.'**
+  String get maintenanceTimeoutWarning;
+
+  /// No description provided for @maintenanceInternal.
+  ///
+  /// In es, this message translates to:
+  /// **'Técnico interno'**
+  String get maintenanceInternal;
+
+  /// No description provided for @maintenanceExternal.
+  ///
+  /// In es, this message translates to:
+  /// **'Proveedor externo'**
+  String get maintenanceExternal;
+
+  /// No description provided for @maintenanceExternalTechnician.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre del técnico externo'**
+  String get maintenanceExternalTechnician;
+
+  /// No description provided for @maintenancePartAdd.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar repuesto'**
+  String get maintenancePartAdd;
+
+  /// No description provided for @maintenancePartName.
+  ///
+  /// In es, this message translates to:
+  /// **'Repuesto'**
+  String get maintenancePartName;
+
+  /// No description provided for @maintenancePartRemove.
+  ///
+  /// In es, this message translates to:
+  /// **'Quitar repuesto'**
+  String get maintenancePartRemove;
+
+  /// No description provided for @assetViewMaintenance.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver mantenimiento'**
+  String get assetViewMaintenance;
+
+  /// No description provided for @maintenanceScheduledFor.
+  ///
+  /// In es, this message translates to:
+  /// **'Programado para el {date}'**
+  String maintenanceScheduledFor(String date);
 }
 
 class _AppLocalizationsDelegate

@@ -10,9 +10,13 @@ import 'package:sga_bojanini/core/router/redirect.dart';
 import 'package:sga_bojanini/core/widgets/pdf_preview_page.dart';
 import 'package:sga_bojanini/features/about/presentation/about_page.dart';
 import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
+import 'package:sga_bojanini/features/assets/application/maintenance_providers.dart';
 import 'package:sga_bojanini/features/assets/application/transfers_providers.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_detail_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/assets_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/complete_maintenance_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/maintenance_detail_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/maintenance_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_confirm_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_detail_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_request_page.dart';
@@ -122,6 +126,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ..._inventoryRoutes(ref),
       ..._purchasingRoutes(ref),
       ..._assetRoutes(ref),
+      ..._maintenanceRoutes(ref),
       ..._reportRoutes(ref),
       ..._monitoringRoutes(ref),
       GoRoute(
@@ -157,6 +162,7 @@ Widget _sectionPage(AppSection section) => switch (section) {
   AppSection.inventory => const InventoryPage(),
   AppSection.purchasing => const PurchasingPage(),
   AppSection.assets => const AssetsPage(),
+  AppSection.maintenance => const MaintenancePage(),
   AppSection.monitoring => const MonitoringPage(),
   AppSection.reports => const ReportsPage(),
   _ => SectionPlaceholderPage(section: section),
@@ -176,6 +182,31 @@ GoRouterRedirect _requiresAny(Ref ref, List<String> permissions) =>
     : Routes.home;
 
 int _id(GoRouterState state) => int.parse(state.pathParameters['id']!);
+
+/// Detalle, ejecución y reporte de un mantenimiento (la lista es la sección
+/// `/maintenance`).
+List<GoRoute> _maintenanceRoutes(Ref ref) => [
+  GoRoute(
+    path: '/maintenance/:id',
+    redirect: _requires(ref, 'activos_mantenimientos.ver'),
+    builder: (_, state) => MaintenanceDetailPage(maintenanceId: _id(state)),
+    routes: [
+      GoRoute(
+        path: 'complete',
+        redirect: _requires(ref, 'activos_mantenimientos.ejecutar'),
+        builder: (_, state) =>
+            CompleteMaintenancePage(maintenanceId: _id(state)),
+      ),
+      GoRoute(
+        path: 'report',
+        builder: (_, state) => PdfPreviewPage(
+          provider: maintenanceReportProvider(_id(state)),
+          fileName: 'mantenimiento-${_id(state)}.pdf',
+        ),
+      ),
+    ],
+  ),
+];
 
 /// Ficha y hoja de vida de un activo (la lista es la sección `/assets`).
 List<GoRoute> _assetRoutes(Ref ref) => [

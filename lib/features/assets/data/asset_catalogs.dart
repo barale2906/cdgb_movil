@@ -45,6 +45,7 @@ abstract class AssetFilters with _$AssetFilters {
   const factory AssetFilters({
     @Default([]) List<AssetSite> sites,
     @Default([]) List<NamedRef> users,
+    @Default([]) List<NamedRef> suppliers,
     @Default([]) List<CatalogOption> transferTypes,
     @Default([]) List<CatalogOption> maintenanceResults,
     @Default([]) List<CatalogOption> documentTypes,

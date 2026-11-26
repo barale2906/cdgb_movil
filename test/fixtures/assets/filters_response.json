@@ -19,8 +19,23 @@
     ]
    }
   ],
-  "users": [],
-  "suppliers": [],
+  "users": [
+   {
+    "id": 3,
+    "name": "Usuario Prueba"
+   },
+   {
+    "id": 4,
+    "name": "Técnico Dos"
+   }
+  ],
+  "suppliers": [
+   {
+    "id": 4,
+    "name": "Droguería Proveedor S.A.S.",
+    "tax_id": "900000000-1"
+   }
+  ],
   "asset_types": [],
   "statuses": [],
   "settable_statuses": [

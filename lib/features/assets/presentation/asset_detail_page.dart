@@ -102,6 +102,9 @@ class _DataTab extends ConsumerWidget {
     final pending = asset.pendingTransfer;
     // Un traslado pendiente bloquea otro (409) y un activo dado de baja ya no
     // se traslada.
+    final canViewMaintenance = ref
+        .watch(permissionServiceProvider)
+        .can('activos_mantenimientos.ver');
     final canRequestTransfer =
         ref
             .watch(permissionServiceProvider)
@@ -133,6 +136,12 @@ class _DataTab extends ConsumerWidget {
               ),
               kind: StatusKind.error,
               icon: Icons.build_outlined,
+              actionLabel: canViewMaintenance
+                  ? l10n.assetViewMaintenance
+                  : null,
+              onAction: canViewMaintenance
+                  ? () => context.push('/maintenance/${next.id}')
+                  : null,
             ),
           ],
           const SizedBox(height: AppSpacing.md),

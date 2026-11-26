@@ -200,6 +200,26 @@ class AppHarness {
         'GET',
         '/assets/transfers/11',
         body: fixture('assets/transfer_confirmed_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/maintenances',
+        body: fixture('assets/maintenances_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/maintenances/31',
+        body: fixture('assets/maintenance_31_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/maintenances/32',
+        body: fixture('assets/maintenance_32_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/maintenances/33',
+        body: fixture('assets/maintenance_33_response.json'),
       );
   }
 
