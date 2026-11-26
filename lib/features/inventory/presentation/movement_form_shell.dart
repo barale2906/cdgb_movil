@@ -12,19 +12,18 @@ import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
-/// Texto de error de una escritura. Un timeout se explica aparte: el
-/// movimiento pudo haberse registrado, así que se pide revisar antes de
-/// repetirlo (la API no tiene idempotencia).
+/// Texto de error de una escritura de inventario: un timeout pide revisar el
+/// historial antes de repetir el movimiento.
 String writeErrorMessage(
   AppLocalizations l10n,
   ApiException error, {
   required bool isProd,
-}) {
-  if (error is NetworkException && error.kind == NetworkFailureKind.timeout) {
-    return l10n.movementTimeoutWarning;
-  }
-  return ApiErrorMessage.of(l10n, error, isProd: isProd);
-}
+}) => ApiErrorMessage.ofWrite(
+  l10n,
+  error,
+  isProd: isProd,
+  timeoutWarning: l10n.movementTimeoutWarning,
+);
 
 /// Estructura común de los formularios de movimiento: aviso sin conexión,
 /// contenido con scroll, error de envío y el botón principal anclado abajo.
