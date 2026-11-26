@@ -12,6 +12,11 @@ abstract final class AppFormat {
     return format.format(value);
   }
 
+  /// Número escrito por el usuario (acepta coma o punto decimal); `null` si
+  /// está vacío o no es un número.
+  static double? parseDecimal(String? text) =>
+      double.tryParse((text ?? '').trim().replaceAll(',', '.'));
+
   /// Porcentaje con un decimal como máximo: `87,5 %`.
   static String percent(num value) => '${decimal(value, maxDecimals: 1)} %';
 

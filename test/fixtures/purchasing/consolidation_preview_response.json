@@ -1,0 +1,71 @@
+{
+ "success": true,
+ "message": "Vista previa de consolidación",
+ "data": {
+  "supplier": {
+   "id": 4,
+   "name": "Droguería Proveedor S.A.S.",
+   "tax_id": "900000000-1"
+  },
+  "purchase_orders": [
+   {
+    "id": 21,
+    "code": "OC-2026-0021",
+    "total_amount": 500000,
+    "warehouse": {
+     "id": 1,
+     "name": "Bodega Central"
+    }
+   },
+   {
+    "id": 22,
+    "code": "OC-2026-0022",
+    "total_amount": 1190000,
+    "warehouse": {
+     "id": 1,
+     "name": "Bodega Central"
+    }
+   }
+  ],
+  "items": [
+   {
+    "product_variant_id": 5,
+    "product_presentation_id": 8,
+    "quantity": 10,
+    "unit_price": 100000,
+    "tax_rate": 19,
+    "subtotal": 1000000,
+    "tax_amount": 190000,
+    "total_price": 1190000,
+    "source_order_codes": [
+     "OC-2026-0022"
+    ],
+    "variant": {
+     "id": 5,
+     "lab_brand": "Lab Uno",
+     "brand_sku": "LU-1",
+     "generic": {
+      "id": 2,
+      "name": "Gasa estéril",
+      "barcode": "100005"
+     }
+    },
+    "presentation": {
+     "id": 8,
+     "code": "CJ",
+     "name": "Caja x 10"
+    }
+   }
+  ],
+  "subtotal": 1500000,
+  "tax_breakdown": [
+   {
+    "rate": 19,
+    "taxable_base": 1000000,
+    "tax_amount": 190000
+   }
+  ],
+  "tax_amount": 190000,
+  "total_amount": 1690000
+ }
+}

@@ -28,6 +28,21 @@ abstract final class ApiErrorMessage {
     };
   }
 
+  /// Texto de error de una escritura. Un timeout se explica aparte con
+  /// [timeoutWarning]: la operación pudo haberse registrado, así que se pide
+  /// revisar antes de repetirla (la API no tiene idempotencia).
+  static String ofWrite(
+    AppLocalizations l10n,
+    ApiException? error, {
+    required bool isProd,
+    required String timeoutWarning,
+  }) {
+    if (error is NetworkException && error.kind == NetworkFailureKind.timeout) {
+      return timeoutWarning;
+    }
+    return of(l10n, error, isProd: isProd);
+  }
+
   /// Mensaje en formularios de acceso: el 401 es "credenciales inválidas"
   /// (no "sesión terminada") y el 409 informa cuenta desactivada.
   static String loginMessage(

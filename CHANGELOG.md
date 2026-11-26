@@ -2,6 +2,20 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [0.7.0+7] - 2026-11-25
+### Añadido
+- Fase 4 · Compras: órdenes de compra (lista con filtro por estado, detalle, enviar a aprobación, aprobar/rechazar con comentarios, enviar al proveedor, cancelar) y recepción total o parcial con lote, vencimiento y ubicación.
+- Fase 4 · Órdenes de gasto: lista con filtros de estado y de pago, flujo completo, recepción con cantidades decimales, factura, envío a contabilidad y pagos (registrar y eliminar, sin superar el saldo).
+- Fase 4 · Sugerencias de reorden y consolidación de órdenes recibidas por proveedor (vista previa y creación), con lista y detalle de órdenes consolidadas.
+- Tras un tiempo de espera en una acción, la app vuelve a consultar la orden y pide revisarla antes de repetir (no se duplican cambios).
+
+### Cambiado
+- Selector de ubicaciones, lectura de decimales y mensaje de error de escrituras movidos a `core/` para compartirlos con inventario.
+
+### Pendiente
+- Crear y editar órdenes en borrador desde el móvil (prioridad P2).
+- El menú del servidor no incluye órdenes de gasto: hace falta un ajuste de backend para que la sección aparezca a quien solo tenga ese permiso.
+
 ## [0.6.0+6] - 2026-11-25
 ### Añadido
 - Fase 3 · Inicio con tarjetas y gráficas de inventario, compras y monitoreo (cada bloque según permisos), actividad reciente, alertas y accesos rápidos (nuevo movimiento, escanear).

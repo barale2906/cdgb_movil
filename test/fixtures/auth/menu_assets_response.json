@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "message": "Menú de navegación",
+  "data": [
+    {
+      "key": "assets-group",
+      "label": "Activos",
+      "icon": "monitor",
+      "route": null,
+      "permission": null,
+      "actions": [],
+      "children": [
+        {
+          "key": "assets",
+          "label": "Activos",
+          "icon": "monitor",
+          "route": "assets.index",
+          "permission": "activos.ver",
+          "actions": {},
+          "children": []
+        }
+      ]
+    }
+  ]
+}

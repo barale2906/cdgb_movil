@@ -1,0 +1,2 @@
+{ "success": true, "message": "Proveedores con órdenes consolidables", "data": [
+  { "id": 4, "name": "Droguería Proveedor S.A.S.", "tax_id": "900000000-1" } ] }

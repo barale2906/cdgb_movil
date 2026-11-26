@@ -108,6 +108,49 @@ class AppHarness {
       );
   }
 
+  /// Lecturas de compras: órdenes de compra y de gasto, sugerencias,
+  /// consolidadas y el árbol de ubicaciones del almacén 1.
+  void stubPurchasingReads() {
+    final purchases = fixture('purchasing/purchase_orders_response.json');
+    adapter
+      ..on('GET', '/purchase-orders', body: purchases)
+      ..on(
+        'GET',
+        '/purchase-orders/11',
+        body: fixture('purchasing/purchase_order_response.json'),
+      )
+      ..on(
+        'GET',
+        '/purchase-orders/12',
+        body: envelope((purchases['data'] as List).last),
+      )
+      ..on(
+        'GET',
+        '/expense-orders',
+        body: fixture('purchasing/expense_orders_response.json'),
+      )
+      ..on(
+        'GET',
+        '/expense-orders/31',
+        body: fixture('purchasing/expense_order_response.json'),
+      )
+      ..on(
+        'GET',
+        '/purchase-orders/suggestions',
+        body: fixture('purchasing/suggestions_response.json'),
+      )
+      ..on(
+        'GET',
+        '/consolidated-orders',
+        body: fixture('purchasing/consolidated_orders_response.json'),
+      )
+      ..on(
+        'GET',
+        '/warehouses/1/capacity',
+        body: fixture('warehouse/capacity_response.json'),
+      );
+  }
+
   /// Bloques del tablero y notificaciones (sin leer: [unread]).
   void stubDashboard({int unread = 2}) {
     adapter

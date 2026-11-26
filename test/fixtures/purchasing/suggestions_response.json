@@ -1,0 +1,7 @@
+{ "success": true, "message": "Sugerencias", "data": [
+  { "generic_product_id": 2, "product_name": "Gasa estéril", "product_barcode": "100005", "current_stock": 12, "reorder_point": 50,
+    "daily_consumption": 4.5, "lead_time_days": 7, "safety_stock": 10, "suggested_quantity": 80,
+    "preferred_supplier": { "id": 4, "name": "Droguería Proveedor S.A.S." } },
+  { "generic_product_id": 3, "product_name": "Jeringa 5 ml", "product_barcode": null, "current_stock": 0, "reorder_point": 100,
+    "daily_consumption": 0, "lead_time_days": 5, "safety_stock": 0, "suggested_quantity": 120, "preferred_supplier": null }
+] }
