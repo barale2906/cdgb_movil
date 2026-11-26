@@ -24,6 +24,8 @@ import 'package:sga_bojanini/features/assets/presentation/maintenance_page.dart'
 import 'package:sga_bojanini/features/assets/presentation/transfer_confirm_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_detail_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_request_page.dart';
+import 'package:sga_bojanini/features/audit/presentation/audit_detail_page.dart';
+import 'package:sga_bojanini/features/audit/presentation/audit_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/change_password_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/locked_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/login_page.dart';
@@ -155,6 +157,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       ..._serviceOrderRoutes(ref),
       ..._consumptionRoutes(ref),
       GoRoute(
+        path: '${AppSection.audit.path}/:id',
+        redirect: _requires(ref, 'auditoria.ver'),
+        builder: (_, state) => AuditDetailPage(logId: _id(state)),
+      ),
+      GoRoute(
         path: NotificationsPage.path,
         redirect: _requires(ref, notificationsPermission),
         builder: (_, _) => const NotificationsPage(),
@@ -194,6 +201,7 @@ Widget _sectionPage(AppSection section) => switch (section) {
   AppSection.serviceOrders => const ServiceOrdersPage(),
   AppSection.costCenters => const CostCentersPage(),
   AppSection.consumptions => const ConsumptionsPage(),
+  AppSection.audit => const AuditPage(),
   _ => SectionPlaceholderPage(section: section),
 };
 

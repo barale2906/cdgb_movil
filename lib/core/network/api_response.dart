@@ -82,6 +82,22 @@ abstract final class ApiResponse {
     );
   }
 
+  /// Lista paginada con la forma `data: {items: [...], meta: {...}}` (la usan
+  /// consumos y auditoría, a diferencia de `data: [...]` + `meta` de arriba).
+  static PagedList<T> pageInData<T>(
+    Response<dynamic> response,
+    T Function(Json) parse,
+  ) {
+    final data = object(response);
+    final items = data['items'];
+    final meta = data['meta'];
+    if (items is! List<dynamic> || meta is! Json) throw _malformed(response);
+    return PagedList(
+      items: [for (final item in items) parse(_asJson(item, response))],
+      meta: PageMeta.fromJson(meta),
+    );
+  }
+
   static Json _body(Response<dynamic> response) {
     final body = response.data;
     if (body is Json && body['success'] != false) return body;

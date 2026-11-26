@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../helpers/app_harness.dart';
+import '../../helpers/fake_http_adapter.dart';
 
 void main() {
   late AppHarness harness;
@@ -35,10 +36,30 @@ void main() {
     );
   });
 
-  testWidgets('tocar un destino abre la sección con aviso "Próximamente"', (
-    tester,
-  ) async {
-    // Auditoría es de la fase 7: aún muestra "Próximamente".
+  testWidgets('tocar un destino de «Más» abre la sección', (tester) async {
+    harness.adapter
+      ..on(
+        'GET',
+        '/audit-logs',
+        body: envelope({
+          'items': <dynamic>[],
+          'meta': {
+            'current_page': 1,
+            'per_page': 25,
+            'total': 0,
+            'last_page': 1,
+          },
+        }),
+      )
+      ..on(
+        'GET',
+        '/audit-logs/summary',
+        body: envelope({
+          'total': 0,
+          'by_action': <dynamic>[],
+          'by_type': <dynamic>[],
+        }),
+      );
     await signIn(
       tester,
       ['auditoria.ver'],
@@ -55,7 +76,8 @@ void main() {
     await tester.tap(find.text('Auditoría').last);
     await AppHarness.settle(tester);
 
-    expect(find.textContaining('Próximamente'), findsOneWidget);
+    expect(find.text('Hoy'), findsOneWidget);
+    expect(find.textContaining('Próximamente'), findsNothing);
   });
 
   testWidgets('sin módulos no hay barra inferior y se explica por qué', (

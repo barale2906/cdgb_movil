@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "message": "Resumen de auditoría",
+  "data": {
+    "total": 0,
+    "by_action": [],
+    "by_type": []
+  }
+}

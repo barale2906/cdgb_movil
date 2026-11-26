@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "message": "Detalle",
+  "data": {
+    "id": 101,
+    "user_id": 1,
+    "user_name": "Usuario Prueba",
+    "action": "updated",
+    "auditable_type": "App\\Modules\\Catalog\\Infrastructure\\Persistence\\Models\\GenericProductModel",
+    "auditable_id": 5,
+    "old_values": {
+      "name": "Gasa",
+      "min_stock": "10.00",
+      "password": "hash-antiguo"
+    },
+    "new_values": {
+      "name": "Gasa estéril",
+      "min_stock": "20.00",
+      "password": "hash-nuevo"
+    },
+    "ip_address": "192.168.81.20",
+    "user_agent": "SGA Android",
+    "created_at": "2026-11-26 09:30:00"
+  }
+}

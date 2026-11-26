@@ -1,0 +1,66 @@
+{
+  "success": true,
+  "message": "Listado de registros de auditoría",
+  "data": {
+    "items": [
+      {
+        "id": 101,
+        "user_id": 1,
+        "user_name": "Usuario Prueba",
+        "action": "updated",
+        "auditable_type": "App\\Modules\\Catalog\\Infrastructure\\Persistence\\Models\\GenericProductModel",
+        "auditable_id": 5,
+        "old_values": {
+          "name": "Gasa",
+          "min_stock": "10.00",
+          "password": "hash-antiguo"
+        },
+        "new_values": {
+          "name": "Gasa estéril",
+          "min_stock": "20.00",
+          "password": "hash-nuevo"
+        },
+        "ip_address": "192.168.81.20",
+        "user_agent": "SGA Android",
+        "created_at": "2026-11-26 09:30:00"
+      },
+      {
+        "id": 100,
+        "user_id": null,
+        "user_name": null,
+        "action": "created",
+        "auditable_type": "App\\Modules\\Warehouse\\Infrastructure\\Persistence\\Models\\LocationModel",
+        "auditable_id": "U-12",
+        "old_values": [],
+        "new_values": {
+          "name": "Ubicación 12",
+          "payload": {
+            "a": 1
+          }
+        },
+        "ip_address": null,
+        "user_agent": null,
+        "created_at": "2026-11-25 15:00:00"
+      },
+      {
+        "id": 99,
+        "user_id": 2,
+        "user_name": "Otra Persona",
+        "action": "access",
+        "auditable_type": null,
+        "auditable_id": null,
+        "old_values": [],
+        "new_values": [],
+        "ip_address": "192.168.81.21",
+        "user_agent": "Mozilla",
+        "created_at": "2026-11-25 08:10:00"
+      }
+    ],
+    "meta": {
+      "current_page": 1,
+      "per_page": 25,
+      "total": 3,
+      "last_page": 1
+    }
+  }
+}
