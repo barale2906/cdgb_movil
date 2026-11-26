@@ -4635,6 +4635,120 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Programado para el {date}'**
   String maintenanceScheduledFor(String date);
+
+  /// No description provided for @assetTabDocuments.
+  ///
+  /// In es, this message translates to:
+  /// **'Documentos'**
+  String get assetTabDocuments;
+
+  /// No description provided for @assetDocumentsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Este activo no tiene documentos.'**
+  String get assetDocumentsEmpty;
+
+  /// No description provided for @assetDocumentAdd.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar documento'**
+  String get assetDocumentAdd;
+
+  /// No description provided for @assetDocumentTakePhoto.
+  ///
+  /// In es, this message translates to:
+  /// **'Tomar una foto'**
+  String get assetDocumentTakePhoto;
+
+  /// No description provided for @assetDocumentGallery.
+  ///
+  /// In es, this message translates to:
+  /// **'Elegir de la galería'**
+  String get assetDocumentGallery;
+
+  /// No description provided for @assetDocumentFile.
+  ///
+  /// In es, this message translates to:
+  /// **'Elegir un archivo (PDF o imagen)'**
+  String get assetDocumentFile;
+
+  /// No description provided for @assetDocumentTooLarge.
+  ///
+  /// In es, this message translates to:
+  /// **'El archivo supera los 10 MB. Elija uno más liviano.'**
+  String get assetDocumentTooLarge;
+
+  /// No description provided for @assetDocumentExpired.
+  ///
+  /// In es, this message translates to:
+  /// **'Vencido'**
+  String get assetDocumentExpired;
+
+  /// No description provided for @assetDocumentDelete.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar documento'**
+  String get assetDocumentDelete;
+
+  /// No description provided for @assetDocumentDeleteBody.
+  ///
+  /// In es, this message translates to:
+  /// **'El documento se eliminará del activo. ¿Desea continuar?'**
+  String get assetDocumentDeleteBody;
+
+  /// No description provided for @assetDocumentDeleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento eliminado.'**
+  String get assetDocumentDeleted;
+
+  /// No description provided for @assetDocumentType.
+  ///
+  /// In es, this message translates to:
+  /// **'Tipo de documento'**
+  String get assetDocumentType;
+
+  /// No description provided for @assetDocumentTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Título'**
+  String get assetDocumentTitle;
+
+  /// No description provided for @assetDocumentIssued.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de emisión (opcional)'**
+  String get assetDocumentIssued;
+
+  /// No description provided for @assetDocumentExpiry.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de vencimiento (opcional)'**
+  String get assetDocumentExpiry;
+
+  /// No description provided for @assetDocumentUpload.
+  ///
+  /// In es, this message translates to:
+  /// **'Subir documento'**
+  String get assetDocumentUpload;
+
+  /// No description provided for @assetDocumentUploaded.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento agregado.'**
+  String get assetDocumentUploaded;
+
+  /// No description provided for @assetDocumentTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Antes de repetirlo, revise los documentos del activo: es posible que sí se haya subido.'**
+  String get assetDocumentTimeoutWarning;
+
+  /// No description provided for @assetDocumentExpires.
+  ///
+  /// In es, this message translates to:
+  /// **'Vence el {date}'**
+  String assetDocumentExpires(String date);
 }
 
 class _AppLocalizationsDelegate

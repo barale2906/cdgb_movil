@@ -14,6 +14,7 @@ import 'package:sga_bojanini/core/widgets/status_chip.dart';
 import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
 import 'package:sga_bojanini/features/assets/data/asset.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_comments_tab.dart';
+import 'package:sga_bojanini/features/assets/presentation/asset_documents_tab.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_history_tab.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_labels.dart';
 import 'package:sga_bojanini/features/assets/presentation/technical_profile_section.dart';
@@ -61,7 +62,7 @@ class _Tabs extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Column(
         children: [
           Material(
@@ -71,6 +72,7 @@ class _Tabs extends StatelessWidget {
                 Tab(text: l10n.assetTabData),
                 Tab(text: l10n.assetTabHistory),
                 Tab(text: l10n.assetTabComments),
+                Tab(text: l10n.assetTabDocuments),
               ],
             ),
           ),
@@ -80,6 +82,7 @@ class _Tabs extends StatelessWidget {
                 _DataTab(asset: asset),
                 AssetHistoryTab(assetId: asset.id),
                 AssetCommentsTab(assetId: asset.id),
+                AssetDocumentsTab(assetId: asset.id),
               ],
             ),
           ),

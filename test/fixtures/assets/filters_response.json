@@ -77,6 +77,10 @@
    {
     "value": "photo",
     "label": "Foto"
+   },
+   {
+    "value": "calibration_certificate",
+    "label": "Certificado de calibración"
    }
   ]
  }

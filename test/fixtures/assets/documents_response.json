@@ -1,0 +1,39 @@
+{
+ "success": true,
+ "message": "Documentos",
+ "data": [
+  {
+   "id": 61,
+   "asset_id": 7,
+   "maintenance_id": null,
+   "document_type": "manual",
+   "document_type_label": "Manual",
+   "title": "Manual del usuario",
+   "original_name": "manual.pdf",
+   "mime_type": "application/pdf",
+   "size": 2411724,
+   "issued_at": "2024-03-01",
+   "expires_at": null,
+   "uploaded_by": {
+    "id": 3,
+    "name": "Usuario Prueba"
+   },
+   "created_at": "2024-03-11T09:00:00-05:00"
+  },
+  {
+   "id": 62,
+   "asset_id": 7,
+   "maintenance_id": 31,
+   "document_type": "calibration_certificate",
+   "document_type_label": "Certificado de calibración",
+   "title": "Certificado 2025",
+   "original_name": "cert.png",
+   "mime_type": "image/png",
+   "size": 84000,
+   "issued_at": "2025-01-10",
+   "expires_at": "2025-12-31",
+   "uploaded_by": null,
+   "created_at": "2025-01-11T09:00:00-05:00"
+  }
+ ]
+}

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/auth/session_controller.dart';
+import 'package:sga_bojanini/core/files/file_picker_gateway.dart';
 import 'package:sga_bojanini/core/navigation/app_section.dart';
 import 'package:sga_bojanini/core/router/redirect.dart';
 import 'package:sga_bojanini/core/widgets/pdf_preview_page.dart';
@@ -15,6 +16,7 @@ import 'package:sga_bojanini/features/assets/application/transfers_providers.dar
 import 'package:sga_bojanini/features/assets/presentation/asset_detail_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/assets_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/complete_maintenance_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/document_upload_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/maintenance_detail_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/maintenance_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_confirm_page.dart';
@@ -238,6 +240,18 @@ List<GoRoute> _assetRoutes(Ref ref) => [
         path: 'transfer',
         redirect: _requires(ref, 'activos_traslados.solicitar'),
         builder: (_, state) => TransferRequestPage(assetId: _id(state)),
+      ),
+      GoRoute(
+        path: 'documents/new',
+        redirect: _requires(ref, 'activos_documentos.cargar'),
+        // El archivo elegido viaja en memoria (extra); sin él no hay nada
+        // que subir.
+        builder: (_, state) => state.extra is PickedFile
+            ? DocumentUploadPage(
+                assetId: _id(state),
+                file: state.extra! as PickedFile,
+              )
+            : const SectionPlaceholderPage(section: AppSection.assets),
       ),
       GoRoute(
         path: 'life-sheet',

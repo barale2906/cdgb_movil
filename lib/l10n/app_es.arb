@@ -1121,5 +1121,31 @@
         "type": "String"
       }
     }
+  },
+  "assetTabDocuments": "Documentos",
+  "assetDocumentsEmpty": "Este activo no tiene documentos.",
+  "assetDocumentAdd": "Agregar documento",
+  "assetDocumentTakePhoto": "Tomar una foto",
+  "assetDocumentGallery": "Elegir de la galería",
+  "assetDocumentFile": "Elegir un archivo (PDF o imagen)",
+  "assetDocumentTooLarge": "El archivo supera los 10 MB. Elija uno más liviano.",
+  "assetDocumentExpired": "Vencido",
+  "assetDocumentDelete": "Eliminar documento",
+  "assetDocumentDeleteBody": "El documento se eliminará del activo. ¿Desea continuar?",
+  "assetDocumentDeleted": "Documento eliminado.",
+  "assetDocumentType": "Tipo de documento",
+  "assetDocumentTitle": "Título",
+  "assetDocumentIssued": "Fecha de emisión (opcional)",
+  "assetDocumentExpiry": "Fecha de vencimiento (opcional)",
+  "assetDocumentUpload": "Subir documento",
+  "assetDocumentUploaded": "Documento agregado.",
+  "assetDocumentTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, revise los documentos del activo: es posible que sí se haya subido.",
+  "assetDocumentExpires": "Vence el {date}",
+  "@assetDocumentExpires": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   }
 }

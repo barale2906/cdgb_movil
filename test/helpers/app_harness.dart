@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/app.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
+import 'package:sga_bojanini/core/files/file_picker_gateway.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/push/push_gateway.dart';
 import 'package:sga_bojanini/core/utils/file_sharer.dart';
@@ -12,6 +13,7 @@ import 'package:sga_bojanini/core/widgets/pdf_viewer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'fake_connectivity.dart';
+import 'fake_file_picker.dart';
 import 'fake_http_adapter.dart';
 import 'fake_push_gateway.dart';
 import 'fixtures.dart';
@@ -31,6 +33,9 @@ class AppHarness {
   final InMemoryTokenStore store;
   final FakeConnectivitySource connectivity;
   final TestClock clock;
+
+  /// Cámara, galería y archivos falsos.
+  final FakeFilePicker picker = FakeFilePicker();
 
   /// Servicio de push falso; sin él, la app corre sin push.
   final FakePushGateway? push;
@@ -203,6 +208,11 @@ class AppHarness {
       )
       ..on(
         'GET',
+        '/assets/7/documents',
+        body: fixture('assets/documents_response.json'),
+      )
+      ..on(
+        'GET',
         '/assets/maintenances',
         body: fixture('assets/maintenances_response.json'),
       )
@@ -303,6 +313,7 @@ class AppHarness {
       ...serverOverrides(adapter: adapter, store: store, clock: clock),
       ...widgetOverrides,
       if (push != null) pushGatewayProvider.overrideWithValue(push!),
+      filePickerProvider.overrideWithValue(picker),
       scannerBuilderProvider.overrideWithValue(
         (context, onCode) => Center(
           child: FilledButton(

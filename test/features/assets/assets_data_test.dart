@@ -85,7 +85,11 @@ void main() {
       expect(filters.sites.single.places, hasLength(2));
       expect(filters.transferTypes.last.requiresSignature, isTrue);
       expect(filters.transferTypes.first.requiresSignature, isFalse);
-      expect(filters.documentTypes.map((o) => o.value), ['manual', 'photo']);
+      expect(filters.documentTypes.map((o) => o.value), [
+        'manual',
+        'photo',
+        'calibration_certificate',
+      ]);
     });
 
     test('indicadores', () {

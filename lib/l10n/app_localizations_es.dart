@@ -2456,4 +2456,66 @@ class AppLocalizationsEs extends AppLocalizations {
   String maintenanceScheduledFor(String date) {
     return 'Programado para el $date';
   }
+
+  @override
+  String get assetTabDocuments => 'Documentos';
+
+  @override
+  String get assetDocumentsEmpty => 'Este activo no tiene documentos.';
+
+  @override
+  String get assetDocumentAdd => 'Agregar documento';
+
+  @override
+  String get assetDocumentTakePhoto => 'Tomar una foto';
+
+  @override
+  String get assetDocumentGallery => 'Elegir de la galería';
+
+  @override
+  String get assetDocumentFile => 'Elegir un archivo (PDF o imagen)';
+
+  @override
+  String get assetDocumentTooLarge =>
+      'El archivo supera los 10 MB. Elija uno más liviano.';
+
+  @override
+  String get assetDocumentExpired => 'Vencido';
+
+  @override
+  String get assetDocumentDelete => 'Eliminar documento';
+
+  @override
+  String get assetDocumentDeleteBody =>
+      'El documento se eliminará del activo. ¿Desea continuar?';
+
+  @override
+  String get assetDocumentDeleted => 'Documento eliminado.';
+
+  @override
+  String get assetDocumentType => 'Tipo de documento';
+
+  @override
+  String get assetDocumentTitle => 'Título';
+
+  @override
+  String get assetDocumentIssued => 'Fecha de emisión (opcional)';
+
+  @override
+  String get assetDocumentExpiry => 'Fecha de vencimiento (opcional)';
+
+  @override
+  String get assetDocumentUpload => 'Subir documento';
+
+  @override
+  String get assetDocumentUploaded => 'Documento agregado.';
+
+  @override
+  String get assetDocumentTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, revise los documentos del activo: es posible que sí se haya subido.';
+
+  @override
+  String assetDocumentExpires(String date) {
+    return 'Vence el $date';
+  }
 }
