@@ -10,6 +10,7 @@ import 'package:sga_bojanini/core/auth/token_store.dart';
 import 'package:sga_bojanini/core/clock/clock.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
+import 'package:sga_bojanini/core/push/device_registrar.dart';
 
 /// Dueño de la sesión: login, restauración, bloqueo, turno y cierre.
 /// Plan: `docs/plan/02-arquitectura.md` §4.
@@ -53,6 +54,7 @@ class SessionController extends Notifier<SessionState> {
         locked: _lockedAtStartup(stored),
       );
       unawaited(_refreshTokenIfStale(stored));
+      _registerDevice();
     } on UnauthenticatedException {
       await _endSession(SessionEndReason.expired);
     } on ForbiddenException catch (error) {
@@ -83,6 +85,7 @@ class SessionController extends Notifier<SessionState> {
       ),
     );
     state = SessionState.authenticated(user: result.user, startedAt: now);
+    _registerDevice();
   }
 
   void lock() {
@@ -212,12 +215,23 @@ class SessionController extends Notifier<SessionState> {
     SessionEndReason? reason, {
     String? serverToken,
   }) async {
-    if (serverToken != null) await _revokeQuietly(serverToken);
+    if (serverToken != null) {
+      // Antes de revocar el token: el servidor aún acepta la baja del equipo.
+      await ref
+          .read(deviceRegistrarProvider)
+          .unregisterQuietly(authToken: serverToken);
+      await _revokeQuietly(serverToken);
+    }
     await _store.clear();
     if (!ref.mounted) return;
     ref.read(authTokenProvider.notifier).replace(null);
     state = SessionState.unauthenticated(reason: reason);
   }
+
+  /// Vincula el teléfono con el usuario para sus avisos push. No espera: el
+  /// push nunca debe demorar ni impedir el ingreso.
+  void _registerDevice() =>
+      unawaited(ref.read(deviceRegistrarProvider).registerQuietly());
 
   Future<void> _revokeQuietly(String token) async {
     try {

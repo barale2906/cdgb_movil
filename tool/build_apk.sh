@@ -14,6 +14,10 @@ flavor="$(flavor_for "$file")"
 key_props="${SGA_KEY_PROPERTIES:-$HOME/.android-keys/sga-bojanini/key.properties}"
 [[ -f "$key_props" ]] || die "No se encontró $key_props: sin keystore no se genera un APK distribuible."
 
+# Push (FCM): sin google-services.json del sabor el APK funciona, pero SIN avisos push.
+[[ -f "android/app/src/$flavor/google-services.json" ]] \
+  || echo "AVISO: falta android/app/src/$flavor/google-services.json; este APK no recibirá avisos push." >&2
+
 version_line="$(grep -E '^version:' pubspec.yaml | awk '{print $2}')"
 version="${version_line%%+*}"
 build="${version_line##*+}"
