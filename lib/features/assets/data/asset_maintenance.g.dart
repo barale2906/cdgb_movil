@@ -109,3 +109,37 @@ Map<String, dynamic> _$AssetMaintenanceToJson(_AssetMaintenance instance) =>
       'signatures': instance.signatures.map((e) => e.toJson()).toList(),
       'created_at': instance.createdAt,
     };
+
+_MaintenancePlan _$MaintenancePlanFromJson(Map<String, dynamic> json) =>
+    _MaintenancePlan(
+      id: (json['id'] as num).toInt(),
+      maintenanceType: json['maintenance_type'] as String?,
+      frequencyValue: (json['frequency_value'] as num?)?.toInt(),
+      frequencyUnit: json['frequency_unit'] as String?,
+      startDate: json['start_date'] as String?,
+      performedByType: json['performed_by_type'] as String?,
+      technician: json['technician'] == null
+          ? null
+          : NamedRef.fromJson(json['technician'] as Map<String, dynamic>),
+      supplier: json['supplier'] == null
+          ? null
+          : NamedRef.fromJson(json['supplier'] as Map<String, dynamic>),
+      notes: json['notes'] as String?,
+      isActive: json['is_active'] as bool? ?? true,
+      nextDate: json['next_date'] as String?,
+    );
+
+Map<String, dynamic> _$MaintenancePlanToJson(_MaintenancePlan instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'maintenance_type': instance.maintenanceType,
+      'frequency_value': instance.frequencyValue,
+      'frequency_unit': instance.frequencyUnit,
+      'start_date': instance.startDate,
+      'performed_by_type': instance.performedByType,
+      'technician': instance.technician?.toJson(),
+      'supplier': instance.supplier?.toJson(),
+      'notes': instance.notes,
+      'is_active': instance.isActive,
+      'next_date': instance.nextDate,
+    };

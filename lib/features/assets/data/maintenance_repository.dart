@@ -115,6 +115,13 @@ class MaintenanceRepository {
     return AssetMaintenance.fromJson(ApiResponse.object(response));
   });
 
+  Future<List<MaintenancePlan>> plans(int assetId) => apiCall(() async {
+    final response = await _dio.get<dynamic>(
+      '/assets/$assetId/maintenance-plans',
+    );
+    return ApiResponse.list(response, MaintenancePlan.fromJson);
+  });
+
   Future<AssetMaintenance> start(int id) => _post(id, 'start');
 
   Future<AssetMaintenance> complete(

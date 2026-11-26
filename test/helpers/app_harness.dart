@@ -208,6 +208,11 @@ class AppHarness {
       )
       ..on(
         'GET',
+        '/assets/7/maintenance-plans',
+        body: fixture('assets/plans_response.json'),
+      )
+      ..on(
+        'GET',
         '/assets/7/documents',
         body: fixture('assets/documents_response.json'),
       )

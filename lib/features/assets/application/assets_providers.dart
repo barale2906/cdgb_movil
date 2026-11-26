@@ -8,6 +8,7 @@ import 'package:sga_bojanini/core/paging/paged_notifier.dart';
 import 'package:sga_bojanini/core/utils/submission_notifier.dart';
 import 'package:sga_bojanini/features/assets/data/asset.dart';
 import 'package:sga_bojanini/features/assets/data/asset_catalogs.dart';
+import 'package:sga_bojanini/features/assets/data/asset_enums.dart';
 import 'package:sga_bojanini/features/assets/data/asset_events.dart';
 import 'package:sga_bojanini/features/assets/data/assets_repository.dart';
 
@@ -98,4 +99,31 @@ final NotifierProvider<AddCommentController, SubmissionState>
 addCommentControllerProvider =
     NotifierProvider.autoDispose<AddCommentController, SubmissionState>(
       AddCommentController.new,
+    );
+
+/// Cambia el estado del activo y refresca lo que lo muestra. Escritura:
+/// botón bloqueado en vuelo y sin reintentos; tras un timeout se consulta la
+/// ficha antes de repetir.
+class ChangeStatusController extends SubmissionNotifier {
+  Future<bool> change(int assetId, AssetStatus status, {String? reason}) async {
+    final asset = await runValue(
+      () => ref
+          .read(assetsRepositoryProvider)
+          .changeStatus(assetId, status, reason: reason),
+    );
+    if (ref.mounted) {
+      ref
+        ..invalidate(assetDetailProvider(assetId))
+        ..invalidate(assetListProvider)
+        ..invalidate(assetStatisticsProvider)
+        ..invalidate(assetMovementsProvider(assetId));
+    }
+    return asset != null;
+  }
+}
+
+final NotifierProvider<ChangeStatusController, SubmissionState>
+changeStatusControllerProvider =
+    NotifierProvider.autoDispose<ChangeStatusController, SubmissionState>(
+      ChangeStatusController.new,
     );

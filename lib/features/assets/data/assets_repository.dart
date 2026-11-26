@@ -124,6 +124,20 @@ class AssetsRepository {
     return AssetComment.fromJson(ApiResponse.object(response));
   });
 
+  /// Cambia el estado (operativo, en mantenimiento, fuera de servicio,
+  /// disponible). Escritura: no se reintenta.
+  Future<Asset> changeStatus(int id, AssetStatus status, {String? reason}) =>
+      apiCall(() async {
+        final response = await _dio.post<dynamic>(
+          '/assets/$id/status',
+          data: {
+            'status': status.value,
+            if ((reason ?? '').trim().isNotEmpty) 'reason': reason!.trim(),
+          },
+        );
+        return Asset.fromJson(ApiResponse.object(response));
+      });
+
   /// Hoja de vida en PDF (binario).
   Future<Uint8List> lifeSheet(int id) => apiCall(() async {
     final response = await _dio.get<List<int>>(

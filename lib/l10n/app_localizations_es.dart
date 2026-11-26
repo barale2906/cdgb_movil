@@ -2518,4 +2518,42 @@ class AppLocalizationsEs extends AppLocalizations {
   String assetDocumentExpires(String date) {
     return 'Vence el $date';
   }
+
+  @override
+  String get assetChangeStatus => 'Cambiar estado';
+
+  @override
+  String get assetNewStatus => 'Estado nuevo';
+
+  @override
+  String get assetStatusReason => 'Motivo (opcional)';
+
+  @override
+  String get assetStatusChanged => 'Estado actualizado.';
+
+  @override
+  String get assetStatusTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, actualice la ficha: es posible que el estado sí haya cambiado.';
+
+  @override
+  String get assetMaintenancePlans => 'Planes de mantenimiento';
+
+  @override
+  String get planUnitDays => 'días';
+
+  @override
+  String get planUnitMonths => 'meses';
+
+  @override
+  String get planInactive => 'Inactivo';
+
+  @override
+  String planEvery(int value, String unit) {
+    return 'Cada $value $unit';
+  }
+
+  @override
+  String planNext(String date) {
+    return 'Próximo: $date';
+  }
 }

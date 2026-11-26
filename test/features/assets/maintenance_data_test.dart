@@ -65,6 +65,21 @@ void main() {
     });
   });
 
+  test('MaintenancePlan (contrato): frecuencia, próxima fecha y estado', () {
+    final plans =
+        (fixture('assets/plans_response.json')['data'] as List<dynamic>)
+            .map((e) => MaintenancePlan.fromJson(e as Json))
+            .toList();
+    expect(plans.first.type, MaintenanceType.preventive);
+    expect(plans.first.frequencyValue, 6);
+    expect(plans.first.frequencyUnit, 'months');
+    expect(plans.first.nextDate, '2026-11-10');
+    expect(plans.first.isActive, isTrue);
+    expect(plans.last.isActive, isFalse);
+    expect(plans.last.supplier?.name, 'Droguería Proveedor S.A.S.');
+    expect(plans.last.nextDate, isNull);
+  });
+
   group('CompleteMaintenanceRequest', () {
     test('interno: técnico, hora de Colombia y solo campos con valor', () {
       final json = CompleteMaintenanceRequest(
@@ -233,6 +248,15 @@ void main() {
         adapter.callsTo('POST', '/assets/maintenances/33/start'),
         hasLength(1),
       );
+    });
+
+    test('planes del activo', () async {
+      adapter.on(
+        'GET',
+        '/assets/7/maintenance-plans',
+        body: fixture('assets/plans_response.json'),
+      );
+      expect(await repository.plans(7), hasLength(2));
     });
 
     test('detalle y reporte en PDF', () async {

@@ -4749,6 +4749,72 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Vence el {date}'**
   String assetDocumentExpires(String date);
+
+  /// No description provided for @assetChangeStatus.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambiar estado'**
+  String get assetChangeStatus;
+
+  /// No description provided for @assetNewStatus.
+  ///
+  /// In es, this message translates to:
+  /// **'Estado nuevo'**
+  String get assetNewStatus;
+
+  /// No description provided for @assetStatusReason.
+  ///
+  /// In es, this message translates to:
+  /// **'Motivo (opcional)'**
+  String get assetStatusReason;
+
+  /// No description provided for @assetStatusChanged.
+  ///
+  /// In es, this message translates to:
+  /// **'Estado actualizado.'**
+  String get assetStatusChanged;
+
+  /// No description provided for @assetStatusTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Antes de repetirlo, actualice la ficha: es posible que el estado sí haya cambiado.'**
+  String get assetStatusTimeoutWarning;
+
+  /// No description provided for @assetMaintenancePlans.
+  ///
+  /// In es, this message translates to:
+  /// **'Planes de mantenimiento'**
+  String get assetMaintenancePlans;
+
+  /// No description provided for @planUnitDays.
+  ///
+  /// In es, this message translates to:
+  /// **'días'**
+  String get planUnitDays;
+
+  /// No description provided for @planUnitMonths.
+  ///
+  /// In es, this message translates to:
+  /// **'meses'**
+  String get planUnitMonths;
+
+  /// No description provided for @planInactive.
+  ///
+  /// In es, this message translates to:
+  /// **'Inactivo'**
+  String get planInactive;
+
+  /// No description provided for @planEvery.
+  ///
+  /// In es, this message translates to:
+  /// **'Cada {value} {unit}'**
+  String planEvery(int value, String unit);
+
+  /// No description provided for @planNext.
+  ///
+  /// In es, this message translates to:
+  /// **'Próximo: {date}'**
+  String planNext(String date);
 }
 
 class _AppLocalizationsDelegate

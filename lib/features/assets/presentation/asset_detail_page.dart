@@ -1,10 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
+import 'package:sga_bojanini/core/config/app_environment.dart';
+import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/alert_banner.dart';
+import 'package:sga_bojanini/core/widgets/api_error_message.dart';
+import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/info_row.dart';
@@ -13,10 +19,13 @@ import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
 import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
 import 'package:sga_bojanini/features/assets/data/asset.dart';
+import 'package:sga_bojanini/features/assets/data/asset_enums.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_comments_tab.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_documents_tab.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_history_tab.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_labels.dart';
+import 'package:sga_bojanini/features/assets/presentation/change_status_dialog.dart';
+import 'package:sga_bojanini/features/assets/presentation/maintenance_plans_section.dart';
 import 'package:sga_bojanini/features/assets/presentation/technical_profile_section.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
@@ -105,6 +114,11 @@ class _DataTab extends ConsumerWidget {
     final pending = asset.pendingTransfer;
     // Un traslado pendiente bloquea otro (409) y un activo dado de baja ya no
     // se traslada.
+    // Mantiene vivo el controlador mientras el servidor responde.
+    ref.watch(changeStatusControllerProvider);
+    final canChangeStatus =
+        ref.watch(permissionServiceProvider).can('activos.editar') &&
+        !asset.isRetired;
     final canViewMaintenance = ref
         .watch(permissionServiceProvider)
         .can('activos_mantenimientos.ver');
@@ -194,12 +208,22 @@ class _DataTab extends ConsumerWidget {
             ),
           ],
           TechnicalProfileSection(profile: asset.technicalProfile),
+          if (canViewMaintenance) MaintenancePlansSection(assetId: asset.id),
           const SizedBox(height: AppSpacing.lg),
           if (canRequestTransfer) ...[
             BojaniButton(
               label: l10n.transferRequestAction,
               icon: Icons.swap_horiz,
               onPressed: () => context.push('/assets/${asset.id}/transfer'),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+          ],
+          if (canChangeStatus) ...[
+            BojaniButton(
+              label: l10n.assetChangeStatus,
+              icon: Icons.published_with_changes,
+              kind: BojaniButtonKind.secondary,
+              onPressed: () => unawaited(_changeStatus(context, ref)),
             ),
             const SizedBox(height: AppSpacing.sm),
           ],
@@ -211,6 +235,39 @@ class _DataTab extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> _changeStatus(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context);
+    final filters = await ref.read(assetFiltersProvider.future);
+    if (!context.mounted) return;
+    final options = [
+      for (final option in filters.settableStatuses)
+        if (AssetStatus.parse(option.value) != asset.status &&
+            AssetStatus.parse(option.value) != AssetStatus.unknown)
+          AssetStatus.parse(option.value),
+    ];
+    final choice = await askNewStatus(context, options: options);
+    if (choice == null || !context.mounted) return;
+    final done = await ref
+        .read(changeStatusControllerProvider.notifier)
+        .change(asset.id, choice.status, reason: choice.reason);
+    if (!context.mounted) return;
+    if (done) {
+      AppSnackbar.show(context, l10n.assetStatusChanged);
+      return;
+    }
+    AppSnackbar.show(
+      context,
+      ApiErrorMessage.ofWrite(
+        l10n,
+        ref.read(changeStatusControllerProvider).error,
+        isProd: ref.read(appEnvironmentProvider).env == AppEnv.prod,
+        timeoutWarning: l10n.assetStatusTimeoutWarning,
+      ),
+      kind: AppSnackbarKind.error,
+      closeLabel: l10n.actionClose,
     );
   }
 }

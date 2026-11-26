@@ -968,4 +968,345 @@ $NamedRefCopyWith<$Res>? get supplier {
 }
 }
 
+
+/// @nodoc
+mixin _$MaintenancePlan {
+
+ int get id; String? get maintenanceType; int? get frequencyValue; String? get frequencyUnit; String? get startDate; String? get performedByType; NamedRef? get technician; NamedRef? get supplier; String? get notes; bool get isActive; String? get nextDate;
+/// Create a copy of MaintenancePlan
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MaintenancePlanCopyWith<MaintenancePlan> get copyWith => _$MaintenancePlanCopyWithImpl<MaintenancePlan>(this as MaintenancePlan, _$identity);
+
+  /// Serializes this MaintenancePlan to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MaintenancePlan&&(identical(other.id, id) || other.id == id)&&(identical(other.maintenanceType, maintenanceType) || other.maintenanceType == maintenanceType)&&(identical(other.frequencyValue, frequencyValue) || other.frequencyValue == frequencyValue)&&(identical(other.frequencyUnit, frequencyUnit) || other.frequencyUnit == frequencyUnit)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.performedByType, performedByType) || other.performedByType == performedByType)&&(identical(other.technician, technician) || other.technician == technician)&&(identical(other.supplier, supplier) || other.supplier == supplier)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.nextDate, nextDate) || other.nextDate == nextDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,maintenanceType,frequencyValue,frequencyUnit,startDate,performedByType,technician,supplier,notes,isActive,nextDate);
+
+@override
+String toString() {
+  return 'MaintenancePlan(id: $id, maintenanceType: $maintenanceType, frequencyValue: $frequencyValue, frequencyUnit: $frequencyUnit, startDate: $startDate, performedByType: $performedByType, technician: $technician, supplier: $supplier, notes: $notes, isActive: $isActive, nextDate: $nextDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MaintenancePlanCopyWith<$Res>  {
+  factory $MaintenancePlanCopyWith(MaintenancePlan value, $Res Function(MaintenancePlan) _then) = _$MaintenancePlanCopyWithImpl;
+@useResult
+$Res call({
+ int id, String? maintenanceType, int? frequencyValue, String? frequencyUnit, String? startDate, String? performedByType, NamedRef? technician, NamedRef? supplier, String? notes, bool isActive, String? nextDate
+});
+
+
+$NamedRefCopyWith<$Res>? get technician;$NamedRefCopyWith<$Res>? get supplier;
+
+}
+/// @nodoc
+class _$MaintenancePlanCopyWithImpl<$Res>
+    implements $MaintenancePlanCopyWith<$Res> {
+  _$MaintenancePlanCopyWithImpl(this._self, this._then);
+
+  final MaintenancePlan _self;
+  final $Res Function(MaintenancePlan) _then;
+
+/// Create a copy of MaintenancePlan
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? maintenanceType = freezed,Object? frequencyValue = freezed,Object? frequencyUnit = freezed,Object? startDate = freezed,Object? performedByType = freezed,Object? technician = freezed,Object? supplier = freezed,Object? notes = freezed,Object? isActive = null,Object? nextDate = freezed,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,maintenanceType: freezed == maintenanceType ? _self.maintenanceType : maintenanceType // ignore: cast_nullable_to_non_nullable
+as String?,frequencyValue: freezed == frequencyValue ? _self.frequencyValue : frequencyValue // ignore: cast_nullable_to_non_nullable
+as int?,frequencyUnit: freezed == frequencyUnit ? _self.frequencyUnit : frequencyUnit // ignore: cast_nullable_to_non_nullable
+as String?,startDate: freezed == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable
+as String?,performedByType: freezed == performedByType ? _self.performedByType : performedByType // ignore: cast_nullable_to_non_nullable
+as String?,technician: freezed == technician ? _self.technician : technician // ignore: cast_nullable_to_non_nullable
+as NamedRef?,supplier: freezed == supplier ? _self.supplier : supplier // ignore: cast_nullable_to_non_nullable
+as NamedRef?,notes: freezed == notes ? _self.notes : notes // ignore: cast_nullable_to_non_nullable
+as String?,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as bool,nextDate: freezed == nextDate ? _self.nextDate : nextDate // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+/// Create a copy of MaintenancePlan
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NamedRefCopyWith<$Res>? get technician {
+    if (_self.technician == null) {
+    return null;
+  }
+
+  return $NamedRefCopyWith<$Res>(_self.technician!, (value) {
+    return _then(_self.copyWith(technician: value));
+  });
+}/// Create a copy of MaintenancePlan
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NamedRefCopyWith<$Res>? get supplier {
+    if (_self.supplier == null) {
+    return null;
+  }
+
+  return $NamedRefCopyWith<$Res>(_self.supplier!, (value) {
+    return _then(_self.copyWith(supplier: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [MaintenancePlan].
+extension MaintenancePlanPatterns on MaintenancePlan {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MaintenancePlan value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _MaintenancePlan() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MaintenancePlan value)  $default,){
+final _that = this;
+switch (_that) {
+case _MaintenancePlan():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MaintenancePlan value)?  $default,){
+final _that = this;
+switch (_that) {
+case _MaintenancePlan() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String? maintenanceType,  int? frequencyValue,  String? frequencyUnit,  String? startDate,  String? performedByType,  NamedRef? technician,  NamedRef? supplier,  String? notes,  bool isActive,  String? nextDate)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _MaintenancePlan() when $default != null:
+return $default(_that.id,_that.maintenanceType,_that.frequencyValue,_that.frequencyUnit,_that.startDate,_that.performedByType,_that.technician,_that.supplier,_that.notes,_that.isActive,_that.nextDate);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String? maintenanceType,  int? frequencyValue,  String? frequencyUnit,  String? startDate,  String? performedByType,  NamedRef? technician,  NamedRef? supplier,  String? notes,  bool isActive,  String? nextDate)  $default,) {final _that = this;
+switch (_that) {
+case _MaintenancePlan():
+return $default(_that.id,_that.maintenanceType,_that.frequencyValue,_that.frequencyUnit,_that.startDate,_that.performedByType,_that.technician,_that.supplier,_that.notes,_that.isActive,_that.nextDate);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String? maintenanceType,  int? frequencyValue,  String? frequencyUnit,  String? startDate,  String? performedByType,  NamedRef? technician,  NamedRef? supplier,  String? notes,  bool isActive,  String? nextDate)?  $default,) {final _that = this;
+switch (_that) {
+case _MaintenancePlan() when $default != null:
+return $default(_that.id,_that.maintenanceType,_that.frequencyValue,_that.frequencyUnit,_that.startDate,_that.performedByType,_that.technician,_that.supplier,_that.notes,_that.isActive,_that.nextDate);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _MaintenancePlan extends MaintenancePlan {
+  const _MaintenancePlan({required this.id, this.maintenanceType, this.frequencyValue, this.frequencyUnit, this.startDate, this.performedByType, this.technician, this.supplier, this.notes, this.isActive = true, this.nextDate}): super._();
+  factory _MaintenancePlan.fromJson(Map<String, dynamic> json) => _$MaintenancePlanFromJson(json);
+
+@override final  int id;
+@override final  String? maintenanceType;
+@override final  int? frequencyValue;
+@override final  String? frequencyUnit;
+@override final  String? startDate;
+@override final  String? performedByType;
+@override final  NamedRef? technician;
+@override final  NamedRef? supplier;
+@override final  String? notes;
+@override@JsonKey() final  bool isActive;
+@override final  String? nextDate;
+
+/// Create a copy of MaintenancePlan
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MaintenancePlanCopyWith<_MaintenancePlan> get copyWith => __$MaintenancePlanCopyWithImpl<_MaintenancePlan>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$MaintenancePlanToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MaintenancePlan&&(identical(other.id, id) || other.id == id)&&(identical(other.maintenanceType, maintenanceType) || other.maintenanceType == maintenanceType)&&(identical(other.frequencyValue, frequencyValue) || other.frequencyValue == frequencyValue)&&(identical(other.frequencyUnit, frequencyUnit) || other.frequencyUnit == frequencyUnit)&&(identical(other.startDate, startDate) || other.startDate == startDate)&&(identical(other.performedByType, performedByType) || other.performedByType == performedByType)&&(identical(other.technician, technician) || other.technician == technician)&&(identical(other.supplier, supplier) || other.supplier == supplier)&&(identical(other.notes, notes) || other.notes == notes)&&(identical(other.isActive, isActive) || other.isActive == isActive)&&(identical(other.nextDate, nextDate) || other.nextDate == nextDate));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,maintenanceType,frequencyValue,frequencyUnit,startDate,performedByType,technician,supplier,notes,isActive,nextDate);
+
+@override
+String toString() {
+  return 'MaintenancePlan(id: $id, maintenanceType: $maintenanceType, frequencyValue: $frequencyValue, frequencyUnit: $frequencyUnit, startDate: $startDate, performedByType: $performedByType, technician: $technician, supplier: $supplier, notes: $notes, isActive: $isActive, nextDate: $nextDate)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$MaintenancePlanCopyWith<$Res> implements $MaintenancePlanCopyWith<$Res> {
+  factory _$MaintenancePlanCopyWith(_MaintenancePlan value, $Res Function(_MaintenancePlan) _then) = __$MaintenancePlanCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, String? maintenanceType, int? frequencyValue, String? frequencyUnit, String? startDate, String? performedByType, NamedRef? technician, NamedRef? supplier, String? notes, bool isActive, String? nextDate
+});
+
+
+@override $NamedRefCopyWith<$Res>? get technician;@override $NamedRefCopyWith<$Res>? get supplier;
+
+}
+/// @nodoc
+class __$MaintenancePlanCopyWithImpl<$Res>
+    implements _$MaintenancePlanCopyWith<$Res> {
+  __$MaintenancePlanCopyWithImpl(this._self, this._then);
+
+  final _MaintenancePlan _self;
+  final $Res Function(_MaintenancePlan) _then;
+
+/// Create a copy of MaintenancePlan
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? maintenanceType = freezed,Object? frequencyValue = freezed,Object? frequencyUnit = freezed,Object? startDate = freezed,Object? performedByType = freezed,Object? technician = freezed,Object? supplier = freezed,Object? notes = freezed,Object? isActive = null,Object? nextDate = freezed,}) {
+  return _then(_MaintenancePlan(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,maintenanceType: freezed == maintenanceType ? _self.maintenanceType : maintenanceType // ignore: cast_nullable_to_non_nullable
+as String?,frequencyValue: freezed == frequencyValue ? _self.frequencyValue : frequencyValue // ignore: cast_nullable_to_non_nullable
+as int?,frequencyUnit: freezed == frequencyUnit ? _self.frequencyUnit : frequencyUnit // ignore: cast_nullable_to_non_nullable
+as String?,startDate: freezed == startDate ? _self.startDate : startDate // ignore: cast_nullable_to_non_nullable
+as String?,performedByType: freezed == performedByType ? _self.performedByType : performedByType // ignore: cast_nullable_to_non_nullable
+as String?,technician: freezed == technician ? _self.technician : technician // ignore: cast_nullable_to_non_nullable
+as NamedRef?,supplier: freezed == supplier ? _self.supplier : supplier // ignore: cast_nullable_to_non_nullable
+as NamedRef?,notes: freezed == notes ? _self.notes : notes // ignore: cast_nullable_to_non_nullable
+as String?,isActive: null == isActive ? _self.isActive : isActive // ignore: cast_nullable_to_non_nullable
+as bool,nextDate: freezed == nextDate ? _self.nextDate : nextDate // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+/// Create a copy of MaintenancePlan
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NamedRefCopyWith<$Res>? get technician {
+    if (_self.technician == null) {
+    return null;
+  }
+
+  return $NamedRefCopyWith<$Res>(_self.technician!, (value) {
+    return _then(_self.copyWith(technician: value));
+  });
+}/// Create a copy of MaintenancePlan
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NamedRefCopyWith<$Res>? get supplier {
+    if (_self.supplier == null) {
+    return null;
+  }
+
+  return $NamedRefCopyWith<$Res>(_self.supplier!, (value) {
+    return _then(_self.copyWith(supplier: value));
+  });
+}
+}
+
 // dart format on

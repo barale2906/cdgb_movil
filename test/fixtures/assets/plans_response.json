@@ -1,0 +1,43 @@
+{
+ "success": true,
+ "message": "Planes",
+ "data": [
+  {
+   "id": 2,
+   "asset_id": 7,
+   "maintenance_type": "preventive",
+   "maintenance_type_label": "Preventivo",
+   "frequency_value": 6,
+   "frequency_unit": "months",
+   "frequency_label": "Cada 6 meses",
+   "start_date": "2025-01-01",
+   "performed_by_type": "internal",
+   "performed_by_type_label": "Interno",
+   "technician": null,
+   "supplier": null,
+   "notes": null,
+   "is_active": true,
+   "next_date": "2026-11-10"
+  },
+  {
+   "id": 3,
+   "asset_id": 7,
+   "maintenance_type": "calibration",
+   "maintenance_type_label": "Calibración",
+   "frequency_value": 365,
+   "frequency_unit": "days",
+   "frequency_label": "Cada 365 días",
+   "start_date": "2025-01-01",
+   "performed_by_type": "external",
+   "performed_by_type_label": "Externo",
+   "technician": null,
+   "supplier": {
+    "id": 4,
+    "name": "Droguería Proveedor S.A.S."
+   },
+   "notes": null,
+   "is_active": false,
+   "next_date": null
+  }
+ ]
+}

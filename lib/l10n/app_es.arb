@@ -1147,5 +1147,33 @@
         "type": "String"
       }
     }
+  },
+  "assetChangeStatus": "Cambiar estado",
+  "assetNewStatus": "Estado nuevo",
+  "assetStatusReason": "Motivo (opcional)",
+  "assetStatusChanged": "Estado actualizado.",
+  "assetStatusTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, actualice la ficha: es posible que el estado sí haya cambiado.",
+  "assetMaintenancePlans": "Planes de mantenimiento",
+  "planUnitDays": "días",
+  "planUnitMonths": "meses",
+  "planInactive": "Inactivo",
+  "planEvery": "Cada {value} {unit}",
+  "@planEvery": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "planNext": "Próximo: {date}",
+  "@planNext": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   }
 }

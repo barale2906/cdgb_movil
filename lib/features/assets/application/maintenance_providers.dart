@@ -36,6 +36,12 @@ final FutureProviderFamily<AssetMaintenance, int> maintenanceDetailProvider =
       (ref, id) => ref.watch(maintenanceRepositoryProvider).get(id),
     );
 
+final FutureProviderFamily<List<MaintenancePlan>, int>
+maintenancePlansProvider = FutureProvider.autoDispose
+    .family<List<MaintenancePlan>, int>(
+      (ref, assetId) => ref.watch(maintenanceRepositoryProvider).plans(assetId),
+    );
+
 final FutureProviderFamily<Uint8List, int> maintenanceReportProvider =
     FutureProvider.autoDispose.family<Uint8List, int>(
       (ref, id) => ref.watch(maintenanceRepositoryProvider).report(id),

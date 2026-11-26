@@ -403,4 +403,67 @@ void main() {
 
     expect(find.text('Reporte del mantenimiento (PDF)'), findsOneWidget);
   });
+
+  group('planes periódicos', () {
+    Future<void> openAsset(
+      WidgetTester tester, {
+      List<String> permissions = _view,
+    }) async {
+      await openMaintenance(tester, permissions: permissions);
+      await tester.tap(
+        find.descendant(
+          of: find.byType(NavigationBar),
+          matching: find.text('Activos'),
+        ),
+      );
+      await AppHarness.settle(tester);
+      await tester.tap(find.text('Monitor de signos vitales').first);
+      await AppHarness.settle(tester);
+    }
+
+    testWidgets('la ficha lista los planes con frecuencia y próxima fecha', (
+      tester,
+    ) async {
+      await openAsset(tester);
+      await tester.scrollUntilVisible(
+        find.text('Planes de mantenimiento'),
+        200,
+        scrollable: find.byType(Scrollable).last,
+      );
+
+      expect(find.textContaining('Cada 6 meses'), findsOneWidget);
+      expect(find.textContaining('Próximo: 10/11/2026'), findsOneWidget);
+      expect(find.textContaining('Cada 365 días'), findsOneWidget);
+      expect(find.textContaining('Inactivo'), findsOneWidget);
+    });
+
+    testWidgets('sin permiso de mantenimientos no se piden ni se muestran', (
+      tester,
+    ) async {
+      tester.view
+        ..physicalSize = const Size(800, 3000)
+        ..devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      harness
+        ..stubSignedInUser(permissions: ['activos.ver'], menu: _menu)
+        ..stubAssetsReads()
+        ..storeSession();
+      await harness.pump(tester);
+      await tester.tap(
+        find.descendant(
+          of: find.byType(NavigationBar),
+          matching: find.text('Activos'),
+        ),
+      );
+      await AppHarness.settle(tester);
+      await tester.tap(find.text('Monitor de signos vitales').first);
+      await AppHarness.settle(tester);
+
+      expect(find.text('Planes de mantenimiento'), findsNothing);
+      expect(
+        harness.adapter.callsTo('GET', '/assets/7/maintenance-plans'),
+        isEmpty,
+      );
+    });
+  });
 }

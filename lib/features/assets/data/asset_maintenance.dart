@@ -147,3 +147,28 @@ abstract class AssetMaintenance with _$AssetMaintenance {
       status == MaintenanceStatus.scheduled ||
       status == MaintenanceStatus.inProgress;
 }
+
+/// Plan de mantenimiento periódico de un activo (solo consulta en la app).
+@freezed
+abstract class MaintenancePlan with _$MaintenancePlan {
+  const factory MaintenancePlan({
+    required int id,
+    String? maintenanceType,
+    int? frequencyValue,
+    String? frequencyUnit,
+    String? startDate,
+    String? performedByType,
+    NamedRef? technician,
+    NamedRef? supplier,
+    String? notes,
+    @Default(true) bool isActive,
+    String? nextDate,
+  }) = _MaintenancePlan;
+
+  const MaintenancePlan._();
+
+  factory MaintenancePlan.fromJson(Map<String, dynamic> json) =>
+      _$MaintenancePlanFromJson(json);
+
+  MaintenanceType get type => MaintenanceType.parse(maintenanceType);
+}
