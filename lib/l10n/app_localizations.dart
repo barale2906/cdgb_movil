@@ -3645,6 +3645,486 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'{from} – {to}'**
   String periodRange(String from, String to);
+
+  /// No description provided for @loadMore.
+  ///
+  /// In es, this message translates to:
+  /// **'Cargar más'**
+  String get loadMore;
+
+  /// No description provided for @yes.
+  ///
+  /// In es, this message translates to:
+  /// **'Sí'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In es, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @assetStatusOperational.
+  ///
+  /// In es, this message translates to:
+  /// **'Operativo'**
+  String get assetStatusOperational;
+
+  /// No description provided for @assetStatusMaintenance.
+  ///
+  /// In es, this message translates to:
+  /// **'En mantenimiento'**
+  String get assetStatusMaintenance;
+
+  /// No description provided for @assetStatusOutOfService.
+  ///
+  /// In es, this message translates to:
+  /// **'Fuera de servicio'**
+  String get assetStatusOutOfService;
+
+  /// No description provided for @assetStatusAvailable.
+  ///
+  /// In es, this message translates to:
+  /// **'Disponible'**
+  String get assetStatusAvailable;
+
+  /// No description provided for @assetStatusRetired.
+  ///
+  /// In es, this message translates to:
+  /// **'Dado de baja'**
+  String get assetStatusRetired;
+
+  /// No description provided for @assetTypeBiomedical.
+  ///
+  /// In es, this message translates to:
+  /// **'Biomédico'**
+  String get assetTypeBiomedical;
+
+  /// No description provided for @assetTypeComputing.
+  ///
+  /// In es, this message translates to:
+  /// **'Cómputo'**
+  String get assetTypeComputing;
+
+  /// No description provided for @assetTypeGeneral.
+  ///
+  /// In es, this message translates to:
+  /// **'General'**
+  String get assetTypeGeneral;
+
+  /// No description provided for @assetScanAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Escanear etiqueta'**
+  String get assetScanAction;
+
+  /// No description provided for @assetSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar por nombre o código'**
+  String get assetSearchHint;
+
+  /// No description provided for @assetsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay activos para mostrar.'**
+  String get assetsEmpty;
+
+  /// No description provided for @assetFilterOverdue.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantenimiento vencido'**
+  String get assetFilterOverdue;
+
+  /// No description provided for @assetStatTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Activos'**
+  String get assetStatTotal;
+
+  /// No description provided for @assetStatInMaintenance.
+  ///
+  /// In es, this message translates to:
+  /// **'En mantenimiento'**
+  String get assetStatInMaintenance;
+
+  /// No description provided for @assetStatOverdue.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantenimientos vencidos'**
+  String get assetStatOverdue;
+
+  /// No description provided for @assetStatPendingTransfers.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslados pendientes'**
+  String get assetStatPendingTransfers;
+
+  /// No description provided for @assetStatOffPremises.
+  ///
+  /// In es, this message translates to:
+  /// **'Fuera de las instalaciones'**
+  String get assetStatOffPremises;
+
+  /// No description provided for @assetDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Activo'**
+  String get assetDetailTitle;
+
+  /// No description provided for @assetTabData.
+  ///
+  /// In es, this message translates to:
+  /// **'Datos'**
+  String get assetTabData;
+
+  /// No description provided for @assetTabHistory.
+  ///
+  /// In es, this message translates to:
+  /// **'Historial'**
+  String get assetTabHistory;
+
+  /// No description provided for @assetTabComments.
+  ///
+  /// In es, this message translates to:
+  /// **'Comentarios'**
+  String get assetTabComments;
+
+  /// No description provided for @assetCode.
+  ///
+  /// In es, this message translates to:
+  /// **'Código'**
+  String get assetCode;
+
+  /// No description provided for @assetType.
+  ///
+  /// In es, this message translates to:
+  /// **'Tipo'**
+  String get assetType;
+
+  /// No description provided for @assetCategory.
+  ///
+  /// In es, this message translates to:
+  /// **'Categoría'**
+  String get assetCategory;
+
+  /// No description provided for @assetLocation.
+  ///
+  /// In es, this message translates to:
+  /// **'Ubicación actual'**
+  String get assetLocation;
+
+  /// No description provided for @assetResponsible.
+  ///
+  /// In es, this message translates to:
+  /// **'Responsable'**
+  String get assetResponsible;
+
+  /// No description provided for @assetBrand.
+  ///
+  /// In es, this message translates to:
+  /// **'Marca'**
+  String get assetBrand;
+
+  /// No description provided for @assetModel.
+  ///
+  /// In es, this message translates to:
+  /// **'Modelo'**
+  String get assetModel;
+
+  /// No description provided for @assetSerial.
+  ///
+  /// In es, this message translates to:
+  /// **'Serie'**
+  String get assetSerial;
+
+  /// No description provided for @assetSupplier.
+  ///
+  /// In es, this message translates to:
+  /// **'Proveedor'**
+  String get assetSupplier;
+
+  /// No description provided for @assetInvoice.
+  ///
+  /// In es, this message translates to:
+  /// **'Factura'**
+  String get assetInvoice;
+
+  /// No description provided for @assetAcquisition.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de adquisición'**
+  String get assetAcquisition;
+
+  /// No description provided for @assetAcquisitionValue.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor de adquisición'**
+  String get assetAcquisitionValue;
+
+  /// No description provided for @assetWarrantyUntil.
+  ///
+  /// In es, this message translates to:
+  /// **'Garantía hasta'**
+  String get assetWarrantyUntil;
+
+  /// No description provided for @assetDescription.
+  ///
+  /// In es, this message translates to:
+  /// **'Descripción'**
+  String get assetDescription;
+
+  /// No description provided for @assetRetiredAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de baja'**
+  String get assetRetiredAt;
+
+  /// No description provided for @assetRetirementReason.
+  ///
+  /// In es, this message translates to:
+  /// **'Motivo de la baja'**
+  String get assetRetirementReason;
+
+  /// No description provided for @assetTechnicalProfile.
+  ///
+  /// In es, this message translates to:
+  /// **'Perfil técnico'**
+  String get assetTechnicalProfile;
+
+  /// No description provided for @assetLifeSheet.
+  ///
+  /// In es, this message translates to:
+  /// **'Hoja de vida (PDF)'**
+  String get assetLifeSheet;
+
+  /// No description provided for @assetLocationHistory.
+  ///
+  /// In es, this message translates to:
+  /// **'Historial de ubicaciones'**
+  String get assetLocationHistory;
+
+  /// No description provided for @assetLocationHistoryEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin ubicaciones registradas.'**
+  String get assetLocationHistoryEmpty;
+
+  /// No description provided for @assetUntilNow.
+  ///
+  /// In es, this message translates to:
+  /// **'hoy'**
+  String get assetUntilNow;
+
+  /// No description provided for @assetCurrent.
+  ///
+  /// In es, this message translates to:
+  /// **'Actual'**
+  String get assetCurrent;
+
+  /// No description provided for @assetEvents.
+  ///
+  /// In es, this message translates to:
+  /// **'Bitácora'**
+  String get assetEvents;
+
+  /// No description provided for @assetEventsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Aún no hay eventos registrados.'**
+  String get assetEventsEmpty;
+
+  /// No description provided for @assetCommentsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Este activo no tiene comentarios.'**
+  String get assetCommentsEmpty;
+
+  /// No description provided for @assetCommentField.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba un comentario'**
+  String get assetCommentField;
+
+  /// No description provided for @assetCommentAdd.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar comentario'**
+  String get assetCommentAdd;
+
+  /// No description provided for @assetCommentAdded.
+  ///
+  /// In es, this message translates to:
+  /// **'Comentario agregado.'**
+  String get assetCommentAdded;
+
+  /// No description provided for @assetCommentTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Antes de repetirlo, revise los comentarios: es posible que sí se haya agregado.'**
+  String get assetCommentTimeoutWarning;
+
+  /// No description provided for @techManufacturer.
+  ///
+  /// In es, this message translates to:
+  /// **'Fabricante'**
+  String get techManufacturer;
+
+  /// No description provided for @techCountry.
+  ///
+  /// In es, this message translates to:
+  /// **'País de origen'**
+  String get techCountry;
+
+  /// No description provided for @techYear.
+  ///
+  /// In es, this message translates to:
+  /// **'Año de fabricación'**
+  String get techYear;
+
+  /// No description provided for @techUsefulLife.
+  ///
+  /// In es, this message translates to:
+  /// **'Vida útil (años)'**
+  String get techUsefulLife;
+
+  /// No description provided for @techAcquisitionMode.
+  ///
+  /// In es, this message translates to:
+  /// **'Forma de adquisición'**
+  String get techAcquisitionMode;
+
+  /// No description provided for @techAccessories.
+  ///
+  /// In es, this message translates to:
+  /// **'Accesorios'**
+  String get techAccessories;
+
+  /// No description provided for @techRecommendations.
+  ///
+  /// In es, this message translates to:
+  /// **'Recomendaciones de uso'**
+  String get techRecommendations;
+
+  /// No description provided for @techInvima.
+  ///
+  /// In es, this message translates to:
+  /// **'Registro INVIMA'**
+  String get techInvima;
+
+  /// No description provided for @techRiskClass.
+  ///
+  /// In es, this message translates to:
+  /// **'Clasificación de riesgo'**
+  String get techRiskClass;
+
+  /// No description provided for @techBiomedicalClass.
+  ///
+  /// In es, this message translates to:
+  /// **'Clase biomédica'**
+  String get techBiomedicalClass;
+
+  /// No description provided for @techPowerSource.
+  ///
+  /// In es, this message translates to:
+  /// **'Fuente de energía'**
+  String get techPowerSource;
+
+  /// No description provided for @techVoltage.
+  ///
+  /// In es, this message translates to:
+  /// **'Voltaje'**
+  String get techVoltage;
+
+  /// No description provided for @techCurrent.
+  ///
+  /// In es, this message translates to:
+  /// **'Corriente'**
+  String get techCurrent;
+
+  /// No description provided for @techPower.
+  ///
+  /// In es, this message translates to:
+  /// **'Potencia'**
+  String get techPower;
+
+  /// No description provided for @techFrequency.
+  ///
+  /// In es, this message translates to:
+  /// **'Frecuencia'**
+  String get techFrequency;
+
+  /// No description provided for @techRequiresCalibration.
+  ///
+  /// In es, this message translates to:
+  /// **'Requiere calibración'**
+  String get techRequiresCalibration;
+
+  /// No description provided for @techOperatingConditions.
+  ///
+  /// In es, this message translates to:
+  /// **'Condiciones de operación'**
+  String get techOperatingConditions;
+
+  /// No description provided for @techProcessor.
+  ///
+  /// In es, this message translates to:
+  /// **'Procesador'**
+  String get techProcessor;
+
+  /// No description provided for @techRam.
+  ///
+  /// In es, this message translates to:
+  /// **'Memoria RAM'**
+  String get techRam;
+
+  /// No description provided for @techStorage.
+  ///
+  /// In es, this message translates to:
+  /// **'Almacenamiento'**
+  String get techStorage;
+
+  /// No description provided for @techOperatingSystem.
+  ///
+  /// In es, this message translates to:
+  /// **'Sistema operativo'**
+  String get techOperatingSystem;
+
+  /// No description provided for @techIp.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección IP'**
+  String get techIp;
+
+  /// No description provided for @techMac.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección MAC'**
+  String get techMac;
+
+  /// No description provided for @techHostname.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre de equipo'**
+  String get techHostname;
+
+  /// No description provided for @assetScanNotFound.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay un activo con el código {code}.'**
+  String assetScanNotFound(String code);
+
+  /// No description provided for @assetMaintenanceOverdueOn.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantenimiento vencido desde el {date}'**
+  String assetMaintenanceOverdueOn(String date);
+
+  /// No description provided for @assetPendingTransfer.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslado pendiente de firma: {type}'**
+  String assetPendingTransfer(String type);
 }
 
 class _AppLocalizationsDelegate

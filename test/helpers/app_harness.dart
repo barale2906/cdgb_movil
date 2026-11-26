@@ -156,6 +156,38 @@ class AppHarness {
       );
   }
 
+  /// Lecturas de activos: lista, ficha, catálogos, indicadores e historial.
+  void stubAssetsReads() {
+    adapter
+      ..on('GET', '/assets', body: fixture('assets/assets_response.json'))
+      ..on('GET', '/assets/7', body: fixture('assets/asset_response.json'))
+      ..on(
+        'GET',
+        '/assets/filters',
+        body: fixture('assets/filters_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/statistics',
+        body: fixture('assets/statistics_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/7/movements',
+        body: fixture('assets/movements_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/7/location-history',
+        body: fixture('assets/location_history_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/7/comments',
+        body: fixture('assets/comments_response.json'),
+      );
+  }
+
   /// Bloques del tablero y notificaciones (sin leer: [unread]).
   void stubDashboard({int unread = 2}) {
     adapter

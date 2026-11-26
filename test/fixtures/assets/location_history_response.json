@@ -1,0 +1,35 @@
+{
+ "success": true,
+ "message": "Historial",
+ "data": [
+  {
+   "id": 1,
+   "place_id": 4,
+   "location": "Sede Principal · Urgencias · Sala 1",
+   "is_off_premises": false,
+   "from_date": "2025-01-02T09:00:00-05:00",
+   "to_date": null,
+   "is_current": true,
+   "transfer_id": null,
+   "transfer_type": null,
+   "transfer_label": null,
+   "assigned_by": {
+    "id": 3,
+    "name": "Usuario Prueba"
+   }
+  },
+  {
+   "id": 0,
+   "place_id": null,
+   "location": "Taller externo",
+   "is_off_premises": true,
+   "from_date": "2024-06-01T09:00:00-05:00",
+   "to_date": "2025-01-02T09:00:00-05:00",
+   "is_current": false,
+   "transfer_id": 9,
+   "transfer_type": "external_repair",
+   "transfer_label": "Reparación externa",
+   "assigned_by": null
+  }
+ ]
+}

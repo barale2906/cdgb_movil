@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "message": "Menú de navegación",
+  "data": [
+    {
+      "key": "service-orders-menu",
+      "label": "Órdenes de servicio",
+      "icon": "clipboard",
+      "route": null,
+      "permission": null,
+      "actions": [],
+      "children": [
+        {
+          "key": "service-orders",
+          "label": "Órdenes de servicio",
+          "icon": "clipboard",
+          "route": "service-orders.index",
+          "permission": "ordenes_servicio.ver",
+          "actions": {},
+          "children": []
+        }
+      ]
+    }
+  ]
+}

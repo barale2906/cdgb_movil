@@ -1,0 +1,15 @@
+{
+ "success": true,
+ "message": "Comentarios",
+ "data": [
+  {
+   "id": 5,
+   "comment": "Se limpió el sensor.",
+   "user": {
+    "id": 3,
+    "name": "Usuario Prueba"
+   },
+   "created_at": "2026-11-21T08:00:00-05:00"
+  }
+ ]
+}

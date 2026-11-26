@@ -7,7 +7,11 @@ import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/auth/session_controller.dart';
 import 'package:sga_bojanini/core/navigation/app_section.dart';
 import 'package:sga_bojanini/core/router/redirect.dart';
+import 'package:sga_bojanini/core/widgets/pdf_preview_page.dart';
 import 'package:sga_bojanini/features/about/presentation/about_page.dart';
+import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
+import 'package:sga_bojanini/features/assets/presentation/asset_detail_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/assets_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/change_password_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/locked_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/login_page.dart';
@@ -113,6 +117,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       ..._inventoryRoutes(ref),
       ..._purchasingRoutes(ref),
+      ..._assetRoutes(ref),
       ..._reportRoutes(ref),
       ..._monitoringRoutes(ref),
       GoRoute(
@@ -147,6 +152,7 @@ Widget _sectionPage(AppSection section) => switch (section) {
   AppSection.catalog => const CatalogPage(),
   AppSection.inventory => const InventoryPage(),
   AppSection.purchasing => const PurchasingPage(),
+  AppSection.assets => const AssetsPage(),
   AppSection.monitoring => const MonitoringPage(),
   AppSection.reports => const ReportsPage(),
   _ => SectionPlaceholderPage(section: section),
@@ -159,7 +165,31 @@ GoRouterRedirect _requires(Ref ref, String permission) =>
     ? null
     : Routes.home;
 
+/// Como [_requires], con cualquiera de los permisos.
+GoRouterRedirect _requiresAny(Ref ref, List<String> permissions) =>
+    (context, state) => ref.read(permissionServiceProvider).canAny(permissions)
+    ? null
+    : Routes.home;
+
 int _id(GoRouterState state) => int.parse(state.pathParameters['id']!);
+
+/// Ficha y hoja de vida de un activo (la lista es la sección `/assets`).
+List<GoRoute> _assetRoutes(Ref ref) => [
+  GoRoute(
+    path: '/assets/:id',
+    redirect: _requires(ref, 'activos.ver'),
+    builder: (_, state) => AssetDetailPage(assetId: _id(state)),
+    routes: [
+      GoRoute(
+        path: 'life-sheet',
+        builder: (_, state) => PdfPreviewPage(
+          provider: lifeSheetProvider(_id(state)),
+          fileName: 'hoja-de-vida-${_id(state)}.pdf',
+        ),
+      ),
+    ],
+  ),
+];
 
 /// Detalles, recepción y consolidación de compras. Cada ruta exige además
 /// su propio permiso (el de la sección es solo `ordenes_compra.ver`).
@@ -260,7 +290,9 @@ List<GoRoute> _inventoryRoutes(Ref ref) {
       ),
     GoRoute(
       path: ScanPage.path,
-      redirect: _requires(ref, 'generic-products.barcode'),
+      // La cámara es común: la usan productos y activos, y el destino que
+      // abre el código valida su propio permiso.
+      redirect: _requiresAny(ref, ['generic-products.barcode', 'activos.ver']),
       builder: (_, _) => const ScanPage(),
     ),
   ];

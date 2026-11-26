@@ -928,5 +928,106 @@
         "type": "String"
       }
     }
+  },
+  "loadMore": "Cargar más",
+  "yes": "Sí",
+  "no": "No",
+  "assetStatusOperational": "Operativo",
+  "assetStatusMaintenance": "En mantenimiento",
+  "assetStatusOutOfService": "Fuera de servicio",
+  "assetStatusAvailable": "Disponible",
+  "assetStatusRetired": "Dado de baja",
+  "assetTypeBiomedical": "Biomédico",
+  "assetTypeComputing": "Cómputo",
+  "assetTypeGeneral": "General",
+  "assetScanAction": "Escanear etiqueta",
+  "assetSearchHint": "Buscar por nombre o código",
+  "assetsEmpty": "No hay activos para mostrar.",
+  "assetFilterOverdue": "Mantenimiento vencido",
+  "assetStatTotal": "Activos",
+  "assetStatInMaintenance": "En mantenimiento",
+  "assetStatOverdue": "Mantenimientos vencidos",
+  "assetStatPendingTransfers": "Traslados pendientes",
+  "assetStatOffPremises": "Fuera de las instalaciones",
+  "assetDetailTitle": "Activo",
+  "assetTabData": "Datos",
+  "assetTabHistory": "Historial",
+  "assetTabComments": "Comentarios",
+  "assetCode": "Código",
+  "assetType": "Tipo",
+  "assetCategory": "Categoría",
+  "assetLocation": "Ubicación actual",
+  "assetResponsible": "Responsable",
+  "assetBrand": "Marca",
+  "assetModel": "Modelo",
+  "assetSerial": "Serie",
+  "assetSupplier": "Proveedor",
+  "assetInvoice": "Factura",
+  "assetAcquisition": "Fecha de adquisición",
+  "assetAcquisitionValue": "Valor de adquisición",
+  "assetWarrantyUntil": "Garantía hasta",
+  "assetDescription": "Descripción",
+  "assetRetiredAt": "Fecha de baja",
+  "assetRetirementReason": "Motivo de la baja",
+  "assetTechnicalProfile": "Perfil técnico",
+  "assetLifeSheet": "Hoja de vida (PDF)",
+  "assetLocationHistory": "Historial de ubicaciones",
+  "assetLocationHistoryEmpty": "Sin ubicaciones registradas.",
+  "assetUntilNow": "hoy",
+  "assetCurrent": "Actual",
+  "assetEvents": "Bitácora",
+  "assetEventsEmpty": "Aún no hay eventos registrados.",
+  "assetCommentsEmpty": "Este activo no tiene comentarios.",
+  "assetCommentField": "Escriba un comentario",
+  "assetCommentAdd": "Agregar comentario",
+  "assetCommentAdded": "Comentario agregado.",
+  "assetCommentTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, revise los comentarios: es posible que sí se haya agregado.",
+  "techManufacturer": "Fabricante",
+  "techCountry": "País de origen",
+  "techYear": "Año de fabricación",
+  "techUsefulLife": "Vida útil (años)",
+  "techAcquisitionMode": "Forma de adquisición",
+  "techAccessories": "Accesorios",
+  "techRecommendations": "Recomendaciones de uso",
+  "techInvima": "Registro INVIMA",
+  "techRiskClass": "Clasificación de riesgo",
+  "techBiomedicalClass": "Clase biomédica",
+  "techPowerSource": "Fuente de energía",
+  "techVoltage": "Voltaje",
+  "techCurrent": "Corriente",
+  "techPower": "Potencia",
+  "techFrequency": "Frecuencia",
+  "techRequiresCalibration": "Requiere calibración",
+  "techOperatingConditions": "Condiciones de operación",
+  "techProcessor": "Procesador",
+  "techRam": "Memoria RAM",
+  "techStorage": "Almacenamiento",
+  "techOperatingSystem": "Sistema operativo",
+  "techIp": "Dirección IP",
+  "techMac": "Dirección MAC",
+  "techHostname": "Nombre de equipo",
+  "assetScanNotFound": "No hay un activo con el código {code}.",
+  "@assetScanNotFound": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "assetMaintenanceOverdueOn": "Mantenimiento vencido desde el {date}",
+  "@assetMaintenanceOverdueOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "assetPendingTransfer": "Traslado pendiente de firma: {type}",
+  "@assetPendingTransfer": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
   }
 }

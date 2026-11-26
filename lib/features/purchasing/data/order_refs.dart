@@ -4,20 +4,6 @@ import 'package:sga_bojanini/core/utils/json_converters.dart';
 part 'order_refs.freezed.dart';
 part 'order_refs.g.dart';
 
-/// Referencia corta (`{id, name}`) a proveedor, almacén o usuario.
-@freezed
-abstract class NamedRef with _$NamedRef {
-  const factory NamedRef({
-    required int id,
-    required String name,
-    String? code,
-    String? email,
-  }) = _NamedRef;
-
-  factory NamedRef.fromJson(Map<String, dynamic> json) =>
-      _$NamedRefFromJson(json);
-}
-
 @freezed
 abstract class GenericRef with _$GenericRef {
   const factory GenericRef({

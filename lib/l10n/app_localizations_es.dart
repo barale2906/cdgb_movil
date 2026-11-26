@@ -1947,4 +1947,251 @@ class AppLocalizationsEs extends AppLocalizations {
   String periodRange(String from, String to) {
     return '$from – $to';
   }
+
+  @override
+  String get loadMore => 'Cargar más';
+
+  @override
+  String get yes => 'Sí';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get assetStatusOperational => 'Operativo';
+
+  @override
+  String get assetStatusMaintenance => 'En mantenimiento';
+
+  @override
+  String get assetStatusOutOfService => 'Fuera de servicio';
+
+  @override
+  String get assetStatusAvailable => 'Disponible';
+
+  @override
+  String get assetStatusRetired => 'Dado de baja';
+
+  @override
+  String get assetTypeBiomedical => 'Biomédico';
+
+  @override
+  String get assetTypeComputing => 'Cómputo';
+
+  @override
+  String get assetTypeGeneral => 'General';
+
+  @override
+  String get assetScanAction => 'Escanear etiqueta';
+
+  @override
+  String get assetSearchHint => 'Buscar por nombre o código';
+
+  @override
+  String get assetsEmpty => 'No hay activos para mostrar.';
+
+  @override
+  String get assetFilterOverdue => 'Mantenimiento vencido';
+
+  @override
+  String get assetStatTotal => 'Activos';
+
+  @override
+  String get assetStatInMaintenance => 'En mantenimiento';
+
+  @override
+  String get assetStatOverdue => 'Mantenimientos vencidos';
+
+  @override
+  String get assetStatPendingTransfers => 'Traslados pendientes';
+
+  @override
+  String get assetStatOffPremises => 'Fuera de las instalaciones';
+
+  @override
+  String get assetDetailTitle => 'Activo';
+
+  @override
+  String get assetTabData => 'Datos';
+
+  @override
+  String get assetTabHistory => 'Historial';
+
+  @override
+  String get assetTabComments => 'Comentarios';
+
+  @override
+  String get assetCode => 'Código';
+
+  @override
+  String get assetType => 'Tipo';
+
+  @override
+  String get assetCategory => 'Categoría';
+
+  @override
+  String get assetLocation => 'Ubicación actual';
+
+  @override
+  String get assetResponsible => 'Responsable';
+
+  @override
+  String get assetBrand => 'Marca';
+
+  @override
+  String get assetModel => 'Modelo';
+
+  @override
+  String get assetSerial => 'Serie';
+
+  @override
+  String get assetSupplier => 'Proveedor';
+
+  @override
+  String get assetInvoice => 'Factura';
+
+  @override
+  String get assetAcquisition => 'Fecha de adquisición';
+
+  @override
+  String get assetAcquisitionValue => 'Valor de adquisición';
+
+  @override
+  String get assetWarrantyUntil => 'Garantía hasta';
+
+  @override
+  String get assetDescription => 'Descripción';
+
+  @override
+  String get assetRetiredAt => 'Fecha de baja';
+
+  @override
+  String get assetRetirementReason => 'Motivo de la baja';
+
+  @override
+  String get assetTechnicalProfile => 'Perfil técnico';
+
+  @override
+  String get assetLifeSheet => 'Hoja de vida (PDF)';
+
+  @override
+  String get assetLocationHistory => 'Historial de ubicaciones';
+
+  @override
+  String get assetLocationHistoryEmpty => 'Sin ubicaciones registradas.';
+
+  @override
+  String get assetUntilNow => 'hoy';
+
+  @override
+  String get assetCurrent => 'Actual';
+
+  @override
+  String get assetEvents => 'Bitácora';
+
+  @override
+  String get assetEventsEmpty => 'Aún no hay eventos registrados.';
+
+  @override
+  String get assetCommentsEmpty => 'Este activo no tiene comentarios.';
+
+  @override
+  String get assetCommentField => 'Escriba un comentario';
+
+  @override
+  String get assetCommentAdd => 'Agregar comentario';
+
+  @override
+  String get assetCommentAdded => 'Comentario agregado.';
+
+  @override
+  String get assetCommentTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, revise los comentarios: es posible que sí se haya agregado.';
+
+  @override
+  String get techManufacturer => 'Fabricante';
+
+  @override
+  String get techCountry => 'País de origen';
+
+  @override
+  String get techYear => 'Año de fabricación';
+
+  @override
+  String get techUsefulLife => 'Vida útil (años)';
+
+  @override
+  String get techAcquisitionMode => 'Forma de adquisición';
+
+  @override
+  String get techAccessories => 'Accesorios';
+
+  @override
+  String get techRecommendations => 'Recomendaciones de uso';
+
+  @override
+  String get techInvima => 'Registro INVIMA';
+
+  @override
+  String get techRiskClass => 'Clasificación de riesgo';
+
+  @override
+  String get techBiomedicalClass => 'Clase biomédica';
+
+  @override
+  String get techPowerSource => 'Fuente de energía';
+
+  @override
+  String get techVoltage => 'Voltaje';
+
+  @override
+  String get techCurrent => 'Corriente';
+
+  @override
+  String get techPower => 'Potencia';
+
+  @override
+  String get techFrequency => 'Frecuencia';
+
+  @override
+  String get techRequiresCalibration => 'Requiere calibración';
+
+  @override
+  String get techOperatingConditions => 'Condiciones de operación';
+
+  @override
+  String get techProcessor => 'Procesador';
+
+  @override
+  String get techRam => 'Memoria RAM';
+
+  @override
+  String get techStorage => 'Almacenamiento';
+
+  @override
+  String get techOperatingSystem => 'Sistema operativo';
+
+  @override
+  String get techIp => 'Dirección IP';
+
+  @override
+  String get techMac => 'Dirección MAC';
+
+  @override
+  String get techHostname => 'Nombre de equipo';
+
+  @override
+  String assetScanNotFound(String code) {
+    return 'No hay un activo con el código $code.';
+  }
+
+  @override
+  String assetMaintenanceOverdueOn(String date) {
+    return 'Mantenimiento vencido desde el $date';
+  }
+
+  @override
+  String assetPendingTransfer(String type) {
+    return 'Traslado pendiente de firma: $type';
+  }
 }

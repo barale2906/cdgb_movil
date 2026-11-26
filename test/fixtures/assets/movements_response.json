@@ -1,0 +1,29 @@
+{
+ "success": true,
+ "message": "Bitácora del activo",
+ "data": [
+  {
+   "id": 91,
+   "type": "status_change",
+   "type_label": "Cambio de estado",
+   "from_status": "operational",
+   "from_status_label": "Operativo",
+   "to_status": "maintenance",
+   "to_status_label": "En mantenimiento",
+   "description": "Revisión de sensor",
+   "transfer_id": null,
+   "maintenance_id": 31,
+   "user": {
+    "id": 3,
+    "name": "Usuario Prueba"
+   },
+   "created_at": "2026-11-20T10:00:00-05:00"
+  }
+ ],
+ "meta": {
+  "current_page": 1,
+  "last_page": 1,
+  "per_page": 25,
+  "total": 1
+ }
+}
