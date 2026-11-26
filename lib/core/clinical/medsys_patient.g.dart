@@ -30,6 +30,10 @@ _MedsysPatient _$MedsysPatientFromJson(Map<String, dynamic> json) =>
       document: json['documento'] as String,
       name: json['nombre'] as String,
       documentType: json['tipodoc'] as String?,
+      email: json['email'] as String?,
+      address: json['direccion'] as String?,
+      mobile: json['telcelular'] as String?,
+      landline: json['telefono'] as String?,
       recentAppointments:
           (json['recent_appointments'] as List<dynamic>?)
               ?.map(
@@ -45,6 +49,10 @@ Map<String, dynamic> _$MedsysPatientToJson(_MedsysPatient instance) =>
       'documento': instance.document,
       'nombre': instance.name,
       'tipodoc': instance.documentType,
+      'email': instance.email,
+      'direccion': instance.address,
+      'telcelular': instance.mobile,
+      'telefono': instance.landline,
       'recent_appointments': instance.recentAppointments
           .map((e) => e.toJson())
           .toList(),

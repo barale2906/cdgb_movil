@@ -23,8 +23,9 @@ abstract class MedsysAppointment with _$MedsysAppointment {
       _$MedsysAppointmentFromJson(json);
 }
 
-/// Paciente de MedSys. Solo se leen los datos que la app muestra (mínimo
-/// necesario, Ley 1581): código, documento, nombre y últimas citas.
+/// Paciente de MedSys. En pantalla solo se muestra lo mínimo (Ley 1581):
+/// nombre y documento. Los datos de contacto se leen únicamente para
+/// copiarlos a las órdenes de servicio, igual que el web; no se muestran.
 @freezed
 abstract class MedsysPatient with _$MedsysPatient {
   const factory MedsysPatient({
@@ -32,6 +33,10 @@ abstract class MedsysPatient with _$MedsysPatient {
     @JsonKey(name: 'documento') required String document,
     @JsonKey(name: 'nombre') required String name,
     @JsonKey(name: 'tipodoc') String? documentType,
+    String? email,
+    @JsonKey(name: 'direccion') String? address,
+    @JsonKey(name: 'telcelular') String? mobile,
+    @JsonKey(name: 'telefono') String? landline,
     @Default([]) List<MedsysAppointment> recentAppointments,
   }) = _MedsysPatient;
 
@@ -43,6 +48,12 @@ abstract class MedsysPatient with _$MedsysPatient {
   /// Nombre sin espacios dobles (MedSys concatena campos que pueden venir
   /// vacíos).
   String get displayName => name.replaceAll(RegExp(r'\s+'), ' ').trim();
+
+  /// Teléfono de contacto: el celular y, si no hay, el fijo.
+  String? get phone => _nonEmpty(mobile) ?? _nonEmpty(landline);
+
+  static String? _nonEmpty(String? value) =>
+      value == null || value.trim().isEmpty ? null : value.trim();
 
   /// Nombres y apellidos por separado, como los pide el servidor. MedSys
   /// entrega `nombre1 nombre2 apellido1 apellido2` en un solo texto: con 4 o

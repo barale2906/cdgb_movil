@@ -1,22 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
+import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
+import 'package:sga_bojanini/core/clinical/procedure_record.dart';
 import 'package:sga_bojanini/core/clock/clock.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/features/clinical/data/clinical_repository.dart';
-import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_match.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_record.dart';
 
 /// Ventana de la lista de registros (el servidor no la pagina).
 const recordsWindowDays = 30;
-
-/// Búsqueda de pacientes; con menos de 3 caracteres no consulta.
-final FutureProviderFamily<List<MedsysPatient>, String> patientSearchProvider =
-    FutureProvider.autoDispose.family<List<MedsysPatient>, String>(
-      (ref, term) => term.length < ClinicalRepository.minSearchLength
-          ? const []
-          : ref.watch(clinicalRepositoryProvider).searchPatients(term),
-    );
 
 final FutureProviderFamily<List<MedsysAppointment>, String>
 patientAppointmentsProvider = FutureProvider.autoDispose
@@ -52,14 +43,4 @@ final FutureProviderFamily<PatientHistory, String> patientHistoryProvider =
     FutureProvider.autoDispose.family<PatientHistory, String>(
       (ref, externalId) =>
           ref.watch(clinicalRepositoryProvider).history(externalId),
-    );
-
-/// Búsqueda de procedimientos para una venta; con menos de 2 caracteres no
-/// consulta.
-final FutureProviderFamily<List<ProcedureMatch>, String>
-procedureSearchProvider = FutureProvider.autoDispose
-    .family<List<ProcedureMatch>, String>(
-      (ref, term) => term.length < ClinicalRepository.minProcedureSearchLength
-          ? const []
-          : ref.watch(clinicalRepositoryProvider).searchProcedures(term),
     );

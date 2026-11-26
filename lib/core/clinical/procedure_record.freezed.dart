@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProcedureRecord {
 
- int get id; String get patientExternalId; String get patientDocument; String get patientFirstName; String get patientLastName; int? get medicalServiceId; String? get medicalServiceName;@DoubleConverter() double? get quantity;@DoubleConverter() double? get unitPrice;@DoubleConverter() double? get total;@DoubleConverter() double? get discountAmount;@DoubleConverter() double? get netTotal; String? get discountStatus; String? get orderNumber; String? get billingStatus; String? get serviceDate; String? get seller; String? get referrer; bool get isActive;
+ int get id; String get patientExternalId; String get patientDocument; String get patientFirstName; String get patientLastName; int? get medicalServiceId; String? get medicalServiceName; int? get movementDocumentId;@DoubleConverter() double? get quantity;@DoubleConverter() double? get unitPrice;@DoubleConverter() double? get total; String? get discountType;@DoubleConverter() double? get discountValue;@DoubleConverter() double? get discountAmount;@DoubleConverter() double? get netTotal; String? get discountStatus; String? get orderNumber; String? get billingStatus; String? get serviceDate; String? get seller; String? get referrer; bool get isActive;
 /// Create a copy of ProcedureRecord
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ProcedureRecordCopyWith<ProcedureRecord> get copyWith => _$ProcedureRecordCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProcedureRecord&&(identical(other.id, id) || other.id == id)&&(identical(other.patientExternalId, patientExternalId) || other.patientExternalId == patientExternalId)&&(identical(other.patientDocument, patientDocument) || other.patientDocument == patientDocument)&&(identical(other.patientFirstName, patientFirstName) || other.patientFirstName == patientFirstName)&&(identical(other.patientLastName, patientLastName) || other.patientLastName == patientLastName)&&(identical(other.medicalServiceId, medicalServiceId) || other.medicalServiceId == medicalServiceId)&&(identical(other.medicalServiceName, medicalServiceName) || other.medicalServiceName == medicalServiceName)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.unitPrice, unitPrice) || other.unitPrice == unitPrice)&&(identical(other.total, total) || other.total == total)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.netTotal, netTotal) || other.netTotal == netTotal)&&(identical(other.discountStatus, discountStatus) || other.discountStatus == discountStatus)&&(identical(other.orderNumber, orderNumber) || other.orderNumber == orderNumber)&&(identical(other.billingStatus, billingStatus) || other.billingStatus == billingStatus)&&(identical(other.serviceDate, serviceDate) || other.serviceDate == serviceDate)&&(identical(other.seller, seller) || other.seller == seller)&&(identical(other.referrer, referrer) || other.referrer == referrer)&&(identical(other.isActive, isActive) || other.isActive == isActive));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProcedureRecord&&(identical(other.id, id) || other.id == id)&&(identical(other.patientExternalId, patientExternalId) || other.patientExternalId == patientExternalId)&&(identical(other.patientDocument, patientDocument) || other.patientDocument == patientDocument)&&(identical(other.patientFirstName, patientFirstName) || other.patientFirstName == patientFirstName)&&(identical(other.patientLastName, patientLastName) || other.patientLastName == patientLastName)&&(identical(other.medicalServiceId, medicalServiceId) || other.medicalServiceId == medicalServiceId)&&(identical(other.medicalServiceName, medicalServiceName) || other.medicalServiceName == medicalServiceName)&&(identical(other.movementDocumentId, movementDocumentId) || other.movementDocumentId == movementDocumentId)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.unitPrice, unitPrice) || other.unitPrice == unitPrice)&&(identical(other.total, total) || other.total == total)&&(identical(other.discountType, discountType) || other.discountType == discountType)&&(identical(other.discountValue, discountValue) || other.discountValue == discountValue)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.netTotal, netTotal) || other.netTotal == netTotal)&&(identical(other.discountStatus, discountStatus) || other.discountStatus == discountStatus)&&(identical(other.orderNumber, orderNumber) || other.orderNumber == orderNumber)&&(identical(other.billingStatus, billingStatus) || other.billingStatus == billingStatus)&&(identical(other.serviceDate, serviceDate) || other.serviceDate == serviceDate)&&(identical(other.seller, seller) || other.seller == seller)&&(identical(other.referrer, referrer) || other.referrer == referrer)&&(identical(other.isActive, isActive) || other.isActive == isActive));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,patientExternalId,patientDocument,patientFirstName,patientLastName,medicalServiceId,medicalServiceName,quantity,unitPrice,total,discountAmount,netTotal,discountStatus,orderNumber,billingStatus,serviceDate,seller,referrer,isActive]);
+int get hashCode => Object.hashAll([runtimeType,id,patientExternalId,patientDocument,patientFirstName,patientLastName,medicalServiceId,medicalServiceName,movementDocumentId,quantity,unitPrice,total,discountType,discountValue,discountAmount,netTotal,discountStatus,orderNumber,billingStatus,serviceDate,seller,referrer,isActive]);
 
 @override
 String toString() {
-  return 'ProcedureRecord(id: $id, patientExternalId: $patientExternalId, patientDocument: $patientDocument, patientFirstName: $patientFirstName, patientLastName: $patientLastName, medicalServiceId: $medicalServiceId, medicalServiceName: $medicalServiceName, quantity: $quantity, unitPrice: $unitPrice, total: $total, discountAmount: $discountAmount, netTotal: $netTotal, discountStatus: $discountStatus, orderNumber: $orderNumber, billingStatus: $billingStatus, serviceDate: $serviceDate, seller: $seller, referrer: $referrer, isActive: $isActive)';
+  return 'ProcedureRecord(id: $id, patientExternalId: $patientExternalId, patientDocument: $patientDocument, patientFirstName: $patientFirstName, patientLastName: $patientLastName, medicalServiceId: $medicalServiceId, medicalServiceName: $medicalServiceName, movementDocumentId: $movementDocumentId, quantity: $quantity, unitPrice: $unitPrice, total: $total, discountType: $discountType, discountValue: $discountValue, discountAmount: $discountAmount, netTotal: $netTotal, discountStatus: $discountStatus, orderNumber: $orderNumber, billingStatus: $billingStatus, serviceDate: $serviceDate, seller: $seller, referrer: $referrer, isActive: $isActive)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ProcedureRecordCopyWith<$Res>  {
   factory $ProcedureRecordCopyWith(ProcedureRecord value, $Res Function(ProcedureRecord) _then) = _$ProcedureRecordCopyWithImpl;
 @useResult
 $Res call({
- int id, String patientExternalId, String patientDocument, String patientFirstName, String patientLastName, int? medicalServiceId, String? medicalServiceName,@DoubleConverter() double? quantity,@DoubleConverter() double? unitPrice,@DoubleConverter() double? total,@DoubleConverter() double? discountAmount,@DoubleConverter() double? netTotal, String? discountStatus, String? orderNumber, String? billingStatus, String? serviceDate, String? seller, String? referrer, bool isActive
+ int id, String patientExternalId, String patientDocument, String patientFirstName, String patientLastName, int? medicalServiceId, String? medicalServiceName, int? movementDocumentId,@DoubleConverter() double? quantity,@DoubleConverter() double? unitPrice,@DoubleConverter() double? total, String? discountType,@DoubleConverter() double? discountValue,@DoubleConverter() double? discountAmount,@DoubleConverter() double? netTotal, String? discountStatus, String? orderNumber, String? billingStatus, String? serviceDate, String? seller, String? referrer, bool isActive
 });
 
 
@@ -65,7 +65,7 @@ class _$ProcedureRecordCopyWithImpl<$Res>
 
 /// Create a copy of ProcedureRecord
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? patientExternalId = null,Object? patientDocument = null,Object? patientFirstName = null,Object? patientLastName = null,Object? medicalServiceId = freezed,Object? medicalServiceName = freezed,Object? quantity = freezed,Object? unitPrice = freezed,Object? total = freezed,Object? discountAmount = freezed,Object? netTotal = freezed,Object? discountStatus = freezed,Object? orderNumber = freezed,Object? billingStatus = freezed,Object? serviceDate = freezed,Object? seller = freezed,Object? referrer = freezed,Object? isActive = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? patientExternalId = null,Object? patientDocument = null,Object? patientFirstName = null,Object? patientLastName = null,Object? medicalServiceId = freezed,Object? medicalServiceName = freezed,Object? movementDocumentId = freezed,Object? quantity = freezed,Object? unitPrice = freezed,Object? total = freezed,Object? discountType = freezed,Object? discountValue = freezed,Object? discountAmount = freezed,Object? netTotal = freezed,Object? discountStatus = freezed,Object? orderNumber = freezed,Object? billingStatus = freezed,Object? serviceDate = freezed,Object? seller = freezed,Object? referrer = freezed,Object? isActive = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,patientExternalId: null == patientExternalId ? _self.patientExternalId : patientExternalId // ignore: cast_nullable_to_non_nullable
@@ -74,9 +74,12 @@ as String,patientFirstName: null == patientFirstName ? _self.patientFirstName : 
 as String,patientLastName: null == patientLastName ? _self.patientLastName : patientLastName // ignore: cast_nullable_to_non_nullable
 as String,medicalServiceId: freezed == medicalServiceId ? _self.medicalServiceId : medicalServiceId // ignore: cast_nullable_to_non_nullable
 as int?,medicalServiceName: freezed == medicalServiceName ? _self.medicalServiceName : medicalServiceName // ignore: cast_nullable_to_non_nullable
-as String?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as String?,movementDocumentId: freezed == movementDocumentId ? _self.movementDocumentId : movementDocumentId // ignore: cast_nullable_to_non_nullable
+as int?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as double?,unitPrice: freezed == unitPrice ? _self.unitPrice : unitPrice // ignore: cast_nullable_to_non_nullable
 as double?,total: freezed == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
+as double?,discountType: freezed == discountType ? _self.discountType : discountType // ignore: cast_nullable_to_non_nullable
+as String?,discountValue: freezed == discountValue ? _self.discountValue : discountValue // ignore: cast_nullable_to_non_nullable
 as double?,discountAmount: freezed == discountAmount ? _self.discountAmount : discountAmount // ignore: cast_nullable_to_non_nullable
 as double?,netTotal: freezed == netTotal ? _self.netTotal : netTotal // ignore: cast_nullable_to_non_nullable
 as double?,discountStatus: freezed == discountStatus ? _self.discountStatus : discountStatus // ignore: cast_nullable_to_non_nullable
@@ -171,10 +174,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String patientExternalId,  String patientDocument,  String patientFirstName,  String patientLastName,  int? medicalServiceId,  String? medicalServiceName, @DoubleConverter()  double? quantity, @DoubleConverter()  double? unitPrice, @DoubleConverter()  double? total, @DoubleConverter()  double? discountAmount, @DoubleConverter()  double? netTotal,  String? discountStatus,  String? orderNumber,  String? billingStatus,  String? serviceDate,  String? seller,  String? referrer,  bool isActive)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  String patientExternalId,  String patientDocument,  String patientFirstName,  String patientLastName,  int? medicalServiceId,  String? medicalServiceName,  int? movementDocumentId, @DoubleConverter()  double? quantity, @DoubleConverter()  double? unitPrice, @DoubleConverter()  double? total,  String? discountType, @DoubleConverter()  double? discountValue, @DoubleConverter()  double? discountAmount, @DoubleConverter()  double? netTotal,  String? discountStatus,  String? orderNumber,  String? billingStatus,  String? serviceDate,  String? seller,  String? referrer,  bool isActive)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProcedureRecord() when $default != null:
-return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.patientFirstName,_that.patientLastName,_that.medicalServiceId,_that.medicalServiceName,_that.quantity,_that.unitPrice,_that.total,_that.discountAmount,_that.netTotal,_that.discountStatus,_that.orderNumber,_that.billingStatus,_that.serviceDate,_that.seller,_that.referrer,_that.isActive);case _:
+return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.patientFirstName,_that.patientLastName,_that.medicalServiceId,_that.medicalServiceName,_that.movementDocumentId,_that.quantity,_that.unitPrice,_that.total,_that.discountType,_that.discountValue,_that.discountAmount,_that.netTotal,_that.discountStatus,_that.orderNumber,_that.billingStatus,_that.serviceDate,_that.seller,_that.referrer,_that.isActive);case _:
   return orElse();
 
 }
@@ -192,10 +195,10 @@ return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.pat
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String patientExternalId,  String patientDocument,  String patientFirstName,  String patientLastName,  int? medicalServiceId,  String? medicalServiceName, @DoubleConverter()  double? quantity, @DoubleConverter()  double? unitPrice, @DoubleConverter()  double? total, @DoubleConverter()  double? discountAmount, @DoubleConverter()  double? netTotal,  String? discountStatus,  String? orderNumber,  String? billingStatus,  String? serviceDate,  String? seller,  String? referrer,  bool isActive)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  String patientExternalId,  String patientDocument,  String patientFirstName,  String patientLastName,  int? medicalServiceId,  String? medicalServiceName,  int? movementDocumentId, @DoubleConverter()  double? quantity, @DoubleConverter()  double? unitPrice, @DoubleConverter()  double? total,  String? discountType, @DoubleConverter()  double? discountValue, @DoubleConverter()  double? discountAmount, @DoubleConverter()  double? netTotal,  String? discountStatus,  String? orderNumber,  String? billingStatus,  String? serviceDate,  String? seller,  String? referrer,  bool isActive)  $default,) {final _that = this;
 switch (_that) {
 case _ProcedureRecord():
-return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.patientFirstName,_that.patientLastName,_that.medicalServiceId,_that.medicalServiceName,_that.quantity,_that.unitPrice,_that.total,_that.discountAmount,_that.netTotal,_that.discountStatus,_that.orderNumber,_that.billingStatus,_that.serviceDate,_that.seller,_that.referrer,_that.isActive);case _:
+return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.patientFirstName,_that.patientLastName,_that.medicalServiceId,_that.medicalServiceName,_that.movementDocumentId,_that.quantity,_that.unitPrice,_that.total,_that.discountType,_that.discountValue,_that.discountAmount,_that.netTotal,_that.discountStatus,_that.orderNumber,_that.billingStatus,_that.serviceDate,_that.seller,_that.referrer,_that.isActive);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -212,10 +215,10 @@ return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.pat
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String patientExternalId,  String patientDocument,  String patientFirstName,  String patientLastName,  int? medicalServiceId,  String? medicalServiceName, @DoubleConverter()  double? quantity, @DoubleConverter()  double? unitPrice, @DoubleConverter()  double? total, @DoubleConverter()  double? discountAmount, @DoubleConverter()  double? netTotal,  String? discountStatus,  String? orderNumber,  String? billingStatus,  String? serviceDate,  String? seller,  String? referrer,  bool isActive)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  String patientExternalId,  String patientDocument,  String patientFirstName,  String patientLastName,  int? medicalServiceId,  String? medicalServiceName,  int? movementDocumentId, @DoubleConverter()  double? quantity, @DoubleConverter()  double? unitPrice, @DoubleConverter()  double? total,  String? discountType, @DoubleConverter()  double? discountValue, @DoubleConverter()  double? discountAmount, @DoubleConverter()  double? netTotal,  String? discountStatus,  String? orderNumber,  String? billingStatus,  String? serviceDate,  String? seller,  String? referrer,  bool isActive)?  $default,) {final _that = this;
 switch (_that) {
 case _ProcedureRecord() when $default != null:
-return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.patientFirstName,_that.patientLastName,_that.medicalServiceId,_that.medicalServiceName,_that.quantity,_that.unitPrice,_that.total,_that.discountAmount,_that.netTotal,_that.discountStatus,_that.orderNumber,_that.billingStatus,_that.serviceDate,_that.seller,_that.referrer,_that.isActive);case _:
+return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.patientFirstName,_that.patientLastName,_that.medicalServiceId,_that.medicalServiceName,_that.movementDocumentId,_that.quantity,_that.unitPrice,_that.total,_that.discountType,_that.discountValue,_that.discountAmount,_that.netTotal,_that.discountStatus,_that.orderNumber,_that.billingStatus,_that.serviceDate,_that.seller,_that.referrer,_that.isActive);case _:
   return null;
 
 }
@@ -227,7 +230,7 @@ return $default(_that.id,_that.patientExternalId,_that.patientDocument,_that.pat
 @JsonSerializable()
 
 class _ProcedureRecord extends ProcedureRecord {
-  const _ProcedureRecord({required this.id, required this.patientExternalId, required this.patientDocument, required this.patientFirstName, required this.patientLastName, this.medicalServiceId, this.medicalServiceName, @DoubleConverter() this.quantity, @DoubleConverter() this.unitPrice, @DoubleConverter() this.total, @DoubleConverter() this.discountAmount, @DoubleConverter() this.netTotal, this.discountStatus, this.orderNumber, this.billingStatus, this.serviceDate, this.seller, this.referrer, this.isActive = true}): super._();
+  const _ProcedureRecord({required this.id, required this.patientExternalId, required this.patientDocument, required this.patientFirstName, required this.patientLastName, this.medicalServiceId, this.medicalServiceName, this.movementDocumentId, @DoubleConverter() this.quantity, @DoubleConverter() this.unitPrice, @DoubleConverter() this.total, this.discountType, @DoubleConverter() this.discountValue, @DoubleConverter() this.discountAmount, @DoubleConverter() this.netTotal, this.discountStatus, this.orderNumber, this.billingStatus, this.serviceDate, this.seller, this.referrer, this.isActive = true}): super._();
   factory _ProcedureRecord.fromJson(Map<String, dynamic> json) => _$ProcedureRecordFromJson(json);
 
 @override final  int id;
@@ -237,9 +240,12 @@ class _ProcedureRecord extends ProcedureRecord {
 @override final  String patientLastName;
 @override final  int? medicalServiceId;
 @override final  String? medicalServiceName;
+@override final  int? movementDocumentId;
 @override@DoubleConverter() final  double? quantity;
 @override@DoubleConverter() final  double? unitPrice;
 @override@DoubleConverter() final  double? total;
+@override final  String? discountType;
+@override@DoubleConverter() final  double? discountValue;
 @override@DoubleConverter() final  double? discountAmount;
 @override@DoubleConverter() final  double? netTotal;
 @override final  String? discountStatus;
@@ -263,16 +269,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProcedureRecord&&(identical(other.id, id) || other.id == id)&&(identical(other.patientExternalId, patientExternalId) || other.patientExternalId == patientExternalId)&&(identical(other.patientDocument, patientDocument) || other.patientDocument == patientDocument)&&(identical(other.patientFirstName, patientFirstName) || other.patientFirstName == patientFirstName)&&(identical(other.patientLastName, patientLastName) || other.patientLastName == patientLastName)&&(identical(other.medicalServiceId, medicalServiceId) || other.medicalServiceId == medicalServiceId)&&(identical(other.medicalServiceName, medicalServiceName) || other.medicalServiceName == medicalServiceName)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.unitPrice, unitPrice) || other.unitPrice == unitPrice)&&(identical(other.total, total) || other.total == total)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.netTotal, netTotal) || other.netTotal == netTotal)&&(identical(other.discountStatus, discountStatus) || other.discountStatus == discountStatus)&&(identical(other.orderNumber, orderNumber) || other.orderNumber == orderNumber)&&(identical(other.billingStatus, billingStatus) || other.billingStatus == billingStatus)&&(identical(other.serviceDate, serviceDate) || other.serviceDate == serviceDate)&&(identical(other.seller, seller) || other.seller == seller)&&(identical(other.referrer, referrer) || other.referrer == referrer)&&(identical(other.isActive, isActive) || other.isActive == isActive));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProcedureRecord&&(identical(other.id, id) || other.id == id)&&(identical(other.patientExternalId, patientExternalId) || other.patientExternalId == patientExternalId)&&(identical(other.patientDocument, patientDocument) || other.patientDocument == patientDocument)&&(identical(other.patientFirstName, patientFirstName) || other.patientFirstName == patientFirstName)&&(identical(other.patientLastName, patientLastName) || other.patientLastName == patientLastName)&&(identical(other.medicalServiceId, medicalServiceId) || other.medicalServiceId == medicalServiceId)&&(identical(other.medicalServiceName, medicalServiceName) || other.medicalServiceName == medicalServiceName)&&(identical(other.movementDocumentId, movementDocumentId) || other.movementDocumentId == movementDocumentId)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&(identical(other.unitPrice, unitPrice) || other.unitPrice == unitPrice)&&(identical(other.total, total) || other.total == total)&&(identical(other.discountType, discountType) || other.discountType == discountType)&&(identical(other.discountValue, discountValue) || other.discountValue == discountValue)&&(identical(other.discountAmount, discountAmount) || other.discountAmount == discountAmount)&&(identical(other.netTotal, netTotal) || other.netTotal == netTotal)&&(identical(other.discountStatus, discountStatus) || other.discountStatus == discountStatus)&&(identical(other.orderNumber, orderNumber) || other.orderNumber == orderNumber)&&(identical(other.billingStatus, billingStatus) || other.billingStatus == billingStatus)&&(identical(other.serviceDate, serviceDate) || other.serviceDate == serviceDate)&&(identical(other.seller, seller) || other.seller == seller)&&(identical(other.referrer, referrer) || other.referrer == referrer)&&(identical(other.isActive, isActive) || other.isActive == isActive));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,patientExternalId,patientDocument,patientFirstName,patientLastName,medicalServiceId,medicalServiceName,quantity,unitPrice,total,discountAmount,netTotal,discountStatus,orderNumber,billingStatus,serviceDate,seller,referrer,isActive]);
+int get hashCode => Object.hashAll([runtimeType,id,patientExternalId,patientDocument,patientFirstName,patientLastName,medicalServiceId,medicalServiceName,movementDocumentId,quantity,unitPrice,total,discountType,discountValue,discountAmount,netTotal,discountStatus,orderNumber,billingStatus,serviceDate,seller,referrer,isActive]);
 
 @override
 String toString() {
-  return 'ProcedureRecord(id: $id, patientExternalId: $patientExternalId, patientDocument: $patientDocument, patientFirstName: $patientFirstName, patientLastName: $patientLastName, medicalServiceId: $medicalServiceId, medicalServiceName: $medicalServiceName, quantity: $quantity, unitPrice: $unitPrice, total: $total, discountAmount: $discountAmount, netTotal: $netTotal, discountStatus: $discountStatus, orderNumber: $orderNumber, billingStatus: $billingStatus, serviceDate: $serviceDate, seller: $seller, referrer: $referrer, isActive: $isActive)';
+  return 'ProcedureRecord(id: $id, patientExternalId: $patientExternalId, patientDocument: $patientDocument, patientFirstName: $patientFirstName, patientLastName: $patientLastName, medicalServiceId: $medicalServiceId, medicalServiceName: $medicalServiceName, movementDocumentId: $movementDocumentId, quantity: $quantity, unitPrice: $unitPrice, total: $total, discountType: $discountType, discountValue: $discountValue, discountAmount: $discountAmount, netTotal: $netTotal, discountStatus: $discountStatus, orderNumber: $orderNumber, billingStatus: $billingStatus, serviceDate: $serviceDate, seller: $seller, referrer: $referrer, isActive: $isActive)';
 }
 
 
@@ -283,7 +289,7 @@ abstract mixin class _$ProcedureRecordCopyWith<$Res> implements $ProcedureRecord
   factory _$ProcedureRecordCopyWith(_ProcedureRecord value, $Res Function(_ProcedureRecord) _then) = __$ProcedureRecordCopyWithImpl;
 @override @useResult
 $Res call({
- int id, String patientExternalId, String patientDocument, String patientFirstName, String patientLastName, int? medicalServiceId, String? medicalServiceName,@DoubleConverter() double? quantity,@DoubleConverter() double? unitPrice,@DoubleConverter() double? total,@DoubleConverter() double? discountAmount,@DoubleConverter() double? netTotal, String? discountStatus, String? orderNumber, String? billingStatus, String? serviceDate, String? seller, String? referrer, bool isActive
+ int id, String patientExternalId, String patientDocument, String patientFirstName, String patientLastName, int? medicalServiceId, String? medicalServiceName, int? movementDocumentId,@DoubleConverter() double? quantity,@DoubleConverter() double? unitPrice,@DoubleConverter() double? total, String? discountType,@DoubleConverter() double? discountValue,@DoubleConverter() double? discountAmount,@DoubleConverter() double? netTotal, String? discountStatus, String? orderNumber, String? billingStatus, String? serviceDate, String? seller, String? referrer, bool isActive
 });
 
 
@@ -300,7 +306,7 @@ class __$ProcedureRecordCopyWithImpl<$Res>
 
 /// Create a copy of ProcedureRecord
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? patientExternalId = null,Object? patientDocument = null,Object? patientFirstName = null,Object? patientLastName = null,Object? medicalServiceId = freezed,Object? medicalServiceName = freezed,Object? quantity = freezed,Object? unitPrice = freezed,Object? total = freezed,Object? discountAmount = freezed,Object? netTotal = freezed,Object? discountStatus = freezed,Object? orderNumber = freezed,Object? billingStatus = freezed,Object? serviceDate = freezed,Object? seller = freezed,Object? referrer = freezed,Object? isActive = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? patientExternalId = null,Object? patientDocument = null,Object? patientFirstName = null,Object? patientLastName = null,Object? medicalServiceId = freezed,Object? medicalServiceName = freezed,Object? movementDocumentId = freezed,Object? quantity = freezed,Object? unitPrice = freezed,Object? total = freezed,Object? discountType = freezed,Object? discountValue = freezed,Object? discountAmount = freezed,Object? netTotal = freezed,Object? discountStatus = freezed,Object? orderNumber = freezed,Object? billingStatus = freezed,Object? serviceDate = freezed,Object? seller = freezed,Object? referrer = freezed,Object? isActive = null,}) {
   return _then(_ProcedureRecord(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,patientExternalId: null == patientExternalId ? _self.patientExternalId : patientExternalId // ignore: cast_nullable_to_non_nullable
@@ -309,9 +315,12 @@ as String,patientFirstName: null == patientFirstName ? _self.patientFirstName : 
 as String,patientLastName: null == patientLastName ? _self.patientLastName : patientLastName // ignore: cast_nullable_to_non_nullable
 as String,medicalServiceId: freezed == medicalServiceId ? _self.medicalServiceId : medicalServiceId // ignore: cast_nullable_to_non_nullable
 as int?,medicalServiceName: freezed == medicalServiceName ? _self.medicalServiceName : medicalServiceName // ignore: cast_nullable_to_non_nullable
-as String?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as String?,movementDocumentId: freezed == movementDocumentId ? _self.movementDocumentId : movementDocumentId // ignore: cast_nullable_to_non_nullable
+as int?,quantity: freezed == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as double?,unitPrice: freezed == unitPrice ? _self.unitPrice : unitPrice // ignore: cast_nullable_to_non_nullable
 as double?,total: freezed == total ? _self.total : total // ignore: cast_nullable_to_non_nullable
+as double?,discountType: freezed == discountType ? _self.discountType : discountType // ignore: cast_nullable_to_non_nullable
+as String?,discountValue: freezed == discountValue ? _self.discountValue : discountValue // ignore: cast_nullable_to_non_nullable
 as double?,discountAmount: freezed == discountAmount ? _self.discountAmount : discountAmount // ignore: cast_nullable_to_non_nullable
 as double?,netTotal: freezed == netTotal ? _self.netTotal : netTotal // ignore: cast_nullable_to_non_nullable
 as double?,discountStatus: freezed == discountStatus ? _self.discountStatus : discountStatus // ignore: cast_nullable_to_non_nullable

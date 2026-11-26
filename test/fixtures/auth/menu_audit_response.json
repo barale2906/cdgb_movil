@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "message": "Menú de navegación",
+  "data": [
+    {
+      "key": "audit-menu",
+      "label": "Auditoría",
+      "icon": "x",
+      "route": null,
+      "permission": null,
+      "actions": [],
+      "children": [
+        {
+          "key": "audit",
+          "label": "Auditoría",
+          "icon": "x",
+          "route": "audit.index",
+          "permission": "auditoria.ver",
+          "actions": [],
+          "children": []
+        }
+      ]
+    }
+  ]
+}

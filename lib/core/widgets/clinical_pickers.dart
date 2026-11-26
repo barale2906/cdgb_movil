@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sga_bojanini/core/catalog/generic_product.dart';
+import 'package:sga_bojanini/core/catalog/product_providers.dart';
+import 'package:sga_bojanini/core/clinical/clinical_lookup.dart';
+import 'package:sga_bojanini/core/clinical/procedure_match.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
+import 'package:sga_bojanini/core/widgets/patient_search_list.dart';
 import 'package:sga_bojanini/core/widgets/searchable_list.dart';
-import 'package:sga_bojanini/features/clinical/application/clinical_providers.dart';
-import 'package:sga_bojanini/features/clinical/data/clinical_repository.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_match.dart';
-import 'package:sga_bojanini/features/clinical/presentation/patients_tab.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
-/// Elegir el paciente de la venta: devuelve el paciente tocado.
+/// Elegir un paciente de MedSys: devuelve el paciente tocado.
 class PatientPickerPage extends StatelessWidget {
   const PatientPickerPage({super.key});
 
@@ -35,7 +36,7 @@ class PatientPickerPage extends StatelessWidget {
   }
 }
 
-/// Elegir un servicio o procedimiento: devuelve el servicio tocado.
+/// Elegir un procedimiento: devuelve el servicio tocado.
 class ServicePickerPage extends StatelessWidget {
   const ServicePickerPage({super.key});
 
@@ -53,9 +54,10 @@ class ServicePickerPage extends StatelessWidget {
                 provider: procedureSearchProvider,
                 searchHint: l10n.saleServiceSearchHint,
                 emptyMessage: l10n.saleServiceSearchPrompt(
-                  ClinicalRepository.minProcedureSearchLength,
+                  ClinicalLookupRepository.minProcedureSearchLength,
                 ),
-                minQueryLength: ClinicalRepository.minProcedureSearchLength,
+                minQueryLength:
+                    ClinicalLookupRepository.minProcedureSearchLength,
                 itemBuilder: (context, match) => _ServiceTile(match: match),
               ),
             ),
@@ -84,6 +86,44 @@ class _ServiceTile extends StatelessWidget {
           price == null ? l10n.saleNoPrice : AppFormat.cop(price),
         ),
         onTap: () => context.pop(match),
+      ),
+    );
+  }
+}
+
+/// Elegir un producto del catálogo (por ejemplo, un insumo): devuelve el
+/// producto tocado.
+class ProductPickerPage extends StatelessWidget {
+  const ProductPickerPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Scaffold(
+      appBar: AppBar(title: Text(l10n.serviceOrderChooseSupply)),
+      body: SafeArea(
+        child: Column(
+          children: [
+            const OfflineBanner(),
+            Expanded(
+              child: SearchableList<GenericProduct>(
+                provider: productSearchProvider,
+                searchHint: l10n.catalogSearchProducts,
+                emptyMessage: l10n.noProductsFound,
+                itemBuilder: (context, product) => Card(
+                  child: ListTile(
+                    minTileHeight: AppSizes.minTouchTarget,
+                    title: Text(product.name),
+                    subtitle: product.barcode == null
+                        ? null
+                        : Text(product.barcode!),
+                    onTap: () => context.pop(product),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

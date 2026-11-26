@@ -2756,4 +2756,174 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get saleDone => 'Venta registrada.';
+
+  @override
+  String get serviceOrderTabOrders => 'Órdenes';
+
+  @override
+  String get serviceOrderTabDiscounts => 'Descuentos';
+
+  @override
+  String get serviceOrderLookupHint => 'Número de orden';
+
+  @override
+  String get serviceOrderLookupAction => 'Buscar orden';
+
+  @override
+  String get serviceOrderLookupHelp =>
+      'Escriba el número completo, por ejemplo OS-20261126-000001.';
+
+  @override
+  String get serviceOrderNew => 'Nueva orden';
+
+  @override
+  String get serviceOrderTitle => 'Orden de servicio';
+
+  @override
+  String get serviceOrderStatusApproved => 'Aprobada';
+
+  @override
+  String get serviceOrderStatusDiscountPending => 'Descuento por aprobar';
+
+  @override
+  String get serviceOrderPatient => 'Paciente';
+
+  @override
+  String get serviceOrderProcedures => 'Procedimientos';
+
+  @override
+  String get serviceOrderTotal => 'Total';
+
+  @override
+  String get serviceOrderDiscount => 'Descuento';
+
+  @override
+  String get serviceOrderNetTotal => 'Total neto';
+
+  @override
+  String get serviceOrderApproveDiscount => 'Aprobar descuento';
+
+  @override
+  String serviceOrderApproveConfirm(String amount, String number) {
+    return 'Se aprobará el descuento de $amount de la orden $number.';
+  }
+
+  @override
+  String get serviceOrderApproved => 'Descuento aprobado.';
+
+  @override
+  String get serviceOrderBill => 'Marcar como facturada';
+
+  @override
+  String serviceOrderBillConfirm(String number) {
+    return 'La orden $number quedará como facturada.';
+  }
+
+  @override
+  String get serviceOrderBilled => 'Orden facturada.';
+
+  @override
+  String get serviceOrderBillBlocked =>
+      'Apruebe el descuento antes de facturar.';
+
+  @override
+  String get serviceOrderCancel => 'Anular orden';
+
+  @override
+  String serviceOrderCancelConfirm(String number) {
+    return 'Se anulará la orden $number. Anular no devuelve al inventario los insumos que ya salieron.';
+  }
+
+  @override
+  String get serviceOrderCancelled => 'Orden anulada.';
+
+  @override
+  String get serviceOrderActionTimeout =>
+      'No se recibió respuesta del servidor. Revise el estado de la orden antes de repetirlo.';
+
+  @override
+  String get serviceOrderDiscountsEmpty =>
+      'No hay descuentos pendientes de aprobación.';
+
+  @override
+  String serviceOrderDiscountOf(String amount) {
+    return 'Descuento: $amount';
+  }
+
+  @override
+  String get serviceOrderFormTitle => 'Nueva orden de servicio';
+
+  @override
+  String get serviceOrderNotes => 'Observaciones (opcional)';
+
+  @override
+  String get serviceOrderDiscountToggle => 'Aplicar descuento';
+
+  @override
+  String get serviceOrderDiscountType => 'Tipo de descuento';
+
+  @override
+  String get serviceOrderDiscountPercent => 'Porcentaje';
+
+  @override
+  String get serviceOrderDiscountFixed => 'Valor fijo';
+
+  @override
+  String get serviceOrderDiscountPercentValue => 'Porcentaje (%)';
+
+  @override
+  String get serviceOrderDiscountFixedValue => 'Valor del descuento';
+
+  @override
+  String get serviceOrderDiscountInvalid =>
+      'Debe ser mayor que cero y menor que el total del procedimiento.';
+
+  @override
+  String get serviceOrderDiscountPercentInvalid => 'Debe estar entre 0 y 100.';
+
+  @override
+  String get serviceOrderDiscountNote =>
+      'Un descuento deja la orden pendiente hasta que un aprobador lo autorice.';
+
+  @override
+  String get serviceOrderSupplies => 'Insumos';
+
+  @override
+  String get serviceOrderAddSupply => 'Agregar insumo';
+
+  @override
+  String get serviceOrderChooseSupply => 'Elegir insumo';
+
+  @override
+  String get serviceOrderSupplyWarehouse => 'Almacén de donde salen';
+
+  @override
+  String get serviceOrderSupplyQuantity => 'Cantidad';
+
+  @override
+  String get serviceOrderSupplyNote =>
+      'Los insumos salen del inventario al crear la orden.';
+
+  @override
+  String get serviceOrderSupplyWarehouseRequired =>
+      'Elija el almacén de los insumos.';
+
+  @override
+  String get serviceOrderSubmit => 'Crear orden';
+
+  @override
+  String serviceOrderCreated(String number) {
+    return 'Orden $number creada.';
+  }
+
+  @override
+  String get serviceOrderUnconfirmed =>
+      'No se recibió respuesta del servidor. La orden pudo haberse creado: revise los registros del paciente antes de repetirla.';
+
+  @override
+  String get serviceOrderNotCreated => 'Ya revisé: no se creó, enviar de nuevo';
+
+  @override
+  String get serviceOrderMaybePartial =>
+      'Si el servidor falló al guardar, la orden pudo quedar a medias (con algunos procedimientos o insumos ya registrados). Revise los registros del paciente antes de repetirla.';
 }

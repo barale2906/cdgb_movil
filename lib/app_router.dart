@@ -5,9 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/auth/session_controller.dart';
+import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
 import 'package:sga_bojanini/core/files/file_picker_gateway.dart';
 import 'package:sga_bojanini/core/navigation/app_section.dart';
 import 'package:sga_bojanini/core/router/redirect.dart';
+import 'package:sga_bojanini/core/widgets/clinical_pickers.dart';
 import 'package:sga_bojanini/core/widgets/pdf_preview_page.dart';
 import 'package:sga_bojanini/features/about/presentation/about_page.dart';
 import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
@@ -32,12 +34,10 @@ import 'package:sga_bojanini/features/catalog/presentation/catalog_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/product_detail_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/supplier_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/application/clinical_permissions.dart';
-import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
 import 'package:sga_bojanini/features/clinical/presentation/clinical_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/patient_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/record_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/sale_page.dart';
-import 'package:sga_bojanini/features/clinical/presentation/sale_pickers.dart';
 import 'package:sga_bojanini/features/home/presentation/app_shell.dart';
 import 'package:sga_bojanini/features/home/presentation/home_page.dart';
 import 'package:sga_bojanini/features/home/presentation/more_page.dart';
@@ -72,6 +72,11 @@ import 'package:sga_bojanini/features/reports/presentation/exports_page.dart';
 import 'package:sga_bojanini/features/reports/presentation/report_form_page.dart';
 import 'package:sga_bojanini/features/reports/presentation/report_viewer_page.dart';
 import 'package:sga_bojanini/features/reports/presentation/reports_page.dart';
+import 'package:sga_bojanini/features/service_orders/application/service_order_permissions.dart';
+import 'package:sga_bojanini/features/service_orders/presentation/new_order_page.dart';
+import 'package:sga_bojanini/features/service_orders/presentation/order_detail_page.dart';
+import 'package:sga_bojanini/features/service_orders/presentation/order_paths.dart';
+import 'package:sga_bojanini/features/service_orders/presentation/service_orders_page.dart';
 import 'package:sga_bojanini/features/warehouse/presentation/warehouse_detail_page.dart';
 import 'package:sga_bojanini/features/warehouse/presentation/warehouses_page.dart';
 
@@ -139,6 +144,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ..._reportRoutes(ref),
       ..._monitoringRoutes(ref),
       ..._clinicalRoutes(ref),
+      ..._serviceOrderRoutes(ref),
       GoRoute(
         path: NotificationsPage.path,
         redirect: _requires(ref, notificationsPermission),
@@ -176,6 +182,7 @@ Widget _sectionPage(AppSection section) => switch (section) {
   AppSection.monitoring => const MonitoringPage(),
   AppSection.reports => const ReportsPage(),
   AppSection.clinicalRecords => const ClinicalPage(),
+  AppSection.serviceOrders => const ServiceOrdersPage(),
   _ => SectionPlaceholderPage(section: section),
 };
 
@@ -471,3 +478,24 @@ List<GoRoute> _clinicalRoutes(Ref ref) {
     ),
   ];
 }
+
+/// Órdenes de servicio: nueva orden (con sus selectores) y detalle (la lista de
+/// entrada es la sección `/service-orders`). `new` va antes de `:number`.
+List<GoRoute> _serviceOrderRoutes(Ref ref) => [
+  GoRoute(
+    path: OrderPaths.newOrder,
+    redirect: _requiresAll(ref, newOrderPermissions),
+    builder: (_, _) => const NewOrderPage(),
+    routes: [
+      GoRoute(path: 'patient', builder: (_, _) => const PatientPickerPage()),
+      GoRoute(path: 'service', builder: (_, _) => const ServicePickerPage()),
+      GoRoute(path: 'product', builder: (_, _) => const ProductPickerPage()),
+    ],
+  ),
+  GoRoute(
+    path: '${AppSection.serviceOrders.path}/:number',
+    redirect: _requires(ref, 'ordenes_servicio.ver'),
+    builder: (_, state) =>
+        OrderDetailPage(orderNumber: state.pathParameters['number']!),
+  ),
+];

@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
+import 'package:sga_bojanini/core/clinical/procedure_match.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/alert_banner.dart';
@@ -14,8 +16,6 @@ import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
 import 'package:sga_bojanini/features/clinical/application/clinical_providers.dart';
 import 'package:sga_bojanini/features/clinical/application/sale_controller.dart';
-import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
-import 'package:sga_bojanini/features/clinical/data/procedure_match.dart';
 import 'package:sga_bojanini/features/clinical/presentation/sale_line_card.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 

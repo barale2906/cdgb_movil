@@ -33,6 +33,12 @@ const _salePermissions = [
   'servicios_medicos.ver',
 ];
 
+/// Crear una orden de servicio exige crearla y buscar el procedimiento.
+const _newOrderPermissions = [
+  'ordenes_servicio.crear',
+  'servicios_medicos.ver',
+];
+
 /// Inicio: saludo, accesos rápidos, tablero (cada bloque solo con el permiso
 /// de su módulo) y accesos a los módulos del usuario.
 class HomePage extends ConsumerWidget {
@@ -50,6 +56,7 @@ class HomePage extends ConsumerWidget {
         permissions.canAny(_movementPermissions);
     final canScan = permissions.can('generic-products.barcode');
     final canSell = permissions.canAll(_salePermissions);
+    final canOrder = permissions.canAll(_newOrderPermissions);
 
     return plan.when(
       loading: () => const SkeletonList(),
@@ -72,7 +79,7 @@ class HomePage extends ConsumerWidget {
                 l10n.homeGreeting(name ?? ''),
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
-              if (canMove || canScan || canSell) ...[
+              if (canMove || canScan || canSell || canOrder) ...[
                 const SizedBox(height: AppSpacing.lg),
                 Text(
                   l10n.dashQuickActions,
@@ -89,6 +96,14 @@ class HomePage extends ConsumerWidget {
                         icon: Icons.add,
                         expand: false,
                         onPressed: () => context.push('/inventory/new'),
+                      ),
+                    if (canOrder)
+                      BojaniButton(
+                        label: l10n.serviceOrderNew,
+                        icon: Icons.assignment_outlined,
+                        kind: BojaniButtonKind.secondary,
+                        expand: false,
+                        onPressed: () => context.push('/service-orders/new'),
                       ),
                     if (canSell)
                       BojaniButton(

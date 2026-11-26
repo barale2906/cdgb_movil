@@ -38,11 +38,11 @@ void main() {
   testWidgets('tocar un destino abre la sección con aviso "Próximamente"', (
     tester,
   ) async {
-    // Órdenes de servicio es de la fase 6: aún muestra "Próximamente".
+    // Auditoría es de la fase 7: aún muestra "Próximamente".
     await signIn(
       tester,
-      ['ordenes_servicio.ver'],
-      menu: 'auth/menu_service_orders_response.json',
+      ['auditoria.ver'],
+      menu: 'auth/menu_audit_response.json',
     );
 
     await tester.tap(
@@ -52,7 +52,7 @@ void main() {
       ),
     );
     await AppHarness.settle(tester);
-    await tester.tap(find.text('Órdenes de servicio').last);
+    await tester.tap(find.text('Auditoría').last);
     await AppHarness.settle(tester);
 
     expect(find.textContaining('Próximamente'), findsOneWidget);
