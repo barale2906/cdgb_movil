@@ -1,0 +1,1 @@
+{ "success": true, "message": "OK", "data": { "pending_orders": 3, "approved_orders": 5, "total_month": 1250000.5 } }
