@@ -4815,6 +4815,384 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Próximo: {date}'**
   String planNext(String date);
+
+  /// No description provided for @clinicalTabRecords.
+  ///
+  /// In es, this message translates to:
+  /// **'Registros'**
+  String get clinicalTabRecords;
+
+  /// No description provided for @clinicalTabPatients.
+  ///
+  /// In es, this message translates to:
+  /// **'Pacientes'**
+  String get clinicalTabPatients;
+
+  /// No description provided for @clinicalRecordsSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento del paciente'**
+  String get clinicalRecordsSearchHint;
+
+  /// No description provided for @clinicalRecordsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay registros en los últimos {days} días.'**
+  String clinicalRecordsEmpty(int days);
+
+  /// No description provided for @clinicalPatientSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento o nombre del paciente'**
+  String get clinicalPatientSearchHint;
+
+  /// No description provided for @clinicalPatientSearchPrompt.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba al menos {count} caracteres del documento o del nombre del paciente.'**
+  String clinicalPatientSearchPrompt(int count);
+
+  /// No description provided for @clinicalPatientTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Paciente'**
+  String get clinicalPatientTitle;
+
+  /// No description provided for @clinicalPatientDocument.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento {document}'**
+  String clinicalPatientDocument(String document);
+
+  /// No description provided for @clinicalHistoryTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Historial de procedimientos'**
+  String get clinicalHistoryTitle;
+
+  /// No description provided for @clinicalHistoryEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Este paciente no tiene procedimientos registrados.'**
+  String get clinicalHistoryEmpty;
+
+  /// No description provided for @clinicalSummaryRecords.
+  ///
+  /// In es, this message translates to:
+  /// **'Procedimientos'**
+  String get clinicalSummaryRecords;
+
+  /// No description provided for @clinicalSummaryAmount.
+  ///
+  /// In es, this message translates to:
+  /// **'Total registrado'**
+  String get clinicalSummaryAmount;
+
+  /// No description provided for @clinicalSummaryFirst.
+  ///
+  /// In es, this message translates to:
+  /// **'Primera atención'**
+  String get clinicalSummaryFirst;
+
+  /// No description provided for @clinicalSummaryLast.
+  ///
+  /// In es, this message translates to:
+  /// **'Última atención'**
+  String get clinicalSummaryLast;
+
+  /// No description provided for @clinicalAppointmentsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Citas activas'**
+  String get clinicalAppointmentsTitle;
+
+  /// No description provided for @clinicalAppointmentsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No tiene citas activas.'**
+  String get clinicalAppointmentsEmpty;
+
+  /// No description provided for @clinicalRecentAppointmentsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Últimas citas'**
+  String get clinicalRecentAppointmentsTitle;
+
+  /// No description provided for @clinicalRecordTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registro de procedimiento'**
+  String get clinicalRecordTitle;
+
+  /// No description provided for @clinicalRecordService.
+  ///
+  /// In es, this message translates to:
+  /// **'Servicio'**
+  String get clinicalRecordService;
+
+  /// No description provided for @clinicalRecordPatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Paciente'**
+  String get clinicalRecordPatient;
+
+  /// No description provided for @clinicalRecordDocument.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento'**
+  String get clinicalRecordDocument;
+
+  /// No description provided for @clinicalRecordDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de atención'**
+  String get clinicalRecordDate;
+
+  /// No description provided for @clinicalRecordQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get clinicalRecordQuantity;
+
+  /// No description provided for @clinicalRecordUnitPrice.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor unitario'**
+  String get clinicalRecordUnitPrice;
+
+  /// No description provided for @clinicalRecordTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total'**
+  String get clinicalRecordTotal;
+
+  /// No description provided for @clinicalRecordDiscount.
+  ///
+  /// In es, this message translates to:
+  /// **'Descuento'**
+  String get clinicalRecordDiscount;
+
+  /// No description provided for @clinicalRecordNetTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total neto'**
+  String get clinicalRecordNetTotal;
+
+  /// No description provided for @clinicalRecordBilling.
+  ///
+  /// In es, this message translates to:
+  /// **'Facturación'**
+  String get clinicalRecordBilling;
+
+  /// No description provided for @clinicalRecordOrder.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden de servicio'**
+  String get clinicalRecordOrder;
+
+  /// No description provided for @clinicalRecordSeller.
+  ///
+  /// In es, this message translates to:
+  /// **'Vendedor'**
+  String get clinicalRecordSeller;
+
+  /// No description provided for @clinicalRecordReferrer.
+  ///
+  /// In es, this message translates to:
+  /// **'Remitente'**
+  String get clinicalRecordReferrer;
+
+  /// No description provided for @clinicalRecordInactive.
+  ///
+  /// In es, this message translates to:
+  /// **'Inactivo'**
+  String get clinicalRecordInactive;
+
+  /// No description provided for @clinicalViewHistory.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver historial del paciente'**
+  String get clinicalViewHistory;
+
+  /// No description provided for @billingPending.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin facturar'**
+  String get billingPending;
+
+  /// No description provided for @billingBilled.
+  ///
+  /// In es, this message translates to:
+  /// **'Facturado'**
+  String get billingBilled;
+
+  /// No description provided for @billingCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Anulado'**
+  String get billingCancelled;
+
+  /// No description provided for @saleTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar venta'**
+  String get saleTitle;
+
+  /// No description provided for @saleAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar venta'**
+  String get saleAction;
+
+  /// No description provided for @saleChoosePatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Elegir paciente'**
+  String get saleChoosePatient;
+
+  /// No description provided for @saleSearchPatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar paciente'**
+  String get saleSearchPatient;
+
+  /// No description provided for @saleChangePatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambiar paciente'**
+  String get saleChangePatient;
+
+  /// No description provided for @salePatientRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Elija el paciente al que se le vende.'**
+  String get salePatientRequired;
+
+  /// No description provided for @saleServiceDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de atención'**
+  String get saleServiceDate;
+
+  /// No description provided for @saleSeller.
+  ///
+  /// In es, this message translates to:
+  /// **'Vendedor'**
+  String get saleSeller;
+
+  /// No description provided for @saleReferrer.
+  ///
+  /// In es, this message translates to:
+  /// **'Remitente'**
+  String get saleReferrer;
+
+  /// No description provided for @saleServicesTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Servicios'**
+  String get saleServicesTitle;
+
+  /// No description provided for @saleAddService.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar servicio'**
+  String get saleAddService;
+
+  /// No description provided for @saleChooseService.
+  ///
+  /// In es, this message translates to:
+  /// **'Elegir servicio'**
+  String get saleChooseService;
+
+  /// No description provided for @saleServiceSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre o código del servicio'**
+  String get saleServiceSearchHint;
+
+  /// No description provided for @saleServiceSearchPrompt.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba al menos {count} caracteres del nombre o del código.'**
+  String saleServiceSearchPrompt(int count);
+
+  /// No description provided for @saleNoPrice.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin tarifa'**
+  String get saleNoPrice;
+
+  /// No description provided for @saleServicesRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregue al menos un servicio.'**
+  String get saleServicesRequired;
+
+  /// No description provided for @saleQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get saleQuantity;
+
+  /// No description provided for @saleUnitPrice.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor unitario'**
+  String get saleUnitPrice;
+
+  /// No description provided for @saleTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total de la venta'**
+  String get saleTotal;
+
+  /// No description provided for @saleSubmit.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar venta'**
+  String get saleSubmit;
+
+  /// No description provided for @saleLineSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrado'**
+  String get saleLineSaved;
+
+  /// No description provided for @saleLineFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'No se registró'**
+  String get saleLineFailed;
+
+  /// No description provided for @saleLineUnconfirmed.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin confirmar'**
+  String get saleLineUnconfirmed;
+
+  /// No description provided for @saleLineUnconfirmedHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'El servidor no respondió y puede que sí se haya registrado. Revise los registros del paciente antes de enviarla de nuevo.'**
+  String get saleLineUnconfirmedHelp;
+
+  /// No description provided for @saleLineNotRegistered.
+  ///
+  /// In es, this message translates to:
+  /// **'No se registró, enviar de nuevo'**
+  String get saleLineNotRegistered;
+
+  /// No description provided for @salePartialWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'Algunos servicios ya quedaron registrados y no se vuelven a enviar. Corrija lo pendiente y registre de nuevo.'**
+  String get salePartialWarning;
+
+  /// No description provided for @saleDone.
+  ///
+  /// In es, this message translates to:
+  /// **'Venta registrada.'**
+  String get saleDone;
 }
 
 class _AppLocalizationsDelegate

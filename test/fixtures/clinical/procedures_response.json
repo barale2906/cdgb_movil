@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "message": "Resultados de búsqueda de procedimientos",
+  "data": [
+    {
+      "id": 3,
+      "code": "CUR-001",
+      "name": "Curaciones simples",
+      "parent_id": 1,
+      "current_price": {
+        "id": 8,
+        "unit_price": "50000.00",
+        "effective_from": "2026-01-01",
+        "effective_to": null
+      }
+    },
+    {
+      "id": 4,
+      "code": "CON-001",
+      "name": "Consulta dermatología",
+      "parent_id": 2,
+      "current_price": null
+    }
+  ]
+}

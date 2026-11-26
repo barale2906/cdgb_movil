@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "message": "Resultados de búsqueda en MedSys",
+  "data": {
+    "patients": [
+      {
+        "codigo": "P00001",
+        "tipodoc": "CC",
+        "documento": "1000000001",
+        "nombre": "ANA  MARIA PEREZ GOMEZ ",
+        "email": "paciente.uno@example.com",
+        "direccion": "Calle 1 # 2-3",
+        "direccion2": null,
+        "telcelular": "3000000001",
+        "telefono": null,
+        "recent_appointments": [
+          {
+            "codcontrol": "C0001",
+            "fecha": "2026-11-20",
+            "hora": "14:30:00",
+            "codtipocontrol": "DER",
+            "servicio": "Dermatología",
+            "estado": "Confirmada"
+          }
+        ]
+      },
+      {
+        "codigo": "P00002",
+        "tipodoc": "CC",
+        "documento": "1000000002",
+        "nombre": "LUIS  RAMIREZ ",
+        "email": null,
+        "direccion": null,
+        "direccion2": null,
+        "telcelular": null,
+        "telefono": null,
+        "recent_appointments": []
+      }
+    ]
+  }
+}

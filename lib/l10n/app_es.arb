@@ -1175,5 +1175,96 @@
         "type": "String"
       }
     }
-  }
+  },
+  "clinicalTabRecords": "Registros",
+  "clinicalTabPatients": "Pacientes",
+  "clinicalRecordsSearchHint": "Documento del paciente",
+  "clinicalRecordsEmpty": "No hay registros en los últimos {days} días.",
+  "@clinicalRecordsEmpty": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "clinicalPatientSearchHint": "Documento o nombre del paciente",
+  "clinicalPatientSearchPrompt": "Escriba al menos {count} caracteres del documento o del nombre del paciente.",
+  "@clinicalPatientSearchPrompt": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "clinicalPatientTitle": "Paciente",
+  "clinicalPatientDocument": "Documento {document}",
+  "@clinicalPatientDocument": {
+    "placeholders": {
+      "document": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalHistoryTitle": "Historial de procedimientos",
+  "clinicalHistoryEmpty": "Este paciente no tiene procedimientos registrados.",
+  "clinicalSummaryRecords": "Procedimientos",
+  "clinicalSummaryAmount": "Total registrado",
+  "clinicalSummaryFirst": "Primera atención",
+  "clinicalSummaryLast": "Última atención",
+  "clinicalAppointmentsTitle": "Citas activas",
+  "clinicalAppointmentsEmpty": "No tiene citas activas.",
+  "clinicalRecentAppointmentsTitle": "Últimas citas",
+  "clinicalRecordTitle": "Registro de procedimiento",
+  "clinicalRecordService": "Servicio",
+  "clinicalRecordPatient": "Paciente",
+  "clinicalRecordDocument": "Documento",
+  "clinicalRecordDate": "Fecha de atención",
+  "clinicalRecordQuantity": "Cantidad",
+  "clinicalRecordUnitPrice": "Valor unitario",
+  "clinicalRecordTotal": "Total",
+  "clinicalRecordDiscount": "Descuento",
+  "clinicalRecordNetTotal": "Total neto",
+  "clinicalRecordBilling": "Facturación",
+  "clinicalRecordOrder": "Orden de servicio",
+  "clinicalRecordSeller": "Vendedor",
+  "clinicalRecordReferrer": "Remitente",
+  "clinicalRecordInactive": "Inactivo",
+  "clinicalViewHistory": "Ver historial del paciente",
+  "billingPending": "Sin facturar",
+  "billingBilled": "Facturado",
+  "billingCancelled": "Anulado",
+  "saleTitle": "Registrar venta",
+  "saleAction": "Registrar venta",
+  "saleChoosePatient": "Elegir paciente",
+  "saleSearchPatient": "Buscar paciente",
+  "saleChangePatient": "Cambiar paciente",
+  "salePatientRequired": "Elija el paciente al que se le vende.",
+  "saleServiceDate": "Fecha de atención",
+  "saleSeller": "Vendedor",
+  "saleReferrer": "Remitente",
+  "saleServicesTitle": "Servicios",
+  "saleAddService": "Agregar servicio",
+  "saleChooseService": "Elegir servicio",
+  "saleServiceSearchHint": "Nombre o código del servicio",
+  "saleServiceSearchPrompt": "Escriba al menos {count} caracteres del nombre o del código.",
+  "@saleServiceSearchPrompt": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "saleNoPrice": "Sin tarifa",
+  "saleServicesRequired": "Agregue al menos un servicio.",
+  "saleQuantity": "Cantidad",
+  "saleUnitPrice": "Valor unitario",
+  "saleTotal": "Total de la venta",
+  "saleSubmit": "Registrar venta",
+  "saleLineSaved": "Registrado",
+  "saleLineFailed": "No se registró",
+  "saleLineUnconfirmed": "Sin confirmar",
+  "saleLineUnconfirmedHelp": "El servidor no respondió y puede que sí se haya registrado. Revise los registros del paciente antes de enviarla de nuevo.",
+  "saleLineNotRegistered": "No se registró, enviar de nuevo",
+  "salePartialWarning": "Algunos servicios ya quedaron registrados y no se vuelven a enviar. Corrija lo pendiente y registre de nuevo.",
+  "saleDone": "Venta registrada."
 }

@@ -21,6 +21,7 @@ class BojaniTextField extends StatefulWidget {
     this.inputFormatters,
     this.autofocus = false,
     this.helperText,
+    this.onChanged,
   });
 
   final String label;
@@ -36,6 +37,7 @@ class BojaniTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
   final bool autofocus;
   final String? helperText;
+  final ValueChanged<String>? onChanged;
 
   @override
   State<BojaniTextField> createState() => _BojaniTextFieldState();
@@ -57,6 +59,7 @@ class _BojaniTextFieldState extends State<BojaniTextField> {
       textInputAction: widget.textInputAction,
       autofillHints: widget.autofillHints,
       onFieldSubmitted: widget.onFieldSubmitted,
+      onChanged: widget.onChanged,
       inputFormatters: widget.inputFormatters,
       // Sin sugerencias ni autocorrección en credenciales.
       enableSuggestions: !widget.isPassword,

@@ -23,6 +23,12 @@ abstract final class ColombiaTime {
         : parsed;
   }
 
+  /// `Y-m-d` para enviar al backend (filtros y fechas de negocio).
+  static String formatDate(DateTime value) {
+    String two(int n) => n.toString().padLeft(2, '0');
+    return '${value.year}-${two(value.month)}-${two(value.day)}';
+  }
+
   /// `Y-m-d H:i:s` para enviar al backend.
   static String format(DateTime value) {
     String two(int n) => n.toString().padLeft(2, '0');
