@@ -121,8 +121,7 @@ class MonitoringRepository {
     'date_to': _date(to),
   };
 
-  static String _date(DateTime value) =>
-      ColombiaTime.format(value).substring(0, 10);
+  static String _date(DateTime value) => ColombiaTime.formatDate(value);
 }
 
 final monitoringRepositoryProvider = Provider<MonitoringRepository>(

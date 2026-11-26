@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
+import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/form_fields.dart';
@@ -9,8 +10,6 @@ import 'package:sga_bojanini/features/purchasing/data/expense_orders_repository.
 import 'package:sga_bojanini/features/purchasing/data/order_status.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/purchasing_labels.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
-
-String _isoDate(DateTime date) => date.toIso8601String().substring(0, 10);
 
 /// Marco común de los diálogos de captura: campos, validación y botones
 /// apilados a todo el ancho.
@@ -91,7 +90,10 @@ class _InvoiceDialogState extends State<_InvoiceDialog> {
         if (!(_formKey.currentState?.validate() ?? false)) return;
         Navigator.of(
           context,
-        ).pop((number: _number.text.trim(), date: _isoDate(_date!)));
+        ).pop((
+          number: _number.text.trim(),
+          date: ColombiaTime.formatDate(_date!),
+        ));
       },
       children: [
         TextFormField(
@@ -157,7 +159,7 @@ class _PaymentDialogState extends State<_PaymentDialog> {
         Navigator.of(context).pop(
           PaymentRequest(
             amount: AppFormat.parseDecimal(_amount.text)!,
-            paymentDate: _isoDate(_date!),
+            paymentDate: ColombiaTime.formatDate(_date!),
             method: _method,
             reference: _reference.text,
             notes: _notes.text,

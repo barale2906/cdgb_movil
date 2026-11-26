@@ -4,6 +4,7 @@ import 'package:sga_bojanini/core/auth/auth_token_provider.dart';
 import 'package:sga_bojanini/core/auth/session_controller.dart';
 import 'package:sga_bojanini/core/auth/session_state.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
+import 'package:sga_bojanini/core/cache/read_cache.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
@@ -273,6 +274,24 @@ void main() {
         adapter.callsTo('POST', '/auth/logout').single.headers['Authorization'],
         'Bearer 1|token-de-prueba',
       );
+    });
+
+    test('logout borra la copia local de las listas de referencia', () async {
+      stubLogin();
+      adapter.on('POST', '/auth/logout', body: envelope(null));
+      final container = await build();
+      await settle(container);
+      final notifier = container.read(sessionControllerProvider.notifier);
+      await notifier.login(email: 'a@b.co', password: 'x');
+      final cache = container.read(readCacheProvider);
+      await cache.write('warehouses', [
+        {'id': 1, 'name': 'Bodega del usuario anterior'},
+      ]);
+      expect(cache.read('warehouses'), isNotNull);
+
+      await notifier.logout();
+
+      expect(cache.read('warehouses'), isNull);
     });
 
     test('logout limpia localmente aunque el servidor no responda', () async {

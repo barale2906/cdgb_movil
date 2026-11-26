@@ -8,6 +8,7 @@ import 'package:sga_bojanini/core/config/app_environment.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/models/named_ref.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
+import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/core/widgets/alert_banner.dart';
 import 'package:sga_bojanini/core/widgets/api_error_message.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
@@ -115,10 +116,9 @@ class _FormState extends ConsumerState<_Form> {
             toPlaceId: _place?.id,
             toResponsibleId: _responsible?.id,
             externalDestination: _destination.text,
-            expectedReturnDate: _expectedReturn?.toIso8601String().substring(
-              0,
-              10,
-            ),
+            expectedReturnDate: _expectedReturn == null
+                ? null
+                : ColombiaTime.formatDate(_expectedReturn!),
             reason: _reason.text,
           ),
         );

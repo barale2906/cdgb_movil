@@ -1,8 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart';
-
-/// Fecha para la API (`YYYY-MM-DD`).
-String apiDate(DateTime date) => DateFormat('yyyy-MM-dd').format(date);
+import 'package:sga_bojanini/core/utils/colombia_time.dart';
 
 Map<String, dynamic> _clean(Map<String, dynamic> json) =>
     json..removeWhere((_, value) => value == null);
@@ -37,10 +34,10 @@ class EntryItem {
     'product_variant_id': productVariantId,
     'location_id': locationId,
     'lot_number': lotNumber,
-    'expiration_date': apiDate(expirationDate),
+    'expiration_date': ColombiaTime.formatDate(expirationDate),
     'manufacturing_date': manufacturingDate == null
         ? null
-        : apiDate(manufacturingDate!),
+        : ColombiaTime.formatDate(manufacturingDate!),
     'quantity_base': quantityBase,
     'product_presentation_id': presentationId,
     'quantity_in_presentation': quantityInPresentation,

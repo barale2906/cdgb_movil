@@ -7,6 +7,7 @@ import 'package:sga_bojanini/core/auth/auth_user.dart';
 import 'package:sga_bojanini/core/auth/device_name.dart';
 import 'package:sga_bojanini/core/auth/session_state.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
+import 'package:sga_bojanini/core/cache/read_cache.dart';
 import 'package:sga_bojanini/core/clock/clock.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
@@ -223,6 +224,8 @@ class SessionController extends Notifier<SessionState> {
       await _revokeQuietly(serverToken);
     }
     await _store.clear();
+    // Nada del usuario anterior en un teléfono compartido.
+    await ref.read(readCacheProvider).clear();
     if (!ref.mounted) return;
     ref.read(authTokenProvider.notifier).replace(null);
     state = SessionState.unauthenticated(reason: reason);

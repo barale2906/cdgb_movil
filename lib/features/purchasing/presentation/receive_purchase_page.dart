@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
+import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/warehouse/location_options.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
@@ -108,10 +109,7 @@ class _ReceiveFormState extends ConsumerState<_ReceiveForm> {
             itemId: entry.key,
             quantityReceived: entry.value.quantityValue!,
             lotNumber: entry.value.lot.text.trim(),
-            expirationDate: entry.value.expiration!.toIso8601String().substring(
-              0,
-              10,
-            ),
+            expirationDate: ColombiaTime.formatDate(entry.value.expiration!),
             locationId: entry.value.location!.id,
           ).toJson(),
     ];

@@ -1553,5 +1553,27 @@
   "auditNoChanges": "Este registro no guarda valores.",
   "auditValueNew": "Nuevo",
   "auditValueOld": "Anterior",
-  "auditValueMasked": "Oculto por seguridad"
+  "auditValueMasked": "Oculto por seguridad",
+  "clinicalRecordDelete": "Eliminar registro",
+  "clinicalRecordDeleteConfirm": "Se eliminará el registro «{service}» del paciente {patient}. Esta acción no se puede deshacer.",
+  "@clinicalRecordDeleteConfirm": {
+    "placeholders": {
+      "service": {
+        "type": "String"
+      },
+      "patient": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalRecordDeleteOrder": "Pertenece a la orden de servicio {order}.",
+  "@clinicalRecordDeleteOrder": {
+    "placeholders": {
+      "order": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalRecordDeleted": "Registro eliminado.",
+  "clinicalRecordDeleteTimeout": "No se recibió respuesta del servidor. Revise si el registro sigue en la lista antes de repetirlo: es posible que sí se haya eliminado."
 }

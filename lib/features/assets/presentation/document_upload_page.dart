@@ -7,6 +7,7 @@ import 'package:sga_bojanini/core/config/app_environment.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/files/file_picker_gateway.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
+import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/core/widgets/alert_banner.dart';
 import 'package:sga_bojanini/core/widgets/api_error_message.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
@@ -98,7 +99,7 @@ class _FormState extends ConsumerState<_Form> {
   }
 
   static String? _iso(DateTime? date) =>
-      date?.toIso8601String().substring(0, 10);
+      date == null ? null : ColombiaTime.formatDate(date);
 
   Future<void> _submit() async {
     final l10n = AppLocalizations.of(context);
