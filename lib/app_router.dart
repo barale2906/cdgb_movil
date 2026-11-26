@@ -33,6 +33,17 @@ import 'package:sga_bojanini/features/inventory/presentation/new_movement_page.d
 import 'package:sga_bojanini/features/inventory/presentation/scan_page.dart';
 import 'package:sga_bojanini/features/inventory/presentation/single_movement_page.dart';
 import 'package:sga_bojanini/features/inventory/presentation/transfer_form_page.dart';
+import 'package:sga_bojanini/features/monitoring/presentation/alert_rules_page.dart';
+import 'package:sga_bojanini/features/monitoring/presentation/calibrations_page.dart';
+import 'package:sga_bojanini/features/monitoring/presentation/monitoring_page.dart';
+import 'package:sga_bojanini/features/monitoring/presentation/sensor_detail_page.dart';
+import 'package:sga_bojanini/features/notifications/application/notifications_providers.dart';
+import 'package:sga_bojanini/features/notifications/presentation/notifications_page.dart';
+import 'package:sga_bojanini/features/reports/data/report_models.dart';
+import 'package:sga_bojanini/features/reports/presentation/exports_page.dart';
+import 'package:sga_bojanini/features/reports/presentation/report_form_page.dart';
+import 'package:sga_bojanini/features/reports/presentation/report_viewer_page.dart';
+import 'package:sga_bojanini/features/reports/presentation/reports_page.dart';
 import 'package:sga_bojanini/features/warehouse/presentation/warehouse_detail_page.dart';
 import 'package:sga_bojanini/features/warehouse/presentation/warehouses_page.dart';
 
@@ -94,6 +105,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       ..._inventoryRoutes(ref),
+      ..._reportRoutes(ref),
+      ..._monitoringRoutes(ref),
+      GoRoute(
+        path: NotificationsPage.path,
+        redirect: _requires(ref, notificationsPermission),
+        builder: (_, _) => const NotificationsPage(),
+      ),
       GoRoute(
         path: Routes.profile,
         builder: (_, _) => const ProfilePage(),
@@ -120,6 +138,8 @@ Widget _sectionPage(AppSection section) => switch (section) {
   AppSection.warehouses => const WarehousesPage(),
   AppSection.catalog => const CatalogPage(),
   AppSection.inventory => const InventoryPage(),
+  AppSection.monitoring => const MonitoringPage(),
+  AppSection.reports => const ReportsPage(),
   _ => SectionPlaceholderPage(section: section),
 };
 
@@ -191,6 +211,59 @@ List<GoRoute> _inventoryRoutes(Ref ref) {
       path: ScanPage.path,
       redirect: _requires(ref, 'generic-products.barcode'),
       builder: (_, _) => const ScanPage(),
+    ),
+  ];
+}
+
+/// Reportes: catálogo, formularios por tipo, visor de PDF y exportaciones.
+List<GoRoute> _reportRoutes(Ref ref) {
+  const base = '/reports';
+  return [
+    GoRoute(
+      path: '$base/exports',
+      builder: (_, _) => const ExportsPage(),
+    ),
+    GoRoute(
+      path: '$base/view',
+      redirect: (_, state) => state.extra is ReportFile ? null : base,
+      builder: (_, state) => ReportViewerPage(file: state.extra! as ReportFile),
+    ),
+    GoRoute(
+      path: '$base/:type',
+      redirect: (context, state) {
+        final type = ReportType.fromPath(state.pathParameters['type']!);
+        if (type == null) return base;
+        final extra = type.extraPermission;
+        return extra == null || ref.read(permissionServiceProvider).can(extra)
+            ? null
+            : base;
+      },
+      builder: (_, state) => ReportFormPage(
+        type: ReportType.fromPath(state.pathParameters['type']!)!,
+        sensorId: int.tryParse(state.uri.queryParameters['sensor_id'] ?? ''),
+      ),
+    ),
+  ];
+}
+
+/// Monitoreo: detalle de sensor, calibraciones y reglas de alerta.
+List<GoRoute> _monitoringRoutes(Ref ref) {
+  const base = '/monitoring/sensors/:id';
+  return [
+    GoRoute(
+      path: base,
+      builder: (_, state) => SensorDetailPage(sensorId: _id(state)),
+      routes: [
+        GoRoute(
+          path: 'calibrations',
+          builder: (_, state) => CalibrationsPage(sensorId: _id(state)),
+        ),
+        GoRoute(
+          path: 'alert-rules',
+          redirect: _requires(ref, 'reglas_alerta.ver'),
+          builder: (_, state) => AlertRulesPage(sensorId: _id(state)),
+        ),
+      ],
     ),
   ];
 }
