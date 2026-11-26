@@ -5925,6 +5925,150 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Estimado con las citas futuras de MedSys y el promedio de los últimos 90 días.'**
   String get projectionNote;
+
+  /// No description provided for @auditPeriodToday.
+  ///
+  /// In es, this message translates to:
+  /// **'Hoy'**
+  String get auditPeriodToday;
+
+  /// No description provided for @auditPeriodWeek.
+  ///
+  /// In es, this message translates to:
+  /// **'7 días'**
+  String get auditPeriodWeek;
+
+  /// No description provided for @auditPeriodMonth.
+  ///
+  /// In es, this message translates to:
+  /// **'30 días'**
+  String get auditPeriodMonth;
+
+  /// No description provided for @auditActionCreated.
+  ///
+  /// In es, this message translates to:
+  /// **'Creación'**
+  String get auditActionCreated;
+
+  /// No description provided for @auditActionUpdated.
+  ///
+  /// In es, this message translates to:
+  /// **'Modificación'**
+  String get auditActionUpdated;
+
+  /// No description provided for @auditActionDeleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminación'**
+  String get auditActionDeleted;
+
+  /// No description provided for @auditActionAccess.
+  ///
+  /// In es, this message translates to:
+  /// **'Acceso'**
+  String get auditActionAccess;
+
+  /// No description provided for @auditActionOther.
+  ///
+  /// In es, this message translates to:
+  /// **'Otra acción'**
+  String get auditActionOther;
+
+  /// No description provided for @auditEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay registros en el periodo elegido.'**
+  String get auditEmpty;
+
+  /// No description provided for @auditSummaryTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'{count} registros'**
+  String auditSummaryTotal(int count);
+
+  /// No description provided for @auditSystemUser.
+  ///
+  /// In es, this message translates to:
+  /// **'Sistema'**
+  String get auditSystemUser;
+
+  /// No description provided for @auditEntitySystem.
+  ///
+  /// In es, this message translates to:
+  /// **'Sistema'**
+  String get auditEntitySystem;
+
+  /// No description provided for @auditDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registro de auditoría'**
+  String get auditDetailTitle;
+
+  /// No description provided for @auditUser.
+  ///
+  /// In es, this message translates to:
+  /// **'Usuario'**
+  String get auditUser;
+
+  /// No description provided for @auditDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha'**
+  String get auditDate;
+
+  /// No description provided for @auditEntity.
+  ///
+  /// In es, this message translates to:
+  /// **'Elemento'**
+  String get auditEntity;
+
+  /// No description provided for @auditEntityId.
+  ///
+  /// In es, this message translates to:
+  /// **'Identificador'**
+  String get auditEntityId;
+
+  /// No description provided for @auditIp.
+  ///
+  /// In es, this message translates to:
+  /// **'Dirección IP'**
+  String get auditIp;
+
+  /// No description provided for @auditDevice.
+  ///
+  /// In es, this message translates to:
+  /// **'Dispositivo'**
+  String get auditDevice;
+
+  /// No description provided for @auditChanges.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambios'**
+  String get auditChanges;
+
+  /// No description provided for @auditNoChanges.
+  ///
+  /// In es, this message translates to:
+  /// **'Este registro no guarda valores.'**
+  String get auditNoChanges;
+
+  /// No description provided for @auditValueNew.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo'**
+  String get auditValueNew;
+
+  /// No description provided for @auditValueOld.
+  ///
+  /// In es, this message translates to:
+  /// **'Anterior'**
+  String get auditValueOld;
+
+  /// No description provided for @auditValueMasked.
+  ///
+  /// In es, this message translates to:
+  /// **'Oculto por seguridad'**
+  String get auditValueMasked;
 }
 
 class _AppLocalizationsDelegate

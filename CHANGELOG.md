@@ -2,6 +2,30 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [1.0.0+11] - 2026-11-26
+Primera versión completa: cierra las 8 fases del plan (0 a 7).
+
+### Añadido
+- Fase 7 · Auditoría (solo consulta): totales del periodo, filtros por periodo (hoy, 7 y 30 días) y acción (creación, modificación, eliminación, acceso), lista paginada y detalle con los cambios campo por campo. Los valores sensibles (contraseñas, tokens, PIN, firmas) se muestran ocultos.
+- Prueba de accesibilidad: las pantallas principales se verifican con el texto al 200 % en un teléfono de 360 dp (inicio, registros clínicos, venta, órdenes, consumos y auditoría).
+
+### Cambiado
+- El selector de paciente de los formularios de venta y de orden es un componente compartido y el botón «Cambiar paciente» va debajo del nombre: con el texto al 200 % no cabía a un lado y el formulario fallaba al dibujarse.
+- Las listas con la forma `data: {items, meta}` (consumos y auditoría) se leen con un único método compartido.
+
+### Revisión de seguridad
+- Sin `print`/`debugPrint`; registros de red apagados fuera de `dev`; copia de seguridad del sistema desactivada; HTTP sin cifrar solo en el sabor `dev`; certificado del servidor anclado en `prod`; ocultamiento en apps recientes y bloqueo de capturas en las compilaciones de producción; APK ofuscado.
+
+### Backend (desplegar antes que la app)
+- `ConsumptionRecordResource` ya devuelve `product_id`, `product_code` y `product_name` (antes salían siempre vacíos).
+- Ya están en `main` del backend: búsqueda de pacientes con permisos de registro y órdenes, y creación de órdenes atómica.
+
+### Pendiente (no bloquea la 1.0)
+- Firebase / push: falta el proyecto, los `google-services.json` por sabor, `FIREBASE_CREDENTIALS` y `php artisan migrate` en el servidor.
+- Aviso de actualización: inactivo mientras `UPDATE_URL` esté vacío (decisión de dónde publicar el APK).
+- Pruebas manuales en teléfonos reales (lista de verificación en el manual de instalación).
+- Crear borradores de compra y gasto; crear/editar activos y programar mantenimientos; editar y eliminar registros de procedimientos y eliminar evoluciones; `scheduling/*`.
+
 ## [0.10.0+10] - 2026-11-26
 ### Añadido
 - Fase 6 · Registros clínicos: lista de los últimos 30 días con filtro por documento, detalle del registro, ficha del paciente (resumen, citas activas e historial) y búsqueda de pacientes de MedSys por documento o nombre.

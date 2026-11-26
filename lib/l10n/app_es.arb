@@ -1522,5 +1522,36 @@
       }
     }
   },
-  "projectionNote": "Estimado con las citas futuras de MedSys y el promedio de los últimos 90 días."
+  "projectionNote": "Estimado con las citas futuras de MedSys y el promedio de los últimos 90 días.",
+  "auditPeriodToday": "Hoy",
+  "auditPeriodWeek": "7 días",
+  "auditPeriodMonth": "30 días",
+  "auditActionCreated": "Creación",
+  "auditActionUpdated": "Modificación",
+  "auditActionDeleted": "Eliminación",
+  "auditActionAccess": "Acceso",
+  "auditActionOther": "Otra acción",
+  "auditEmpty": "No hay registros en el periodo elegido.",
+  "auditSummaryTotal": "{count} registros",
+  "@auditSummaryTotal": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "auditSystemUser": "Sistema",
+  "auditEntitySystem": "Sistema",
+  "auditDetailTitle": "Registro de auditoría",
+  "auditUser": "Usuario",
+  "auditDate": "Fecha",
+  "auditEntity": "Elemento",
+  "auditEntityId": "Identificador",
+  "auditIp": "Dirección IP",
+  "auditDevice": "Dispositivo",
+  "auditChanges": "Cambios",
+  "auditNoChanges": "Este registro no guarda valores.",
+  "auditValueNew": "Nuevo",
+  "auditValueOld": "Anterior",
+  "auditValueMasked": "Oculto por seguridad"
 }

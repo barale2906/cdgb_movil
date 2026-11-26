@@ -17,6 +17,7 @@ import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/bojani_text_field.dart';
 import 'package:sga_bojanini/core/widgets/form_fields.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
+import 'package:sga_bojanini/core/widgets/patient_selector.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
 import 'package:sga_bojanini/features/service_orders/application/new_order_controller.dart';
 import 'package:sga_bojanini/features/service_orders/application/service_orders_providers.dart';
@@ -87,9 +88,9 @@ class _NewOrderPageState extends ConsumerState<NewOrderPage> {
                 child: ListView(
                   padding: const EdgeInsets.all(AppSpacing.md),
                   children: [
-                    _PatientSection(
+                    PatientSelector(
                       patient: state.patient,
-                      enabled: !state.isSubmitting,
+                      canChange: !state.isSubmitting,
                       showError: _attempted && state.patient == null,
                       onPick: _pickPatient,
                     ),
@@ -173,60 +174,6 @@ class _NewOrderPageState extends ConsumerState<NewOrderPage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _PatientSection extends StatelessWidget {
-  const _PatientSection({
-    required this.patient,
-    required this.enabled,
-    required this.showError,
-    required this.onPick,
-  });
-
-  final MedsysPatient? patient;
-  final bool enabled;
-  final bool showError;
-  final VoidCallback onPick;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    final current = patient;
-    if (current == null) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          BojaniButton(
-            label: l10n.saleSearchPatient,
-            icon: Icons.person_search_outlined,
-            kind: BojaniButtonKind.secondary,
-            onPressed: onPick,
-          ),
-          if (showError)
-            Padding(
-              padding: const EdgeInsets.only(top: AppSpacing.xs),
-              child: Text(
-                l10n.salePatientRequired,
-                style: TextStyle(color: Theme.of(context).colorScheme.error),
-              ),
-            ),
-        ],
-      );
-    }
-    return Card(
-      child: ListTile(
-        minTileHeight: AppSizes.minTouchTarget,
-        title: Text(current.displayName),
-        subtitle: Text(l10n.clinicalPatientDocument(current.document)),
-        trailing: enabled
-            ? TextButton(
-                onPressed: onPick,
-                child: Text(l10n.saleChangePatient),
-              )
-            : null,
       ),
     );
   }

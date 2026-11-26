@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
-import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
 import 'package:sga_bojanini/features/consumptions/data/consumption_record.dart';
@@ -32,22 +31,7 @@ class ConsumptionsRepository {
         'per_page': perPage,
       },
     );
-    final data = ApiResponse.object(response);
-    final items = data['items'];
-    final meta = data['meta'];
-    if (items is! List<dynamic> || meta is! Json) {
-      throw ServerException(
-        'Respuesta inesperada del servidor.',
-        statusCode: response.statusCode,
-      );
-    }
-    return PagedList(
-      items: [
-        for (final item in items)
-          ConsumptionRecord.fromJson(item as Map<String, dynamic>),
-      ],
-      meta: PageMeta.fromJson(meta),
-    );
+    return ApiResponse.pageInData(response, ConsumptionRecord.fromJson);
   });
 
   Future<ConsumptionRecord> detail(int id) => apiCall(() async {

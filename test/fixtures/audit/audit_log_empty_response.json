@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "message": "Detalle",
+  "data": {
+    "id": 99,
+    "user_id": 2,
+    "user_name": "Otra Persona",
+    "action": "access",
+    "auditable_type": null,
+    "auditable_id": null,
+    "old_values": [],
+    "new_values": [],
+    "ip_address": "192.168.81.21",
+    "user_agent": "Mozilla",
+    "created_at": "2026-11-25 08:10:00"
+  }
+}

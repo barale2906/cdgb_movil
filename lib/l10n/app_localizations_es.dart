@@ -3178,4 +3178,78 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get projectionNote =>
       'Estimado con las citas futuras de MedSys y el promedio de los últimos 90 días.';
+
+  @override
+  String get auditPeriodToday => 'Hoy';
+
+  @override
+  String get auditPeriodWeek => '7 días';
+
+  @override
+  String get auditPeriodMonth => '30 días';
+
+  @override
+  String get auditActionCreated => 'Creación';
+
+  @override
+  String get auditActionUpdated => 'Modificación';
+
+  @override
+  String get auditActionDeleted => 'Eliminación';
+
+  @override
+  String get auditActionAccess => 'Acceso';
+
+  @override
+  String get auditActionOther => 'Otra acción';
+
+  @override
+  String get auditEmpty => 'No hay registros en el periodo elegido.';
+
+  @override
+  String auditSummaryTotal(int count) {
+    return '$count registros';
+  }
+
+  @override
+  String get auditSystemUser => 'Sistema';
+
+  @override
+  String get auditEntitySystem => 'Sistema';
+
+  @override
+  String get auditDetailTitle => 'Registro de auditoría';
+
+  @override
+  String get auditUser => 'Usuario';
+
+  @override
+  String get auditDate => 'Fecha';
+
+  @override
+  String get auditEntity => 'Elemento';
+
+  @override
+  String get auditEntityId => 'Identificador';
+
+  @override
+  String get auditIp => 'Dirección IP';
+
+  @override
+  String get auditDevice => 'Dispositivo';
+
+  @override
+  String get auditChanges => 'Cambios';
+
+  @override
+  String get auditNoChanges => 'Este registro no guarda valores.';
+
+  @override
+  String get auditValueNew => 'Nuevo';
+
+  @override
+  String get auditValueOld => 'Anterior';
+
+  @override
+  String get auditValueMasked => 'Oculto por seguridad';
 }
