@@ -1,0 +1,145 @@
+{
+ "success": true,
+ "message": "Listado de activos",
+ "data": [
+  {
+   "id": 7,
+   "code": "000007",
+   "name": "Monitor de signos vitales",
+   "description": "Equipo de urgencias",
+   "category": {
+    "id": 2,
+    "code": "BIO",
+    "name": "Equipos biomédicos"
+   },
+   "asset_type": "biomedical",
+   "asset_type_label": "Biomédico",
+   "requires_maintenance": true,
+   "status": "operational",
+   "status_label": "Operativo",
+   "location": {
+    "is_off_premises": false,
+    "off_premises_location": null,
+    "place_id": 4,
+    "place_name": "Urgencias · Sala 1",
+    "site_id": 1,
+    "site_name": "Sede Principal"
+   },
+   "responsible": {
+    "id": 3,
+    "name": "Usuario Prueba"
+   },
+   "brand": "MarcaUno",
+   "model": "MV-200",
+   "serial": "SN-0001",
+   "acquisition_date": "2024-03-10",
+   "acquisition_value": "8500000.00",
+   "supplier": {
+    "id": 4,
+    "name": "Droguería Proveedor S.A.S.",
+    "tax_id": "900000000-1"
+   },
+   "supplier_id": 4,
+   "invoice_number": "FV-100",
+   "warranty_until": "2027-03-10",
+   "retired_at": null,
+   "retirement_reason": null,
+   "notes": "Calibrar cada año",
+   "next_maintenance": {
+    "id": 31,
+    "type": "preventive",
+    "type_label": "Preventivo",
+    "status": "scheduled",
+    "scheduled_date": "2026-11-10",
+    "is_overdue": true
+   },
+   "pending_transfer": {
+    "id": 12,
+    "type": "loan",
+    "type_label": "Préstamo"
+   },
+   "technical_profile": {
+    "asset_id": 7,
+    "manufacturer": "Fabricante Uno",
+    "country_of_origin": "Colombia",
+    "manufacture_year": 2023,
+    "useful_life_years": 10,
+    "acquisition_mode": null,
+    "technical_specs": {
+     "a": 1
+    },
+    "invima_registry": "INVIMA 2023EBC-0001",
+    "risk_class": "IIa",
+    "requires_calibration": true,
+    "processor": null,
+    "licenses": [],
+    "updated_at": "2026-01-01T00:00:00-05:00"
+   },
+   "counts": {
+    "comments": 2,
+    "documents": 1,
+    "maintenance_plans": 1
+   },
+   "created_by": {
+    "id": 3,
+    "name": "Usuario Prueba"
+   },
+   "created_at": "2024-03-11T09:00:00-05:00",
+   "updated_at": "2026-11-01T09:00:00-05:00"
+  },
+  {
+   "id": 8,
+   "code": "000008",
+   "name": "Portátil administrativo",
+   "description": null,
+   "category": {
+    "id": 3,
+    "code": "CMP",
+    "name": "Cómputo"
+   },
+   "asset_type": "computing",
+   "asset_type_label": "Cómputo",
+   "requires_maintenance": false,
+   "status": "maintenance",
+   "status_label": "En mantenimiento",
+   "location": {
+    "is_off_premises": true,
+    "off_premises_location": "Taller externo",
+    "place_id": null,
+    "place_name": null,
+    "site_id": null,
+    "site_name": null
+   },
+   "responsible": null,
+   "brand": null,
+   "model": null,
+   "serial": null,
+   "acquisition_date": null,
+   "acquisition_value": null,
+   "supplier": null,
+   "supplier_id": null,
+   "invoice_number": null,
+   "warranty_until": null,
+   "retired_at": null,
+   "retirement_reason": null,
+   "notes": null,
+   "next_maintenance": null,
+   "pending_transfer": null,
+   "technical_profile": null,
+   "counts": {
+    "comments": 0,
+    "documents": 0,
+    "maintenance_plans": 0
+   },
+   "created_by": null,
+   "created_at": "2025-01-02T09:00:00-05:00",
+   "updated_at": "2025-01-02T09:00:00-05:00"
+  }
+ ],
+ "meta": {
+  "current_page": 1,
+  "last_page": 1,
+  "per_page": 25,
+  "total": 2
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "success": true,
+ "message": "Estadísticas",
+ "data": {
+  "total": 41,
+  "by_status": {
+   "operational": 30,
+   "maintenance": 3,
+   "out_of_service": 2,
+   "available": 6,
+   "retired": 1
+  },
+  "by_type": {
+   "biomedical": 20
+  },
+  "by_site": [],
+  "off_premises": 2,
+  "total_value": 123456789.5,
+  "pending_transfers": 4,
+  "maintenance": {
+   "overdue": 5,
+   "upcoming": 7,
+   "in_progress": 3
+  }
+ }
+}

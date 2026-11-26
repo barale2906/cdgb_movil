@@ -1,0 +1,13 @@
+{
+ "success": true,
+ "message": "Comentario agregado",
+ "data": {
+  "id": 6,
+  "comment": "Revisado hoy",
+  "user": {
+   "id": 3,
+   "name": "Usuario Prueba"
+  },
+  "created_at": "2026-11-25T08:00:00-05:00"
+ }
+}

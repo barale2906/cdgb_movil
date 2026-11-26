@@ -3,7 +3,7 @@ description: "SGA Bojanini - app móvil para empleados de la Clínica Bojanini."
 publish_to: 'none'
 
 # x.y.z+build — el build SIEMPRE crece (Android no instala versiones menores).
-version: 0.8.0+8
+version: 0.9.0+9
 
 environment:
   sdk: ^3.10.8
@@ -11,6 +11,7 @@ environment:
 dependencies:
   connectivity_plus: ^7.3.2
   dio: ^5.11.1
+  file_picker: ^13.4.1
   firebase_core: ^4.0.0
   firebase_messaging: ^16.0.0
   flutter:
@@ -21,6 +22,7 @@ dependencies:
   flutter_secure_storage: ^11.2.0
   freezed_annotation: ^3.1.0
   go_router: ^17.5.0
+  image_picker: ^1.2.3
   intl: ^0.20.2
   json_annotation: ^4.9.0
   mobile_scanner: ^7.5.0

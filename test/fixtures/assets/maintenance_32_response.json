@@ -1,0 +1,42 @@
+{
+ "success": true,
+ "message": "Mantenimiento",
+ "data": {
+  "asset": {
+   "id": 8,
+   "code": "000008",
+   "name": "Portátil administrativo",
+   "asset_type": "biomedical",
+   "location": "Sede Principal · Urgencias · Sala 1"
+  },
+  "plan_id": 2,
+  "maintenance_type": "corrective",
+  "maintenance_type_label": "Correctivo",
+  "status": "in_progress",
+  "status_label": "En curso",
+  "is_overdue": false,
+  "scheduled_date": "2026-11-24",
+  "started_at": "2026-11-24T09:00:00-05:00",
+  "performed_at": null,
+  "performed_by_type": null,
+  "performed_by_type_label": null,
+  "technician": null,
+  "supplier": null,
+  "external_technician_name": null,
+  "reported_failure": "No enciende",
+  "activities_performed": null,
+  "findings": null,
+  "recommendations": null,
+  "parts_replaced": [],
+  "cost": null,
+  "result": null,
+  "result_label": null,
+  "registered_by": null,
+  "cancel_reason": null,
+  "documents_count": 0,
+  "documents": [],
+  "signatures": [],
+  "created_at": "2026-10-01T09:00:00-05:00",
+  "id": 32
+ }
+}

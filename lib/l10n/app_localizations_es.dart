@@ -1947,4 +1947,613 @@ class AppLocalizationsEs extends AppLocalizations {
   String periodRange(String from, String to) {
     return '$from – $to';
   }
+
+  @override
+  String get loadMore => 'Cargar más';
+
+  @override
+  String get yes => 'Sí';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get assetStatusOperational => 'Operativo';
+
+  @override
+  String get assetStatusMaintenance => 'En mantenimiento';
+
+  @override
+  String get assetStatusOutOfService => 'Fuera de servicio';
+
+  @override
+  String get assetStatusAvailable => 'Disponible';
+
+  @override
+  String get assetStatusRetired => 'Dado de baja';
+
+  @override
+  String get assetTypeBiomedical => 'Biomédico';
+
+  @override
+  String get assetTypeComputing => 'Cómputo';
+
+  @override
+  String get assetTypeGeneral => 'General';
+
+  @override
+  String get assetScanAction => 'Escanear etiqueta';
+
+  @override
+  String get assetSearchHint => 'Buscar por nombre o código';
+
+  @override
+  String get assetsEmpty => 'No hay activos para mostrar.';
+
+  @override
+  String get assetFilterOverdue => 'Mantenimiento vencido';
+
+  @override
+  String get assetStatTotal => 'Activos';
+
+  @override
+  String get assetStatInMaintenance => 'En mantenimiento';
+
+  @override
+  String get assetStatOverdue => 'Mantenimientos vencidos';
+
+  @override
+  String get assetStatPendingTransfers => 'Traslados pendientes';
+
+  @override
+  String get assetStatOffPremises => 'Fuera de las instalaciones';
+
+  @override
+  String get assetDetailTitle => 'Activo';
+
+  @override
+  String get assetTabData => 'Datos';
+
+  @override
+  String get assetTabHistory => 'Historial';
+
+  @override
+  String get assetTabComments => 'Comentarios';
+
+  @override
+  String get assetCode => 'Código';
+
+  @override
+  String get assetType => 'Tipo';
+
+  @override
+  String get assetCategory => 'Categoría';
+
+  @override
+  String get assetLocation => 'Ubicación actual';
+
+  @override
+  String get assetResponsible => 'Responsable';
+
+  @override
+  String get assetBrand => 'Marca';
+
+  @override
+  String get assetModel => 'Modelo';
+
+  @override
+  String get assetSerial => 'Serie';
+
+  @override
+  String get assetSupplier => 'Proveedor';
+
+  @override
+  String get assetInvoice => 'Factura';
+
+  @override
+  String get assetAcquisition => 'Fecha de adquisición';
+
+  @override
+  String get assetAcquisitionValue => 'Valor de adquisición';
+
+  @override
+  String get assetWarrantyUntil => 'Garantía hasta';
+
+  @override
+  String get assetDescription => 'Descripción';
+
+  @override
+  String get assetRetiredAt => 'Fecha de baja';
+
+  @override
+  String get assetRetirementReason => 'Motivo de la baja';
+
+  @override
+  String get assetTechnicalProfile => 'Perfil técnico';
+
+  @override
+  String get assetLifeSheet => 'Hoja de vida (PDF)';
+
+  @override
+  String get assetLocationHistory => 'Historial de ubicaciones';
+
+  @override
+  String get assetLocationHistoryEmpty => 'Sin ubicaciones registradas.';
+
+  @override
+  String get assetUntilNow => 'hoy';
+
+  @override
+  String get assetCurrent => 'Actual';
+
+  @override
+  String get assetEvents => 'Bitácora';
+
+  @override
+  String get assetEventsEmpty => 'Aún no hay eventos registrados.';
+
+  @override
+  String get assetCommentsEmpty => 'Este activo no tiene comentarios.';
+
+  @override
+  String get assetCommentField => 'Escriba un comentario';
+
+  @override
+  String get assetCommentAdd => 'Agregar comentario';
+
+  @override
+  String get assetCommentAdded => 'Comentario agregado.';
+
+  @override
+  String get assetCommentTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, revise los comentarios: es posible que sí se haya agregado.';
+
+  @override
+  String get techManufacturer => 'Fabricante';
+
+  @override
+  String get techCountry => 'País de origen';
+
+  @override
+  String get techYear => 'Año de fabricación';
+
+  @override
+  String get techUsefulLife => 'Vida útil (años)';
+
+  @override
+  String get techAcquisitionMode => 'Forma de adquisición';
+
+  @override
+  String get techAccessories => 'Accesorios';
+
+  @override
+  String get techRecommendations => 'Recomendaciones de uso';
+
+  @override
+  String get techInvima => 'Registro INVIMA';
+
+  @override
+  String get techRiskClass => 'Clasificación de riesgo';
+
+  @override
+  String get techBiomedicalClass => 'Clase biomédica';
+
+  @override
+  String get techPowerSource => 'Fuente de energía';
+
+  @override
+  String get techVoltage => 'Voltaje';
+
+  @override
+  String get techCurrent => 'Corriente';
+
+  @override
+  String get techPower => 'Potencia';
+
+  @override
+  String get techFrequency => 'Frecuencia';
+
+  @override
+  String get techRequiresCalibration => 'Requiere calibración';
+
+  @override
+  String get techOperatingConditions => 'Condiciones de operación';
+
+  @override
+  String get techProcessor => 'Procesador';
+
+  @override
+  String get techRam => 'Memoria RAM';
+
+  @override
+  String get techStorage => 'Almacenamiento';
+
+  @override
+  String get techOperatingSystem => 'Sistema operativo';
+
+  @override
+  String get techIp => 'Dirección IP';
+
+  @override
+  String get techMac => 'Dirección MAC';
+
+  @override
+  String get techHostname => 'Nombre de equipo';
+
+  @override
+  String assetScanNotFound(String code) {
+    return 'No hay un activo con el código $code.';
+  }
+
+  @override
+  String assetMaintenanceOverdueOn(String date) {
+    return 'Mantenimiento vencido desde el $date';
+  }
+
+  @override
+  String assetPendingTransfer(String type) {
+    return 'Traslado pendiente de firma: $type';
+  }
+
+  @override
+  String get assetsTabAssets => 'Activos';
+
+  @override
+  String get assetsTabTransfers => 'Traslados';
+
+  @override
+  String get transfersEmpty => 'No hay traslados para mostrar.';
+
+  @override
+  String get transferStatusPending => 'Pendiente de firma';
+
+  @override
+  String get transferStatusConfirmed => 'Confirmado';
+
+  @override
+  String get transferStatusCancelled => 'Cancelado';
+
+  @override
+  String get transferTypeRelocation => 'Traslado interno';
+
+  @override
+  String get transferTypeExternalRepair => 'Salida a reparación externa';
+
+  @override
+  String get transferTypeLoan => 'Préstamo externo';
+
+  @override
+  String get transferTypeReturn => 'Retorno a las instalaciones';
+
+  @override
+  String get transferTypeRetirement => 'Baja';
+
+  @override
+  String get transferDetailTitle => 'Traslado';
+
+  @override
+  String get transferFrom => 'Origen';
+
+  @override
+  String get transferTo => 'Destino';
+
+  @override
+  String get transferExternalDestination => 'Destino externo';
+
+  @override
+  String get transferFromResponsible => 'Responsable anterior';
+
+  @override
+  String get transferToResponsible => 'Nuevo responsable';
+
+  @override
+  String get transferExpectedReturn => 'Retorno esperado';
+
+  @override
+  String get transferReason => 'Motivo';
+
+  @override
+  String get transferRequestedBy => 'Solicitado por';
+
+  @override
+  String get transferConfirmedAt => 'Confirmado';
+
+  @override
+  String get transferCancelReason => 'Motivo de la cancelación';
+
+  @override
+  String get transferAct => 'Acta del traslado (PDF)';
+
+  @override
+  String get transferCancel => 'Cancelar traslado';
+
+  @override
+  String get transferCancelTitle => 'Cancelar traslado';
+
+  @override
+  String get transferCancelled => 'Traslado cancelado.';
+
+  @override
+  String get transferConfirmed => 'Traslado confirmado.';
+
+  @override
+  String get transferTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, actualice el traslado: es posible que el cambio sí se haya registrado.';
+
+  @override
+  String get transferRequestTitle => 'Solicitar traslado';
+
+  @override
+  String get transferRequestAction => 'Solicitar traslado';
+
+  @override
+  String get transferType => 'Tipo de traslado';
+
+  @override
+  String get transferNeedsSignature =>
+      'Este tipo de traslado queda pendiente hasta que se confirme con las firmas de quien entrega y de quien recibe.';
+
+  @override
+  String get transferSite => 'Sede';
+
+  @override
+  String get transferPlace => 'Lugar';
+
+  @override
+  String get transferNewResponsible => 'Nuevo responsable';
+
+  @override
+  String get transferKeepResponsible => 'Mantener el actual';
+
+  @override
+  String get transferReasonOptional => 'Motivo (opcional)';
+
+  @override
+  String get transferRequestedPending =>
+      'Traslado solicitado. Falta confirmarlo con las firmas.';
+
+  @override
+  String get transferApplied => 'Traslado aplicado.';
+
+  @override
+  String get maintenanceStatusScheduled => 'Programado';
+
+  @override
+  String get maintenanceStatusOverdue => 'Vencido';
+
+  @override
+  String get maintenanceStatusInProgress => 'En curso';
+
+  @override
+  String get maintenanceStatusCompleted => 'Realizado';
+
+  @override
+  String get maintenanceStatusCancelled => 'Cancelado';
+
+  @override
+  String get maintenanceTypePreventive => 'Preventivo';
+
+  @override
+  String get maintenanceTypeCalibration => 'Calibración';
+
+  @override
+  String get maintenanceTypeMetrological => 'Verificación metrológica';
+
+  @override
+  String get maintenanceTypeInspection => 'Inspección';
+
+  @override
+  String get maintenanceTypeCorrective => 'Correctivo';
+
+  @override
+  String get maintenanceResultOperational => 'Operativo';
+
+  @override
+  String get maintenanceResultRestricted => 'Operativo con restricciones';
+
+  @override
+  String get maintenanceResultOutOfService => 'Fuera de servicio';
+
+  @override
+  String get maintenanceEmpty => 'No hay mantenimientos para mostrar.';
+
+  @override
+  String get maintenanceDetailTitle => 'Mantenimiento';
+
+  @override
+  String get maintenanceScheduledDate => 'Fecha programada';
+
+  @override
+  String get maintenanceStartedAt => 'Iniciado';
+
+  @override
+  String get maintenancePerformedAt => 'Fecha de ejecución';
+
+  @override
+  String get maintenanceReportedFailure => 'Falla reportada';
+
+  @override
+  String get maintenanceTechnician => 'Técnico';
+
+  @override
+  String get maintenanceActivities => 'Actividades realizadas';
+
+  @override
+  String get maintenanceFindings => 'Hallazgos (opcional)';
+
+  @override
+  String get maintenanceRecommendations => 'Recomendaciones (opcional)';
+
+  @override
+  String get maintenanceResult => 'Resultado';
+
+  @override
+  String get maintenanceCost => 'Costo (opcional)';
+
+  @override
+  String get maintenanceParts => 'Repuestos cambiados';
+
+  @override
+  String get maintenanceStart => 'Iniciar mantenimiento';
+
+  @override
+  String get maintenanceStartTitle => 'Iniciar mantenimiento';
+
+  @override
+  String get maintenanceStartBody =>
+      'El activo pasará a \"En mantenimiento\". ¿Desea continuar?';
+
+  @override
+  String get maintenanceStarted => 'Mantenimiento iniciado.';
+
+  @override
+  String get maintenanceComplete => 'Registrar ejecución';
+
+  @override
+  String get maintenanceCompleteAction => 'Registrar ejecución';
+
+  @override
+  String get maintenanceCompleted => 'Ejecución registrada.';
+
+  @override
+  String get maintenanceCancel => 'Cancelar mantenimiento';
+
+  @override
+  String get maintenanceCancelTitle => 'Cancelar mantenimiento';
+
+  @override
+  String get maintenanceCancelled => 'Mantenimiento cancelado.';
+
+  @override
+  String get maintenanceReport => 'Reporte del mantenimiento (PDF)';
+
+  @override
+  String get maintenanceTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, actualice el mantenimiento: es posible que el cambio sí se haya registrado.';
+
+  @override
+  String get maintenanceInternal => 'Técnico interno';
+
+  @override
+  String get maintenanceExternal => 'Proveedor externo';
+
+  @override
+  String get maintenanceExternalTechnician => 'Nombre del técnico externo';
+
+  @override
+  String get maintenancePartAdd => 'Agregar repuesto';
+
+  @override
+  String get maintenancePartName => 'Repuesto';
+
+  @override
+  String get maintenancePartRemove => 'Quitar repuesto';
+
+  @override
+  String get assetViewMaintenance => 'Ver mantenimiento';
+
+  @override
+  String maintenanceScheduledFor(String date) {
+    return 'Programado para el $date';
+  }
+
+  @override
+  String get assetTabDocuments => 'Documentos';
+
+  @override
+  String get assetDocumentsEmpty => 'Este activo no tiene documentos.';
+
+  @override
+  String get assetDocumentAdd => 'Agregar documento';
+
+  @override
+  String get assetDocumentTakePhoto => 'Tomar una foto';
+
+  @override
+  String get assetDocumentGallery => 'Elegir de la galería';
+
+  @override
+  String get assetDocumentFile => 'Elegir un archivo (PDF o imagen)';
+
+  @override
+  String get assetDocumentTooLarge =>
+      'El archivo supera los 10 MB. Elija uno más liviano.';
+
+  @override
+  String get assetDocumentExpired => 'Vencido';
+
+  @override
+  String get assetDocumentDelete => 'Eliminar documento';
+
+  @override
+  String get assetDocumentDeleteBody =>
+      'El documento se eliminará del activo. ¿Desea continuar?';
+
+  @override
+  String get assetDocumentDeleted => 'Documento eliminado.';
+
+  @override
+  String get assetDocumentType => 'Tipo de documento';
+
+  @override
+  String get assetDocumentTitle => 'Título';
+
+  @override
+  String get assetDocumentIssued => 'Fecha de emisión (opcional)';
+
+  @override
+  String get assetDocumentExpiry => 'Fecha de vencimiento (opcional)';
+
+  @override
+  String get assetDocumentUpload => 'Subir documento';
+
+  @override
+  String get assetDocumentUploaded => 'Documento agregado.';
+
+  @override
+  String get assetDocumentTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, revise los documentos del activo: es posible que sí se haya subido.';
+
+  @override
+  String assetDocumentExpires(String date) {
+    return 'Vence el $date';
+  }
+
+  @override
+  String get assetChangeStatus => 'Cambiar estado';
+
+  @override
+  String get assetNewStatus => 'Estado nuevo';
+
+  @override
+  String get assetStatusReason => 'Motivo (opcional)';
+
+  @override
+  String get assetStatusChanged => 'Estado actualizado.';
+
+  @override
+  String get assetStatusTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, actualice la ficha: es posible que el estado sí haya cambiado.';
+
+  @override
+  String get assetMaintenancePlans => 'Planes de mantenimiento';
+
+  @override
+  String get planUnitDays => 'días';
+
+  @override
+  String get planUnitMonths => 'meses';
+
+  @override
+  String get planInactive => 'Inactivo';
+
+  @override
+  String planEvery(int value, String unit) {
+    return 'Cada $value $unit';
+  }
+
+  @override
+  String planNext(String date) {
+    return 'Próximo: $date';
+  }
 }

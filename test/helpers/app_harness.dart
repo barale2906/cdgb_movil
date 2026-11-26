@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/app.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
+import 'package:sga_bojanini/core/files/file_picker_gateway.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/push/push_gateway.dart';
 import 'package:sga_bojanini/core/utils/file_sharer.dart';
@@ -12,6 +13,7 @@ import 'package:sga_bojanini/core/widgets/pdf_viewer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'fake_connectivity.dart';
+import 'fake_file_picker.dart';
 import 'fake_http_adapter.dart';
 import 'fake_push_gateway.dart';
 import 'fixtures.dart';
@@ -31,6 +33,9 @@ class AppHarness {
   final InMemoryTokenStore store;
   final FakeConnectivitySource connectivity;
   final TestClock clock;
+
+  /// Cámara, galería y archivos falsos.
+  final FakeFilePicker picker = FakeFilePicker();
 
   /// Servicio de push falso; sin él, la app corre sin push.
   final FakePushGateway? push;
@@ -156,6 +161,83 @@ class AppHarness {
       );
   }
 
+  /// Lecturas de activos: lista, ficha, catálogos, indicadores e historial.
+  void stubAssetsReads() {
+    adapter
+      ..on('GET', '/assets', body: fixture('assets/assets_response.json'))
+      ..on('GET', '/assets/7', body: fixture('assets/asset_response.json'))
+      ..on(
+        'GET',
+        '/assets/filters',
+        body: fixture('assets/filters_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/statistics',
+        body: fixture('assets/statistics_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/7/movements',
+        body: fixture('assets/movements_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/7/location-history',
+        body: fixture('assets/location_history_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/7/comments',
+        body: fixture('assets/comments_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/transfers',
+        body: fixture('assets/transfers_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/transfers/12',
+        body: fixture('assets/transfer_pending_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/transfers/11',
+        body: fixture('assets/transfer_confirmed_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/7/maintenance-plans',
+        body: fixture('assets/plans_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/7/documents',
+        body: fixture('assets/documents_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/maintenances',
+        body: fixture('assets/maintenances_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/maintenances/31',
+        body: fixture('assets/maintenance_31_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/maintenances/32',
+        body: fixture('assets/maintenance_32_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/maintenances/33',
+        body: fixture('assets/maintenance_33_response.json'),
+      );
+  }
+
   /// Bloques del tablero y notificaciones (sin leer: [unread]).
   void stubDashboard({int unread = 2}) {
     adapter
@@ -236,6 +318,7 @@ class AppHarness {
       ...serverOverrides(adapter: adapter, store: store, clock: clock),
       ...widgetOverrides,
       if (push != null) pushGatewayProvider.overrideWithValue(push!),
+      filePickerProvider.overrideWithValue(picker),
       scannerBuilderProvider.overrideWithValue(
         (context, onCode) => Center(
           child: FilledButton(

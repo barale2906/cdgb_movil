@@ -2,6 +2,25 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [0.9.0+9] - 2026-11-25
+### Añadido
+- Fase 5 · Activos: lista con indicadores, búsqueda y filtros; ficha con datos, perfil técnico, historial de ubicaciones y bitácora, comentarios, planes de mantenimiento y hoja de vida en PDF; escáner de la etiqueta; cambio de estado.
+- Fase 5 · Traslados: lista y detalle, solicitud según el tipo (traslado interno, reparación externa, préstamo, devolución y baja), confirmación con firmas o PIN, cancelación con motivo y acta en PDF. Un activo fuera de las instalaciones solo admite devolución o baja.
+- Fase 5 · Mantenimientos: sección con programados, vencidos, en curso y realizados; iniciar, registrar la ejecución (técnico o proveedor, resultado, repuestos y costo), cancelar y reporte en PDF.
+- Fase 5 · Documentos: ver y compartir, subir con cámara, galería o archivo (hasta 10 MB; las fotos se reducen) y eliminar.
+- Componentes compartidos: formulario de firmas de confirmación, vista previa de PDF y diálogo de texto.
+
+### Cambiado
+- La confirmación de comprobantes de inventario usa el formulario de firmas compartido (sin cambios para la persona usuaria).
+- El escáner de código acepta también el permiso de activos.
+
+### Dependencias nuevas
+- `image_picker ^1.2.3` y `file_picker ^13.4.1`.
+
+### Pendiente
+- Crear y editar activos, y programar mantenimientos o planes: se dejan para el escritorio.
+- Firmas opcionales al completar un mantenimiento.
+
 ## [0.8.0+8] - 2026-11-25
 ### Añadido
 - Avisos push (FCM): al iniciar sesión el teléfono se vincula con el usuario; al cerrar sesión o cambiar de usuario se desvincula antes de revocar la sesión. Tocar un aviso abre la sección correspondiente (espera al desbloqueo si la sesión está bloqueada) y, con la app abierta, actualiza el contador de notificaciones.

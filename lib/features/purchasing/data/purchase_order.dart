@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sga_bojanini/core/models/named_ref.dart';
 import 'package:sga_bojanini/core/utils/json_converters.dart';
 import 'package:sga_bojanini/features/purchasing/data/order_refs.dart';
 import 'package:sga_bojanini/features/purchasing/data/order_status.dart';

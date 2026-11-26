@@ -18,6 +18,15 @@
           "permission": "activos.ver",
           "actions": {},
           "children": []
+        },
+        {
+          "key": "asset-maintenance",
+          "label": "Mantenimiento",
+          "icon": "wrench",
+          "route": "asset-maintenance.index",
+          "permission": "activos_mantenimientos.ver",
+          "actions": {},
+          "children": []
         }
       ]
     }

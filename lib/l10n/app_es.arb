@@ -928,5 +928,252 @@
         "type": "String"
       }
     }
+  },
+  "loadMore": "Cargar más",
+  "yes": "Sí",
+  "no": "No",
+  "assetStatusOperational": "Operativo",
+  "assetStatusMaintenance": "En mantenimiento",
+  "assetStatusOutOfService": "Fuera de servicio",
+  "assetStatusAvailable": "Disponible",
+  "assetStatusRetired": "Dado de baja",
+  "assetTypeBiomedical": "Biomédico",
+  "assetTypeComputing": "Cómputo",
+  "assetTypeGeneral": "General",
+  "assetScanAction": "Escanear etiqueta",
+  "assetSearchHint": "Buscar por nombre o código",
+  "assetsEmpty": "No hay activos para mostrar.",
+  "assetFilterOverdue": "Mantenimiento vencido",
+  "assetStatTotal": "Activos",
+  "assetStatInMaintenance": "En mantenimiento",
+  "assetStatOverdue": "Mantenimientos vencidos",
+  "assetStatPendingTransfers": "Traslados pendientes",
+  "assetStatOffPremises": "Fuera de las instalaciones",
+  "assetDetailTitle": "Activo",
+  "assetTabData": "Datos",
+  "assetTabHistory": "Historial",
+  "assetTabComments": "Comentarios",
+  "assetCode": "Código",
+  "assetType": "Tipo",
+  "assetCategory": "Categoría",
+  "assetLocation": "Ubicación actual",
+  "assetResponsible": "Responsable",
+  "assetBrand": "Marca",
+  "assetModel": "Modelo",
+  "assetSerial": "Serie",
+  "assetSupplier": "Proveedor",
+  "assetInvoice": "Factura",
+  "assetAcquisition": "Fecha de adquisición",
+  "assetAcquisitionValue": "Valor de adquisición",
+  "assetWarrantyUntil": "Garantía hasta",
+  "assetDescription": "Descripción",
+  "assetRetiredAt": "Fecha de baja",
+  "assetRetirementReason": "Motivo de la baja",
+  "assetTechnicalProfile": "Perfil técnico",
+  "assetLifeSheet": "Hoja de vida (PDF)",
+  "assetLocationHistory": "Historial de ubicaciones",
+  "assetLocationHistoryEmpty": "Sin ubicaciones registradas.",
+  "assetUntilNow": "hoy",
+  "assetCurrent": "Actual",
+  "assetEvents": "Bitácora",
+  "assetEventsEmpty": "Aún no hay eventos registrados.",
+  "assetCommentsEmpty": "Este activo no tiene comentarios.",
+  "assetCommentField": "Escriba un comentario",
+  "assetCommentAdd": "Agregar comentario",
+  "assetCommentAdded": "Comentario agregado.",
+  "assetCommentTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, revise los comentarios: es posible que sí se haya agregado.",
+  "techManufacturer": "Fabricante",
+  "techCountry": "País de origen",
+  "techYear": "Año de fabricación",
+  "techUsefulLife": "Vida útil (años)",
+  "techAcquisitionMode": "Forma de adquisición",
+  "techAccessories": "Accesorios",
+  "techRecommendations": "Recomendaciones de uso",
+  "techInvima": "Registro INVIMA",
+  "techRiskClass": "Clasificación de riesgo",
+  "techBiomedicalClass": "Clase biomédica",
+  "techPowerSource": "Fuente de energía",
+  "techVoltage": "Voltaje",
+  "techCurrent": "Corriente",
+  "techPower": "Potencia",
+  "techFrequency": "Frecuencia",
+  "techRequiresCalibration": "Requiere calibración",
+  "techOperatingConditions": "Condiciones de operación",
+  "techProcessor": "Procesador",
+  "techRam": "Memoria RAM",
+  "techStorage": "Almacenamiento",
+  "techOperatingSystem": "Sistema operativo",
+  "techIp": "Dirección IP",
+  "techMac": "Dirección MAC",
+  "techHostname": "Nombre de equipo",
+  "assetScanNotFound": "No hay un activo con el código {code}.",
+  "@assetScanNotFound": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "assetMaintenanceOverdueOn": "Mantenimiento vencido desde el {date}",
+  "@assetMaintenanceOverdueOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "assetPendingTransfer": "Traslado pendiente de firma: {type}",
+  "@assetPendingTransfer": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "assetsTabAssets": "Activos",
+  "assetsTabTransfers": "Traslados",
+  "transfersEmpty": "No hay traslados para mostrar.",
+  "transferStatusPending": "Pendiente de firma",
+  "transferStatusConfirmed": "Confirmado",
+  "transferStatusCancelled": "Cancelado",
+  "transferTypeRelocation": "Traslado interno",
+  "transferTypeExternalRepair": "Salida a reparación externa",
+  "transferTypeLoan": "Préstamo externo",
+  "transferTypeReturn": "Retorno a las instalaciones",
+  "transferTypeRetirement": "Baja",
+  "transferDetailTitle": "Traslado",
+  "transferFrom": "Origen",
+  "transferTo": "Destino",
+  "transferExternalDestination": "Destino externo",
+  "transferFromResponsible": "Responsable anterior",
+  "transferToResponsible": "Nuevo responsable",
+  "transferExpectedReturn": "Retorno esperado",
+  "transferReason": "Motivo",
+  "transferRequestedBy": "Solicitado por",
+  "transferConfirmedAt": "Confirmado",
+  "transferCancelReason": "Motivo de la cancelación",
+  "transferAct": "Acta del traslado (PDF)",
+  "transferCancel": "Cancelar traslado",
+  "transferCancelTitle": "Cancelar traslado",
+  "transferCancelled": "Traslado cancelado.",
+  "transferConfirmed": "Traslado confirmado.",
+  "transferTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, actualice el traslado: es posible que el cambio sí se haya registrado.",
+  "transferRequestTitle": "Solicitar traslado",
+  "transferRequestAction": "Solicitar traslado",
+  "transferType": "Tipo de traslado",
+  "transferNeedsSignature": "Este tipo de traslado queda pendiente hasta que se confirme con las firmas de quien entrega y de quien recibe.",
+  "transferSite": "Sede",
+  "transferPlace": "Lugar",
+  "transferNewResponsible": "Nuevo responsable",
+  "transferKeepResponsible": "Mantener el actual",
+  "transferReasonOptional": "Motivo (opcional)",
+  "transferRequestedPending": "Traslado solicitado. Falta confirmarlo con las firmas.",
+  "transferApplied": "Traslado aplicado.",
+  "maintenanceStatusScheduled": "Programado",
+  "maintenanceStatusOverdue": "Vencido",
+  "maintenanceStatusInProgress": "En curso",
+  "maintenanceStatusCompleted": "Realizado",
+  "maintenanceStatusCancelled": "Cancelado",
+  "maintenanceTypePreventive": "Preventivo",
+  "maintenanceTypeCalibration": "Calibración",
+  "maintenanceTypeMetrological": "Verificación metrológica",
+  "maintenanceTypeInspection": "Inspección",
+  "maintenanceTypeCorrective": "Correctivo",
+  "maintenanceResultOperational": "Operativo",
+  "maintenanceResultRestricted": "Operativo con restricciones",
+  "maintenanceResultOutOfService": "Fuera de servicio",
+  "maintenanceEmpty": "No hay mantenimientos para mostrar.",
+  "maintenanceDetailTitle": "Mantenimiento",
+  "maintenanceScheduledDate": "Fecha programada",
+  "maintenanceStartedAt": "Iniciado",
+  "maintenancePerformedAt": "Fecha de ejecución",
+  "maintenanceReportedFailure": "Falla reportada",
+  "maintenanceTechnician": "Técnico",
+  "maintenanceActivities": "Actividades realizadas",
+  "maintenanceFindings": "Hallazgos (opcional)",
+  "maintenanceRecommendations": "Recomendaciones (opcional)",
+  "maintenanceResult": "Resultado",
+  "maintenanceCost": "Costo (opcional)",
+  "maintenanceParts": "Repuestos cambiados",
+  "maintenanceStart": "Iniciar mantenimiento",
+  "maintenanceStartTitle": "Iniciar mantenimiento",
+  "maintenanceStartBody": "El activo pasará a \"En mantenimiento\". ¿Desea continuar?",
+  "maintenanceStarted": "Mantenimiento iniciado.",
+  "maintenanceComplete": "Registrar ejecución",
+  "maintenanceCompleteAction": "Registrar ejecución",
+  "maintenanceCompleted": "Ejecución registrada.",
+  "maintenanceCancel": "Cancelar mantenimiento",
+  "maintenanceCancelTitle": "Cancelar mantenimiento",
+  "maintenanceCancelled": "Mantenimiento cancelado.",
+  "maintenanceReport": "Reporte del mantenimiento (PDF)",
+  "maintenanceTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, actualice el mantenimiento: es posible que el cambio sí se haya registrado.",
+  "maintenanceInternal": "Técnico interno",
+  "maintenanceExternal": "Proveedor externo",
+  "maintenanceExternalTechnician": "Nombre del técnico externo",
+  "maintenancePartAdd": "Agregar repuesto",
+  "maintenancePartName": "Repuesto",
+  "maintenancePartRemove": "Quitar repuesto",
+  "assetViewMaintenance": "Ver mantenimiento",
+  "maintenanceScheduledFor": "Programado para el {date}",
+  "@maintenanceScheduledFor": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "assetTabDocuments": "Documentos",
+  "assetDocumentsEmpty": "Este activo no tiene documentos.",
+  "assetDocumentAdd": "Agregar documento",
+  "assetDocumentTakePhoto": "Tomar una foto",
+  "assetDocumentGallery": "Elegir de la galería",
+  "assetDocumentFile": "Elegir un archivo (PDF o imagen)",
+  "assetDocumentTooLarge": "El archivo supera los 10 MB. Elija uno más liviano.",
+  "assetDocumentExpired": "Vencido",
+  "assetDocumentDelete": "Eliminar documento",
+  "assetDocumentDeleteBody": "El documento se eliminará del activo. ¿Desea continuar?",
+  "assetDocumentDeleted": "Documento eliminado.",
+  "assetDocumentType": "Tipo de documento",
+  "assetDocumentTitle": "Título",
+  "assetDocumentIssued": "Fecha de emisión (opcional)",
+  "assetDocumentExpiry": "Fecha de vencimiento (opcional)",
+  "assetDocumentUpload": "Subir documento",
+  "assetDocumentUploaded": "Documento agregado.",
+  "assetDocumentTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, revise los documentos del activo: es posible que sí se haya subido.",
+  "assetDocumentExpires": "Vence el {date}",
+  "@assetDocumentExpires": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "assetChangeStatus": "Cambiar estado",
+  "assetNewStatus": "Estado nuevo",
+  "assetStatusReason": "Motivo (opcional)",
+  "assetStatusChanged": "Estado actualizado.",
+  "assetStatusTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, actualice la ficha: es posible que el estado sí haya cambiado.",
+  "assetMaintenancePlans": "Planes de mantenimiento",
+  "planUnitDays": "días",
+  "planUnitMonths": "meses",
+  "planInactive": "Inactivo",
+  "planEvery": "Cada {value} {unit}",
+  "@planEvery": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "planNext": "Próximo: {date}",
+  "@planNext": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -1,0 +1,87 @@
+{
+ "success": true,
+ "message": "Catálogos",
+ "data": {
+  "categories": [],
+  "sites": [
+   {
+    "id": 1,
+    "name": "Sede Principal",
+    "places": [
+     {
+      "id": 4,
+      "name": "Urgencias · Sala 1"
+     },
+     {
+      "id": 5,
+      "name": "Bodega"
+     }
+    ]
+   }
+  ],
+  "users": [
+   {
+    "id": 3,
+    "name": "Usuario Prueba"
+   },
+   {
+    "id": 4,
+    "name": "Técnico Dos"
+   }
+  ],
+  "suppliers": [
+   {
+    "id": 4,
+    "name": "Droguería Proveedor S.A.S.",
+    "tax_id": "900000000-1"
+   }
+  ],
+  "asset_types": [],
+  "statuses": [],
+  "settable_statuses": [
+   {
+    "value": "operational",
+    "label": "Operativo"
+   },
+   {
+    "value": "out_of_service",
+    "label": "Fuera de servicio"
+   }
+  ],
+  "transfer_types": [
+   {
+    "value": "relocation",
+    "label": "Reubicación",
+    "requires_signature": false
+   },
+   {
+    "value": "loan",
+    "label": "Préstamo",
+    "requires_signature": true
+   }
+  ],
+  "maintenance_types": [],
+  "plannable_types": [],
+  "maintenance_status": [],
+  "maintenance_results": [
+   {
+    "value": "operational",
+    "label": "Operativo"
+   }
+  ],
+  "document_types": [
+   {
+    "value": "manual",
+    "label": "Manual"
+   },
+   {
+    "value": "photo",
+    "label": "Foto"
+   },
+   {
+    "value": "calibration_certificate",
+    "label": "Certificado de calibración"
+   }
+  ]
+ }
+}
