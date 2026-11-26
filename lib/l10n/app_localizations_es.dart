@@ -1111,4 +1111,480 @@ class AppLocalizationsEs extends AppLocalizations {
   String loginServerLabel(String name) {
     return 'Servidor: $name';
   }
+
+  @override
+  String get notificationsTitle => 'Notificaciones';
+
+  @override
+  String get notificationsOpen => 'Abrir notificaciones';
+
+  @override
+  String notificationsUnreadCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count notificaciones sin leer',
+      one: '1 notificación sin leer',
+      zero: 'Sin notificaciones nuevas',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get notificationsEmpty => 'No tiene notificaciones.';
+
+  @override
+  String get notificationsEmptyUnread => 'No tiene notificaciones sin leer.';
+
+  @override
+  String get notificationsFilterAll => 'Todas';
+
+  @override
+  String get notificationsFilterUnread => 'Sin leer';
+
+  @override
+  String get notificationsMarkAllRead => 'Marcar todas como leídas';
+
+  @override
+  String get notificationsAllRead =>
+      'Todas las notificaciones quedaron leídas.';
+
+  @override
+  String get severityCritical => 'Crítica';
+
+  @override
+  String get severityWarning => 'Advertencia';
+
+  @override
+  String get severityInfo => 'Información';
+
+  @override
+  String get severitySuccess => 'Listo';
+
+  @override
+  String get notificationUnread => 'Sin leer';
+
+  @override
+  String get dashInventory => 'Inventario';
+
+  @override
+  String get dashProducts => 'Productos';
+
+  @override
+  String get dashUnits => 'Unidades en stock';
+
+  @override
+  String get dashStockHealth => 'Estado del stock';
+
+  @override
+  String get dashStockOk => 'Suficiente';
+
+  @override
+  String get dashStockLow => 'Bajo reorden';
+
+  @override
+  String get dashStockCritical => 'Crítico';
+
+  @override
+  String get dashExpiring => 'Vencimientos de lotes';
+
+  @override
+  String get dashExpiringToday => 'Hoy';
+
+  @override
+  String get dashExpiring7 => '7 días';
+
+  @override
+  String get dashExpiring30 => '30 días';
+
+  @override
+  String get dashMovementsToday => 'Movimientos hoy';
+
+  @override
+  String get dashTopConsumed => 'Más consumidos (30 días)';
+
+  @override
+  String get dashPurchasing => 'Compras';
+
+  @override
+  String get dashPendingOrders => 'Órdenes por aprobar';
+
+  @override
+  String get dashApprovedOrders => 'Órdenes aprobadas';
+
+  @override
+  String get dashMonthTotal => 'Compras del mes';
+
+  @override
+  String get dashMonitoring => 'Monitoreo';
+
+  @override
+  String get dashActiveSensors => 'Sensores activos';
+
+  @override
+  String get dashAlertsToday => 'Alertas hoy';
+
+  @override
+  String get dashReadingsToday => 'Lecturas hoy';
+
+  @override
+  String get dashAlerts => 'Alertas recientes';
+
+  @override
+  String get dashNoAlerts => 'Sin alertas pendientes.';
+
+  @override
+  String get dashActivity => 'Actividad reciente';
+
+  @override
+  String get dashNoActivity => 'Sin actividad reciente.';
+
+  @override
+  String get dashQuickActions => 'Accesos rápidos';
+
+  @override
+  String get dashScan => 'Escanear';
+
+  @override
+  String get dashNewMovement => 'Nuevo movimiento';
+
+  @override
+  String get dashBlockError => 'No se pudo cargar este bloque.';
+
+  @override
+  String get auditCreated => 'Creó';
+
+  @override
+  String get auditUpdated => 'Modificó';
+
+  @override
+  String get auditDeleted => 'Eliminó';
+
+  @override
+  String get auditUnknown => 'Acción';
+
+  @override
+  String get monitoringEmpty => 'No tiene sensores asignados.';
+
+  @override
+  String get sensorTypeTemperature => 'Temperatura';
+
+  @override
+  String get sensorTypeHumidity => 'Humedad';
+
+  @override
+  String get sensorLastReading => 'Última lectura';
+
+  @override
+  String get sensorNoReadings => 'Sin lecturas aún';
+
+  @override
+  String get sensorOutOfRange => 'Fuera de rango';
+
+  @override
+  String get sensorInRange => 'En rango';
+
+  @override
+  String sensorLimits(String min, String max, String unit) {
+    return 'Rango permitido: $min–$max $unit';
+  }
+
+  @override
+  String get sensorZone => 'Zona';
+
+  @override
+  String get sensorDetailTitle => 'Sensor';
+
+  @override
+  String get calibrationValid => 'Calibración vigente';
+
+  @override
+  String get calibrationExpiring => 'Calibración por vencer';
+
+  @override
+  String get calibrationExpired => 'Calibración vencida';
+
+  @override
+  String get calibrationMissing => 'Sin certificado';
+
+  @override
+  String calibrationDaysLeft(int days) {
+    String _temp0 = intl.Intl.pluralLogic(
+      days,
+      locale: localeName,
+      other: 'Vence en $days días',
+      one: 'Vence en 1 día',
+      zero: 'Vence hoy',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get periodDay => '24 h';
+
+  @override
+  String get periodWeek => '7 días';
+
+  @override
+  String get periodMonth => '30 días';
+
+  @override
+  String get readingsStats => 'Resumen del periodo';
+
+  @override
+  String get statMin => 'Mínimo';
+
+  @override
+  String get statMax => 'Máximo';
+
+  @override
+  String get statAvg => 'Promedio';
+
+  @override
+  String get statCount => 'Lecturas';
+
+  @override
+  String get readingsEmptyPeriod => 'No hay lecturas en este periodo.';
+
+  @override
+  String get trendTitle => 'Tendencia';
+
+  @override
+  String get trendNone => 'Sin tendencia significativa en el periodo.';
+
+  @override
+  String get trendUp => 'Tendencia al alza';
+
+  @override
+  String get trendDown => 'Tendencia a la baja';
+
+  @override
+  String trendConfidence(String level) {
+    return 'Confianza $level';
+  }
+
+  @override
+  String get confidenceHigh => 'alta';
+
+  @override
+  String get confidenceMedium => 'media';
+
+  @override
+  String get confidenceLow => 'baja';
+
+  @override
+  String get readingRegister => 'Registrar lectura';
+
+  @override
+  String readingValue(String unit) {
+    return 'Valor ($unit)';
+  }
+
+  @override
+  String get readingWhen => 'Fecha y hora de la lectura';
+
+  @override
+  String get readingSaved => 'Lectura registrada.';
+
+  @override
+  String readingAlerts(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'La lectura generó $count alertas.',
+      one: 'La lectura generó 1 alerta.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get calibrationsTitle => 'Calibraciones';
+
+  @override
+  String get calibrationsEmpty => 'Sin certificados de calibración.';
+
+  @override
+  String get calibrationDownload => 'Descargar certificado';
+
+  @override
+  String get calibrationCurrent => 'Vigente';
+
+  @override
+  String get calibrationReplaced => 'Reemplazado';
+
+  @override
+  String get alertRulesTitle => 'Reglas de alerta';
+
+  @override
+  String get alertRulesEmpty => 'Sin reglas de alerta.';
+
+  @override
+  String alertAbove(String threshold) {
+    return 'Por encima de $threshold';
+  }
+
+  @override
+  String alertBelow(String threshold) {
+    return 'Por debajo de $threshold';
+  }
+
+  @override
+  String get alertOutOfRange => 'Fuera del rango permitido';
+
+  @override
+  String get alertTrendUp => 'Tendencia al alza';
+
+  @override
+  String get alertTrendDown => 'Tendencia a la baja';
+
+  @override
+  String alertConsecutive(int count) {
+    return '$count lecturas seguidas';
+  }
+
+  @override
+  String get conditionsReportAction => 'Reporte de condiciones (PDF)';
+
+  @override
+  String get reportsCatalogTitle => 'Elija un reporte';
+
+  @override
+  String get reportsMyExports => 'Mis exportaciones';
+
+  @override
+  String get reportInventory => 'Inventario';
+
+  @override
+  String get reportInventoryHint => 'Existencias por almacén.';
+
+  @override
+  String get reportMovements => 'Movimientos';
+
+  @override
+  String get reportMovementsHint => 'Entradas, salidas y demás movimientos.';
+
+  @override
+  String get reportExpiring => 'Por vencer';
+
+  @override
+  String get reportExpiringHint => 'Lotes próximos a vencer.';
+
+  @override
+  String get reportPurchases => 'Compras';
+
+  @override
+  String get reportPurchasesHint => 'Órdenes de compra del periodo.';
+
+  @override
+  String get reportConsumption => 'Consumo';
+
+  @override
+  String get reportConsumptionHint => 'Productos consumidos en el periodo.';
+
+  @override
+  String get reportConditions => 'Condiciones de almacenamiento';
+
+  @override
+  String get reportConditionsHint => 'Temperatura y humedad de un sensor.';
+
+  @override
+  String get reportAudit => 'Auditoría';
+
+  @override
+  String get reportAuditHint => 'Acciones registradas en el sistema.';
+
+  @override
+  String get reportFormat => 'Formato';
+
+  @override
+  String get formatPdf => 'PDF';
+
+  @override
+  String get formatExcel => 'Excel';
+
+  @override
+  String get formatCsv => 'CSV';
+
+  @override
+  String get reportGenerate => 'Generar reporte';
+
+  @override
+  String get reportDateFrom => 'Desde';
+
+  @override
+  String get reportDateTo => 'Hasta';
+
+  @override
+  String get reportDays => 'Días a considerar';
+
+  @override
+  String get reportSensor => 'Sensor';
+
+  @override
+  String get reportMovementType => 'Tipo de movimiento';
+
+  @override
+  String get reportAnyType => 'Todos';
+
+  @override
+  String get reportPdfNeedsSensor =>
+      'Para el PDF de condiciones elija un sensor.';
+
+  @override
+  String get reportDateRangeInvalid =>
+      'La fecha final no puede ser anterior a la inicial.';
+
+  @override
+  String get reportQueued =>
+      'El reporte es grande y se está generando. Puede seguirlo en Mis exportaciones.';
+
+  @override
+  String get reportReady => 'Reporte generado.';
+
+  @override
+  String get exportsEmpty => 'No hay exportaciones.';
+
+  @override
+  String get exportQueued => 'En cola';
+
+  @override
+  String get exportProcessing => 'Procesando';
+
+  @override
+  String get exportReady => 'Listo';
+
+  @override
+  String get exportFailed => 'Falló';
+
+  @override
+  String get exportExpired => 'Vencido';
+
+  @override
+  String get exportDownload => 'Descargar';
+
+  @override
+  String get exportShare => 'Compartir';
+
+  @override
+  String get exportOpen => 'Abrir';
+
+  @override
+  String exportCreatedAt(String date) {
+    return 'Creado $date';
+  }
+
+  @override
+  String exportSize(String size) {
+    return '$size KB';
+  }
+
+  @override
+  String get exportGone =>
+      'El reporte venció. Genérelo de nuevo desde Reportes.';
+
+  @override
+  String get exportFailedDetail => 'No se pudo generar el reporte.';
+
+  @override
+  String get readingsExportAction => 'Exportar lecturas (Excel)';
 }

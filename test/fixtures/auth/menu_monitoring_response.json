@@ -1,0 +1,9 @@
+{ "success": true, "message": "Menú de navegación", "data": [
+  { "key": "inventory-management", "label": "Inventario", "icon": "x", "route": null, "permission": null, "actions": [],
+    "children": [ { "key": "stock", "label": "Existencias", "icon": "x", "route": "stock.index", "permission": "stock.ver", "actions": [], "children": [] } ] },
+  { "key": "monitoring", "label": "Monitoreo", "icon": "x", "route": null, "permission": null, "actions": [],
+    "children": [
+      { "key": "sensors", "label": "Sensores", "icon": "x", "route": "sensors.index", "permission": "sensores.ver", "actions": [], "children": [] },
+      { "key": "reports", "label": "Reportes", "icon": "x", "route": "reports.index", "permission": "reportes.ver", "actions": [], "children": [] }
+    ] }
+] }

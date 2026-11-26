@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sga_bojanini/core/widgets/form_fields.dart';
 
 import 'package:sga_bojanini/features/inventory/presentation/movement_fields.dart';
 

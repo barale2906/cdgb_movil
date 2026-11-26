@@ -1,0 +1,3 @@
+{ "success": true, "message": "Lectura registrada correctamente.", "data": {
+  "reading": { "id": 950, "sensor_id": 1, "value": 7.5, "reading_source": "manual", "recorded_at": "2026-11-24 14:30:00", "user_id": 42 },
+  "alerts": [ { "rule_id": 1, "message": "Por encima de 8" } ] } }

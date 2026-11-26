@@ -1,0 +1,4 @@
+{ "success": true, "message": "OK", "data": [
+  { "id": 1, "sensor_id": 1, "condition_type": "above", "threshold": "8.00", "consecutive_readings": 3, "notification_channels": ["internal", "push"], "is_active": true },
+  { "id": 2, "sensor_id": 1, "condition_type": "trend_up", "threshold": null, "consecutive_readings": null, "notification_channels": ["internal"], "is_active": false }
+] }

@@ -1,0 +1,8 @@
+{ "success": true, "message": "OK", "data": {
+  "total_products": 120, "total_stock_value": 0, "total_units": 4500,
+  "stock_ok_count": 90, "stock_low_count": 20, "stock_critical_count": 10,
+  "expiring_today": 1, "expiring_7_days": 4, "expiring_30_days": 12, "movements_today": 33,
+  "top_consumed_products": [
+    { "id": 5, "name": "Gasa estéril 10x10", "barcode": "100005", "total_consumed": "320.000" },
+    { "id": 6, "name": "Insulina NPH", "barcode": "100006", "total_consumed": 80 }
+  ] } }

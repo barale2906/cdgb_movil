@@ -8,6 +8,7 @@ import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/warehouse/active_warehouse.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
+import 'package:sga_bojanini/core/widgets/form_fields.dart';
 import 'package:sga_bojanini/features/inventory/application/lookup_providers.dart';
 import 'package:sga_bojanini/features/inventory/application/movement_controller.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_requests.dart';

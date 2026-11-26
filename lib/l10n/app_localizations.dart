@@ -2133,6 +2133,864 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Servidor: {name}'**
   String loginServerLabel(String name);
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Notificaciones'**
+  String get notificationsTitle;
+
+  /// No description provided for @notificationsOpen.
+  ///
+  /// In es, this message translates to:
+  /// **'Abrir notificaciones'**
+  String get notificationsOpen;
+
+  /// No description provided for @notificationsUnreadCount.
+  ///
+  /// In es, this message translates to:
+  /// **'{count, plural, =0{Sin notificaciones nuevas} =1{1 notificación sin leer} other{{count} notificaciones sin leer}}'**
+  String notificationsUnreadCount(int count);
+
+  /// No description provided for @notificationsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No tiene notificaciones.'**
+  String get notificationsEmpty;
+
+  /// No description provided for @notificationsEmptyUnread.
+  ///
+  /// In es, this message translates to:
+  /// **'No tiene notificaciones sin leer.'**
+  String get notificationsEmptyUnread;
+
+  /// No description provided for @notificationsFilterAll.
+  ///
+  /// In es, this message translates to:
+  /// **'Todas'**
+  String get notificationsFilterAll;
+
+  /// No description provided for @notificationsFilterUnread.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin leer'**
+  String get notificationsFilterUnread;
+
+  /// No description provided for @notificationsMarkAllRead.
+  ///
+  /// In es, this message translates to:
+  /// **'Marcar todas como leídas'**
+  String get notificationsMarkAllRead;
+
+  /// No description provided for @notificationsAllRead.
+  ///
+  /// In es, this message translates to:
+  /// **'Todas las notificaciones quedaron leídas.'**
+  String get notificationsAllRead;
+
+  /// No description provided for @severityCritical.
+  ///
+  /// In es, this message translates to:
+  /// **'Crítica'**
+  String get severityCritical;
+
+  /// No description provided for @severityWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'Advertencia'**
+  String get severityWarning;
+
+  /// No description provided for @severityInfo.
+  ///
+  /// In es, this message translates to:
+  /// **'Información'**
+  String get severityInfo;
+
+  /// No description provided for @severitySuccess.
+  ///
+  /// In es, this message translates to:
+  /// **'Listo'**
+  String get severitySuccess;
+
+  /// No description provided for @notificationUnread.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin leer'**
+  String get notificationUnread;
+
+  /// No description provided for @dashInventory.
+  ///
+  /// In es, this message translates to:
+  /// **'Inventario'**
+  String get dashInventory;
+
+  /// No description provided for @dashProducts.
+  ///
+  /// In es, this message translates to:
+  /// **'Productos'**
+  String get dashProducts;
+
+  /// No description provided for @dashUnits.
+  ///
+  /// In es, this message translates to:
+  /// **'Unidades en stock'**
+  String get dashUnits;
+
+  /// No description provided for @dashStockHealth.
+  ///
+  /// In es, this message translates to:
+  /// **'Estado del stock'**
+  String get dashStockHealth;
+
+  /// No description provided for @dashStockOk.
+  ///
+  /// In es, this message translates to:
+  /// **'Suficiente'**
+  String get dashStockOk;
+
+  /// No description provided for @dashStockLow.
+  ///
+  /// In es, this message translates to:
+  /// **'Bajo reorden'**
+  String get dashStockLow;
+
+  /// No description provided for @dashStockCritical.
+  ///
+  /// In es, this message translates to:
+  /// **'Crítico'**
+  String get dashStockCritical;
+
+  /// No description provided for @dashExpiring.
+  ///
+  /// In es, this message translates to:
+  /// **'Vencimientos de lotes'**
+  String get dashExpiring;
+
+  /// No description provided for @dashExpiringToday.
+  ///
+  /// In es, this message translates to:
+  /// **'Hoy'**
+  String get dashExpiringToday;
+
+  /// No description provided for @dashExpiring7.
+  ///
+  /// In es, this message translates to:
+  /// **'7 días'**
+  String get dashExpiring7;
+
+  /// No description provided for @dashExpiring30.
+  ///
+  /// In es, this message translates to:
+  /// **'30 días'**
+  String get dashExpiring30;
+
+  /// No description provided for @dashMovementsToday.
+  ///
+  /// In es, this message translates to:
+  /// **'Movimientos hoy'**
+  String get dashMovementsToday;
+
+  /// No description provided for @dashTopConsumed.
+  ///
+  /// In es, this message translates to:
+  /// **'Más consumidos (30 días)'**
+  String get dashTopConsumed;
+
+  /// No description provided for @dashPurchasing.
+  ///
+  /// In es, this message translates to:
+  /// **'Compras'**
+  String get dashPurchasing;
+
+  /// No description provided for @dashPendingOrders.
+  ///
+  /// In es, this message translates to:
+  /// **'Órdenes por aprobar'**
+  String get dashPendingOrders;
+
+  /// No description provided for @dashApprovedOrders.
+  ///
+  /// In es, this message translates to:
+  /// **'Órdenes aprobadas'**
+  String get dashApprovedOrders;
+
+  /// No description provided for @dashMonthTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Compras del mes'**
+  String get dashMonthTotal;
+
+  /// No description provided for @dashMonitoring.
+  ///
+  /// In es, this message translates to:
+  /// **'Monitoreo'**
+  String get dashMonitoring;
+
+  /// No description provided for @dashActiveSensors.
+  ///
+  /// In es, this message translates to:
+  /// **'Sensores activos'**
+  String get dashActiveSensors;
+
+  /// No description provided for @dashAlertsToday.
+  ///
+  /// In es, this message translates to:
+  /// **'Alertas hoy'**
+  String get dashAlertsToday;
+
+  /// No description provided for @dashReadingsToday.
+  ///
+  /// In es, this message translates to:
+  /// **'Lecturas hoy'**
+  String get dashReadingsToday;
+
+  /// No description provided for @dashAlerts.
+  ///
+  /// In es, this message translates to:
+  /// **'Alertas recientes'**
+  String get dashAlerts;
+
+  /// No description provided for @dashNoAlerts.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin alertas pendientes.'**
+  String get dashNoAlerts;
+
+  /// No description provided for @dashActivity.
+  ///
+  /// In es, this message translates to:
+  /// **'Actividad reciente'**
+  String get dashActivity;
+
+  /// No description provided for @dashNoActivity.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin actividad reciente.'**
+  String get dashNoActivity;
+
+  /// No description provided for @dashQuickActions.
+  ///
+  /// In es, this message translates to:
+  /// **'Accesos rápidos'**
+  String get dashQuickActions;
+
+  /// No description provided for @dashScan.
+  ///
+  /// In es, this message translates to:
+  /// **'Escanear'**
+  String get dashScan;
+
+  /// No description provided for @dashNewMovement.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo movimiento'**
+  String get dashNewMovement;
+
+  /// No description provided for @dashBlockError.
+  ///
+  /// In es, this message translates to:
+  /// **'No se pudo cargar este bloque.'**
+  String get dashBlockError;
+
+  /// No description provided for @auditCreated.
+  ///
+  /// In es, this message translates to:
+  /// **'Creó'**
+  String get auditCreated;
+
+  /// No description provided for @auditUpdated.
+  ///
+  /// In es, this message translates to:
+  /// **'Modificó'**
+  String get auditUpdated;
+
+  /// No description provided for @auditDeleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminó'**
+  String get auditDeleted;
+
+  /// No description provided for @auditUnknown.
+  ///
+  /// In es, this message translates to:
+  /// **'Acción'**
+  String get auditUnknown;
+
+  /// No description provided for @monitoringEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No tiene sensores asignados.'**
+  String get monitoringEmpty;
+
+  /// No description provided for @sensorTypeTemperature.
+  ///
+  /// In es, this message translates to:
+  /// **'Temperatura'**
+  String get sensorTypeTemperature;
+
+  /// No description provided for @sensorTypeHumidity.
+  ///
+  /// In es, this message translates to:
+  /// **'Humedad'**
+  String get sensorTypeHumidity;
+
+  /// No description provided for @sensorLastReading.
+  ///
+  /// In es, this message translates to:
+  /// **'Última lectura'**
+  String get sensorLastReading;
+
+  /// No description provided for @sensorNoReadings.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin lecturas aún'**
+  String get sensorNoReadings;
+
+  /// No description provided for @sensorOutOfRange.
+  ///
+  /// In es, this message translates to:
+  /// **'Fuera de rango'**
+  String get sensorOutOfRange;
+
+  /// No description provided for @sensorInRange.
+  ///
+  /// In es, this message translates to:
+  /// **'En rango'**
+  String get sensorInRange;
+
+  /// No description provided for @sensorLimits.
+  ///
+  /// In es, this message translates to:
+  /// **'Rango permitido: {min}–{max} {unit}'**
+  String sensorLimits(String min, String max, String unit);
+
+  /// No description provided for @sensorZone.
+  ///
+  /// In es, this message translates to:
+  /// **'Zona'**
+  String get sensorZone;
+
+  /// No description provided for @sensorDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Sensor'**
+  String get sensorDetailTitle;
+
+  /// No description provided for @calibrationValid.
+  ///
+  /// In es, this message translates to:
+  /// **'Calibración vigente'**
+  String get calibrationValid;
+
+  /// No description provided for @calibrationExpiring.
+  ///
+  /// In es, this message translates to:
+  /// **'Calibración por vencer'**
+  String get calibrationExpiring;
+
+  /// No description provided for @calibrationExpired.
+  ///
+  /// In es, this message translates to:
+  /// **'Calibración vencida'**
+  String get calibrationExpired;
+
+  /// No description provided for @calibrationMissing.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin certificado'**
+  String get calibrationMissing;
+
+  /// No description provided for @calibrationDaysLeft.
+  ///
+  /// In es, this message translates to:
+  /// **'{days, plural, =0{Vence hoy} =1{Vence en 1 día} other{Vence en {days} días}}'**
+  String calibrationDaysLeft(int days);
+
+  /// No description provided for @periodDay.
+  ///
+  /// In es, this message translates to:
+  /// **'24 h'**
+  String get periodDay;
+
+  /// No description provided for @periodWeek.
+  ///
+  /// In es, this message translates to:
+  /// **'7 días'**
+  String get periodWeek;
+
+  /// No description provided for @periodMonth.
+  ///
+  /// In es, this message translates to:
+  /// **'30 días'**
+  String get periodMonth;
+
+  /// No description provided for @readingsStats.
+  ///
+  /// In es, this message translates to:
+  /// **'Resumen del periodo'**
+  String get readingsStats;
+
+  /// No description provided for @statMin.
+  ///
+  /// In es, this message translates to:
+  /// **'Mínimo'**
+  String get statMin;
+
+  /// No description provided for @statMax.
+  ///
+  /// In es, this message translates to:
+  /// **'Máximo'**
+  String get statMax;
+
+  /// No description provided for @statAvg.
+  ///
+  /// In es, this message translates to:
+  /// **'Promedio'**
+  String get statAvg;
+
+  /// No description provided for @statCount.
+  ///
+  /// In es, this message translates to:
+  /// **'Lecturas'**
+  String get statCount;
+
+  /// No description provided for @readingsEmptyPeriod.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay lecturas en este periodo.'**
+  String get readingsEmptyPeriod;
+
+  /// No description provided for @trendTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Tendencia'**
+  String get trendTitle;
+
+  /// No description provided for @trendNone.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin tendencia significativa en el periodo.'**
+  String get trendNone;
+
+  /// No description provided for @trendUp.
+  ///
+  /// In es, this message translates to:
+  /// **'Tendencia al alza'**
+  String get trendUp;
+
+  /// No description provided for @trendDown.
+  ///
+  /// In es, this message translates to:
+  /// **'Tendencia a la baja'**
+  String get trendDown;
+
+  /// No description provided for @trendConfidence.
+  ///
+  /// In es, this message translates to:
+  /// **'Confianza {level}'**
+  String trendConfidence(String level);
+
+  /// No description provided for @confidenceHigh.
+  ///
+  /// In es, this message translates to:
+  /// **'alta'**
+  String get confidenceHigh;
+
+  /// No description provided for @confidenceMedium.
+  ///
+  /// In es, this message translates to:
+  /// **'media'**
+  String get confidenceMedium;
+
+  /// No description provided for @confidenceLow.
+  ///
+  /// In es, this message translates to:
+  /// **'baja'**
+  String get confidenceLow;
+
+  /// No description provided for @readingRegister.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar lectura'**
+  String get readingRegister;
+
+  /// No description provided for @readingValue.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor ({unit})'**
+  String readingValue(String unit);
+
+  /// No description provided for @readingWhen.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha y hora de la lectura'**
+  String get readingWhen;
+
+  /// No description provided for @readingSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Lectura registrada.'**
+  String get readingSaved;
+
+  /// No description provided for @readingAlerts.
+  ///
+  /// In es, this message translates to:
+  /// **'{count, plural, =1{La lectura generó 1 alerta.} other{La lectura generó {count} alertas.}}'**
+  String readingAlerts(int count);
+
+  /// No description provided for @calibrationsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Calibraciones'**
+  String get calibrationsTitle;
+
+  /// No description provided for @calibrationsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin certificados de calibración.'**
+  String get calibrationsEmpty;
+
+  /// No description provided for @calibrationDownload.
+  ///
+  /// In es, this message translates to:
+  /// **'Descargar certificado'**
+  String get calibrationDownload;
+
+  /// No description provided for @calibrationCurrent.
+  ///
+  /// In es, this message translates to:
+  /// **'Vigente'**
+  String get calibrationCurrent;
+
+  /// No description provided for @calibrationReplaced.
+  ///
+  /// In es, this message translates to:
+  /// **'Reemplazado'**
+  String get calibrationReplaced;
+
+  /// No description provided for @alertRulesTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Reglas de alerta'**
+  String get alertRulesTitle;
+
+  /// No description provided for @alertRulesEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin reglas de alerta.'**
+  String get alertRulesEmpty;
+
+  /// No description provided for @alertAbove.
+  ///
+  /// In es, this message translates to:
+  /// **'Por encima de {threshold}'**
+  String alertAbove(String threshold);
+
+  /// No description provided for @alertBelow.
+  ///
+  /// In es, this message translates to:
+  /// **'Por debajo de {threshold}'**
+  String alertBelow(String threshold);
+
+  /// No description provided for @alertOutOfRange.
+  ///
+  /// In es, this message translates to:
+  /// **'Fuera del rango permitido'**
+  String get alertOutOfRange;
+
+  /// No description provided for @alertTrendUp.
+  ///
+  /// In es, this message translates to:
+  /// **'Tendencia al alza'**
+  String get alertTrendUp;
+
+  /// No description provided for @alertTrendDown.
+  ///
+  /// In es, this message translates to:
+  /// **'Tendencia a la baja'**
+  String get alertTrendDown;
+
+  /// No description provided for @alertConsecutive.
+  ///
+  /// In es, this message translates to:
+  /// **'{count} lecturas seguidas'**
+  String alertConsecutive(int count);
+
+  /// No description provided for @conditionsReportAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Reporte de condiciones (PDF)'**
+  String get conditionsReportAction;
+
+  /// No description provided for @reportsCatalogTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Elija un reporte'**
+  String get reportsCatalogTitle;
+
+  /// No description provided for @reportsMyExports.
+  ///
+  /// In es, this message translates to:
+  /// **'Mis exportaciones'**
+  String get reportsMyExports;
+
+  /// No description provided for @reportInventory.
+  ///
+  /// In es, this message translates to:
+  /// **'Inventario'**
+  String get reportInventory;
+
+  /// No description provided for @reportInventoryHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Existencias por almacén.'**
+  String get reportInventoryHint;
+
+  /// No description provided for @reportMovements.
+  ///
+  /// In es, this message translates to:
+  /// **'Movimientos'**
+  String get reportMovements;
+
+  /// No description provided for @reportMovementsHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Entradas, salidas y demás movimientos.'**
+  String get reportMovementsHint;
+
+  /// No description provided for @reportExpiring.
+  ///
+  /// In es, this message translates to:
+  /// **'Por vencer'**
+  String get reportExpiring;
+
+  /// No description provided for @reportExpiringHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Lotes próximos a vencer.'**
+  String get reportExpiringHint;
+
+  /// No description provided for @reportPurchases.
+  ///
+  /// In es, this message translates to:
+  /// **'Compras'**
+  String get reportPurchases;
+
+  /// No description provided for @reportPurchasesHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Órdenes de compra del periodo.'**
+  String get reportPurchasesHint;
+
+  /// No description provided for @reportConsumption.
+  ///
+  /// In es, this message translates to:
+  /// **'Consumo'**
+  String get reportConsumption;
+
+  /// No description provided for @reportConsumptionHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Productos consumidos en el periodo.'**
+  String get reportConsumptionHint;
+
+  /// No description provided for @reportConditions.
+  ///
+  /// In es, this message translates to:
+  /// **'Condiciones de almacenamiento'**
+  String get reportConditions;
+
+  /// No description provided for @reportConditionsHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Temperatura y humedad de un sensor.'**
+  String get reportConditionsHint;
+
+  /// No description provided for @reportAudit.
+  ///
+  /// In es, this message translates to:
+  /// **'Auditoría'**
+  String get reportAudit;
+
+  /// No description provided for @reportAuditHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Acciones registradas en el sistema.'**
+  String get reportAuditHint;
+
+  /// No description provided for @reportFormat.
+  ///
+  /// In es, this message translates to:
+  /// **'Formato'**
+  String get reportFormat;
+
+  /// No description provided for @formatPdf.
+  ///
+  /// In es, this message translates to:
+  /// **'PDF'**
+  String get formatPdf;
+
+  /// No description provided for @formatExcel.
+  ///
+  /// In es, this message translates to:
+  /// **'Excel'**
+  String get formatExcel;
+
+  /// No description provided for @formatCsv.
+  ///
+  /// In es, this message translates to:
+  /// **'CSV'**
+  String get formatCsv;
+
+  /// No description provided for @reportGenerate.
+  ///
+  /// In es, this message translates to:
+  /// **'Generar reporte'**
+  String get reportGenerate;
+
+  /// No description provided for @reportDateFrom.
+  ///
+  /// In es, this message translates to:
+  /// **'Desde'**
+  String get reportDateFrom;
+
+  /// No description provided for @reportDateTo.
+  ///
+  /// In es, this message translates to:
+  /// **'Hasta'**
+  String get reportDateTo;
+
+  /// No description provided for @reportDays.
+  ///
+  /// In es, this message translates to:
+  /// **'Días a considerar'**
+  String get reportDays;
+
+  /// No description provided for @reportSensor.
+  ///
+  /// In es, this message translates to:
+  /// **'Sensor'**
+  String get reportSensor;
+
+  /// No description provided for @reportMovementType.
+  ///
+  /// In es, this message translates to:
+  /// **'Tipo de movimiento'**
+  String get reportMovementType;
+
+  /// No description provided for @reportAnyType.
+  ///
+  /// In es, this message translates to:
+  /// **'Todos'**
+  String get reportAnyType;
+
+  /// No description provided for @reportPdfNeedsSensor.
+  ///
+  /// In es, this message translates to:
+  /// **'Para el PDF de condiciones elija un sensor.'**
+  String get reportPdfNeedsSensor;
+
+  /// No description provided for @reportDateRangeInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'La fecha final no puede ser anterior a la inicial.'**
+  String get reportDateRangeInvalid;
+
+  /// No description provided for @reportQueued.
+  ///
+  /// In es, this message translates to:
+  /// **'El reporte es grande y se está generando. Puede seguirlo en Mis exportaciones.'**
+  String get reportQueued;
+
+  /// No description provided for @reportReady.
+  ///
+  /// In es, this message translates to:
+  /// **'Reporte generado.'**
+  String get reportReady;
+
+  /// No description provided for @exportsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay exportaciones.'**
+  String get exportsEmpty;
+
+  /// No description provided for @exportQueued.
+  ///
+  /// In es, this message translates to:
+  /// **'En cola'**
+  String get exportQueued;
+
+  /// No description provided for @exportProcessing.
+  ///
+  /// In es, this message translates to:
+  /// **'Procesando'**
+  String get exportProcessing;
+
+  /// No description provided for @exportReady.
+  ///
+  /// In es, this message translates to:
+  /// **'Listo'**
+  String get exportReady;
+
+  /// No description provided for @exportFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'Falló'**
+  String get exportFailed;
+
+  /// No description provided for @exportExpired.
+  ///
+  /// In es, this message translates to:
+  /// **'Vencido'**
+  String get exportExpired;
+
+  /// No description provided for @exportDownload.
+  ///
+  /// In es, this message translates to:
+  /// **'Descargar'**
+  String get exportDownload;
+
+  /// No description provided for @exportShare.
+  ///
+  /// In es, this message translates to:
+  /// **'Compartir'**
+  String get exportShare;
+
+  /// No description provided for @exportOpen.
+  ///
+  /// In es, this message translates to:
+  /// **'Abrir'**
+  String get exportOpen;
+
+  /// No description provided for @exportCreatedAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Creado {date}'**
+  String exportCreatedAt(String date);
+
+  /// No description provided for @exportSize.
+  ///
+  /// In es, this message translates to:
+  /// **'{size} KB'**
+  String exportSize(String size);
+
+  /// No description provided for @exportGone.
+  ///
+  /// In es, this message translates to:
+  /// **'El reporte venció. Genérelo de nuevo desde Reportes.'**
+  String get exportGone;
+
+  /// No description provided for @exportFailedDetail.
+  ///
+  /// In es, this message translates to:
+  /// **'No se pudo generar el reporte.'**
+  String get exportFailedDetail;
+
+  /// No description provided for @readingsExportAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Exportar lecturas (Excel)'**
+  String get readingsExportAction;
 }
 
 class _AppLocalizationsDelegate

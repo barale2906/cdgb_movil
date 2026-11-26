@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/auth/session_controller.dart';
 import 'package:sga_bojanini/core/navigation/app_section.dart';
 import 'package:sga_bojanini/core/navigation/app_section_label.dart';
@@ -9,9 +10,12 @@ import 'package:sga_bojanini/core/navigation/navigation_planner.dart';
 import 'package:sga_bojanini/core/router/redirect.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/update/update_widgets.dart';
+import 'package:sga_bojanini/core/widgets/notification_badge.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/warehouse_selector.dart';
 import 'package:sga_bojanini/features/home/presentation/more_page.dart';
+import 'package:sga_bojanini/features/notifications/application/notifications_providers.dart';
+import 'package:sga_bojanini/features/notifications/presentation/notifications_page.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
 /// Estructura de la app autenticada: barra superior (almacén activo y
@@ -32,7 +36,11 @@ class AppShell extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(_title(l10n)),
-        actions: const [WarehouseSelector(), _ProfileAvatar()],
+        actions: const [
+          WarehouseSelector(),
+          _NotificationBell(),
+          _ProfileAvatar(),
+        ],
       ),
       body: Column(
         children: [
@@ -121,6 +129,36 @@ class _ProfileAvatar extends ConsumerWidget {
             color: AppColors.onDark,
             fontWeight: FontWeight.w600,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NotificationBell extends ConsumerWidget {
+  const _NotificationBell();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final allowed = ref.watch(
+      permissionServiceProvider.select((p) => p.can(notificationsPermission)),
+    );
+    if (!allowed) return const SizedBox.shrink();
+    final l10n = AppLocalizations.of(context);
+    final unread = ref.watch(unreadCountProvider);
+
+    return IconButton(
+      tooltip: l10n.notificationsOpen,
+      constraints: const BoxConstraints(
+        minWidth: AppSizes.minTouchTarget,
+        minHeight: AppSizes.minTouchTarget,
+      ),
+      onPressed: () => context.push(NotificationsPage.path),
+      icon: Semantics(
+        label: l10n.notificationsUnreadCount(unread),
+        child: NotificationBadge(
+          count: unread,
+          child: const Icon(Icons.notifications_outlined),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/catalog/generic_product.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
+import 'package:sga_bojanini/core/widgets/form_fields.dart';
 import 'package:sga_bojanini/features/inventory/application/lookup_providers.dart';
 import 'package:sga_bojanini/features/inventory/data/batch.dart';
 import 'package:sga_bojanini/features/inventory/presentation/movement_fields.dart';

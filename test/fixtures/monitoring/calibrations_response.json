@@ -1,0 +1,4 @@
+{ "success": true, "message": "OK", "data": [
+  { "id": 3, "sensor_id": 1, "certificate_number": "CAL-2026-01", "laboratory": "Laboratorio Uno", "calibrated_at": "2025-12-10", "expires_at": "2026-12-10", "days_left": 16, "is_current": true, "status": "expiring", "status_label": "Por vencer", "replaced_at": null, "original_name": "cert-cal-2026.pdf", "mime_type": "application/pdf", "size": 1000, "notes": null },
+  { "id": 2, "sensor_id": 1, "certificate_number": "CAL-2025-01", "laboratory": "Laboratorio Uno", "calibrated_at": "2024-12-10", "expires_at": "2025-12-10", "days_left": -349, "is_current": false, "status": "replaced", "status_label": "Reemplazado", "replaced_at": "2025-12-10 10:00:00", "original_name": "cert-cal-2025.pdf", "mime_type": "application/pdf", "size": 900, "notes": null }
+] }

@@ -2,6 +2,17 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [0.6.0+6] - 2026-11-25
+### Añadido
+- Fase 3 · Inicio con tarjetas y gráficas de inventario, compras y monitoreo (cada bloque según permisos), actividad reciente, alertas y accesos rápidos (nuevo movimiento, escanear).
+- Fase 3 · Notificaciones: centro con marcar leída/todas y contador en la barra superior con actualización cada 60 s.
+- Fase 3 · Monitoreo: sensores asignados, detalle con lecturas, tendencia y estadísticas, registro de lectura manual, exportación a Excel, calibraciones con certificado y reglas de alerta (consulta).
+- Fase 3 · Reportes: catálogo de 7 reportes con filtros, archivo directo o exportación en segundo plano, y lista de exportaciones con descarga/compartir; informe de condiciones desde el sensor.
+- Componentes reutilizables: gráficas, campos de formulario, insignia de notificaciones, escaneo de producto y envío de archivos; fechas en hora de Colombia.
+
+### Pendiente
+- Notificaciones push (FCM): requieren aprobar el cambio de backend (`auth/devices`) y crear el proyecto Firebase.
+
 ## [0.5.0+5] - 2026-11-24
 ### Añadido
 - Cambio sencillo de servidor (flavor dev): en Acerca de se elige entre producción de la clínica, local por USB o emulador (`SERVER_PRESETS` en `env/*.json`) o una dirección propia; el login muestra el servidor activo.

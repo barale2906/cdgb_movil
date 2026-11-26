@@ -1,0 +1,6 @@
+{ "success": true, "message": "OK", "data": [
+  { "id": 12, "type": "inventory", "format": "excel", "status": "ready", "is_ready": true, "is_expired": false, "file_size": 20480, "error_message": null, "expires_at": "2026-12-01T10:00:00-05:00", "created_at": "2026-11-24T09:00:00-05:00", "completed_at": "2026-11-24T09:01:00-05:00", "download_url": "https://x/api/v1/reports/exports/12/download" },
+  { "id": 13, "type": "movements", "format": "pdf", "status": "processing", "is_ready": false, "is_expired": false, "file_size": null, "error_message": null, "expires_at": null, "created_at": "2026-11-24T09:05:00-05:00", "completed_at": null, "download_url": null },
+  { "id": 14, "type": "audit", "format": "csv", "status": "failed", "is_ready": false, "is_expired": false, "file_size": null, "error_message": "Falló la consulta.", "expires_at": null, "created_at": "2026-11-24T08:00:00-05:00", "completed_at": null, "download_url": null },
+  { "id": "uuid-15", "type": "expiring", "format": "pdf", "status": "ready", "is_ready": true, "is_expired": true, "file_size": 100, "error_message": null, "expires_at": "2026-11-20T10:00:00-05:00", "created_at": "2026-11-10T09:00:00-05:00", "completed_at": "2026-11-10T09:01:00-05:00", "download_url": null }
+], "meta": { "current_page": 1, "last_page": 1, "per_page": 25, "total": 4 } }

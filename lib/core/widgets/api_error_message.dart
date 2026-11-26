@@ -15,11 +15,13 @@ abstract final class ApiErrorMessage {
       // El servidor ya redacta en español estos mensajes.
       BusinessRuleException(:final message) ||
       ForbiddenException(:final message) ||
+      GoneException(:final message) ||
       NotFoundException(:final message) ||
       ValidationException(:final message) when message.isNotEmpty => message,
       UnauthenticatedException() => l10n.errorUnauthenticated,
       ForbiddenException() => l10n.errorForbidden,
       NotFoundException() => l10n.errorNotFound,
+      GoneException() => l10n.errorNotFound,
       RateLimitedException() => l10n.errorRateLimited,
       ServerException() => l10n.errorServer,
       BusinessRuleException() || ValidationException() => l10n.errorGeneric,

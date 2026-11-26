@@ -5,9 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/app.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
+import 'package:sga_bojanini/core/utils/file_sharer.dart';
 import 'package:sga_bojanini/core/widgets/barcode_scanner_view.dart';
 import 'package:sga_bojanini/core/widgets/pdf_viewer.dart';
-import 'package:sga_bojanini/features/inventory/application/document_actions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'fake_connectivity.dart';
@@ -108,6 +108,41 @@ class AppHarness {
       );
   }
 
+  /// Bloques del tablero y notificaciones (sin leer: [unread]).
+  void stubDashboard({int unread = 2}) {
+    adapter
+      ..on(
+        'GET',
+        '/dashboard/inventory',
+        body: fixture('dashboard/inventory_response.json'),
+      )
+      ..on(
+        'GET',
+        '/dashboard/purchasing',
+        body: fixture('dashboard/purchasing_response.json'),
+      )
+      ..on(
+        'GET',
+        '/dashboard/monitoring',
+        body: fixture('dashboard/monitoring_response.json'),
+      )
+      ..on(
+        'GET',
+        '/dashboard/activity',
+        body: fixture('dashboard/activity_response.json'),
+      )
+      ..on(
+        'GET',
+        '/dashboard/alerts',
+        body: fixture('dashboard/alerts_response.json'),
+      )
+      ..on(
+        'GET',
+        '/notifications/unread-count',
+        body: envelope({'count': unread}),
+      );
+  }
+
   void stubLogin({List<String>? permissions}) {
     final login = fixture('auth/login_response.json');
     if (permissions != null) {
@@ -163,7 +198,7 @@ class AppHarness {
       pdfViewBuilderProvider.overrideWithValue(
         (context, bytes) => Center(child: Text('PDF ${bytes.length} bytes')),
       ),
-      pdfSharerProvider.overrideWithValue((bytes, name) async {
+      fileSharerProvider.overrideWithValue((bytes, name) async {
         sharedFiles.add((name, bytes.length));
       }),
     ];
