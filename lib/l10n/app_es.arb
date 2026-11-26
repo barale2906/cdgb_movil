@@ -1418,5 +1418,109 @@
         "type": "int"
       }
     }
-  }
+  },
+  "costCentersTabCenters": "Centros de costo",
+  "costCentersTabServices": "Servicios",
+  "costCentersSearchHint": "Nombre o código del centro",
+  "costCentersEmpty": "No hay centros de costo.",
+  "costCenterExternal": "Externo",
+  "costCenterInternal": "Interno",
+  "servicesEmpty": "No hay servicios registrados.",
+  "servicePricesTitle": "Tarifas de {name}",
+  "@servicePricesTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "servicePricesEmpty": "Este procedimiento no tiene tarifas registradas.",
+  "servicePriceCurrent": "Vigente",
+  "servicePriceFrom": "Desde {date}",
+  "@servicePriceFrom": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "servicePriceUntil": "hasta {date}",
+  "@servicePriceUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "consumptionsTabList": "Consumos",
+  "consumptionsTabProjection": "Proyección",
+  "consumptionsEmpty": "No hay consumos registrados.",
+  "syncPending": "Pendiente",
+  "syncSynced": "Sincronizado",
+  "syncFailed": "Fallido",
+  "consumptionNew": "Nuevo consumo",
+  "consumptionDetailTitle": "Consumo",
+  "consumptionProductUnknown": "Insumo",
+  "consumptionLot": "Lote",
+  "consumptionLotValue": "Lote {lot}",
+  "@consumptionLotValue": {
+    "placeholders": {
+      "lot": {
+        "type": "String"
+      }
+    }
+  },
+  "consumptionQuantity": "Cantidad",
+  "consumptionDate": "Fecha del consumo",
+  "consumptionSyncedAt": "Sincronizado el",
+  "consumptionAppointment": "Cita",
+  "consumptionPatient": "Paciente",
+  "consumptionServiceType": "Servicio",
+  "consumptionSyncStatus": "Historia clínica",
+  "consumptionRetrySync": "Reintentar sincronización",
+  "consumptionRetryConfirm": "Se volverá a enviar el consumo a la historia clínica.",
+  "consumptionRetryQueued": "Sincronización reencolada.",
+  "consumptionRetryTimeout": "No se recibió respuesta del servidor. Actualice el consumo antes de repetirlo: es posible que sí se haya reencolado.",
+  "consumptionFormTitle": "Registrar consumo",
+  "consumptionWarehouse": "Almacén",
+  "consumptionCostCenter": "Centro de costo",
+  "consumptionAppointmentField": "Código de la cita (opcional)",
+  "consumptionPatientField": "Identificación del paciente (opcional)",
+  "consumptionServiceField": "Servicio (opcional)",
+  "consumptionSyncNote": "Con cita y paciente, el consumo también se envía a la historia clínica.",
+  "consumptionItemsTitle": "Insumos",
+  "consumptionItemsRequired": "Agregue al menos un insumo.",
+  "consumptionSubmit": "Registrar consumo",
+  "consumptionSaved": "Consumo registrado.",
+  "consumptionUnconfirmed": "No se recibió respuesta del servidor. El consumo pudo haberse registrado: revise la lista de consumos antes de repetirlo.",
+  "consumptionNotSaved": "Ya revisé: no se registró, enviar de nuevo",
+  "projectionDays": "{days} días",
+  "@projectionDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "projectionEmpty": "No hay citas futuras con consumo previsto.",
+  "projectionAverage": "{count} citas · promedio {avg} por cita",
+  "@projectionAverage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "projectionUnits": "{units} u.",
+  "@projectionUnits": {
+    "placeholders": {
+      "units": {
+        "type": "int"
+      }
+    }
+  },
+  "projectionNote": "Estimado con las citas futuras de MedSys y el promedio de los últimos 90 días."
 }

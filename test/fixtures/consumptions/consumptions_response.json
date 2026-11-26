@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "message": "Listado de consumos",
+  "data": {
+    "items": [
+      {
+        "id": 31, "appointment_id": "C0001", "patient_identifier": "1000000001", "service_type": "Curaciones",
+        "product_id": null, "product_code": null, "product_name": "Gasa estéril 10x10",
+        "batch_id": 12, "lot_number": "LOT-2026-A", "quantity": 3, "user_id": 1,
+        "consumed_at": "2026-11-24 09:15:00", "sync_status": "failed", "synced_to_hc_at": null
+      },
+      {
+        "id": 30, "appointment_id": "C0000", "patient_identifier": "1000000002", "service_type": null,
+        "product_id": null, "product_code": null, "product_name": null,
+        "batch_id": 11, "lot_number": "LOT-2026-B", "quantity": "2.00", "user_id": 1,
+        "consumed_at": "2026-11-23 16:40:00", "sync_status": "synced", "synced_to_hc_at": "2026-11-23 16:41:00"
+      },
+      {
+        "id": 29, "appointment_id": null, "patient_identifier": null, "service_type": null,
+        "product_id": null, "product_code": null, "product_name": "Guantes",
+        "batch_id": null, "lot_number": null, "quantity": 10, "user_id": 2,
+        "consumed_at": "2026-11-23 08:00:00", "sync_status": "pending", "synced_to_hc_at": null
+      }
+    ],
+    "meta": { "current_page": 1, "per_page": 25, "total": 3, "last_page": 1 }
+  }
+}

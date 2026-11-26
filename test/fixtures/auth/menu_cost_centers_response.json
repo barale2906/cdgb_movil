@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "message": "Menú de navegación",
+  "data": [
+    {
+      "key": "cost-centers-menu", "label": "Centros de costo", "icon": "x", "route": null, "permission": null, "actions": [],
+      "children": [
+        { "key": "cost-centers", "label": "Centros de costo", "icon": "x", "route": "cost-centers.index", "permission": "centros_costo.ver", "actions": [], "children": [] }
+      ]
+    }
+  ]
+}

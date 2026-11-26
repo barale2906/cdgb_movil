@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "message": "Consumo",
+  "data": {
+    "id": 31,
+    "appointment_id": "C0001",
+    "patient_identifier": "1000000001",
+    "service_type": "Curaciones",
+    "product_id": null,
+    "product_code": null,
+    "product_name": "Gasa estéril 10x10",
+    "batch_id": 12,
+    "lot_number": "LOT-2026-A",
+    "quantity": 3,
+    "user_id": 1,
+    "consumed_at": "2026-11-24 09:15:00",
+    "sync_status": "failed",
+    "synced_to_hc_at": null
+  }
+}

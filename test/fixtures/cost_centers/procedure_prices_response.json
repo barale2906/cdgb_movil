@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "message": "Tarifas",
+  "data": [
+    { "id": 8, "medical_service_id": 3, "unit_price": "50000.00", "effective_from": "2026-01-01", "effective_to": null, "is_active": true, "is_currently_valid": true, "notes": null },
+    { "id": 7, "medical_service_id": 3, "unit_price": "45000.00", "effective_from": "2025-01-01", "effective_to": "2025-12-31", "is_active": true, "is_currently_valid": false, "notes": null }
+  ]
+}

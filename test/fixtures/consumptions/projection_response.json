@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "message": "Proyección de consumo basada en citas futuras",
+  "data": [
+    {
+      "service_id": 3,
+      "service_name": "Curaciones simples",
+      "external_code": "CUR",
+      "future_appointments": 12,
+      "avg_units_per_appointment": 2.5,
+      "projected_units": 30
+    },
+    {
+      "service_id": 4,
+      "service_name": "Consulta dermatología",
+      "external_code": "DER",
+      "future_appointments": 4,
+      "avg_units_per_appointment": 0.5,
+      "projected_units": 2
+    }
+  ]
+}

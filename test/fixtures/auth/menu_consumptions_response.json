@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "message": "Menú de navegación",
+  "data": [
+    {
+      "key": "consumptions-menu", "label": "Consumos", "icon": "x", "route": null, "permission": null, "actions": [],
+      "children": [
+        { "key": "consumptions", "label": "Consumos", "icon": "x", "route": "consumptions.index", "permission": "consumos.ver", "actions": [], "children": [] }
+      ]
+    }
+  ]
+}
