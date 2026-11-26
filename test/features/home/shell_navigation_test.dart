@@ -9,9 +9,13 @@ void main() {
 
   setUp(() => harness = AppHarness());
 
-  Future<void> signIn(WidgetTester tester, List<String> permissions) async {
+  Future<void> signIn(
+    WidgetTester tester,
+    List<String> permissions, {
+    String menu = 'auth/menu_response.json',
+  }) async {
     harness
-      ..stubSignedInUser(permissions: permissions)
+      ..stubSignedInUser(permissions: permissions, menu: menu)
       ..storeSession();
     await harness.pump(tester);
   }
@@ -34,12 +38,17 @@ void main() {
   testWidgets('tocar un destino abre la sección con aviso "Próximamente"', (
     tester,
   ) async {
-    await signIn(tester, ['ordenes_compra.ver']);
+    // Activos es de la fase 5: aún muestra "Próximamente".
+    await signIn(
+      tester,
+      ['activos.ver'],
+      menu: 'auth/menu_assets_response.json',
+    );
 
     await tester.tap(
       find.descendant(
         of: find.byType(NavigationBar),
-        matching: find.text('Compras'),
+        matching: find.text('Activos'),
       ),
     );
     await AppHarness.settle(tester);

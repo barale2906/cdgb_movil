@@ -2991,6 +2991,660 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Exportar lecturas (Excel)'**
   String get readingsExportAction;
+
+  /// No description provided for @purchasingTabOrders.
+  ///
+  /// In es, this message translates to:
+  /// **'Compras'**
+  String get purchasingTabOrders;
+
+  /// No description provided for @purchasingTabExpenses.
+  ///
+  /// In es, this message translates to:
+  /// **'Gastos'**
+  String get purchasingTabExpenses;
+
+  /// No description provided for @purchasingTabSuggestions.
+  ///
+  /// In es, this message translates to:
+  /// **'Sugerencias'**
+  String get purchasingTabSuggestions;
+
+  /// No description provided for @purchasingTabConsolidated.
+  ///
+  /// In es, this message translates to:
+  /// **'Consolidadas'**
+  String get purchasingTabConsolidated;
+
+  /// No description provided for @filterAll.
+  ///
+  /// In es, this message translates to:
+  /// **'Todas'**
+  String get filterAll;
+
+  /// No description provided for @filterAnyPayment.
+  ///
+  /// In es, this message translates to:
+  /// **'Cualquier pago'**
+  String get filterAnyPayment;
+
+  /// No description provided for @purchaseOrdersEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay órdenes de compra para mostrar.'**
+  String get purchaseOrdersEmpty;
+
+  /// No description provided for @expenseOrdersEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay órdenes de gasto para mostrar.'**
+  String get expenseOrdersEmpty;
+
+  /// No description provided for @statusUnknown.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin clasificar'**
+  String get statusUnknown;
+
+  /// No description provided for @orderStatusDraft.
+  ///
+  /// In es, this message translates to:
+  /// **'Borrador'**
+  String get orderStatusDraft;
+
+  /// No description provided for @orderStatusPendingApproval.
+  ///
+  /// In es, this message translates to:
+  /// **'Por aprobar'**
+  String get orderStatusPendingApproval;
+
+  /// No description provided for @orderStatusApproved.
+  ///
+  /// In es, this message translates to:
+  /// **'Aprobada'**
+  String get orderStatusApproved;
+
+  /// No description provided for @orderStatusRejected.
+  ///
+  /// In es, this message translates to:
+  /// **'Rechazada'**
+  String get orderStatusRejected;
+
+  /// No description provided for @orderStatusSent.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviada'**
+  String get orderStatusSent;
+
+  /// No description provided for @orderStatusPartiallyReceived.
+  ///
+  /// In es, this message translates to:
+  /// **'Recibida parcial'**
+  String get orderStatusPartiallyReceived;
+
+  /// No description provided for @orderStatusReceived.
+  ///
+  /// In es, this message translates to:
+  /// **'Recibida'**
+  String get orderStatusReceived;
+
+  /// No description provided for @orderStatusCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelada'**
+  String get orderStatusCancelled;
+
+  /// No description provided for @paymentUnpaid.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin pagar'**
+  String get paymentUnpaid;
+
+  /// No description provided for @paymentPartial.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago parcial'**
+  String get paymentPartial;
+
+  /// No description provided for @paymentPaid.
+  ///
+  /// In es, this message translates to:
+  /// **'Pagada'**
+  String get paymentPaid;
+
+  /// No description provided for @paymentMethodCash.
+  ///
+  /// In es, this message translates to:
+  /// **'Efectivo'**
+  String get paymentMethodCash;
+
+  /// No description provided for @paymentMethodTransfer.
+  ///
+  /// In es, this message translates to:
+  /// **'Transferencia'**
+  String get paymentMethodTransfer;
+
+  /// No description provided for @paymentMethodCheck.
+  ///
+  /// In es, this message translates to:
+  /// **'Cheque'**
+  String get paymentMethodCheck;
+
+  /// No description provided for @paymentMethodOther.
+  ///
+  /// In es, this message translates to:
+  /// **'Otro'**
+  String get paymentMethodOther;
+
+  /// No description provided for @orderDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden'**
+  String get orderDetailTitle;
+
+  /// No description provided for @orderWarehouse.
+  ///
+  /// In es, this message translates to:
+  /// **'Almacén de destino'**
+  String get orderWarehouse;
+
+  /// No description provided for @orderCostCenter.
+  ///
+  /// In es, this message translates to:
+  /// **'Centro de costo'**
+  String get orderCostCenter;
+
+  /// No description provided for @orderExpectedDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Entrega esperada'**
+  String get orderExpectedDate;
+
+  /// No description provided for @orderCreatedAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Creada'**
+  String get orderCreatedAt;
+
+  /// No description provided for @orderSentAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviada'**
+  String get orderSentAt;
+
+  /// No description provided for @orderReceivedAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Recibida'**
+  String get orderReceivedAt;
+
+  /// No description provided for @orderNotes.
+  ///
+  /// In es, this message translates to:
+  /// **'Notas'**
+  String get orderNotes;
+
+  /// No description provided for @orderLines.
+  ///
+  /// In es, this message translates to:
+  /// **'Productos'**
+  String get orderLines;
+
+  /// No description provided for @orderSubtotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Subtotal'**
+  String get orderSubtotal;
+
+  /// No description provided for @orderTax.
+  ///
+  /// In es, this message translates to:
+  /// **'Impuestos'**
+  String get orderTax;
+
+  /// No description provided for @orderTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total'**
+  String get orderTotal;
+
+  /// No description provided for @orderSubmit.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviar a aprobación'**
+  String get orderSubmit;
+
+  /// No description provided for @orderSubmitted.
+  ///
+  /// In es, this message translates to:
+  /// **'La orden quedó pendiente de aprobación.'**
+  String get orderSubmitted;
+
+  /// No description provided for @orderApprove.
+  ///
+  /// In es, this message translates to:
+  /// **'Aprobar'**
+  String get orderApprove;
+
+  /// No description provided for @orderApproveTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Aprobar orden'**
+  String get orderApproveTitle;
+
+  /// No description provided for @orderApproved.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden aprobada.'**
+  String get orderApproved;
+
+  /// No description provided for @orderReject.
+  ///
+  /// In es, this message translates to:
+  /// **'Rechazar'**
+  String get orderReject;
+
+  /// No description provided for @orderRejectTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Rechazar orden'**
+  String get orderRejectTitle;
+
+  /// No description provided for @orderRejected.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden rechazada.'**
+  String get orderRejected;
+
+  /// No description provided for @orderSend.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviar al proveedor'**
+  String get orderSend;
+
+  /// No description provided for @orderSentMessage.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden enviada al proveedor.'**
+  String get orderSentMessage;
+
+  /// No description provided for @orderReceive.
+  ///
+  /// In es, this message translates to:
+  /// **'Recibir mercancía'**
+  String get orderReceive;
+
+  /// No description provided for @orderReceiveTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Recibir mercancía'**
+  String get orderReceiveTitle;
+
+  /// No description provided for @orderReceiveConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirmar recepción'**
+  String get orderReceiveConfirm;
+
+  /// No description provided for @orderReceived.
+  ///
+  /// In es, this message translates to:
+  /// **'Recepción registrada.'**
+  String get orderReceived;
+
+  /// No description provided for @orderReceiveHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba la cantidad que recibe de cada producto. Las líneas sin cantidad se omiten; si recibe menos de lo pedido, la orden queda como recibida parcial.'**
+  String get orderReceiveHint;
+
+  /// No description provided for @orderReceiveNothing.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba la cantidad recibida de al menos un producto.'**
+  String get orderReceiveNothing;
+
+  /// No description provided for @orderNothingPending.
+  ///
+  /// In es, this message translates to:
+  /// **'Esta orden no tiene productos pendientes de recibir.'**
+  String get orderNothingPending;
+
+  /// No description provided for @orderQuantityExceedsPending.
+  ///
+  /// In es, this message translates to:
+  /// **'No puede recibir más de lo que está pendiente.'**
+  String get orderQuantityExceedsPending;
+
+  /// No description provided for @orderNoWarehouse.
+  ///
+  /// In es, this message translates to:
+  /// **'La orden no tiene almacén de destino; no se pueden elegir ubicaciones.'**
+  String get orderNoWarehouse;
+
+  /// No description provided for @orderCancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar orden'**
+  String get orderCancel;
+
+  /// No description provided for @orderCancelTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar orden'**
+  String get orderCancelTitle;
+
+  /// No description provided for @orderCancelBody.
+  ///
+  /// In es, this message translates to:
+  /// **'La orden quedará cancelada y no se podrá reactivar. ¿Desea continuar?'**
+  String get orderCancelBody;
+
+  /// No description provided for @orderCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden cancelada.'**
+  String get orderCancelled;
+
+  /// No description provided for @orderTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Antes de repetirlo, actualice la orden: es posible que el cambio sí se haya registrado.'**
+  String get orderTimeoutWarning;
+
+  /// No description provided for @fieldSupplier.
+  ///
+  /// In es, this message translates to:
+  /// **'Proveedor'**
+  String get fieldSupplier;
+
+  /// No description provided for @fieldQuantityReceived.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad recibida'**
+  String get fieldQuantityReceived;
+
+  /// No description provided for @fieldCommentsOptional.
+  ///
+  /// In es, this message translates to:
+  /// **'Comentarios (opcional)'**
+  String get fieldCommentsOptional;
+
+  /// No description provided for @fieldInvoiceNumber.
+  ///
+  /// In es, this message translates to:
+  /// **'Número de factura'**
+  String get fieldInvoiceNumber;
+
+  /// No description provided for @fieldInvoiceDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de factura'**
+  String get fieldInvoiceDate;
+
+  /// No description provided for @fieldAmount.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor'**
+  String get fieldAmount;
+
+  /// No description provided for @fieldPaymentMethod.
+  ///
+  /// In es, this message translates to:
+  /// **'Forma de pago'**
+  String get fieldPaymentMethod;
+
+  /// No description provided for @fieldPaymentDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de pago'**
+  String get fieldPaymentDate;
+
+  /// No description provided for @fieldReference.
+  ///
+  /// In es, this message translates to:
+  /// **'Referencia (opcional)'**
+  String get fieldReference;
+
+  /// No description provided for @expenseInvoiceTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar factura'**
+  String get expenseInvoiceTitle;
+
+  /// No description provided for @expenseRegisterInvoice.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar factura'**
+  String get expenseRegisterInvoice;
+
+  /// No description provided for @expenseInvoiceSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Factura registrada.'**
+  String get expenseInvoiceSaved;
+
+  /// No description provided for @expenseSendAccounting.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviar a contabilidad'**
+  String get expenseSendAccounting;
+
+  /// No description provided for @expenseAccountingTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviar a contabilidad'**
+  String get expenseAccountingTitle;
+
+  /// No description provided for @expenseAccountingSent.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden enviada a contabilidad.'**
+  String get expenseAccountingSent;
+
+  /// No description provided for @expenseAccountingSentAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Enviada a contabilidad'**
+  String get expenseAccountingSentAt;
+
+  /// No description provided for @expensePayments.
+  ///
+  /// In es, this message translates to:
+  /// **'Pagos'**
+  String get expensePayments;
+
+  /// No description provided for @expensePaid.
+  ///
+  /// In es, this message translates to:
+  /// **'Pagado'**
+  String get expensePaid;
+
+  /// No description provided for @expenseBalance.
+  ///
+  /// In es, this message translates to:
+  /// **'Saldo pendiente'**
+  String get expenseBalance;
+
+  /// No description provided for @expensePaymentsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Aún no hay pagos registrados.'**
+  String get expensePaymentsEmpty;
+
+  /// No description provided for @expenseAddPayment.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar pago'**
+  String get expenseAddPayment;
+
+  /// No description provided for @expensePaymentTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar pago'**
+  String get expensePaymentTitle;
+
+  /// No description provided for @expensePaymentSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago registrado.'**
+  String get expensePaymentSaved;
+
+  /// No description provided for @expenseAmountExceeds.
+  ///
+  /// In es, this message translates to:
+  /// **'El valor no puede superar el saldo pendiente.'**
+  String get expenseAmountExceeds;
+
+  /// No description provided for @expenseDeletePayment.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar pago'**
+  String get expenseDeletePayment;
+
+  /// No description provided for @expenseDeletePaymentBody.
+  ///
+  /// In es, this message translates to:
+  /// **'El pago se eliminará y el saldo de la orden se recalculará. ¿Desea continuar?'**
+  String get expenseDeletePaymentBody;
+
+  /// No description provided for @expensePaymentDeleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago eliminado.'**
+  String get expensePaymentDeleted;
+
+  /// No description provided for @suggestionsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Ningún producto está por debajo de su punto de reorden.'**
+  String get suggestionsEmpty;
+
+  /// No description provided for @consolidatedEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Aún no hay órdenes consolidadas.'**
+  String get consolidatedEmpty;
+
+  /// No description provided for @consolidateAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Consolidar órdenes'**
+  String get consolidateAction;
+
+  /// No description provided for @consolidateTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Consolidar órdenes'**
+  String get consolidateTitle;
+
+  /// No description provided for @consolidatePreview.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver vista previa'**
+  String get consolidatePreview;
+
+  /// No description provided for @consolidateOrders.
+  ///
+  /// In es, this message translates to:
+  /// **'Órdenes recibidas'**
+  String get consolidateOrders;
+
+  /// No description provided for @consolidateNoSuppliers.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay órdenes recibidas pendientes de consolidar.'**
+  String get consolidateNoSuppliers;
+
+  /// No description provided for @consolidateConfirmTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Crear orden consolidada'**
+  String get consolidateConfirmTitle;
+
+  /// No description provided for @consolidateCreated.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden consolidada creada.'**
+  String get consolidateCreated;
+
+  /// No description provided for @consolidatedDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden consolidada'**
+  String get consolidatedDetailTitle;
+
+  /// No description provided for @consolidatedPeriod.
+  ///
+  /// In es, this message translates to:
+  /// **'Periodo'**
+  String get consolidatedPeriod;
+
+  /// No description provided for @orderQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad: {quantity}'**
+  String orderQuantity(String quantity);
+
+  /// No description provided for @orderQuantities.
+  ///
+  /// In es, this message translates to:
+  /// **'Pedido: {requested} · Recibido: {received}'**
+  String orderQuantities(String requested, String received);
+
+  /// No description provided for @orderUnitPrice.
+  ///
+  /// In es, this message translates to:
+  /// **'{price} c/u'**
+  String orderUnitPrice(String price);
+
+  /// No description provided for @orderPendingQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Pendiente por recibir: {quantity}'**
+  String orderPendingQuantity(String quantity);
+
+  /// No description provided for @expenseBalanceHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Saldo pendiente: {balance}'**
+  String expenseBalanceHint(String balance);
+
+  /// No description provided for @suggestionStock.
+  ///
+  /// In es, this message translates to:
+  /// **'Existencias: {stock} · Punto de reorden: {reorder}'**
+  String suggestionStock(String stock, String reorder);
+
+  /// No description provided for @suggestionSupplier.
+  ///
+  /// In es, this message translates to:
+  /// **'Proveedor sugerido: {name}'**
+  String suggestionSupplier(String name);
+
+  /// No description provided for @suggestionLeadTime.
+  ///
+  /// In es, this message translates to:
+  /// **'Entrega estimada: {days} días'**
+  String suggestionLeadTime(int days);
+
+  /// No description provided for @suggestionQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad sugerida: {quantity}'**
+  String suggestionQuantity(String quantity);
+
+  /// No description provided for @consolidateConfirmBody.
+  ///
+  /// In es, this message translates to:
+  /// **'Se consolidarán {count} órdenes recibidas en una sola. ¿Desea continuar?'**
+  String consolidateConfirmBody(int count);
+
+  /// No description provided for @periodRange.
+  ///
+  /// In es, this message translates to:
+  /// **'{from} – {to}'**
+  String periodRange(String from, String to);
 }
 
 class _AppLocalizationsDelegate

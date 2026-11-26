@@ -1587,4 +1587,364 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get readingsExportAction => 'Exportar lecturas (Excel)';
+
+  @override
+  String get purchasingTabOrders => 'Compras';
+
+  @override
+  String get purchasingTabExpenses => 'Gastos';
+
+  @override
+  String get purchasingTabSuggestions => 'Sugerencias';
+
+  @override
+  String get purchasingTabConsolidated => 'Consolidadas';
+
+  @override
+  String get filterAll => 'Todas';
+
+  @override
+  String get filterAnyPayment => 'Cualquier pago';
+
+  @override
+  String get purchaseOrdersEmpty => 'No hay órdenes de compra para mostrar.';
+
+  @override
+  String get expenseOrdersEmpty => 'No hay órdenes de gasto para mostrar.';
+
+  @override
+  String get statusUnknown => 'Sin clasificar';
+
+  @override
+  String get orderStatusDraft => 'Borrador';
+
+  @override
+  String get orderStatusPendingApproval => 'Por aprobar';
+
+  @override
+  String get orderStatusApproved => 'Aprobada';
+
+  @override
+  String get orderStatusRejected => 'Rechazada';
+
+  @override
+  String get orderStatusSent => 'Enviada';
+
+  @override
+  String get orderStatusPartiallyReceived => 'Recibida parcial';
+
+  @override
+  String get orderStatusReceived => 'Recibida';
+
+  @override
+  String get orderStatusCancelled => 'Cancelada';
+
+  @override
+  String get paymentUnpaid => 'Sin pagar';
+
+  @override
+  String get paymentPartial => 'Pago parcial';
+
+  @override
+  String get paymentPaid => 'Pagada';
+
+  @override
+  String get paymentMethodCash => 'Efectivo';
+
+  @override
+  String get paymentMethodTransfer => 'Transferencia';
+
+  @override
+  String get paymentMethodCheck => 'Cheque';
+
+  @override
+  String get paymentMethodOther => 'Otro';
+
+  @override
+  String get orderDetailTitle => 'Orden';
+
+  @override
+  String get orderWarehouse => 'Almacén de destino';
+
+  @override
+  String get orderCostCenter => 'Centro de costo';
+
+  @override
+  String get orderExpectedDate => 'Entrega esperada';
+
+  @override
+  String get orderCreatedAt => 'Creada';
+
+  @override
+  String get orderSentAt => 'Enviada';
+
+  @override
+  String get orderReceivedAt => 'Recibida';
+
+  @override
+  String get orderNotes => 'Notas';
+
+  @override
+  String get orderLines => 'Productos';
+
+  @override
+  String get orderSubtotal => 'Subtotal';
+
+  @override
+  String get orderTax => 'Impuestos';
+
+  @override
+  String get orderTotal => 'Total';
+
+  @override
+  String get orderSubmit => 'Enviar a aprobación';
+
+  @override
+  String get orderSubmitted => 'La orden quedó pendiente de aprobación.';
+
+  @override
+  String get orderApprove => 'Aprobar';
+
+  @override
+  String get orderApproveTitle => 'Aprobar orden';
+
+  @override
+  String get orderApproved => 'Orden aprobada.';
+
+  @override
+  String get orderReject => 'Rechazar';
+
+  @override
+  String get orderRejectTitle => 'Rechazar orden';
+
+  @override
+  String get orderRejected => 'Orden rechazada.';
+
+  @override
+  String get orderSend => 'Enviar al proveedor';
+
+  @override
+  String get orderSentMessage => 'Orden enviada al proveedor.';
+
+  @override
+  String get orderReceive => 'Recibir mercancía';
+
+  @override
+  String get orderReceiveTitle => 'Recibir mercancía';
+
+  @override
+  String get orderReceiveConfirm => 'Confirmar recepción';
+
+  @override
+  String get orderReceived => 'Recepción registrada.';
+
+  @override
+  String get orderReceiveHint =>
+      'Escriba la cantidad que recibe de cada producto. Las líneas sin cantidad se omiten; si recibe menos de lo pedido, la orden queda como recibida parcial.';
+
+  @override
+  String get orderReceiveNothing =>
+      'Escriba la cantidad recibida de al menos un producto.';
+
+  @override
+  String get orderNothingPending =>
+      'Esta orden no tiene productos pendientes de recibir.';
+
+  @override
+  String get orderQuantityExceedsPending =>
+      'No puede recibir más de lo que está pendiente.';
+
+  @override
+  String get orderNoWarehouse =>
+      'La orden no tiene almacén de destino; no se pueden elegir ubicaciones.';
+
+  @override
+  String get orderCancel => 'Cancelar orden';
+
+  @override
+  String get orderCancelTitle => 'Cancelar orden';
+
+  @override
+  String get orderCancelBody =>
+      'La orden quedará cancelada y no se podrá reactivar. ¿Desea continuar?';
+
+  @override
+  String get orderCancelled => 'Orden cancelada.';
+
+  @override
+  String get orderTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, actualice la orden: es posible que el cambio sí se haya registrado.';
+
+  @override
+  String get fieldSupplier => 'Proveedor';
+
+  @override
+  String get fieldQuantityReceived => 'Cantidad recibida';
+
+  @override
+  String get fieldCommentsOptional => 'Comentarios (opcional)';
+
+  @override
+  String get fieldInvoiceNumber => 'Número de factura';
+
+  @override
+  String get fieldInvoiceDate => 'Fecha de factura';
+
+  @override
+  String get fieldAmount => 'Valor';
+
+  @override
+  String get fieldPaymentMethod => 'Forma de pago';
+
+  @override
+  String get fieldPaymentDate => 'Fecha de pago';
+
+  @override
+  String get fieldReference => 'Referencia (opcional)';
+
+  @override
+  String get expenseInvoiceTitle => 'Registrar factura';
+
+  @override
+  String get expenseRegisterInvoice => 'Registrar factura';
+
+  @override
+  String get expenseInvoiceSaved => 'Factura registrada.';
+
+  @override
+  String get expenseSendAccounting => 'Enviar a contabilidad';
+
+  @override
+  String get expenseAccountingTitle => 'Enviar a contabilidad';
+
+  @override
+  String get expenseAccountingSent => 'Orden enviada a contabilidad.';
+
+  @override
+  String get expenseAccountingSentAt => 'Enviada a contabilidad';
+
+  @override
+  String get expensePayments => 'Pagos';
+
+  @override
+  String get expensePaid => 'Pagado';
+
+  @override
+  String get expenseBalance => 'Saldo pendiente';
+
+  @override
+  String get expensePaymentsEmpty => 'Aún no hay pagos registrados.';
+
+  @override
+  String get expenseAddPayment => 'Registrar pago';
+
+  @override
+  String get expensePaymentTitle => 'Registrar pago';
+
+  @override
+  String get expensePaymentSaved => 'Pago registrado.';
+
+  @override
+  String get expenseAmountExceeds =>
+      'El valor no puede superar el saldo pendiente.';
+
+  @override
+  String get expenseDeletePayment => 'Eliminar pago';
+
+  @override
+  String get expenseDeletePaymentBody =>
+      'El pago se eliminará y el saldo de la orden se recalculará. ¿Desea continuar?';
+
+  @override
+  String get expensePaymentDeleted => 'Pago eliminado.';
+
+  @override
+  String get suggestionsEmpty =>
+      'Ningún producto está por debajo de su punto de reorden.';
+
+  @override
+  String get consolidatedEmpty => 'Aún no hay órdenes consolidadas.';
+
+  @override
+  String get consolidateAction => 'Consolidar órdenes';
+
+  @override
+  String get consolidateTitle => 'Consolidar órdenes';
+
+  @override
+  String get consolidatePreview => 'Ver vista previa';
+
+  @override
+  String get consolidateOrders => 'Órdenes recibidas';
+
+  @override
+  String get consolidateNoSuppliers =>
+      'No hay órdenes recibidas pendientes de consolidar.';
+
+  @override
+  String get consolidateConfirmTitle => 'Crear orden consolidada';
+
+  @override
+  String get consolidateCreated => 'Orden consolidada creada.';
+
+  @override
+  String get consolidatedDetailTitle => 'Orden consolidada';
+
+  @override
+  String get consolidatedPeriod => 'Periodo';
+
+  @override
+  String orderQuantity(String quantity) {
+    return 'Cantidad: $quantity';
+  }
+
+  @override
+  String orderQuantities(String requested, String received) {
+    return 'Pedido: $requested · Recibido: $received';
+  }
+
+  @override
+  String orderUnitPrice(String price) {
+    return '$price c/u';
+  }
+
+  @override
+  String orderPendingQuantity(String quantity) {
+    return 'Pendiente por recibir: $quantity';
+  }
+
+  @override
+  String expenseBalanceHint(String balance) {
+    return 'Saldo pendiente: $balance';
+  }
+
+  @override
+  String suggestionStock(String stock, String reorder) {
+    return 'Existencias: $stock · Punto de reorden: $reorder';
+  }
+
+  @override
+  String suggestionSupplier(String name) {
+    return 'Proveedor sugerido: $name';
+  }
+
+  @override
+  String suggestionLeadTime(int days) {
+    return 'Entrega estimada: $days días';
+  }
+
+  @override
+  String suggestionQuantity(String quantity) {
+    return 'Cantidad sugerida: $quantity';
+  }
+
+  @override
+  String consolidateConfirmBody(int count) {
+    return 'Se consolidarán $count órdenes recibidas en una sola. ¿Desea continuar?';
+  }
+
+  @override
+  String periodRange(String from, String to) {
+    return '$from – $to';
+  }
 }

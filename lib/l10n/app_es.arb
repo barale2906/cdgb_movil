@@ -733,5 +733,200 @@
   },
   "exportGone": "El reporte venció. Genérelo de nuevo desde Reportes.",
   "exportFailedDetail": "No se pudo generar el reporte.",
-  "readingsExportAction": "Exportar lecturas (Excel)"
+  "readingsExportAction": "Exportar lecturas (Excel)",
+  "purchasingTabOrders": "Compras",
+  "purchasingTabExpenses": "Gastos",
+  "purchasingTabSuggestions": "Sugerencias",
+  "purchasingTabConsolidated": "Consolidadas",
+  "filterAll": "Todas",
+  "filterAnyPayment": "Cualquier pago",
+  "purchaseOrdersEmpty": "No hay órdenes de compra para mostrar.",
+  "expenseOrdersEmpty": "No hay órdenes de gasto para mostrar.",
+  "statusUnknown": "Sin clasificar",
+  "orderStatusDraft": "Borrador",
+  "orderStatusPendingApproval": "Por aprobar",
+  "orderStatusApproved": "Aprobada",
+  "orderStatusRejected": "Rechazada",
+  "orderStatusSent": "Enviada",
+  "orderStatusPartiallyReceived": "Recibida parcial",
+  "orderStatusReceived": "Recibida",
+  "orderStatusCancelled": "Cancelada",
+  "paymentUnpaid": "Sin pagar",
+  "paymentPartial": "Pago parcial",
+  "paymentPaid": "Pagada",
+  "paymentMethodCash": "Efectivo",
+  "paymentMethodTransfer": "Transferencia",
+  "paymentMethodCheck": "Cheque",
+  "paymentMethodOther": "Otro",
+  "orderDetailTitle": "Orden",
+  "orderWarehouse": "Almacén de destino",
+  "orderCostCenter": "Centro de costo",
+  "orderExpectedDate": "Entrega esperada",
+  "orderCreatedAt": "Creada",
+  "orderSentAt": "Enviada",
+  "orderReceivedAt": "Recibida",
+  "orderNotes": "Notas",
+  "orderLines": "Productos",
+  "orderSubtotal": "Subtotal",
+  "orderTax": "Impuestos",
+  "orderTotal": "Total",
+  "orderSubmit": "Enviar a aprobación",
+  "orderSubmitted": "La orden quedó pendiente de aprobación.",
+  "orderApprove": "Aprobar",
+  "orderApproveTitle": "Aprobar orden",
+  "orderApproved": "Orden aprobada.",
+  "orderReject": "Rechazar",
+  "orderRejectTitle": "Rechazar orden",
+  "orderRejected": "Orden rechazada.",
+  "orderSend": "Enviar al proveedor",
+  "orderSentMessage": "Orden enviada al proveedor.",
+  "orderReceive": "Recibir mercancía",
+  "orderReceiveTitle": "Recibir mercancía",
+  "orderReceiveConfirm": "Confirmar recepción",
+  "orderReceived": "Recepción registrada.",
+  "orderReceiveHint": "Escriba la cantidad que recibe de cada producto. Las líneas sin cantidad se omiten; si recibe menos de lo pedido, la orden queda como recibida parcial.",
+  "orderReceiveNothing": "Escriba la cantidad recibida de al menos un producto.",
+  "orderNothingPending": "Esta orden no tiene productos pendientes de recibir.",
+  "orderQuantityExceedsPending": "No puede recibir más de lo que está pendiente.",
+  "orderNoWarehouse": "La orden no tiene almacén de destino; no se pueden elegir ubicaciones.",
+  "orderCancel": "Cancelar orden",
+  "orderCancelTitle": "Cancelar orden",
+  "orderCancelBody": "La orden quedará cancelada y no se podrá reactivar. ¿Desea continuar?",
+  "orderCancelled": "Orden cancelada.",
+  "orderTimeoutWarning": "No se recibió respuesta del servidor. Antes de repetirlo, actualice la orden: es posible que el cambio sí se haya registrado.",
+  "fieldSupplier": "Proveedor",
+  "fieldQuantityReceived": "Cantidad recibida",
+  "fieldCommentsOptional": "Comentarios (opcional)",
+  "fieldInvoiceNumber": "Número de factura",
+  "fieldInvoiceDate": "Fecha de factura",
+  "fieldAmount": "Valor",
+  "fieldPaymentMethod": "Forma de pago",
+  "fieldPaymentDate": "Fecha de pago",
+  "fieldReference": "Referencia (opcional)",
+  "expenseInvoiceTitle": "Registrar factura",
+  "expenseRegisterInvoice": "Registrar factura",
+  "expenseInvoiceSaved": "Factura registrada.",
+  "expenseSendAccounting": "Enviar a contabilidad",
+  "expenseAccountingTitle": "Enviar a contabilidad",
+  "expenseAccountingSent": "Orden enviada a contabilidad.",
+  "expenseAccountingSentAt": "Enviada a contabilidad",
+  "expensePayments": "Pagos",
+  "expensePaid": "Pagado",
+  "expenseBalance": "Saldo pendiente",
+  "expensePaymentsEmpty": "Aún no hay pagos registrados.",
+  "expenseAddPayment": "Registrar pago",
+  "expensePaymentTitle": "Registrar pago",
+  "expensePaymentSaved": "Pago registrado.",
+  "expenseAmountExceeds": "El valor no puede superar el saldo pendiente.",
+  "expenseDeletePayment": "Eliminar pago",
+  "expenseDeletePaymentBody": "El pago se eliminará y el saldo de la orden se recalculará. ¿Desea continuar?",
+  "expensePaymentDeleted": "Pago eliminado.",
+  "suggestionsEmpty": "Ningún producto está por debajo de su punto de reorden.",
+  "consolidatedEmpty": "Aún no hay órdenes consolidadas.",
+  "consolidateAction": "Consolidar órdenes",
+  "consolidateTitle": "Consolidar órdenes",
+  "consolidatePreview": "Ver vista previa",
+  "consolidateOrders": "Órdenes recibidas",
+  "consolidateNoSuppliers": "No hay órdenes recibidas pendientes de consolidar.",
+  "consolidateConfirmTitle": "Crear orden consolidada",
+  "consolidateCreated": "Orden consolidada creada.",
+  "consolidatedDetailTitle": "Orden consolidada",
+  "consolidatedPeriod": "Periodo",
+  "orderQuantity": "Cantidad: {quantity}",
+  "@orderQuantity": {
+    "placeholders": {
+      "quantity": {
+        "type": "String"
+      }
+    }
+  },
+  "orderQuantities": "Pedido: {requested} · Recibido: {received}",
+  "@orderQuantities": {
+    "placeholders": {
+      "requested": {
+        "type": "String"
+      },
+      "received": {
+        "type": "String"
+      }
+    }
+  },
+  "orderUnitPrice": "{price} c/u",
+  "@orderUnitPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "orderPendingQuantity": "Pendiente por recibir: {quantity}",
+  "@orderPendingQuantity": {
+    "placeholders": {
+      "quantity": {
+        "type": "String"
+      }
+    }
+  },
+  "expenseBalanceHint": "Saldo pendiente: {balance}",
+  "@expenseBalanceHint": {
+    "placeholders": {
+      "balance": {
+        "type": "String"
+      }
+    }
+  },
+  "suggestionStock": "Existencias: {stock} · Punto de reorden: {reorder}",
+  "@suggestionStock": {
+    "placeholders": {
+      "stock": {
+        "type": "String"
+      },
+      "reorder": {
+        "type": "String"
+      }
+    }
+  },
+  "suggestionSupplier": "Proveedor sugerido: {name}",
+  "@suggestionSupplier": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "suggestionLeadTime": "Entrega estimada: {days} días",
+  "@suggestionLeadTime": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "suggestionQuantity": "Cantidad sugerida: {quantity}",
+  "@suggestionQuantity": {
+    "placeholders": {
+      "quantity": {
+        "type": "String"
+      }
+    }
+  },
+  "consolidateConfirmBody": "Se consolidarán {count} órdenes recibidas en una sola. ¿Desea continuar?",
+  "@consolidateConfirmBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "periodRange": "{from} – {to}",
+  "@periodRange": {
+    "placeholders": {
+      "from": {
+        "type": "String"
+      },
+      "to": {
+        "type": "String"
+      }
+    }
+  }
 }

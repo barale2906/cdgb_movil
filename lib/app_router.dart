@@ -39,6 +39,13 @@ import 'package:sga_bojanini/features/monitoring/presentation/monitoring_page.da
 import 'package:sga_bojanini/features/monitoring/presentation/sensor_detail_page.dart';
 import 'package:sga_bojanini/features/notifications/application/notifications_providers.dart';
 import 'package:sga_bojanini/features/notifications/presentation/notifications_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/consolidate_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/consolidated_order_detail_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/expense_order_detail_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/purchase_order_detail_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/purchasing_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/receive_expense_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/receive_purchase_page.dart';
 import 'package:sga_bojanini/features/reports/data/report_models.dart';
 import 'package:sga_bojanini/features/reports/presentation/exports_page.dart';
 import 'package:sga_bojanini/features/reports/presentation/report_form_page.dart';
@@ -105,6 +112,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       ..._inventoryRoutes(ref),
+      ..._purchasingRoutes(ref),
       ..._reportRoutes(ref),
       ..._monitoringRoutes(ref),
       GoRoute(
@@ -138,6 +146,7 @@ Widget _sectionPage(AppSection section) => switch (section) {
   AppSection.warehouses => const WarehousesPage(),
   AppSection.catalog => const CatalogPage(),
   AppSection.inventory => const InventoryPage(),
+  AppSection.purchasing => const PurchasingPage(),
   AppSection.monitoring => const MonitoringPage(),
   AppSection.reports => const ReportsPage(),
   _ => SectionPlaceholderPage(section: section),
@@ -151,6 +160,48 @@ GoRouterRedirect _requires(Ref ref, String permission) =>
     : Routes.home;
 
 int _id(GoRouterState state) => int.parse(state.pathParameters['id']!);
+
+/// Detalles, recepción y consolidación de compras. Cada ruta exige además
+/// su propio permiso (el de la sección es solo `ordenes_compra.ver`).
+List<GoRoute> _purchasingRoutes(Ref ref) {
+  const base = '/purchasing';
+  return [
+    GoRoute(
+      path: '$base/orders/:id',
+      redirect: _requires(ref, 'ordenes_compra.ver'),
+      builder: (_, state) => PurchaseOrderDetailPage(orderId: _id(state)),
+      routes: [
+        GoRoute(
+          path: 'receive',
+          redirect: _requires(ref, 'ordenes_compra.recibir'),
+          builder: (_, state) => ReceivePurchasePage(orderId: _id(state)),
+        ),
+      ],
+    ),
+    GoRoute(
+      path: '$base/expenses/:id',
+      redirect: _requires(ref, 'ordenes_gasto.ver'),
+      builder: (_, state) => ExpenseOrderDetailPage(orderId: _id(state)),
+      routes: [
+        GoRoute(
+          path: 'receive',
+          redirect: _requires(ref, 'ordenes_gasto.recibir'),
+          builder: (_, state) => ReceiveExpensePage(orderId: _id(state)),
+        ),
+      ],
+    ),
+    GoRoute(
+      path: '$base/consolidate',
+      redirect: _requires(ref, 'ordenes_compra.consolidar'),
+      builder: (_, _) => const ConsolidatePage(),
+    ),
+    GoRoute(
+      path: '$base/consolidated/:id',
+      redirect: _requires(ref, 'ordenes_compra.ver'),
+      builder: (_, state) => ConsolidatedOrderDetailPage(orderId: _id(state)),
+    ),
+  ];
+}
 
 /// Pantallas de inventario fuera de la barra inferior (detalles, formularios
 /// de movimiento, confirmación, PDF y escáner).
