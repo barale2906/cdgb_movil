@@ -1,0 +1,185 @@
+{
+ "success": true,
+ "message": "Orden consolidada creada",
+ "data": {
+  "id": 5,
+  "code": "CONS-2026-0005",
+  "supplier_id": 4,
+  "period_from": "2026-11-01",
+  "period_to": "2026-11-24",
+  "subtotal": 1500000,
+  "tax_breakdown": [],
+  "tax_amount": 190000,
+  "total_amount": 1690000,
+  "notes": null,
+  "created_by": 7,
+  "created_at": "2026-11-25T08:00:00-05:00",
+  "updated_at": "2026-11-25T08:00:00-05:00",
+  "supplier": {
+   "id": 4,
+   "name": "Droguería Proveedor S.A.S."
+  },
+  "items": [
+   {
+    "product_variant_id": 5,
+    "product_presentation_id": 8,
+    "quantity": 10,
+    "unit_price": 100000,
+    "tax_rate": 19,
+    "subtotal": 1000000,
+    "tax_amount": 190000,
+    "total_price": 1190000,
+    "source_order_codes": [
+     "OC-2026-0022"
+    ],
+    "variant": {
+     "id": 5,
+     "lab_brand": "Lab Uno",
+     "brand_sku": "LU-1",
+     "generic": {
+      "id": 2,
+      "name": "Gasa estéril",
+      "barcode": "100005"
+     }
+    },
+    "presentation": {
+     "id": 8,
+     "code": "CJ",
+     "name": "Caja x 10"
+    }
+   }
+  ],
+  "purchase_orders": [
+   {
+    "id": 21,
+    "code": "OC-2026-0021",
+    "status": "received",
+    "supplier_id": 4,
+    "warehouse_id": 1,
+    "cost_center_id": 3,
+    "subtotal": "500000.00",
+    "tax_amount": "0.00",
+    "total_amount": "500000.00",
+    "notes": null,
+    "expected_delivery_date": null,
+    "created_by": 7,
+    "sent_at": "2026-11-22T09:00:00-05:00",
+    "received_at": null,
+    "created_at": "2026-11-21T10:00:00-05:00",
+    "updated_at": "2026-11-22T09:00:00-05:00",
+    "supplier": {
+     "id": 4,
+     "name": "Droguería Proveedor S.A.S."
+    },
+    "warehouse": {
+     "id": 1,
+     "name": "Bodega Central",
+     "code": "BC"
+    },
+    "cost_center": {
+     "id": 3,
+     "code": "CC-03",
+     "name": "Urgencias",
+     "type": "internal"
+    },
+    "tax_breakdown": [],
+    "items": [
+     {
+      "id": 102,
+      "product_variant_id": 6,
+      "product_presentation_id": 9,
+      "quantity_requested": 20,
+      "quantity_requested_base": 20,
+      "quantity_received": 5,
+      "quantity_received_base": 5,
+      "unit_price": "25000.00",
+      "tax_rate": "0.00",
+      "tax_amount": "0.00",
+      "total_price": "500000.00",
+      "notes": "Refrigerado",
+      "variant": {
+       "id": 6,
+       "lab_brand": "Lab Dos",
+       "brand_sku": null,
+       "generic": {
+        "id": 3,
+        "name": "Jeringa 5 ml",
+        "barcode": null
+       }
+      },
+      "presentation": {
+       "id": 9,
+       "code": "UN",
+       "name": "Unidad"
+      }
+     }
+    ]
+   },
+   {
+    "id": 22,
+    "code": "OC-2026-0022",
+    "status": "received",
+    "supplier_id": 4,
+    "warehouse_id": 1,
+    "cost_center_id": null,
+    "subtotal": "1000000.00",
+    "tax_amount": "190000.00",
+    "total_amount": "1190000.00",
+    "notes": "Pedido urgente",
+    "expected_delivery_date": "2026-12-01",
+    "created_by": 7,
+    "sent_at": null,
+    "received_at": null,
+    "created_at": "2026-11-23T10:00:00-05:00",
+    "updated_at": "2026-11-23T10:00:00-05:00",
+    "supplier": {
+     "id": 4,
+     "name": "Droguería Proveedor S.A.S."
+    },
+    "warehouse": {
+     "id": 1,
+     "name": "Bodega Central",
+     "code": "BC"
+    },
+    "cost_center": null,
+    "tax_breakdown": [
+     {
+      "tax_rate": 19,
+      "tax_amount": 190000
+     }
+    ],
+    "items": [
+     {
+      "id": 101,
+      "product_variant_id": 5,
+      "product_presentation_id": 8,
+      "quantity_requested": 10,
+      "quantity_requested_base": 100,
+      "quantity_received": 0,
+      "quantity_received_base": 0,
+      "unit_price": "100000.00",
+      "tax_rate": "19.00",
+      "tax_amount": "190000.00",
+      "total_price": "1190000.00",
+      "notes": null,
+      "variant": {
+       "id": 5,
+       "lab_brand": "Lab Uno",
+       "brand_sku": "LU-1",
+       "generic": {
+        "id": 2,
+        "name": "Gasa estéril",
+        "barcode": "100005"
+       }
+      },
+      "presentation": {
+       "id": 8,
+       "code": "CJ",
+       "name": "Caja x 10"
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

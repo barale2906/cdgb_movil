@@ -1,0 +1,19 @@
+{
+ "success": true,
+ "message": "Pagos",
+ "data": [
+  {
+   "id": 51,
+   "amount": "300000.00",
+   "payment_date": "2026-11-21",
+   "payment_method": "transfer",
+   "reference": "TRF-001",
+   "notes": null,
+   "registered_by": {
+    "id": 7,
+    "name": "Usuario Prueba"
+   },
+   "created_at": "2026-11-21T11:00:00-05:00"
+  }
+ ]
+}
