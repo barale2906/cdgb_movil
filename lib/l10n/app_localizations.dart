@@ -6069,6 +6069,36 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Oculto por seguridad'**
   String get auditValueMasked;
+
+  /// No description provided for @clinicalRecordDelete.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar registro'**
+  String get clinicalRecordDelete;
+
+  /// No description provided for @clinicalRecordDeleteConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Se eliminará el registro «{service}» del paciente {patient}. Esta acción no se puede deshacer.'**
+  String clinicalRecordDeleteConfirm(String service, String patient);
+
+  /// No description provided for @clinicalRecordDeleteOrder.
+  ///
+  /// In es, this message translates to:
+  /// **'Pertenece a la orden de servicio {order}.'**
+  String clinicalRecordDeleteOrder(String order);
+
+  /// No description provided for @clinicalRecordDeleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Registro eliminado.'**
+  String get clinicalRecordDeleted;
+
+  /// No description provided for @clinicalRecordDeleteTimeout.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise si el registro sigue en la lista antes de repetirlo: es posible que sí se haya eliminado.'**
+  String get clinicalRecordDeleteTimeout;
 }
 
 class _AppLocalizationsDelegate

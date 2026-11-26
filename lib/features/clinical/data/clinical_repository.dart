@@ -120,6 +120,14 @@ class ClinicalRepository {
         return ApiResponse.list(response, ProcedureMedication.fromJson);
       });
 
+  /// Elimina el registro (irreversible; escritura que nunca se reintenta sola).
+  Future<void> deleteRecord(int id) => apiCall(() async {
+    final response = await _dio.delete<dynamic>(
+      '/patient-procedure-records/$id',
+    );
+    ApiResponse.message(response);
+  });
+
   Future<PatientHistory> history(String patientExternalId) => apiCall(() async {
     final response = await _dio.get<dynamic>(
       '/patients/${Uri.encodeComponent(patientExternalId)}/procedure-records',

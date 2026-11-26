@@ -81,7 +81,7 @@ class _ReportFormPageState extends ConsumerState<ReportFormPage> {
 
   Map<String, Object?> _filters() {
     String? date(DateTime? value) =>
-        value == null ? null : ColombiaTime.format(value).substring(0, 10);
+        value == null ? null : ColombiaTime.formatDate(value);
     return {
       if (_usesWarehouse) 'warehouse_id': _warehouse?.id,
       if (_usesDates) ...{'date_from': date(_from), 'date_to': date(_to)},

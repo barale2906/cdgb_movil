@@ -13,6 +13,7 @@ import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
 import 'package:sga_bojanini/features/clinical/application/clinical_providers.dart';
 import 'package:sga_bojanini/features/clinical/presentation/clinical_labels.dart';
+import 'package:sga_bojanini/features/clinical/presentation/delete_record_button.dart';
 import 'package:sga_bojanini/features/clinical/presentation/patient_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/record_notes_sections.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
@@ -126,6 +127,8 @@ class _Content extends StatelessWidget {
             PatientDetailPage.pathFor(record.patientExternalId),
           ),
         ),
+        const SizedBox(height: AppSpacing.sm),
+        DeleteRecordButton(record: record),
       ],
     );
   }

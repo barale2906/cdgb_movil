@@ -340,7 +340,7 @@ Future<void> _exportReadings(
     final bytes = await ref
         .read(monitoringRepositoryProvider)
         .exportReadings(range.sensorId, from: from, to: now);
-    final stamp = ColombiaTime.format(now).substring(0, 10);
+    final stamp = ColombiaTime.formatDate(now);
     await ref.read(fileSharerProvider)(
       bytes,
       'lecturas-sensor-${range.sensorId}-$stamp.xlsx',

@@ -7,6 +7,7 @@ import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/auth/session_controller.dart';
 import 'package:sga_bojanini/core/navigation/app_section_label.dart';
 import 'package:sga_bojanini/core/navigation/menu_provider.dart';
+import 'package:sga_bojanini/core/navigation/quick_action_permissions.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/empty_state.dart';
@@ -27,18 +28,6 @@ const _movementPermissions = [
   'movimientos.baja',
 ];
 
-/// Registrar una venta exige crear el registro y buscar el servicio.
-const _salePermissions = [
-  'registros_procedimientos.crear',
-  'servicios_medicos.ver',
-];
-
-/// Crear una orden de servicio exige crearla y buscar el procedimiento.
-const _newOrderPermissions = [
-  'ordenes_servicio.crear',
-  'servicios_medicos.ver',
-];
-
 /// Inicio: saludo, accesos rápidos, tablero (cada bloque solo con el permiso
 /// de su módulo) y accesos a los módulos del usuario.
 class HomePage extends ConsumerWidget {
@@ -55,8 +44,8 @@ class HomePage extends ConsumerWidget {
         permissions.can('stock.ver') &&
         permissions.canAny(_movementPermissions);
     final canScan = permissions.can('generic-products.barcode');
-    final canSell = permissions.canAll(_salePermissions);
-    final canOrder = permissions.canAll(_newOrderPermissions);
+    final canSell = permissions.canAll(QuickActionPermissions.sale);
+    final canOrder = permissions.canAll(QuickActionPermissions.newOrder);
 
     return plan.when(
       loading: () => const SkeletonList(),

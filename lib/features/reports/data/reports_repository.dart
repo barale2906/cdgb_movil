@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
+import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/features/reports/data/report_models.dart';
 
 /// Sensor mínimo para el filtro del reporte de condiciones.
@@ -45,7 +46,7 @@ class ReportsRepository {
     );
     final bytes = Uint8List.fromList(response.data ?? const []);
     if (response.statusCode == 202) return ReportQueued(_exportId(bytes));
-    final stamp = (now ?? DateTime.now()).toIso8601String().substring(0, 10);
+    final stamp = ColombiaTime.formatDate(now ?? DateTime.now());
     return ReportFile(
       bytes: bytes,
       fileName: '${type.path}_$stamp.${format.extension}',

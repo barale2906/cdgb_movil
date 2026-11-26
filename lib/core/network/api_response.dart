@@ -69,6 +69,14 @@ abstract final class ApiResponse {
     return [for (final item in data) parse(_asJson(item, response))];
   }
 
+  /// `data` cuando es una lista de objetos, sin convertirlos (para guardarla
+  /// tal cual en la copia local).
+  static List<Json> rawList(Response<dynamic> response) {
+    final data = _body(response)['data'];
+    if (data is! List<dynamic>) throw _malformed(response);
+    return [for (final item in data) _asJson(item, response)];
+  }
+
   /// Lista paginada: exige `meta`.
   static PagedList<T> page<T>(
     Response<dynamic> response,

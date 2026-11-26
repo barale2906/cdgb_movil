@@ -3252,4 +3252,24 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get auditValueMasked => 'Oculto por seguridad';
+
+  @override
+  String get clinicalRecordDelete => 'Eliminar registro';
+
+  @override
+  String clinicalRecordDeleteConfirm(String service, String patient) {
+    return 'Se eliminará el registro «$service» del paciente $patient. Esta acción no se puede deshacer.';
+  }
+
+  @override
+  String clinicalRecordDeleteOrder(String order) {
+    return 'Pertenece a la orden de servicio $order.';
+  }
+
+  @override
+  String get clinicalRecordDeleted => 'Registro eliminado.';
+
+  @override
+  String get clinicalRecordDeleteTimeout =>
+      'No se recibió respuesta del servidor. Revise si el registro sigue en la lista antes de repetirlo: es posible que sí se haya eliminado.';
 }

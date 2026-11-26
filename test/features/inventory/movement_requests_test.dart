@@ -3,10 +3,6 @@ import 'package:sga_bojanini/core/signing/signoff.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_requests.dart';
 
 void main() {
-  test('apiDate da YYYY-MM-DD', () {
-    expect(apiDate(DateTime(2026, 3, 7)), '2026-03-07');
-  });
-
   test('EntryRequest omite los campos vacíos y formatea fechas', () {
     final json = EntryRequest(
       warehouseId: 1,
