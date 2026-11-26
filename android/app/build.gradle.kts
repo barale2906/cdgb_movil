@@ -22,6 +22,18 @@ val keyProperties = Properties().apply {
 }
 val hasReleaseKey = keyPropertiesFile.exists()
 
+// Push (FCM): el google-services.json de cada sabor vive FUERA del repositorio
+// (android/app/src/dev/ y android/app/src/prod/). El plugin se aplica solo si
+// existe el del sabor que se compila; sin él la app funciona, sin push.
+val requestedTasks = gradle.startParameter.taskNames.joinToString(" ")
+val firebaseFlavors = listOf("dev", "prod").filter { flavor ->
+    file("src/$flavor/google-services.json").exists() &&
+        requestedTasks.contains(flavor.replaceFirstChar { it.uppercase() })
+}
+if (firebaseFlavors.isNotEmpty()) {
+    apply(plugin = "com.google.gms.google-services")
+}
+
 android {
     namespace = "co.bojanini.sga"
     compileSdk = flutter.compileSdkVersion

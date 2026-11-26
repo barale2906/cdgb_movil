@@ -17,6 +17,8 @@ import 'package:sga_bojanini/core/config/app_restart.dart';
 import 'package:sga_bojanini/core/config/server_override.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/network/tls_adapter.dart';
+import 'package:sga_bojanini/core/push/firebase_push_gateway.dart';
+import 'package:sga_bojanini/core/push/push_gateway.dart';
 import 'package:sga_bojanini/core/utils/preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -28,6 +30,7 @@ class AppBootstrap {
     required this.preferences,
     required this.deviceName,
     this.pinnedCertificate,
+    this.pushGateway = const DisabledPushGateway(),
   });
 
   final AppEnvironment environment;
@@ -36,6 +39,9 @@ class AppBootstrap {
 
   /// Certificado del servidor (PEM) si el destino lo pide.
   final Uint8List? pinnedCertificate;
+
+  /// Push (FCM) si el APK trae `google-services.json`; si no, desactivado.
+  final PushGateway pushGateway;
 
   /// Falla al arrancar si el destino (env/*.json) es inválido: nunca se
   /// ejecuta contra un servidor desconocido.
@@ -49,6 +55,8 @@ class AppBootstrap {
       preferences: preferences,
       deviceName: DeviceIdentity.deviceName(preferences),
       pinnedCertificate: await _loadCertificate(base.tlsPinnedCert),
+      pushGateway:
+          await FirebasePushGateway.tryCreate() ?? const DisabledPushGateway(),
     );
   }
 
@@ -84,6 +92,7 @@ class AppBootstrap {
     sharedPreferencesProvider.overrideWithValue(preferences),
     deviceNameProvider.overrideWithValue(deviceName),
     pinnedCertificateProvider.overrideWithValue(pinnedCertificate),
+    pushGatewayProvider.overrideWithValue(pushGateway),
   ];
 }
 

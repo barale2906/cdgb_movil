@@ -2,6 +2,16 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [0.8.0+8] - 2026-11-25
+### Añadido
+- Avisos push (FCM): al iniciar sesión el teléfono se vincula con el usuario; al cerrar sesión o cambiar de usuario se desvincula antes de revocar la sesión. Tocar un aviso abre la sección correspondiente (espera al desbloqueo si la sesión está bloqueada) y, con la app abierta, actualiza el contador de notificaciones.
+- El permiso de notificaciones se pide al iniciar sesión (Android 13+).
+- `tool/build_apk.sh` avisa si falta `google-services.json` del sabor.
+
+### Notas
+- Sin `google-services.json` la app funciona igual, sin push. Pasos de activación en `docs/plan/02-arquitectura.md` §10.2.
+- Requiere desplegar la migración `user_devices` del backend (rama `feature/push-dispositivos`).
+
 ## [0.7.0+7] - 2026-11-25
 ### Añadido
 - Fase 4 · Compras: órdenes de compra (lista con filtro por estado, detalle, enviar a aprobación, aprobar/rechazar con comentarios, enviar al proveedor, cancelar) y recepción total o parcial con lote, vencimiento y ubicación.

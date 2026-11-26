@@ -5,6 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/app.dart';
 import 'package:sga_bojanini/core/auth/token_store.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
+import 'package:sga_bojanini/core/push/push_gateway.dart';
 import 'package:sga_bojanini/core/utils/file_sharer.dart';
 import 'package:sga_bojanini/core/widgets/barcode_scanner_view.dart';
 import 'package:sga_bojanini/core/widgets/pdf_viewer.dart';
@@ -12,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'fake_connectivity.dart';
 import 'fake_http_adapter.dart';
+import 'fake_push_gateway.dart';
 import 'fixtures.dart';
 import 'in_memory_token_store.dart';
 import 'pump_app.dart';
@@ -19,7 +21,7 @@ import 'test_container.dart';
 
 /// App completa (router, guardas, sesión) contra un servidor falso.
 class AppHarness {
-  AppHarness({DateTime? now, this.initialPrefs = const {}})
+  AppHarness({DateTime? now, this.initialPrefs = const {}, this.push})
     : adapter = FakeHttpAdapter(),
       store = InMemoryTokenStore(),
       connectivity = FakeConnectivitySource(),
@@ -29,6 +31,9 @@ class AppHarness {
   final InMemoryTokenStore store;
   final FakeConnectivitySource connectivity;
   final TestClock clock;
+
+  /// Servicio de push falso; sin él, la app corre sin push.
+  final FakePushGateway? push;
 
   /// Preferencias iniciales (p. ej. almacén activo ya elegido).
   final Map<String, Object> initialPrefs;
@@ -230,6 +235,7 @@ class AppHarness {
     final overrides = <Override>[
       ...serverOverrides(adapter: adapter, store: store, clock: clock),
       ...widgetOverrides,
+      if (push != null) pushGatewayProvider.overrideWithValue(push!),
       scannerBuilderProvider.overrideWithValue(
         (context, onCode) => Center(
           child: FilledButton(
