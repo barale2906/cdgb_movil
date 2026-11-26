@@ -1,0 +1,5 @@
+{ "success": true, "message": "OK", "data": [
+  { "id": 1, "sensor_id": 1, "value": 4.5, "reading_source": "iot", "recorded_at": "2026-11-23 10:00:00", "user_id": null },
+  { "id": 2, "sensor_id": 1, "value": "6.5", "reading_source": "manual", "recorded_at": "2026-11-23 18:00:00", "user_id": 42 },
+  { "id": 3, "sensor_id": 1, "value": 9.5, "reading_source": "manual", "recorded_at": "2026-11-24 09:00:00", "user_id": 42 }
+] }

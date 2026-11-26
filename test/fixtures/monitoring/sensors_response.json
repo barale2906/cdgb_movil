@@ -1,0 +1,12 @@
+{ "success": true, "message": "Listado de sensores", "data": [
+  { "id": 1, "zone_id": 10, "code": "T-01", "name": "Nevera farmacia", "type": "temperature", "unit": "°C", "is_active": true,
+    "zone": { "id": 10, "name": "Zona fría", "code": "ZF", "type": "cold", "temp_min": 2, "temp_max": "8.0", "humidity_min": null, "humidity_max": null, "warehouse_id": 1, "warehouse_name": "Bodega Central" },
+    "calibration": { "status": "expiring", "status_label": "Por vencer", "id": 3, "expires_at": "2026-12-10", "days_left": 16 },
+    "last_reading": { "id": 900, "value": 9.5, "recorded_at": "2026-11-24 09:00:00", "created_at": "2026-11-24 09:01:00", "reading_source": "manual", "user_name": "Usuario Prueba" } },
+  { "id": 2, "zone_id": 11, "code": "H-01", "name": "Higrómetro bodega", "type": "humidity", "unit": "%", "is_active": true,
+    "zone": { "id": 11, "name": "Zona seca", "code": "ZS", "type": "dry", "temp_min": null, "temp_max": null, "humidity_min": 30, "humidity_max": 60, "warehouse_id": 1, "warehouse_name": "Bodega Central" },
+    "calibration": { "status": "valid", "status_label": "Vigente", "id": 4, "expires_at": "2027-06-01", "days_left": 189 },
+    "last_reading": { "id": 901, "value": 45, "recorded_at": "2026-11-24 08:00:00", "created_at": null, "reading_source": "iot", "user_name": null } },
+  { "id": 3, "zone_id": 11, "code": null, "name": "Sensor sin datos", "type": "otro", "unit": "", "is_active": true,
+    "zone": null, "calibration": { "status": "missing", "status_label": "Sin certificado", "id": null, "expires_at": null, "days_left": null }, "last_reading": null }
+] }

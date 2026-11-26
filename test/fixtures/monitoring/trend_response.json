@@ -1,0 +1,5 @@
+{ "success": true, "message": "OK", "data": {
+  "sensor_id": 1, "total_readings": 3,
+  "consecutive_rule": { "has_trend": false, "direction": null, "longest_streak": 2, "streak_start": null, "streak_end": null },
+  "linear_regression": { "has_trend": true, "direction": "up", "slope": 0.5, "intercept": 4.0, "r_squared": 0.98, "interpretation": "Tendencia al alza detectada: cambio de 0.5 unidades/lectura." },
+  "overall_trend": true, "overall_direction": "up", "confidence": "medium" } }
