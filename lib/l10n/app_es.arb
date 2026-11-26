@@ -1175,5 +1175,62 @@
         "type": "String"
       }
     }
-  }
+  },
+  "clinicalTabRecords": "Registros",
+  "clinicalTabPatients": "Pacientes",
+  "clinicalRecordsSearchHint": "Documento del paciente",
+  "clinicalRecordsEmpty": "No hay registros en los últimos {days} días.",
+  "@clinicalRecordsEmpty": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "clinicalPatientSearchHint": "Documento o nombre del paciente",
+  "clinicalPatientSearchPrompt": "Escriba al menos {count} caracteres del documento o del nombre del paciente.",
+  "@clinicalPatientSearchPrompt": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "clinicalPatientTitle": "Paciente",
+  "clinicalPatientDocument": "Documento {document}",
+  "@clinicalPatientDocument": {
+    "placeholders": {
+      "document": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalHistoryTitle": "Historial de procedimientos",
+  "clinicalHistoryEmpty": "Este paciente no tiene procedimientos registrados.",
+  "clinicalSummaryRecords": "Procedimientos",
+  "clinicalSummaryAmount": "Total registrado",
+  "clinicalSummaryFirst": "Primera atención",
+  "clinicalSummaryLast": "Última atención",
+  "clinicalAppointmentsTitle": "Citas activas",
+  "clinicalAppointmentsEmpty": "No tiene citas activas.",
+  "clinicalRecentAppointmentsTitle": "Últimas citas",
+  "clinicalRecordTitle": "Registro de procedimiento",
+  "clinicalRecordService": "Servicio",
+  "clinicalRecordPatient": "Paciente",
+  "clinicalRecordDocument": "Documento",
+  "clinicalRecordDate": "Fecha de atención",
+  "clinicalRecordQuantity": "Cantidad",
+  "clinicalRecordUnitPrice": "Valor unitario",
+  "clinicalRecordTotal": "Total",
+  "clinicalRecordDiscount": "Descuento",
+  "clinicalRecordNetTotal": "Total neto",
+  "clinicalRecordBilling": "Facturación",
+  "clinicalRecordOrder": "Orden de servicio",
+  "clinicalRecordSeller": "Vendedor",
+  "clinicalRecordReferrer": "Remitente",
+  "clinicalRecordInactive": "Inactivo",
+  "clinicalViewHistory": "Ver historial del paciente",
+  "billingPending": "Sin facturar",
+  "billingBilled": "Facturado",
+  "billingCancelled": "Anulado"
 }

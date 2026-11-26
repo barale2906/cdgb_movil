@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "message": "Menú de navegación",
+  "data": [
+    {
+      "key": "clinical-menu",
+      "label": "Clínico",
+      "icon": "x",
+      "route": null,
+      "permission": null,
+      "actions": [],
+      "children": [
+        {
+          "key": "patient-procedure-records",
+          "label": "Registros de procedimientos",
+          "icon": "x",
+          "route": "patient-procedure-records.index",
+          "permission": "registros_procedimientos.ver",
+          "actions": [],
+          "children": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "message": "Citas activas del paciente en MedSys",
+  "data": [
+    {
+      "codcontrol": "C0002",
+      "fecha": "2026-11-27",
+      "hora": "09:00:00",
+      "codtipocontrol": "DER",
+      "servicio": "Dermatología",
+      "estado": "Pendiente",
+      "medical_service_id": 3,
+      "medical_service_name": "Consulta dermatología",
+      "is_mapped": true
+    },
+    {
+      "codcontrol": "C0003",
+      "fecha": "2026-11-30",
+      "hora": "13:15:00",
+      "codtipocontrol": "ODO",
+      "servicio": "Odontología",
+      "estado": "Confirmada",
+      "medical_service_id": null,
+      "medical_service_name": null,
+      "is_mapped": false
+    }
+  ]
+}

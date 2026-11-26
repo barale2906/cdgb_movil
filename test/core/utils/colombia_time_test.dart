@@ -36,6 +36,13 @@ void main() {
       expect(ColombiaTime.parse('ayer'), isNull);
     });
 
+    test('formatDate da Y-m-d con ceros', () {
+      expect(
+        ColombiaTime.formatDate(DateTime(2026, 3, 7, 23, 59)),
+        '2026-03-07',
+      );
+    });
+
     test('format da Y-m-d H:i:s con ceros', () {
       expect(
         ColombiaTime.format(DateTime(2026, 3, 7, 4, 5, 6)),
@@ -48,6 +55,18 @@ void main() {
     test('time en 12 h con a. m. / p. m.', () {
       expect(AppFormat.time(DateTime(2026, 1, 1, 14, 30)), '02:30 p. m.');
       expect(AppFormat.time(DateTime(2026, 1, 1, 9, 5)), '09:05 a. m.');
+    });
+
+    test('clock lee HH:mm o HH:mm:ss y lo muestra en 12 h', () {
+      expect(AppFormat.clock('14:30:00'), '02:30 p. m.');
+      expect(AppFormat.clock('09:05'), '09:05 a. m.');
+      expect(AppFormat.clock('0:00:00'), '12:00 a. m.');
+      expect(AppFormat.clock('12:15'), '12:15 p. m.');
+    });
+
+    test('clock devuelve el texto original si no se puede leer', () {
+      expect(AppFormat.clock('mañana'), 'mañana');
+      expect(AppFormat.clock(''), '');
     });
 
     test('dateTime desde el texto del backend', () {

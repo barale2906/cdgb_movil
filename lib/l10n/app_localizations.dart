@@ -4815,6 +4815,222 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Próximo: {date}'**
   String planNext(String date);
+
+  /// No description provided for @clinicalTabRecords.
+  ///
+  /// In es, this message translates to:
+  /// **'Registros'**
+  String get clinicalTabRecords;
+
+  /// No description provided for @clinicalTabPatients.
+  ///
+  /// In es, this message translates to:
+  /// **'Pacientes'**
+  String get clinicalTabPatients;
+
+  /// No description provided for @clinicalRecordsSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento del paciente'**
+  String get clinicalRecordsSearchHint;
+
+  /// No description provided for @clinicalRecordsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay registros en los últimos {days} días.'**
+  String clinicalRecordsEmpty(int days);
+
+  /// No description provided for @clinicalPatientSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento o nombre del paciente'**
+  String get clinicalPatientSearchHint;
+
+  /// No description provided for @clinicalPatientSearchPrompt.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba al menos {count} caracteres del documento o del nombre del paciente.'**
+  String clinicalPatientSearchPrompt(int count);
+
+  /// No description provided for @clinicalPatientTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Paciente'**
+  String get clinicalPatientTitle;
+
+  /// No description provided for @clinicalPatientDocument.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento {document}'**
+  String clinicalPatientDocument(String document);
+
+  /// No description provided for @clinicalHistoryTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Historial de procedimientos'**
+  String get clinicalHistoryTitle;
+
+  /// No description provided for @clinicalHistoryEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Este paciente no tiene procedimientos registrados.'**
+  String get clinicalHistoryEmpty;
+
+  /// No description provided for @clinicalSummaryRecords.
+  ///
+  /// In es, this message translates to:
+  /// **'Procedimientos'**
+  String get clinicalSummaryRecords;
+
+  /// No description provided for @clinicalSummaryAmount.
+  ///
+  /// In es, this message translates to:
+  /// **'Total registrado'**
+  String get clinicalSummaryAmount;
+
+  /// No description provided for @clinicalSummaryFirst.
+  ///
+  /// In es, this message translates to:
+  /// **'Primera atención'**
+  String get clinicalSummaryFirst;
+
+  /// No description provided for @clinicalSummaryLast.
+  ///
+  /// In es, this message translates to:
+  /// **'Última atención'**
+  String get clinicalSummaryLast;
+
+  /// No description provided for @clinicalAppointmentsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Citas activas'**
+  String get clinicalAppointmentsTitle;
+
+  /// No description provided for @clinicalAppointmentsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No tiene citas activas.'**
+  String get clinicalAppointmentsEmpty;
+
+  /// No description provided for @clinicalRecentAppointmentsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Últimas citas'**
+  String get clinicalRecentAppointmentsTitle;
+
+  /// No description provided for @clinicalRecordTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registro de procedimiento'**
+  String get clinicalRecordTitle;
+
+  /// No description provided for @clinicalRecordService.
+  ///
+  /// In es, this message translates to:
+  /// **'Servicio'**
+  String get clinicalRecordService;
+
+  /// No description provided for @clinicalRecordPatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Paciente'**
+  String get clinicalRecordPatient;
+
+  /// No description provided for @clinicalRecordDocument.
+  ///
+  /// In es, this message translates to:
+  /// **'Documento'**
+  String get clinicalRecordDocument;
+
+  /// No description provided for @clinicalRecordDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de atención'**
+  String get clinicalRecordDate;
+
+  /// No description provided for @clinicalRecordQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get clinicalRecordQuantity;
+
+  /// No description provided for @clinicalRecordUnitPrice.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor unitario'**
+  String get clinicalRecordUnitPrice;
+
+  /// No description provided for @clinicalRecordTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total'**
+  String get clinicalRecordTotal;
+
+  /// No description provided for @clinicalRecordDiscount.
+  ///
+  /// In es, this message translates to:
+  /// **'Descuento'**
+  String get clinicalRecordDiscount;
+
+  /// No description provided for @clinicalRecordNetTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total neto'**
+  String get clinicalRecordNetTotal;
+
+  /// No description provided for @clinicalRecordBilling.
+  ///
+  /// In es, this message translates to:
+  /// **'Facturación'**
+  String get clinicalRecordBilling;
+
+  /// No description provided for @clinicalRecordOrder.
+  ///
+  /// In es, this message translates to:
+  /// **'Orden de servicio'**
+  String get clinicalRecordOrder;
+
+  /// No description provided for @clinicalRecordSeller.
+  ///
+  /// In es, this message translates to:
+  /// **'Vendedor'**
+  String get clinicalRecordSeller;
+
+  /// No description provided for @clinicalRecordReferrer.
+  ///
+  /// In es, this message translates to:
+  /// **'Remitente'**
+  String get clinicalRecordReferrer;
+
+  /// No description provided for @clinicalRecordInactive.
+  ///
+  /// In es, this message translates to:
+  /// **'Inactivo'**
+  String get clinicalRecordInactive;
+
+  /// No description provided for @clinicalViewHistory.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver historial del paciente'**
+  String get clinicalViewHistory;
+
+  /// No description provided for @billingPending.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin facturar'**
+  String get billingPending;
+
+  /// No description provided for @billingBilled.
+  ///
+  /// In es, this message translates to:
+  /// **'Facturado'**
+  String get billingBilled;
+
+  /// No description provided for @billingCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Anulado'**
+  String get billingCancelled;
 }
 
 class _AppLocalizationsDelegate

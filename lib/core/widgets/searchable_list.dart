@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
@@ -17,13 +19,18 @@ class SearchableList<T> extends ConsumerStatefulWidget {
     required this.emptyMessage,
     required this.itemBuilder,
     super.key,
+    this.minQueryLength = 0,
   });
 
   final FutureProviderFamily<List<T>, String> provider;
   final String searchHint;
 
-  /// Mensaje cuando no hay datos y no se buscó nada.
+  /// Mensaje cuando no hay datos y no se buscó nada (o la búsqueda es más
+  /// corta que [minQueryLength]).
   final String emptyMessage;
+
+  /// Largo mínimo del texto para que la búsqueda se considere hecha.
+  final int minQueryLength;
   final Widget Function(BuildContext context, T item) itemBuilder;
 
   @override
@@ -63,7 +70,7 @@ class _SearchableListState<T> extends ConsumerState<SearchableList<T>>
             data: (items) => items.isEmpty
                 ? EmptyState(
                     icon: Icons.search_off,
-                    message: _query.isEmpty
+                    message: _query.length < max(1, widget.minQueryLength)
                         ? widget.emptyMessage
                         : l10n.noResults,
                   )

@@ -38,6 +38,16 @@ abstract final class AppFormat {
     return '${two(hour)}:${two(value.minute)} $suffix';
   }
 
+  /// Hora 12 h desde un texto `HH:mm` o `HH:mm:ss` (citas de MedSys); si no
+  /// se puede leer, devuelve el texto original.
+  static String clock(String raw) {
+    final match = RegExp(r'(\d{1,2}):(\d{2})').firstMatch(raw);
+    if (match == null) return raw;
+    return time(
+      DateTime(0, 1, 1, int.parse(match.group(1)!), int.parse(match.group(2)!)),
+    );
+  }
+
   /// `24/11/2026 02:30 p. m.` desde un texto del backend (hora Colombia).
   static String dateTime(String? raw) {
     final value = ColombiaTime.parse(raw);

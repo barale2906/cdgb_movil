@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "message": "Historial del paciente P00002",
+  "data": {
+    "patient_external_id": "P00002",
+    "patient_document": "1000000002",
+    "patient_first_name": "Luis",
+    "patient_last_name": "Ramírez",
+    "summary": {
+      "total_records": 2,
+      "total_amount": "200000.00",
+      "first_service_date": "2026-11-20",
+      "last_service_date": "2026-11-23"
+    },
+    "records": [
+      {
+        "id": 22,
+        "service_date": "2026-11-23",
+        "service_id": 1,
+        "service_name": "Consulta externa",
+        "medical_service_id": 4,
+        "procedure_code": "CON-001",
+        "procedure_name": "Consulta dermatología",
+        "quantity": "1.0000",
+        "unit_price": "150000.00",
+        "total": "150000.00",
+        "is_active": true
+      },
+      {
+        "id": 23,
+        "service_date": "2026-11-20",
+        "service_id": 2,
+        "service_name": "Urgencias",
+        "medical_service_id": 3,
+        "procedure_code": "CUR-001",
+        "procedure_name": "Curaciones simples",
+        "quantity": 1,
+        "unit_price": 50000,
+        "total": 50000,
+        "is_active": false
+      }
+    ]
+  }
+}

@@ -2556,4 +2556,119 @@ class AppLocalizationsEs extends AppLocalizations {
   String planNext(String date) {
     return 'Próximo: $date';
   }
+
+  @override
+  String get clinicalTabRecords => 'Registros';
+
+  @override
+  String get clinicalTabPatients => 'Pacientes';
+
+  @override
+  String get clinicalRecordsSearchHint => 'Documento del paciente';
+
+  @override
+  String clinicalRecordsEmpty(int days) {
+    return 'No hay registros en los últimos $days días.';
+  }
+
+  @override
+  String get clinicalPatientSearchHint => 'Documento o nombre del paciente';
+
+  @override
+  String clinicalPatientSearchPrompt(int count) {
+    return 'Escriba al menos $count caracteres del documento o del nombre del paciente.';
+  }
+
+  @override
+  String get clinicalPatientTitle => 'Paciente';
+
+  @override
+  String clinicalPatientDocument(String document) {
+    return 'Documento $document';
+  }
+
+  @override
+  String get clinicalHistoryTitle => 'Historial de procedimientos';
+
+  @override
+  String get clinicalHistoryEmpty =>
+      'Este paciente no tiene procedimientos registrados.';
+
+  @override
+  String get clinicalSummaryRecords => 'Procedimientos';
+
+  @override
+  String get clinicalSummaryAmount => 'Total registrado';
+
+  @override
+  String get clinicalSummaryFirst => 'Primera atención';
+
+  @override
+  String get clinicalSummaryLast => 'Última atención';
+
+  @override
+  String get clinicalAppointmentsTitle => 'Citas activas';
+
+  @override
+  String get clinicalAppointmentsEmpty => 'No tiene citas activas.';
+
+  @override
+  String get clinicalRecentAppointmentsTitle => 'Últimas citas';
+
+  @override
+  String get clinicalRecordTitle => 'Registro de procedimiento';
+
+  @override
+  String get clinicalRecordService => 'Servicio';
+
+  @override
+  String get clinicalRecordPatient => 'Paciente';
+
+  @override
+  String get clinicalRecordDocument => 'Documento';
+
+  @override
+  String get clinicalRecordDate => 'Fecha de atención';
+
+  @override
+  String get clinicalRecordQuantity => 'Cantidad';
+
+  @override
+  String get clinicalRecordUnitPrice => 'Valor unitario';
+
+  @override
+  String get clinicalRecordTotal => 'Total';
+
+  @override
+  String get clinicalRecordDiscount => 'Descuento';
+
+  @override
+  String get clinicalRecordNetTotal => 'Total neto';
+
+  @override
+  String get clinicalRecordBilling => 'Facturación';
+
+  @override
+  String get clinicalRecordOrder => 'Orden de servicio';
+
+  @override
+  String get clinicalRecordSeller => 'Vendedor';
+
+  @override
+  String get clinicalRecordReferrer => 'Remitente';
+
+  @override
+  String get clinicalRecordInactive => 'Inactivo';
+
+  @override
+  String get clinicalViewHistory => 'Ver historial del paciente';
+
+  @override
+  String get billingPending => 'Sin facturar';
+
+  @override
+  String get billingBilled => 'Facturado';
+
+  @override
+  String get billingCancelled => 'Anulado';
 }

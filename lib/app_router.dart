@@ -31,6 +31,10 @@ import 'package:sga_bojanini/features/auth/presentation/splash_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/catalog_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/product_detail_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/supplier_detail_page.dart';
+import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
+import 'package:sga_bojanini/features/clinical/presentation/clinical_page.dart';
+import 'package:sga_bojanini/features/clinical/presentation/patient_detail_page.dart';
+import 'package:sga_bojanini/features/clinical/presentation/record_detail_page.dart';
 import 'package:sga_bojanini/features/home/presentation/app_shell.dart';
 import 'package:sga_bojanini/features/home/presentation/home_page.dart';
 import 'package:sga_bojanini/features/home/presentation/more_page.dart';
@@ -131,6 +135,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ..._maintenanceRoutes(ref),
       ..._reportRoutes(ref),
       ..._monitoringRoutes(ref),
+      ..._clinicalRoutes(ref),
       GoRoute(
         path: NotificationsPage.path,
         redirect: _requires(ref, notificationsPermission),
@@ -167,6 +172,7 @@ Widget _sectionPage(AppSection section) => switch (section) {
   AppSection.maintenance => const MaintenancePage(),
   AppSection.monitoring => const MonitoringPage(),
   AppSection.reports => const ReportsPage(),
+  AppSection.clinicalRecords => const ClinicalPage(),
   _ => SectionPlaceholderPage(section: section),
 };
 
@@ -420,6 +426,30 @@ List<GoRoute> _monitoringRoutes(Ref ref) {
           builder: (_, state) => AlertRulesPage(sensorId: _id(state)),
         ),
       ],
+    ),
+  ];
+}
+
+/// Registros clínicos: detalle de un registro y ficha del paciente (la lista
+/// es la sección `/clinical-records`).
+List<GoRoute> _clinicalRoutes(Ref ref) {
+  const base = '/clinical-records';
+  const permission = 'registros_procedimientos.ver';
+  return [
+    GoRoute(
+      path: '$base/records/:id',
+      redirect: _requires(ref, permission),
+      builder: (_, state) => RecordDetailPage(recordId: _id(state)),
+    ),
+    GoRoute(
+      path: '$base/patients/:id',
+      redirect: _requires(ref, permission),
+      builder: (_, state) => PatientDetailPage(
+        externalId: state.pathParameters['id']!,
+        patient: state.extra is MedsysPatient
+            ? state.extra! as MedsysPatient
+            : null,
+      ),
     ),
   ];
 }
