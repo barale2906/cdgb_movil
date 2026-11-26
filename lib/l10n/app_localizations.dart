@@ -5493,6 +5493,126 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Si el servidor falló al guardar, la orden pudo quedar a medias (con algunos procedimientos o insumos ya registrados). Revise los registros del paciente antes de repetirla.'**
   String get serviceOrderMaybePartial;
+
+  /// No description provided for @clinicalEvolutionsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Evoluciones clínicas'**
+  String get clinicalEvolutionsTitle;
+
+  /// No description provided for @clinicalEvolutionsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Este registro no tiene evoluciones.'**
+  String get clinicalEvolutionsEmpty;
+
+  /// No description provided for @clinicalEvolutionAdd.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar evolución'**
+  String get clinicalEvolutionAdd;
+
+  /// No description provided for @clinicalEvolutionEdit.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar evolución'**
+  String get clinicalEvolutionEdit;
+
+  /// No description provided for @clinicalEvolutionNewTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva evolución'**
+  String get clinicalEvolutionNewTitle;
+
+  /// No description provided for @clinicalEvolutionEditTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar evolución'**
+  String get clinicalEvolutionEditTitle;
+
+  /// No description provided for @clinicalEvolutionField.
+  ///
+  /// In es, this message translates to:
+  /// **'Evolución clínica'**
+  String get clinicalEvolutionField;
+
+  /// No description provided for @clinicalEvolutionSave.
+  ///
+  /// In es, this message translates to:
+  /// **'Guardar evolución'**
+  String get clinicalEvolutionSave;
+
+  /// No description provided for @clinicalEvolutionSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Evolución guardada.'**
+  String get clinicalEvolutionSaved;
+
+  /// No description provided for @clinicalEvolutionTemplateLoaded.
+  ///
+  /// In es, this message translates to:
+  /// **'Se cargó la plantilla del servicio. Ajústela antes de guardar.'**
+  String get clinicalEvolutionTemplateLoaded;
+
+  /// No description provided for @clinicalEvolutionBy.
+  ///
+  /// In es, this message translates to:
+  /// **'{author} · {date}'**
+  String clinicalEvolutionBy(String author, String date);
+
+  /// No description provided for @clinicalEvolutionTimeout.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise las evoluciones del registro antes de repetirlo: es posible que sí se haya guardado.'**
+  String get clinicalEvolutionTimeout;
+
+  /// No description provided for @clinicalEvolutionFormatNote.
+  ///
+  /// In es, this message translates to:
+  /// **'La app guarda el texto sin formato (negritas ni listas).'**
+  String get clinicalEvolutionFormatNote;
+
+  /// No description provided for @clinicalMedicationsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Medicamentos aplicados'**
+  String get clinicalMedicationsTitle;
+
+  /// No description provided for @clinicalMedicationDetail.
+  ///
+  /// In es, this message translates to:
+  /// **'Lote {lot} · vence {date}'**
+  String clinicalMedicationDetail(String lot, String date);
+
+  /// No description provided for @orderEvolutionLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Evolución clínica'**
+  String get orderEvolutionLabel;
+
+  /// No description provided for @orderEvolutionHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'Obligatoria. Máximo {max} caracteres en total.'**
+  String orderEvolutionHelp(int max);
+
+  /// No description provided for @orderEvolutionRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba la evolución clínica del procedimiento.'**
+  String get orderEvolutionRequired;
+
+  /// No description provided for @orderEvolutionTooLong.
+  ///
+  /// In es, this message translates to:
+  /// **'La evolución es demasiado larga (máximo {max} caracteres).'**
+  String orderEvolutionTooLong(int max);
+
+  /// No description provided for @orderEvolutionCounter.
+  ///
+  /// In es, this message translates to:
+  /// **'{used} de {max}'**
+  String orderEvolutionCounter(int used, int max);
 }
 
 class _AppLocalizationsDelegate

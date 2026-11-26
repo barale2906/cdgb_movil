@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "message": "Medicamentos aplicados en el procedimiento",
+  "data": [
+    {
+      "generic_product_id": 5,
+      "product_name": "Lidocaína 2% ampolla",
+      "batch_id": 12,
+      "lot_number": "LOT-2026-A",
+      "expiration_date": "2027-03-31",
+      "quantity": 2.0
+    }
+  ]
+}

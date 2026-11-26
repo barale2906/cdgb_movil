@@ -1,14 +1,23 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/catalog/generic_product.dart';
+import 'package:sga_bojanini/core/clinical/clinical_lookup.dart';
 import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
 import 'package:sga_bojanini/core/clinical/procedure_match.dart';
 import 'package:sga_bojanini/core/clock/clock.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
+import 'package:sga_bojanini/core/utils/clinical_text.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/features/service_orders/data/new_order_request.dart';
 import 'package:sga_bojanini/features/service_orders/data/service_order.dart';
 import 'package:sga_bojanini/features/service_orders/data/service_orders_repository.dart';
+
+/// Largo máximo de la evolución de un procedimiento ya convertida a HTML (el
+/// servidor valida `procedures.*.notes` con `max:500`).
+const maxEvolutionLength = 500;
 
 /// Tipo de descuento de una línea.
 enum DiscountKind {
@@ -47,6 +56,7 @@ class OrderLine {
     this.discountKind,
     this.discountValue,
     this.warehouseId,
+    this.evolution = '',
     this.supplies = const [],
   });
 
@@ -60,7 +70,17 @@ class OrderLine {
   /// Almacén de donde salen todos los insumos de la línea (el servidor usa
   /// el del primero para toda la salida).
   final int? warehouseId;
+
+  /// Evolución clínica del procedimiento, en texto simple (obligatoria, como
+  /// en el web).
+  final String evolution;
   final List<SupplyDraft> supplies;
+
+  /// Lo que se envía: párrafos HTML.
+  String get evolutionHtml => ClinicalText.toHtml(evolution);
+
+  bool get isEvolutionValid =>
+      evolutionHtml.isNotEmpty && evolutionHtml.length <= maxEvolutionLength;
 
   double get total => (quantity ?? 0) * (unitPrice ?? 0);
 
@@ -96,7 +116,8 @@ class OrderLine {
       (quantity ?? 0) >= 1 &&
       (unitPrice ?? -1) >= 0 &&
       isDiscountValid &&
-      areSuppliesValid;
+      areSuppliesValid &&
+      isEvolutionValid;
 
   OrderLine copyWith({
     int? Function()? quantity,
@@ -104,6 +125,7 @@ class OrderLine {
     DiscountKind? Function()? discountKind,
     double? Function()? discountValue,
     int? Function()? warehouseId,
+    String? evolution,
     List<SupplyDraft>? supplies,
   }) => OrderLine(
     key: key,
@@ -113,6 +135,7 @@ class OrderLine {
     discountKind: discountKind == null ? this.discountKind : discountKind(),
     discountValue: discountValue == null ? this.discountValue : discountValue(),
     warehouseId: warehouseId == null ? this.warehouseId : warehouseId(),
+    evolution: evolution ?? this.evolution,
     supplies: supplies ?? this.supplies,
   );
 }
@@ -223,7 +246,33 @@ class NewOrderNotifier extends Notifier<NewOrderState> {
       unitPrice: procedure.unitPrice,
     );
     state = state.copyWith(lines: [...state.lines, line]);
+    unawaited(_loadTemplate(line.key, procedure.id));
   }
+
+  /// Precarga la plantilla de evolución del procedimiento si el usuario puede
+  /// verla. Es una ayuda: si falla o no hay plantilla, no pasa nada.
+  Future<void> _loadTemplate(int key, int serviceId) async {
+    if (!ref.read(permissionServiceProvider).can('plantillas_clinicas.ver')) {
+      return;
+    }
+    try {
+      final template = await ref
+          .read(clinicalLookupRepositoryProvider)
+          .template(serviceId);
+      if (template == null || !ref.mounted) return;
+      _update(
+        key,
+        (line) => line.evolution.trim().isEmpty
+            ? line.copyWith(evolution: ClinicalText.fromHtml(template.content))
+            : line,
+      );
+    } on ApiException {
+      return;
+    }
+  }
+
+  void setEvolution(int key, String text) =>
+      _update(key, (line) => line.copyWith(evolution: text));
 
   void removeLine(int key) => state = state.copyWith(
     lines: [
@@ -346,6 +395,7 @@ class NewOrderNotifier extends Notifier<NewOrderState> {
     unitPrice: line.unitPrice!,
     discountType: line.discountKind?.value,
     discountValue: line.discountValue,
+    notes: line.evolutionHtml,
     supplies: [
       for (final supply in line.supplies)
         SupplyRequest(

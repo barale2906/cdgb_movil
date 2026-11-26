@@ -14,6 +14,7 @@ import 'package:sga_bojanini/core/widgets/status_chip.dart';
 import 'package:sga_bojanini/features/clinical/application/clinical_providers.dart';
 import 'package:sga_bojanini/features/clinical/presentation/clinical_labels.dart';
 import 'package:sga_bojanini/features/clinical/presentation/patient_detail_page.dart';
+import 'package:sga_bojanini/features/clinical/presentation/record_notes_sections.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
 /// Detalle de un registro de procedimiento (solo lectura).
@@ -114,6 +115,8 @@ class _Content extends StatelessWidget {
         InfoRow(label: l10n.clinicalRecordOrder, value: record.orderNumber),
         InfoRow(label: l10n.clinicalRecordSeller, value: record.seller),
         InfoRow(label: l10n.clinicalRecordReferrer, value: record.referrer),
+        MedicationsSection(recordId: record.id),
+        EvolutionsSection(recordId: record.id),
         const SizedBox(height: AppSpacing.md),
         BojaniButton(
           label: l10n.clinicalViewHistory,

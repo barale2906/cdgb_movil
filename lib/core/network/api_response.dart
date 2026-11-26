@@ -53,6 +53,15 @@ abstract final class ApiResponse {
     throw _malformed(response);
   }
 
+  /// `data` cuando es un objeto; `null` si el servidor responde sin datos
+  /// (p. ej. «sin plantilla para este servicio»).
+  static Json? objectOrNull(Response<dynamic> response) {
+    final data = _body(response)['data'];
+    if (data == null) return null;
+    if (data is Json) return data;
+    throw _malformed(response);
+  }
+
   /// `data` cuando es una lista de objetos (paginada o no).
   static List<T> list<T>(Response<dynamic> response, T Function(Json) parse) {
     final data = _body(response)['data'];

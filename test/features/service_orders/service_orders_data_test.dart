@@ -130,6 +130,7 @@ void main() {
             unitPrice: 150000,
             discountType: 'percentage',
             discountValue: 10,
+            notes: '<p>Estable</p>',
             supplies: [
               SupplyRequest(
                 warehouseId: 2,
@@ -148,6 +149,7 @@ void main() {
         'unit_price': 150000.0,
         'discount_type': 'percentage',
         'discount_value': 10.0,
+        'notes': '<p>Estable</p>',
         'supplies': [
           {'warehouse_id': 2, 'generic_product_id': 9, 'quantity': 1.5},
         ],

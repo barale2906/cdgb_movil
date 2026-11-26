@@ -38,12 +38,25 @@ class _OrderLineCardState extends ConsumerState<OrderLineCard> {
   late final TextEditingController _discount = TextEditingController(
     text: plainNumber(widget.line.discountValue),
   );
+  late final TextEditingController _evolution = TextEditingController(
+    text: widget.line.evolution,
+  );
+
+  @override
+  void didUpdateWidget(OrderLineCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // La plantilla llega después de agregar el procedimiento.
+    if (widget.line.evolution != _evolution.text) {
+      _evolution.text = widget.line.evolution;
+    }
+  }
 
   @override
   void dispose() {
     _quantity.dispose();
     _price.dispose();
     _discount.dispose();
+    _evolution.dispose();
     super.dispose();
   }
 
@@ -123,6 +136,8 @@ class _OrderLineCardState extends ConsumerState<OrderLineCard> {
             _DiscountFields(line: line, controller: _discount, enabled: !busy),
             if (canSupply) SuppliesSection(line: line, enabled: !busy),
             const SizedBox(height: AppSpacing.sm),
+            _EvolutionField(line: line, controller: _evolution, enabled: !busy),
+            const SizedBox(height: AppSpacing.sm),
             Text(AppFormat.cop(line.netTotal), style: textTheme.titleSmall),
           ],
         ),
@@ -193,6 +208,49 @@ class _DiscountFields extends ConsumerWidget {
           ),
         ],
       ],
+    );
+  }
+}
+
+class _EvolutionField extends ConsumerWidget {
+  const _EvolutionField({
+    required this.line,
+    required this.controller,
+    required this.enabled,
+  });
+
+  final OrderLine line;
+  final TextEditingController controller;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context);
+    return TextFormField(
+      controller: controller,
+      enabled: enabled,
+      minLines: 3,
+      maxLines: 8,
+      keyboardType: TextInputType.multiline,
+      textCapitalization: TextCapitalization.sentences,
+      decoration: InputDecoration(
+        labelText: l10n.orderEvolutionLabel,
+        helperText: l10n.orderEvolutionHelp(maxEvolutionLength),
+        counterText: l10n.orderEvolutionCounter(
+          line.evolutionHtml.length,
+          maxEvolutionLength,
+        ),
+        alignLabelWithHint: true,
+      ),
+      validator: (_) {
+        if (line.evolutionHtml.isEmpty) return l10n.orderEvolutionRequired;
+        if (!line.isEvolutionValid) {
+          return l10n.orderEvolutionTooLong(maxEvolutionLength);
+        }
+        return null;
+      },
+      onChanged: (value) =>
+          ref.read(newOrderProvider.notifier).setEvolution(line.key, value),
     );
   }
 }

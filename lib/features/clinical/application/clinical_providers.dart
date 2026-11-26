@@ -5,6 +5,7 @@ import 'package:sga_bojanini/core/clinical/procedure_record.dart';
 import 'package:sga_bojanini/core/clock/clock.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/features/clinical/data/clinical_repository.dart';
+import 'package:sga_bojanini/features/clinical/data/evolution.dart';
 
 /// Ventana de la lista de registros (el servidor no la pagina).
 const recordsWindowDays = 30;
@@ -43,4 +44,17 @@ final FutureProviderFamily<PatientHistory, String> patientHistoryProvider =
     FutureProvider.autoDispose.family<PatientHistory, String>(
       (ref, externalId) =>
           ref.watch(clinicalRepositoryProvider).history(externalId),
+    );
+
+final FutureProviderFamily<List<Evolution>, int> recordEvolutionsProvider =
+    FutureProvider.autoDispose.family<List<Evolution>, int>(
+      (ref, recordId) =>
+          ref.watch(clinicalRepositoryProvider).evolutions(recordId),
+    );
+
+final FutureProviderFamily<List<ProcedureMedication>, int>
+recordMedicationsProvider = FutureProvider.autoDispose
+    .family<List<ProcedureMedication>, int>(
+      (ref, recordId) =>
+          ref.watch(clinicalRepositoryProvider).medications(recordId),
     );

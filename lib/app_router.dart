@@ -34,7 +34,9 @@ import 'package:sga_bojanini/features/catalog/presentation/catalog_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/product_detail_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/supplier_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/application/clinical_permissions.dart';
+import 'package:sga_bojanini/features/clinical/data/evolution.dart';
 import 'package:sga_bojanini/features/clinical/presentation/clinical_page.dart';
+import 'package:sga_bojanini/features/clinical/presentation/evolution_form_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/patient_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/record_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/sale_page.dart';
@@ -465,6 +467,24 @@ List<GoRoute> _clinicalRoutes(Ref ref) {
       path: '$base/records/:id',
       redirect: _requires(ref, permission),
       builder: (_, state) => RecordDetailPage(recordId: _id(state)),
+      routes: [
+        GoRoute(
+          path: 'evolution',
+          redirect: (context, state) =>
+              ref.read(permissionServiceProvider).canAny(const [
+                'evoluciones_clinicas.crear',
+                'evoluciones_clinicas.editar',
+              ])
+              ? null
+              : Routes.home,
+          builder: (_, state) => EvolutionFormPage(
+            recordId: _id(state),
+            evolution: state.extra is Evolution
+                ? state.extra! as Evolution
+                : null,
+          ),
+        ),
+      ],
     ),
     GoRoute(
       path: '$base/patients/:id',
