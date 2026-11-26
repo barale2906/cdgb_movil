@@ -1575,5 +1575,38 @@
     }
   },
   "clinicalRecordDeleted": "Registro eliminado.",
-  "clinicalRecordDeleteTimeout": "No se recibió respuesta del servidor. Revise si el registro sigue en la lista antes de repetirlo: es posible que sí se haya eliminado."
+  "clinicalRecordDeleteTimeout": "No se recibió respuesta del servidor. Revise si el registro sigue en la lista antes de repetirlo: es posible que sí se haya eliminado.",
+  "alertRuleNew": "Nueva regla",
+  "alertRuleFormTitle": "Nueva regla de alerta",
+  "alertRuleCondition": "Condición",
+  "alertRuleThreshold": "Valor límite",
+  "alertRuleConsecutive": "Lecturas seguidas",
+  "alertRuleConsecutiveHelp": "Entre 1 y 100.",
+  "alertRuleChannels": "Avisar por",
+  "alertRuleChannelInternal": "Notificación en la app",
+  "alertRuleChannelEmail": "Correo",
+  "alertRuleChannelPush": "Aviso al teléfono",
+  "alertRuleChannelRequired": "Elija al menos un canal.",
+  "alertRuleSave": "Crear regla",
+  "alertRuleCreated": "Regla creada.",
+  "alertRuleActiveToggle": "Regla activa",
+  "alertRuleDelete": "Eliminar regla",
+  "alertRuleDeleteConfirm": "Se eliminará esta regla de alerta. Esta acción no se puede deshacer.",
+  "alertRuleDeleted": "Regla eliminada.",
+  "alertRuleTimeout": "No se recibió respuesta del servidor. Revise la lista de reglas antes de repetirlo: es posible que sí se haya aplicado.",
+  "alertConditionAbove": "Por encima de un valor",
+  "alertConditionBelow": "Por debajo de un valor",
+  "maintenanceSignatures": "Registrar firmas (opcional)",
+  "maintenanceSignaturesHelp": "Firma de quien entrega el equipo y de quien lo recibe de vuelta.",
+  "productKitAvailability": "Kits que se pueden armar (almacén activo)",
+  "productKitAvailabilityValue": "{count} unidades",
+  "@productKitAvailabilityValue": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "auditEntityFilter": "Elemento",
+  "auditAllEntities": "Todos los elementos"
 }

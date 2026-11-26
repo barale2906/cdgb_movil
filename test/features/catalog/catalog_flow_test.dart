@@ -118,6 +118,64 @@ void main() {
     expect(find.text('VENCE 01/05/2027'), findsOneWidget);
   });
 
+  group('disponibilidad del kit', () {
+    Future<void> openKit(
+      WidgetTester tester,
+      List<String> permissions,
+    ) async {
+      harness = AppHarness(initialPrefs: {'active_warehouse_id': 1});
+      tester.view
+        ..physicalSize = const Size(800, 2400)
+        ..devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      harness.adapter.on(
+        'GET',
+        '/generic-products/5/kit-availability',
+        body: envelope({
+          'generic_product_id': 5,
+          'warehouse_id': 1,
+          'available_kits': 12,
+        }),
+      );
+      await openCatalog(tester, permissions: permissions);
+      await tester.tap(find.text('Gasa estéril 10x10'));
+      await AppHarness.settle(tester);
+    }
+
+    testWidgets('con stock.ver y almacén activo muestra cuántos se arman', (
+      tester,
+    ) async {
+      await openKit(tester, [
+        'generic-products.ver',
+        'stock.ver',
+        'almacenes.ver',
+      ]);
+
+      expect(
+        find.text('Kits que se pueden armar (almacén activo)'),
+        findsOneWidget,
+      );
+      expect(find.text('12 unidades'), findsOneWidget);
+      expect(
+        harness.adapter
+            .callsTo('GET', '/generic-products/5/kit-availability')
+            .single
+            .queryParameters,
+        {'warehouse_id': 1},
+      );
+    });
+
+    testWidgets('sin stock.ver no se consulta ni se muestra', (tester) async {
+      await openKit(tester, ['generic-products.ver', 'almacenes.ver']);
+
+      expect(find.text('12 unidades'), findsNothing);
+      expect(
+        harness.adapter.callsTo('GET', '/generic-products/5/kit-availability'),
+        isEmpty,
+      );
+    });
+  });
+
   testWidgets('con proveedores.ver aparece la pestaña y su detalle', (
     tester,
   ) async {

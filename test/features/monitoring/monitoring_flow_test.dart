@@ -302,5 +302,199 @@ void main() {
       expect(find.text('Tendencia al alza'), findsOneWidget);
       expect(find.text('INACTIVO'), findsOneWidget);
     });
+
+    group('crear, activar y eliminar reglas', () {
+      const rulesRead = [..._read, 'reglas_alerta.ver'];
+
+      Future<void> openRules(
+        WidgetTester tester,
+        List<String> permissions,
+      ) async {
+        await openMonitoring(tester, permissions: permissions);
+        await openSensor(tester);
+        await tester.tap(find.text('Reglas de alerta'));
+        await AppHarness.settle(tester);
+      }
+
+      testWidgets('sin permisos de escritura no hay acciones', (tester) async {
+        await openRules(tester, rulesRead);
+
+        expect(find.text('Nueva regla'), findsNothing);
+        expect(find.byType(Switch), findsNothing);
+        expect(find.text('Eliminar regla'), findsNothing);
+      });
+
+      testWidgets('crea una regla por encima de un valor y recarga', (
+        tester,
+      ) async {
+        harness.adapter.on(
+          'POST',
+          '/sensors/1/alert-rules',
+          status: 201,
+          body: envelope({
+            'id': 9,
+            'condition_type': 'above',
+            'threshold': '8',
+            'consecutive_readings': 2,
+            'notification_channels': ['internal'],
+            'is_active': true,
+          }),
+        );
+        await openRules(tester, [...rulesRead, 'reglas_alerta.crear']);
+
+        await tester.tap(find.text('Nueva regla'));
+        await AppHarness.settle(tester);
+        await tester.enterText(
+          find.widgetWithText(TextFormField, 'Valor límite'),
+          '8,5',
+        );
+        await tester.enterText(
+          find.widgetWithText(TextFormField, 'Lecturas seguidas'),
+          '2',
+        );
+        await tester.tap(find.text('Correo'));
+        await tester.tap(find.text('Crear regla'));
+        await AppHarness.settle(tester);
+
+        expect(
+          harness.adapter.callsTo('POST', '/sensors/1/alert-rules').single.data,
+          {
+            'condition_type': 'above',
+            'threshold': 8.5,
+            'consecutive_readings': 2,
+            'notification_channels': ['internal', 'email'],
+          },
+        );
+        expect(find.text('Regla creada.'), findsOneWidget);
+        expect(
+          harness.adapter.callsTo('GET', '/sensors/1/alert-rules'),
+          hasLength(2),
+          reason: 'la lista se recarga',
+        );
+      });
+
+      testWidgets('una tendencia no pide valor límite', (tester) async {
+        harness.adapter.on(
+          'POST',
+          '/sensors/1/alert-rules',
+          status: 201,
+          body: envelope({'id': 10, 'condition_type': 'trend_up'}),
+        );
+        await openRules(tester, [...rulesRead, 'reglas_alerta.crear']);
+
+        await tester.tap(find.text('Nueva regla'));
+        await AppHarness.settle(tester);
+        await tester.tap(find.text('Condición'));
+        await AppHarness.settle(tester);
+        await tester.tap(find.text('Tendencia al alza').last);
+        await AppHarness.settle(tester);
+
+        expect(find.text('Valor límite'), findsNothing);
+        await tester.tap(find.text('Crear regla'));
+        await AppHarness.settle(tester);
+        expect(
+          (harness.adapter.callsTo('POST', '/sensors/1/alert-rules').single.data
+                  as Map)
+              .containsKey('threshold'),
+          isFalse,
+        );
+      });
+
+      testWidgets('valida el valor límite y los canales antes de enviar', (
+        tester,
+      ) async {
+        await openRules(tester, [...rulesRead, 'reglas_alerta.crear']);
+
+        await tester.tap(find.text('Nueva regla'));
+        await AppHarness.settle(tester);
+        await tester.tap(find.text('Notificación en la app'));
+        await tester.tap(find.text('Crear regla'));
+        await AppHarness.settle(tester);
+
+        expect(find.text('Ingrese un número válido.'), findsOneWidget);
+        expect(find.text('Elija al menos un canal.'), findsOneWidget);
+        expect(
+          harness.adapter.callsTo('POST', '/sensors/1/alert-rules'),
+          isEmpty,
+        );
+      });
+
+      testWidgets('un 422 del servidor se muestra y la hoja sigue abierta', (
+        tester,
+      ) async {
+        harness.adapter.on(
+          'POST',
+          '/sensors/1/alert-rules',
+          status: 422,
+          body: errorBody('Los canales no son válidos.'),
+        );
+        await openRules(tester, [...rulesRead, 'reglas_alerta.crear']);
+
+        await tester.tap(find.text('Nueva regla'));
+        await AppHarness.settle(tester);
+        await tester.enterText(
+          find.widgetWithText(TextFormField, 'Valor límite'),
+          '8',
+        );
+        await tester.tap(find.text('Crear regla'));
+        await AppHarness.settle(tester);
+
+        expect(find.text('Los canales no son válidos.'), findsOneWidget);
+        expect(find.text('Nueva regla de alerta'), findsOneWidget);
+      });
+
+      testWidgets('activar o desactivar envía is_active', (tester) async {
+        harness.adapter.on(
+          'PUT',
+          '/alert-rules/2',
+          body: envelope({
+            'id': 2,
+            'condition_type': 'trend_up',
+            'is_active': true,
+          }),
+        );
+        await openRules(tester, [...rulesRead, 'reglas_alerta.editar']);
+
+        await tester.tap(find.byType(Switch).last);
+        await AppHarness.settle(tester);
+
+        expect(
+          harness.adapter.callsTo('PUT', '/alert-rules/2').single.data,
+          {'is_active': true},
+        );
+      });
+
+      testWidgets('eliminar pide confirmar y recarga', (tester) async {
+        harness.adapter.on(
+          'DELETE',
+          '/alert-rules/1',
+          body: {'success': true, 'message': 'Regla eliminada'},
+        );
+        await openRules(tester, [...rulesRead, 'reglas_alerta.eliminar']);
+
+        await tester.tap(find.text('Eliminar regla').first);
+        await AppHarness.settle(tester);
+        expect(find.textContaining('no se puede deshacer'), findsOneWidget);
+        await tester.tap(find.text('Eliminar regla').last);
+        await AppHarness.settle(tester);
+
+        expect(
+          harness.adapter.callsTo('DELETE', '/alert-rules/1'),
+          hasLength(1),
+        );
+        expect(find.text('Regla eliminada.'), findsOneWidget);
+      });
+
+      testWidgets('cancelar la confirmación no elimina', (tester) async {
+        await openRules(tester, [...rulesRead, 'reglas_alerta.eliminar']);
+
+        await tester.tap(find.text('Eliminar regla').first);
+        await AppHarness.settle(tester);
+        await tester.tap(find.text('Cancelar'));
+        await AppHarness.settle(tester);
+
+        expect(harness.adapter.callsTo('DELETE', '/alert-rules/1'), isEmpty);
+      });
+    });
   });
 }

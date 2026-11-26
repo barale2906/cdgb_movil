@@ -80,19 +80,6 @@ class InventoryRepository {
         return ApiResponse.list(response, StockItem.fromJson);
       });
 
-  /// Unidades de kit que se pueden armar con el stock de componentes.
-  Future<double> kitAvailability({
-    required int genericProductId,
-    required int warehouseId,
-  }) => apiCall(() async {
-    final response = await _dio.get<dynamic>(
-      '/generic-products/$genericProductId/kit-availability',
-      queryParameters: {'warehouse_id': warehouseId},
-    );
-    final value = ApiResponse.object(response)['available_kits'];
-    return value is num ? value.toDouble() : 0;
-  });
-
   // ---- Lotes ----
 
   Future<PagedList<Batch>> batches(BatchQuery query, {int page = 1}) =>

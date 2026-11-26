@@ -6,6 +6,7 @@ import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
+import 'package:sga_bojanini/features/monitoring/data/alert_rule_request.dart';
 import 'package:sga_bojanini/features/monitoring/data/monitoring_models.dart';
 
 /// Resultado de registrar una lectura: la lectura y cuántas alertas generó.
@@ -114,6 +115,30 @@ class MonitoringRepository {
   Future<List<AlertRule>> alertRules(int sensorId) => apiCall(() async {
     final response = await _dio.get<dynamic>('/sensors/$sensorId/alert-rules');
     return ApiResponse.list(response, AlertRule.fromJson);
+  });
+
+  /// Crea una regla (escritura: nunca se reintenta sola).
+  Future<AlertRule> createAlertRule(int sensorId, AlertRuleRequest request) =>
+      apiCall(() async {
+        final response = await _dio.post<dynamic>(
+          '/sensors/$sensorId/alert-rules',
+          data: request.toJson(),
+        );
+        return AlertRule.fromJson(ApiResponse.object(response));
+      });
+
+  Future<AlertRule> setAlertRuleActive(int id, {required bool active}) =>
+      apiCall(() async {
+        final response = await _dio.put<dynamic>(
+          '/alert-rules/$id',
+          data: {'is_active': active},
+        );
+        return AlertRule.fromJson(ApiResponse.object(response));
+      });
+
+  Future<void> deleteAlertRule(int id) => apiCall(() async {
+    final response = await _dio.delete<dynamic>('/alert-rules/$id');
+    ApiResponse.message(response);
   });
 
   static Map<String, String> _range(DateTime from, DateTime to) => {

@@ -6099,6 +6099,162 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'No se recibió respuesta del servidor. Revise si el registro sigue en la lista antes de repetirlo: es posible que sí se haya eliminado.'**
   String get clinicalRecordDeleteTimeout;
+
+  /// No description provided for @alertRuleNew.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva regla'**
+  String get alertRuleNew;
+
+  /// No description provided for @alertRuleFormTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva regla de alerta'**
+  String get alertRuleFormTitle;
+
+  /// No description provided for @alertRuleCondition.
+  ///
+  /// In es, this message translates to:
+  /// **'Condición'**
+  String get alertRuleCondition;
+
+  /// No description provided for @alertRuleThreshold.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor límite'**
+  String get alertRuleThreshold;
+
+  /// No description provided for @alertRuleConsecutive.
+  ///
+  /// In es, this message translates to:
+  /// **'Lecturas seguidas'**
+  String get alertRuleConsecutive;
+
+  /// No description provided for @alertRuleConsecutiveHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'Entre 1 y 100.'**
+  String get alertRuleConsecutiveHelp;
+
+  /// No description provided for @alertRuleChannels.
+  ///
+  /// In es, this message translates to:
+  /// **'Avisar por'**
+  String get alertRuleChannels;
+
+  /// No description provided for @alertRuleChannelInternal.
+  ///
+  /// In es, this message translates to:
+  /// **'Notificación en la app'**
+  String get alertRuleChannelInternal;
+
+  /// No description provided for @alertRuleChannelEmail.
+  ///
+  /// In es, this message translates to:
+  /// **'Correo'**
+  String get alertRuleChannelEmail;
+
+  /// No description provided for @alertRuleChannelPush.
+  ///
+  /// In es, this message translates to:
+  /// **'Aviso al teléfono'**
+  String get alertRuleChannelPush;
+
+  /// No description provided for @alertRuleChannelRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Elija al menos un canal.'**
+  String get alertRuleChannelRequired;
+
+  /// No description provided for @alertRuleSave.
+  ///
+  /// In es, this message translates to:
+  /// **'Crear regla'**
+  String get alertRuleSave;
+
+  /// No description provided for @alertRuleCreated.
+  ///
+  /// In es, this message translates to:
+  /// **'Regla creada.'**
+  String get alertRuleCreated;
+
+  /// No description provided for @alertRuleActiveToggle.
+  ///
+  /// In es, this message translates to:
+  /// **'Regla activa'**
+  String get alertRuleActiveToggle;
+
+  /// No description provided for @alertRuleDelete.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar regla'**
+  String get alertRuleDelete;
+
+  /// No description provided for @alertRuleDeleteConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Se eliminará esta regla de alerta. Esta acción no se puede deshacer.'**
+  String get alertRuleDeleteConfirm;
+
+  /// No description provided for @alertRuleDeleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Regla eliminada.'**
+  String get alertRuleDeleted;
+
+  /// No description provided for @alertRuleTimeout.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise la lista de reglas antes de repetirlo: es posible que sí se haya aplicado.'**
+  String get alertRuleTimeout;
+
+  /// No description provided for @alertConditionAbove.
+  ///
+  /// In es, this message translates to:
+  /// **'Por encima de un valor'**
+  String get alertConditionAbove;
+
+  /// No description provided for @alertConditionBelow.
+  ///
+  /// In es, this message translates to:
+  /// **'Por debajo de un valor'**
+  String get alertConditionBelow;
+
+  /// No description provided for @maintenanceSignatures.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar firmas (opcional)'**
+  String get maintenanceSignatures;
+
+  /// No description provided for @maintenanceSignaturesHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'Firma de quien entrega el equipo y de quien lo recibe de vuelta.'**
+  String get maintenanceSignaturesHelp;
+
+  /// No description provided for @productKitAvailability.
+  ///
+  /// In es, this message translates to:
+  /// **'Kits que se pueden armar (almacén activo)'**
+  String get productKitAvailability;
+
+  /// No description provided for @productKitAvailabilityValue.
+  ///
+  /// In es, this message translates to:
+  /// **'{count} unidades'**
+  String productKitAvailabilityValue(String count);
+
+  /// No description provided for @auditEntityFilter.
+  ///
+  /// In es, this message translates to:
+  /// **'Elemento'**
+  String get auditEntityFilter;
+
+  /// No description provided for @auditAllEntities.
+  ///
+  /// In es, this message translates to:
+  /// **'Todos los elementos'**
+  String get auditAllEntities;
 }
 
 class _AppLocalizationsDelegate

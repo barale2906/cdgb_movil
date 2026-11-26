@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sga_bojanini/core/auth/my_signature.dart';
 import 'package:sga_bojanini/core/clock/clock.dart';
 import 'package:sga_bojanini/core/config/app_environment.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/models/named_ref.dart';
+import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
@@ -18,6 +20,7 @@ import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/form_fields.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
+import 'package:sga_bojanini/core/widgets/signoff_form.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
 import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
@@ -81,6 +84,8 @@ class _FormState extends ConsumerState<_Form> {
   final _recommendations = TextEditingController();
   final _externalName = TextEditingController();
   final _cost = TextEditingController();
+  final _signoff = SignoffController();
+  bool _withSignatures = false;
   bool _internal = true;
   DateTime? _date;
   NamedRef? _technician;
@@ -99,6 +104,7 @@ class _FormState extends ConsumerState<_Form> {
     ]) {
       controller.dispose();
     }
+    _signoff.dispose();
     super.dispose();
   }
 
@@ -111,6 +117,13 @@ class _FormState extends ConsumerState<_Form> {
 
   Future<void> _submit() async {
     if (!(_formKey.currentState?.validate() ?? false)) return;
+    final signoff = _withSignatures
+        ? await _signoff.collect(
+            hasRegisteredSignature: ref.read(mySignatureProvider).value != null,
+          )
+        : null;
+    if (_withSignatures && signoff == null) return;
+    if (!mounted) return;
     final now = ColombiaTime.now(ref.read(clockProvider));
     final done = await ref
         .read(maintenanceActionsProvider.notifier)
@@ -128,6 +141,7 @@ class _FormState extends ConsumerState<_Form> {
             recommendations: _recommendations.text,
             parts: _parts,
             cost: AppFormat.parseDecimal(_cost.text),
+            signoff: signoff,
           ),
         );
     if (!done || !mounted) return;
@@ -145,6 +159,9 @@ class _FormState extends ConsumerState<_Form> {
     final isProd = ref.watch(appEnvironmentProvider).env == AppEnv.prod;
     final error = submission.error;
     final today = ColombiaTime.now(ref.read(clockProvider));
+    final pinError = error is ValidationException
+        ? error.firstErrorFor('received_by.pin')
+        : null;
     String? required(Object? value) =>
         value == null || value == '' ? l10n.validationRequired : null;
 
@@ -260,7 +277,19 @@ class _FormState extends ConsumerState<_Form> {
                   parts: _parts,
                   onChanged: (parts) => setState(() => _parts = parts),
                 ),
-                if (error != null) ...[
+                const SizedBox(height: AppSpacing.md),
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(l10n.maintenanceSignatures),
+                  subtitle: Text(l10n.maintenanceSignaturesHelp),
+                  value: _withSignatures,
+                  onChanged: submission.isSubmitting
+                      ? null
+                      : (on) => setState(() => _withSignatures = on),
+                ),
+                if (_withSignatures)
+                  SignoffForm(controller: _signoff, pinError: pinError),
+                if (error != null && pinError == null) ...[
                   const SizedBox(height: AppSpacing.md),
                   AlertBanner(
                     message: ApiErrorMessage.ofWrite(

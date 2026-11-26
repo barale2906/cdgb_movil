@@ -2,8 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
 import 'package:sga_bojanini/core/clock/clock.dart';
+import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/core/utils/submission_notifier.dart';
+import 'package:sga_bojanini/features/monitoring/data/alert_rule_request.dart';
 import 'package:sga_bojanini/features/monitoring/data/monitoring_models.dart';
 import 'package:sga_bojanini/features/monitoring/data/monitoring_repository.dart';
 
@@ -84,6 +86,49 @@ final FutureProviderFamily<List<AlertRule>, int> alertRulesProvider =
     FutureProvider.autoDispose.family<List<AlertRule>, int>(
       (ref, sensorId) =>
           ref.watch(monitoringRepositoryProvider).alertRules(sensorId),
+    );
+
+/// Crear, activar/desactivar y eliminar reglas de alerta. Son escrituras:
+/// bloquean el botón en vuelo y nunca se reintentan solas; tras un timeout se
+/// recarga la lista por si sí se aplicaron.
+class AlertRuleActions extends SubmissionNotifier {
+  Future<bool> create(int sensorId, AlertRuleRequest request) => _apply(
+    sensorId,
+    () => ref
+        .read(monitoringRepositoryProvider)
+        .createAlertRule(sensorId, request),
+  );
+
+  Future<bool> setActive(
+    int sensorId,
+    int ruleId, {
+    required bool active,
+  }) => _apply(
+    sensorId,
+    () => ref
+        .read(monitoringRepositoryProvider)
+        .setAlertRuleActive(ruleId, active: active),
+  );
+
+  Future<bool> delete(int sensorId, int ruleId) => _apply(
+    sensorId,
+    () => ref.read(monitoringRepositoryProvider).deleteAlertRule(ruleId),
+  );
+
+  Future<bool> _apply(int sensorId, Future<void> Function() action) async {
+    final done = await run(action);
+    final error = state.error;
+    final timedOut =
+        error is NetworkException && error.kind == NetworkFailureKind.timeout;
+    if (done || timedOut) ref.invalidate(alertRulesProvider(sensorId));
+    return done;
+  }
+}
+
+final NotifierProvider<AlertRuleActions, SubmissionState>
+alertRuleActionsProvider =
+    NotifierProvider.autoDispose<AlertRuleActions, SubmissionState>(
+      AlertRuleActions.new,
     );
 
 /// Registra una lectura manual y refresca lo que depende de ella.

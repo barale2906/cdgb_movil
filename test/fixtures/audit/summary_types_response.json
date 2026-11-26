@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "message": "Resumen",
+  "data": {
+    "total": 3,
+    "by_action": {
+      "updated": 1,
+      "created": 1,
+      "access": 1
+    },
+    "by_type": {
+      "App\\Modules\\Catalog\\Infrastructure\\Persistence\\Models\\GenericProductModel": 2,
+      "App\\Modules\\Warehouse\\Infrastructure\\Persistence\\Models\\LocationModel": 1
+    }
+  }
+}

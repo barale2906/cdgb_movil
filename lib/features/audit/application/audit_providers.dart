@@ -21,20 +21,31 @@ enum AuditPeriod {
   final int daysBack;
 }
 
-/// Filtros de la bitácora: acción (`null` = todas) y periodo.
+/// Filtros de la bitácora: acción y tipo de elemento (`null` = todos) y
+/// periodo.
 @immutable
 class AuditFilter {
-  const AuditFilter({this.action, this.period = AuditPeriod.week});
+  const AuditFilter({
+    this.action,
+    this.auditableType,
+    this.period = AuditPeriod.week,
+  });
 
   final String? action;
+
+  /// Clase PHP completa del elemento, tal como la guarda el servidor.
+  final String? auditableType;
   final AuditPeriod period;
 
   @override
   bool operator ==(Object other) =>
-      other is AuditFilter && other.action == action && other.period == period;
+      other is AuditFilter &&
+      other.action == action &&
+      other.auditableType == auditableType &&
+      other.period == period;
 
   @override
-  int get hashCode => Object.hash(action, period);
+  int get hashCode => Object.hash(action, auditableType, period);
 }
 
 /// Fechas `AAAA-MM-DD` del periodo según el día de hoy en Colombia.
@@ -60,6 +71,7 @@ class AuditListNotifier extends PagedNotifier<AuditLog> {
         .read(auditRepositoryProvider)
         .list(
           action: filter.action,
+          auditableType: filter.auditableType,
           dateFrom: range.from,
           dateTo: range.to,
           page: page,

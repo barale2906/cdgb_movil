@@ -3272,4 +3272,88 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get clinicalRecordDeleteTimeout =>
       'No se recibió respuesta del servidor. Revise si el registro sigue en la lista antes de repetirlo: es posible que sí se haya eliminado.';
+
+  @override
+  String get alertRuleNew => 'Nueva regla';
+
+  @override
+  String get alertRuleFormTitle => 'Nueva regla de alerta';
+
+  @override
+  String get alertRuleCondition => 'Condición';
+
+  @override
+  String get alertRuleThreshold => 'Valor límite';
+
+  @override
+  String get alertRuleConsecutive => 'Lecturas seguidas';
+
+  @override
+  String get alertRuleConsecutiveHelp => 'Entre 1 y 100.';
+
+  @override
+  String get alertRuleChannels => 'Avisar por';
+
+  @override
+  String get alertRuleChannelInternal => 'Notificación en la app';
+
+  @override
+  String get alertRuleChannelEmail => 'Correo';
+
+  @override
+  String get alertRuleChannelPush => 'Aviso al teléfono';
+
+  @override
+  String get alertRuleChannelRequired => 'Elija al menos un canal.';
+
+  @override
+  String get alertRuleSave => 'Crear regla';
+
+  @override
+  String get alertRuleCreated => 'Regla creada.';
+
+  @override
+  String get alertRuleActiveToggle => 'Regla activa';
+
+  @override
+  String get alertRuleDelete => 'Eliminar regla';
+
+  @override
+  String get alertRuleDeleteConfirm =>
+      'Se eliminará esta regla de alerta. Esta acción no se puede deshacer.';
+
+  @override
+  String get alertRuleDeleted => 'Regla eliminada.';
+
+  @override
+  String get alertRuleTimeout =>
+      'No se recibió respuesta del servidor. Revise la lista de reglas antes de repetirlo: es posible que sí se haya aplicado.';
+
+  @override
+  String get alertConditionAbove => 'Por encima de un valor';
+
+  @override
+  String get alertConditionBelow => 'Por debajo de un valor';
+
+  @override
+  String get maintenanceSignatures => 'Registrar firmas (opcional)';
+
+  @override
+  String get maintenanceSignaturesHelp =>
+      'Firma de quien entrega el equipo y de quien lo recibe de vuelta.';
+
+  @override
+  String get productKitAvailability =>
+      'Kits que se pueden armar (almacén activo)';
+
+  @override
+  String productKitAvailabilityValue(String count) {
+    return '$count unidades';
+  }
+
+  @override
+  String get auditEntityFilter => 'Elemento';
+
+  @override
+  String get auditAllEntities => 'Todos los elementos';
 }

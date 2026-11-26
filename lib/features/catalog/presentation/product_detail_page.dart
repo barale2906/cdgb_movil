@@ -111,6 +111,8 @@ class _Content extends StatelessWidget {
             value: level(product.reorderQuantity),
           ),
         ],
+        if (product.productType == ProductType.kit)
+          _KitAvailability(productId: product.id),
         if (product.components.isNotEmpty) ...[
           const SizedBox(height: AppSpacing.md),
           Text(l10n.productKitComponents, style: textTheme.titleSmall),
@@ -206,6 +208,28 @@ class _VariantCard extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Cuántos kits se pueden armar hoy con el stock de componentes del almacén
+/// activo. Si no se puede consultar, no se muestra: la ficha sigue completa.
+class _KitAvailability extends ConsumerWidget {
+  const _KitAvailability({required this.productId});
+
+  final int productId;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final available = ref.watch(kitAvailabilityProvider(productId)).value;
+    if (available == null) return const SizedBox.shrink();
+    final l10n = AppLocalizations.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(top: AppSpacing.sm),
+      child: InfoRow(
+        label: l10n.productKitAvailability,
+        value: l10n.productKitAvailabilityValue(AppFormat.decimal(available)),
       ),
     );
   }
