@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "message": "Evolución registrada",
+  "data": {
+    "id": 9,
+    "patient_procedure_record_id": 22,
+    "content": "<p>Nueva nota</p>",
+    "user_id": 1,
+    "user_name": "Usuario Prueba",
+    "recorded_at": "2026-11-24 08:00:00"
+  }
+}

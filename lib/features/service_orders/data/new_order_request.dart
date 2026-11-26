@@ -31,6 +31,7 @@ class OrderLineRequest {
     required this.unitPrice,
     this.discountType,
     this.discountValue,
+    this.notes,
     this.supplies = const [],
   });
 
@@ -41,6 +42,9 @@ class OrderLineRequest {
   /// `percentage` o `fixed`; sin descuento, ambos `null`.
   final String? discountType;
   final double? discountValue;
+
+  /// Evolución clínica del procedimiento, como párrafos HTML.
+  final String? notes;
   final List<SupplyRequest> supplies;
 
   Map<String, Object> toJson() => {
@@ -51,6 +55,7 @@ class OrderLineRequest {
       'discount_type': discountType!,
       'discount_value': discountValue!,
     },
+    if (notes != null && notes!.isNotEmpty) 'notes': notes!,
     if (supplies.isNotEmpty) 'supplies': [for (final s in supplies) s.toJson()],
   };
 }

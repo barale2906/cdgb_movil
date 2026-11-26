@@ -95,9 +95,18 @@ void main() {
     await AppHarness.settle(tester);
   }
 
+  Future<void> writeEvolution(WidgetTester tester) async {
+    await tester.enterText(
+      field('Evolución clínica'),
+      'Paciente estable.\nSin dolor.',
+    );
+    await AppHarness.settle(tester);
+  }
+
   Future<void> fillValid(WidgetTester tester) async {
     await choosePatient(tester);
     await addProcedure(tester, 'Curaciones simples');
+    await writeEvolution(tester);
   }
 
   testWidgets('crea la orden con descuento y abre su detalle', (tester) async {
@@ -135,6 +144,7 @@ void main() {
         'unit_price': 50000.0,
         'discount_type': 'percentage',
         'discount_value': 10.0,
+        'notes': '<p>Paciente estable.</p><p>Sin dolor.</p>',
       },
     ]);
     expect(find.text('Orden $_number creada.'), findsOneWidget);
@@ -170,6 +180,7 @@ void main() {
     await openForm(tester);
     await choosePatient(tester);
     await addProcedure(tester, 'Consulta dermatología');
+    await writeEvolution(tester);
 
     await submit(tester);
 
@@ -227,6 +238,62 @@ void main() {
     await AppHarness.settle(tester);
     await submit(tester);
     expect(harness.adapter.callsTo('POST', '/service-orders'), hasLength(2));
+  });
+
+  group('evolución clínica', () {
+    testWidgets('es obligatoria: sin ella no se envía', (tester) async {
+      await openForm(tester);
+      await choosePatient(tester);
+      await addProcedure(tester, 'Curaciones simples');
+
+      await submit(tester);
+
+      expect(
+        find.text('Escriba la evolución clínica del procedimiento.'),
+        findsOneWidget,
+      );
+      expect(harness.adapter.callsTo('POST', '/service-orders'), isEmpty);
+    });
+
+    testWidgets('muestra cuántos caracteres lleva y avisa si se pasa', (
+      tester,
+    ) async {
+      await openForm(tester);
+      await choosePatient(tester);
+      await addProcedure(tester, 'Curaciones simples');
+
+      await tester.enterText(field('Evolución clínica'), 'x' * 600);
+      await AppHarness.settle(tester);
+      await submit(tester);
+
+      expect(find.text('607 de 500'), findsOneWidget);
+      expect(
+        find.text('La evolución es demasiado larga (máximo 500 caracteres).'),
+        findsOneWidget,
+      );
+      expect(harness.adapter.callsTo('POST', '/service-orders'), isEmpty);
+    });
+
+    testWidgets('con permiso se precarga la plantilla del servicio', (
+      tester,
+    ) async {
+      harness.adapter.on(
+        'GET',
+        '/clinical-templates/for-service/3',
+        body: fixture('clinical/template_response.json'),
+      );
+      await openForm(
+        tester,
+        permissions: [..._creator, 'plantillas_clinicas.ver'],
+      );
+      await choosePatient(tester);
+      await addProcedure(tester, 'Curaciones simples');
+
+      expect(
+        find.text('Motivo: curación\nEstado de la herida:'),
+        findsOneWidget,
+      );
+    });
   });
 
   group('insumos', () {

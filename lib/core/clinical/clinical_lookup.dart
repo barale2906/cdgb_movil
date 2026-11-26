@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
+import 'package:sga_bojanini/core/clinical/clinical_template.dart';
 import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
 import 'package:sga_bojanini/core/clinical/procedure_match.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
@@ -44,6 +45,15 @@ class ClinicalLookupRepository {
         );
         return ApiResponse.list(response, ProcedureMatch.fromJson);
       });
+
+  /// Plantilla de evolución del servicio; `null` si no tiene.
+  Future<ClinicalTemplate?> template(int medicalServiceId) => apiCall(() async {
+    final response = await _dio.get<dynamic>(
+      '/clinical-templates/for-service/$medicalServiceId',
+    );
+    final data = ApiResponse.objectOrNull(response);
+    return data == null ? null : ClinicalTemplate.fromJson(data);
+  });
 }
 
 final clinicalLookupRepositoryProvider = Provider<ClinicalLookupRepository>(
@@ -67,4 +77,11 @@ procedureSearchProvider = FutureProvider.autoDispose
           term.length < ClinicalLookupRepository.minProcedureSearchLength
           ? const []
           : ref.watch(clinicalLookupRepositoryProvider).searchProcedures(term),
+    );
+
+/// Plantilla de evolución de un servicio (`null` si no tiene).
+final FutureProviderFamily<ClinicalTemplate?, int> clinicalTemplateProvider =
+    FutureProvider.autoDispose.family<ClinicalTemplate?, int>(
+      (ref, serviceId) =>
+          ref.watch(clinicalLookupRepositoryProvider).template(serviceId),
     );

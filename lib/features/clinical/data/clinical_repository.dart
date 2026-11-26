@@ -6,6 +6,7 @@ import 'package:sga_bojanini/core/clinical/procedure_record.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
+import 'package:sga_bojanini/features/clinical/data/evolution.dart';
 import 'package:sga_bojanini/features/clinical/data/sale_request.dart';
 
 /// Filtros de la lista de registros. El servidor no pagina esta lista: se
@@ -79,6 +80,44 @@ class ClinicalRepository {
           data: request.toJson(),
         );
         return ProcedureRecord.fromJson(ApiResponse.object(response));
+      });
+
+  Future<List<Evolution>> evolutions(int recordId) => apiCall(() async {
+    final response = await _dio.get<dynamic>(
+      '/patient-procedure-records/$recordId/evolutions',
+    );
+    return ApiResponse.list(response, Evolution.fromJson);
+  });
+
+  /// Registra una evolución (escritura: nunca se reintenta sola). [html] es
+  /// el contenido ya convertido a párrafos.
+  Future<Evolution> createEvolution(int recordId, String html) =>
+      apiCall(() async {
+        final response = await _dio.post<dynamic>(
+          '/patient-procedure-records/$recordId/evolutions',
+          data: {'content': html},
+        );
+        return Evolution.fromJson(ApiResponse.object(response));
+      });
+
+  Future<Evolution> updateEvolution(
+    int recordId,
+    int evolutionId,
+    String html,
+  ) => apiCall(() async {
+    final response = await _dio.put<dynamic>(
+      '/patient-procedure-records/$recordId/evolutions/$evolutionId',
+      data: {'content': html},
+    );
+    return Evolution.fromJson(ApiResponse.object(response));
+  });
+
+  Future<List<ProcedureMedication>> medications(int recordId) =>
+      apiCall(() async {
+        final response = await _dio.get<dynamic>(
+          '/patient-procedure-records/$recordId/medications',
+        );
+        return ApiResponse.list(response, ProcedureMedication.fromJson);
       });
 
   Future<PatientHistory> history(String patientExternalId) => apiCall(() async {

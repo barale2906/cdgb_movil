@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "message": "Plantilla aplicable",
+  "data": {
+    "id": 4,
+    "medical_service_id": 3,
+    "medical_service_name": "Curaciones simples",
+    "title": "Curación simple",
+    "content": "<p><strong>Motivo:</strong> curación</p><p>Estado de la herida:</p>",
+    "is_active": true
+  }
+}

@@ -2926,4 +2926,78 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get serviceOrderMaybePartial =>
       'Si el servidor falló al guardar, la orden pudo quedar a medias (con algunos procedimientos o insumos ya registrados). Revise los registros del paciente antes de repetirla.';
+
+  @override
+  String get clinicalEvolutionsTitle => 'Evoluciones clínicas';
+
+  @override
+  String get clinicalEvolutionsEmpty => 'Este registro no tiene evoluciones.';
+
+  @override
+  String get clinicalEvolutionAdd => 'Agregar evolución';
+
+  @override
+  String get clinicalEvolutionEdit => 'Editar evolución';
+
+  @override
+  String get clinicalEvolutionNewTitle => 'Nueva evolución';
+
+  @override
+  String get clinicalEvolutionEditTitle => 'Editar evolución';
+
+  @override
+  String get clinicalEvolutionField => 'Evolución clínica';
+
+  @override
+  String get clinicalEvolutionSave => 'Guardar evolución';
+
+  @override
+  String get clinicalEvolutionSaved => 'Evolución guardada.';
+
+  @override
+  String get clinicalEvolutionTemplateLoaded =>
+      'Se cargó la plantilla del servicio. Ajústela antes de guardar.';
+
+  @override
+  String clinicalEvolutionBy(String author, String date) {
+    return '$author · $date';
+  }
+
+  @override
+  String get clinicalEvolutionTimeout =>
+      'No se recibió respuesta del servidor. Revise las evoluciones del registro antes de repetirlo: es posible que sí se haya guardado.';
+
+  @override
+  String get clinicalEvolutionFormatNote =>
+      'La app guarda el texto sin formato (negritas ni listas).';
+
+  @override
+  String get clinicalMedicationsTitle => 'Medicamentos aplicados';
+
+  @override
+  String clinicalMedicationDetail(String lot, String date) {
+    return 'Lote $lot · vence $date';
+  }
+
+  @override
+  String get orderEvolutionLabel => 'Evolución clínica';
+
+  @override
+  String orderEvolutionHelp(int max) {
+    return 'Obligatoria. Máximo $max caracteres en total.';
+  }
+
+  @override
+  String get orderEvolutionRequired =>
+      'Escriba la evolución clínica del procedimiento.';
+
+  @override
+  String orderEvolutionTooLong(int max) {
+    return 'La evolución es demasiado larga (máximo $max caracteres).';
+  }
+
+  @override
+  String orderEvolutionCounter(int used, int max) {
+    return '$used de $max';
+  }
 }

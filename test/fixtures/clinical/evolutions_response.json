@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "message": "Evoluciones",
+  "data": [
+    {
+      "id": 7,
+      "patient_procedure_record_id": 22,
+      "content": "<p>Paciente <strong>estable</strong>.</p><p>Se indica control en 8 días.</p>",
+      "user_id": 1,
+      "user_name": "Usuario Prueba",
+      "recorded_at": "2026-11-23 10:30:00"
+    },
+    {
+      "id": 8,
+      "patient_procedure_record_id": 22,
+      "content": "Nota en texto simple",
+      "user_id": 2,
+      "user_name": "Otra Persona",
+      "recorded_at": "2026-11-23 15:05:00"
+    }
+  ]
+}

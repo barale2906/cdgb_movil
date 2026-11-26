@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart' show DioExceptionType;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/catalog/generic_product.dart';
 import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
 import 'package:sga_bojanini/core/clinical/procedure_match.dart';
@@ -59,7 +60,9 @@ void main() {
     order
       ..setPatient(_patient)
       ..addLine(_procedures().first);
-    return state().lines.single.key;
+    final key = state().lines.single.key;
+    order.setEvolution(key, 'Paciente estable.');
+    return key;
   }
 
   group('armado', () {
@@ -75,8 +78,11 @@ void main() {
       order
         ..setPatient(_patient)
         ..addLine(_procedures().last);
+      final key = state().lines.single.key;
+      order.setEvolution(key, 'Nota.');
       expect(state().canSubmit(_today), isFalse);
-      order.setUnitPrice(state().lines.single.key, 150000);
+
+      order.setUnitPrice(key, 150000);
       expect(state().canSubmit(_today), isTrue);
     });
 
@@ -116,6 +122,157 @@ void main() {
         ..setDiscountKind(key, null);
       expect(state().lines.single.discountValue, isNull);
       expect(state().totalDiscount, 0);
+    });
+  });
+
+  group('evolución clínica del procedimiento', () {
+    test('es obligatoria: sin texto o solo espacios no se envía', () {
+      final key = fill();
+      order.setEvolution(key, '   \n ');
+      expect(state().lines.single.isEvolutionValid, isFalse);
+      expect(state().canSubmit(_today), isFalse);
+
+      order.setEvolution(key, 'Ya hay texto');
+      expect(state().canSubmit(_today), isTrue);
+    });
+
+    test('se envía como párrafos HTML', () {
+      final key = fill();
+      order.setEvolution(key, 'Línea 1\nLínea 2');
+      expect(
+        state().lines.single.evolutionHtml,
+        '<p>Línea 1</p><p>Línea 2</p>',
+      );
+    });
+
+    test('el HTML resultante no puede pasar de $maxEvolutionLength', () {
+      final key = fill();
+      // 'x' * 493 + 7 caracteres de <p></p> = 500: exacto.
+      order.setEvolution(key, 'x' * (maxEvolutionLength - 7));
+      expect(state().lines.single.isEvolutionValid, isTrue);
+      order.setEvolution(key, 'x' * (maxEvolutionLength - 6));
+      expect(state().lines.single.isEvolutionValid, isFalse);
+      expect(state().canSubmit(_today), isFalse);
+    });
+  });
+
+  group('plantilla de evolución', () {
+    Future<ProviderContainer> withTemplatePermission({
+      required bool allowed,
+    }) async {
+      final overrides = await baseOverrides(
+        adapter: adapter,
+        store: InMemoryTokenStore(),
+        clock: TestClock(DateTime.utc(2026, 11, 26, 7)),
+      );
+      final scoped = ProviderContainer(
+        retry: noAutoRetry,
+        overrides: [
+          ...overrides,
+          permissionServiceProvider.overrideWithValue(
+            PermissionService(allowed ? ['plantillas_clinicas.ver'] : []),
+          ),
+        ],
+      );
+      addTearDown(scoped.dispose);
+      scoped.listen(newOrderProvider, (_, _) {});
+      return scoped;
+    }
+
+    test(
+      'con permiso, al agregar el procedimiento se precarga como texto',
+      () async {
+        adapter.on(
+          'GET',
+          '/clinical-templates/for-service/3',
+          body: fixture('clinical/template_response.json'),
+        );
+        final scoped = await withTemplatePermission(allowed: true);
+
+        scoped.read(newOrderProvider.notifier).addLine(_procedures().first);
+        await pumpEventQueue();
+        await pumpEventQueue();
+
+        expect(
+          scoped.read(newOrderProvider).lines.single.evolution,
+          'Motivo: curación\nEstado de la herida:',
+        );
+      },
+    );
+
+    test('sin permiso no se consulta la plantilla', () async {
+      final scoped = await withTemplatePermission(allowed: false);
+
+      scoped.read(newOrderProvider.notifier).addLine(_procedures().first);
+      await pumpEventQueue();
+
+      expect(
+        adapter.callsTo('GET', '/clinical-templates/for-service/3'),
+        isEmpty,
+      );
+      expect(scoped.read(newOrderProvider).lines.single.evolution, isEmpty);
+    });
+
+    test('sin plantilla (data nulo) la evolución queda vacía', () async {
+      adapter.on(
+        'GET',
+        '/clinical-templates/for-service/3',
+        body: fixture('clinical/template_none_response.json'),
+      );
+      final scoped = await withTemplatePermission(allowed: true);
+
+      scoped.read(newOrderProvider.notifier).addLine(_procedures().first);
+      await pumpEventQueue();
+
+      expect(scoped.read(newOrderProvider).lines.single.evolution, isEmpty);
+    });
+
+    test(
+      'si la plantilla falla no estorba: la evolución se escribe a mano',
+      () async {
+        adapter.on(
+          'GET',
+          '/clinical-templates/for-service/3',
+          status: 500,
+          body: errorBody('Error interno'),
+        );
+        final scoped = await withTemplatePermission(allowed: true);
+        final notifier = scoped.read(newOrderProvider.notifier)
+          ..addLine(_procedures().first);
+        await pumpEventQueue();
+        await pumpEventQueue();
+
+        notifier.setEvolution(
+          scoped.read(newOrderProvider).lines.single.key,
+          'Escrita a mano',
+        );
+        expect(
+          scoped.read(newOrderProvider).lines.single.evolution,
+          'Escrita a mano',
+        );
+      },
+    );
+
+    test('no pisa lo que el usuario ya escribió', () async {
+      adapter.on(
+        'GET',
+        '/clinical-templates/for-service/3',
+        body: fixture('clinical/template_response.json'),
+      );
+      final scoped = await withTemplatePermission(allowed: true);
+      final notifier = scoped.read(newOrderProvider.notifier)
+        ..addLine(_procedures().first)
+        ..setEvolution(
+          scoped.read(newOrderProvider).lines.single.key,
+          'Ya escribí algo',
+        );
+      expect(notifier, isNotNull);
+      await pumpEventQueue();
+
+      expect(
+        scoped.read(newOrderProvider).lines.single.evolution,
+        'Ya escribí algo',
+      );
     });
   });
 
@@ -211,6 +368,7 @@ void main() {
             'unit_price': 50000.0,
             'discount_type': 'percentage',
             'discount_value': 10.0,
+            'notes': '<p>Paciente estable.</p>',
             'supplies': [
               {'warehouse_id': 2, 'generic_product_id': 9, 'quantity': 1.5},
             ],

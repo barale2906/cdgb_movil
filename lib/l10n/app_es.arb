@@ -1354,5 +1354,69 @@
   },
   "serviceOrderUnconfirmed": "No se recibió respuesta del servidor. La orden pudo haberse creado: revise los registros del paciente antes de repetirla.",
   "serviceOrderNotCreated": "Ya revisé: no se creó, enviar de nuevo",
-  "serviceOrderMaybePartial": "Si el servidor falló al guardar, la orden pudo quedar a medias (con algunos procedimientos o insumos ya registrados). Revise los registros del paciente antes de repetirla."
+  "serviceOrderMaybePartial": "Si el servidor falló al guardar, la orden pudo quedar a medias (con algunos procedimientos o insumos ya registrados). Revise los registros del paciente antes de repetirla.",
+  "clinicalEvolutionsTitle": "Evoluciones clínicas",
+  "clinicalEvolutionsEmpty": "Este registro no tiene evoluciones.",
+  "clinicalEvolutionAdd": "Agregar evolución",
+  "clinicalEvolutionEdit": "Editar evolución",
+  "clinicalEvolutionNewTitle": "Nueva evolución",
+  "clinicalEvolutionEditTitle": "Editar evolución",
+  "clinicalEvolutionField": "Evolución clínica",
+  "clinicalEvolutionSave": "Guardar evolución",
+  "clinicalEvolutionSaved": "Evolución guardada.",
+  "clinicalEvolutionTemplateLoaded": "Se cargó la plantilla del servicio. Ajústela antes de guardar.",
+  "clinicalEvolutionBy": "{author} · {date}",
+  "@clinicalEvolutionBy": {
+    "placeholders": {
+      "author": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "clinicalEvolutionTimeout": "No se recibió respuesta del servidor. Revise las evoluciones del registro antes de repetirlo: es posible que sí se haya guardado.",
+  "clinicalEvolutionFormatNote": "La app guarda el texto sin formato (negritas ni listas).",
+  "clinicalMedicationsTitle": "Medicamentos aplicados",
+  "clinicalMedicationDetail": "Lote {lot} · vence {date}",
+  "@clinicalMedicationDetail": {
+    "placeholders": {
+      "lot": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "orderEvolutionLabel": "Evolución clínica",
+  "orderEvolutionHelp": "Obligatoria. Máximo {max} caracteres en total.",
+  "@orderEvolutionHelp": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "orderEvolutionRequired": "Escriba la evolución clínica del procedimiento.",
+  "orderEvolutionTooLong": "La evolución es demasiado larga (máximo {max} caracteres).",
+  "@orderEvolutionTooLong": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "orderEvolutionCounter": "{used} de {max}",
+  "@orderEvolutionCounter": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  }
 }
