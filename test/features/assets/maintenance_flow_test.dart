@@ -321,6 +321,140 @@ void main() {
         matches(RegExp(r'^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d$')),
       );
       expect(find.text('Ejecución registrada.'), findsOneWidget);
+      expect(data.containsKey('received_by'), isFalse, reason: 'sin firmas');
+      expect(data.containsKey('delivered_by'), isFalse);
+    });
+
+    Future<void> fillRequired(WidgetTester tester) async {
+      await pickOption(tester, 'Técnico', 'Usuario Prueba');
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'Actividades realizadas'),
+        'Cambio de batería',
+      );
+      await pickOption(tester, 'Resultado', 'Operativo');
+    }
+
+    testWidgets(
+      'con firmas opcionales: firma registrada y PIN de quien recibe',
+      (
+        tester,
+      ) async {
+        await openForm(tester);
+        harness.adapter
+          ..on(
+            'GET',
+            '/auth/me/signature',
+            body: fixture('inventory/signature_response.json'),
+          )
+          ..on(
+            'POST',
+            '/assets/maintenances/32/complete',
+            body: fixture('assets/maintenance_33_response.json'),
+          );
+        await fillRequired(tester);
+
+        await scrollTo(tester, find.text('Registrar firmas (opcional)'));
+        await tester.tap(find.text('Registrar firmas (opcional)'));
+        await AppHarness.settle(tester);
+        await scrollTo(
+          tester,
+          find.widgetWithText(TextFormField, 'PIN de 3 dígitos'),
+        );
+        await tester.enterText(
+          find.widgetWithText(TextFormField, 'PIN de 3 dígitos'),
+          '123',
+        );
+        await scrollTo(
+          tester,
+          find.widgetWithText(FilledButton, 'Registrar ejecución'),
+        );
+        await submit(tester);
+
+        final data =
+            harness.adapter
+                    .callsTo('POST', '/assets/maintenances/32/complete')
+                    .single
+                    .data
+                as Map<String, dynamic>;
+        expect(data['received_by'], {'pin': '123'});
+        expect(
+          data.containsKey('delivered_by'),
+          isFalse,
+          reason: 'usa la firma registrada de quien tiene la sesión',
+        );
+        expect(data['activities_performed'], 'Cambio de batería');
+      },
+    );
+
+    testWidgets('con firmas activadas, un PIN incompleto no se envía', (
+      tester,
+    ) async {
+      await openForm(tester);
+      harness.adapter.on(
+        'GET',
+        '/auth/me/signature',
+        body: fixture('inventory/signature_response.json'),
+      );
+      await fillRequired(tester);
+
+      await scrollTo(tester, find.text('Registrar firmas (opcional)'));
+      await tester.tap(find.text('Registrar firmas (opcional)'));
+      await AppHarness.settle(tester);
+      await scrollTo(
+        tester,
+        find.widgetWithText(FilledButton, 'Registrar ejecución'),
+      );
+      await submit(tester);
+
+      expect(find.text('Ingrese los 3 dígitos del PIN.'), findsOneWidget);
+      expect(
+        harness.adapter.callsTo('POST', '/assets/maintenances/32/complete'),
+        isEmpty,
+      );
+    });
+
+    testWidgets('un PIN incorrecto del servidor se muestra junto al campo', (
+      tester,
+    ) async {
+      await openForm(tester);
+      harness.adapter
+        ..on(
+          'GET',
+          '/auth/me/signature',
+          body: fixture('inventory/signature_response.json'),
+        )
+        ..on(
+          'POST',
+          '/assets/maintenances/32/complete',
+          status: 422,
+          body: errorBody(
+            'Datos inválidos',
+            extra: {
+              'errors': {
+                'received_by.pin': ['El PIN de firma es incorrecto.'],
+              },
+            },
+          ),
+        );
+      await fillRequired(tester);
+      await scrollTo(tester, find.text('Registrar firmas (opcional)'));
+      await tester.tap(find.text('Registrar firmas (opcional)'));
+      await AppHarness.settle(tester);
+      await scrollTo(
+        tester,
+        find.widgetWithText(TextFormField, 'PIN de 3 dígitos'),
+      );
+      await tester.enterText(
+        find.widgetWithText(TextFormField, 'PIN de 3 dígitos'),
+        '999',
+      );
+      await scrollTo(
+        tester,
+        find.widgetWithText(FilledButton, 'Registrar ejecución'),
+      );
+      await submit(tester);
+
+      expect(find.text('El PIN de firma es incorrecto.'), findsOneWidget);
     });
 
     testWidgets('externo: pide proveedor y nombre del técnico', (tester) async {

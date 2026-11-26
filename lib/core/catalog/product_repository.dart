@@ -47,6 +47,20 @@ class ProductRepository {
     return GenericProduct.fromJson(ApiResponse.object(response));
   });
 
+  /// Unidades de kit que se pueden armar con el stock de componentes del
+  /// almacén (`stock.ver`).
+  Future<double> kitAvailability({
+    required int genericProductId,
+    required int warehouseId,
+  }) => apiCall(() async {
+    final response = await _dio.get<dynamic>(
+      '/generic-products/$genericProductId/kit-availability',
+      queryParameters: {'warehouse_id': warehouseId},
+    );
+    final value = ApiResponse.object(response)['available_kits'];
+    return value is num ? value.toDouble() : 0;
+  });
+
   Future<GenericProduct> product(int id) => apiCall(() async {
     final response = await _dio.get<dynamic>('/generic-products/$id');
     return GenericProduct.fromJson(ApiResponse.object(response));

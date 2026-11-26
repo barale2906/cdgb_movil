@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
+import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/catalog/generic_product.dart';
 import 'package:sga_bojanini/core/catalog/product_repository.dart';
+import 'package:sga_bojanini/core/warehouse/active_warehouse.dart';
 
 /// Productos activos filtrados por texto (nombre, código de barras o
 /// referencia de marca). Texto vacío = todos.
@@ -10,6 +12,23 @@ final FutureProviderFamily<List<GenericProduct>, String> productSearchProvider =
       (ref, search) =>
           ref.watch(productRepositoryProvider).products(search: search),
     );
+
+/// Unidades de un kit que se pueden armar con el stock del almacén activo;
+/// `null` si el usuario no tiene `stock.ver` o aún no hay almacén activo.
+final FutureProviderFamily<double?, int> kitAvailabilityProvider =
+    FutureProvider.autoDispose.family<double?, int>((ref, productId) {
+      final canSee = ref.watch(
+        permissionServiceProvider.select((p) => p.can('stock.ver')),
+      );
+      final warehouseId = ref.watch(activeWarehouseProvider)?.id;
+      if (!canSee || warehouseId == null) return null;
+      return ref
+          .watch(productRepositoryProvider)
+          .kitAvailability(
+            genericProductId: productId,
+            warehouseId: warehouseId,
+          );
+    });
 
 final FutureProviderFamily<GenericProduct, int> productDetailProvider =
     FutureProvider.autoDispose.family<GenericProduct, int>(

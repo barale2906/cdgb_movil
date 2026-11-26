@@ -16,6 +16,7 @@ class AuditRepository {
   /// `AAAA-MM-DD`.
   Future<PagedList<AuditLog>> list({
     String? action,
+    String? auditableType,
     String? dateFrom,
     String? dateTo,
     int page = 1,
@@ -25,6 +26,7 @@ class AuditRepository {
       '/audit-logs',
       queryParameters: {
         'action': ?action,
+        'auditable_type': ?auditableType,
         'date_from': ?dateFrom,
         'date_to': ?dateTo,
         'page': page,

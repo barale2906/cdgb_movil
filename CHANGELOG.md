@@ -2,6 +2,22 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [1.1.0+12] - 2026-11-26
+### Añadido
+- Sin conexión: almacenes, productos, proveedores, centros de costo y servicios se guardan al consultarlos y, sin red, se muestra la última copia. Se borra al cerrar sesión (teléfonos compartidos). Las búsquedas con texto y todas las escrituras siguen siendo en línea.
+- Registros clínicos: eliminar un registro de procedimiento (permiso eliminar, con confirmación y aviso si pertenece a una orden).
+- Monitoreo: crear reglas de alerta de un sensor (condición, valor límite, lecturas seguidas y canales), activarlas o desactivarlas y eliminarlas, cada acción con su permiso.
+- Activos: firmas opcionales (entrega con la firma registrada y recibe con PIN o firma en pantalla) al registrar la ejecución de un mantenimiento.
+- Catálogo: la ficha de un kit muestra cuántos se pueden armar con el stock del almacén activo (con permiso de stock).
+- Auditoría: filtro por tipo de elemento (las opciones salen de los registros del periodo).
+
+### Cambiado
+- Una sola función para las fechas `AAAA-MM-DD` (antes había cinco copias) y un solo lugar para los permisos de las acciones rápidas de Inicio.
+- Pruebas de interfaz (*goldens*) de `PatientSelector` (también con el texto al 200 %), `BillingChip` e `InlineError`.
+
+### Pendiente
+- Borradores de compra y gasto; crear/editar activos y programar mantenimientos; avisos push (Firebase); aviso de actualización; pruebas en teléfono real. Lista completa en `docs/plan/08-pendientes.md`.
+
 ## [1.0.0+11] - 2026-11-26
 Primera versión completa: cierra las 8 fases del plan (0 a 7).
 

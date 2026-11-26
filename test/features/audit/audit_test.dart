@@ -176,6 +176,7 @@ void main() {
 
       final page = await repository.list(
         action: 'updated',
+        auditableType: r'App\Modules\Catalog\GenericProductModel',
         dateFrom: '2026-11-19',
         dateTo: '2026-11-26',
       );
@@ -185,6 +186,7 @@ void main() {
         adapter.callsTo('GET', '/audit-logs').single.queryParameters,
         {
           'action': 'updated',
+          'auditable_type': r'App\Modules\Catalog\GenericProductModel',
           'date_from': '2026-11-19',
           'date_to': '2026-11-26',
           'page': 1,
@@ -285,6 +287,37 @@ void main() {
       final last = harness.adapter.callsTo('GET', '/audit-logs').last;
       expect(last.queryParameters['action'], 'deleted');
       expect(last.queryParameters['date_from'], '2026-10-26');
+    });
+
+    testWidgets('el filtro de elemento sale del resumen y se envía', (
+      tester,
+    ) async {
+      harness.adapter.on(
+        'GET',
+        '/audit-logs/summary',
+        body: fixture('audit/summary_types_response.json'),
+      );
+      await openAudit(tester);
+
+      await tester.tap(find.text('Elemento'));
+      await AppHarness.settle(tester);
+      expect(find.text('Location'), findsWidgets);
+      await tester.tap(find.text('Generic Product').last);
+      await AppHarness.settle(tester);
+
+      final last = harness.adapter.callsTo('GET', '/audit-logs').last;
+      expect(
+        last.queryParameters['auditable_type'],
+        r'App\Modules\Catalog\Infrastructure\Persistence\Models\GenericProductModel',
+      );
+    });
+
+    testWidgets('sin tipos en el resumen no hay filtro de elemento', (
+      tester,
+    ) async {
+      await openAudit(tester);
+
+      expect(find.text('Elemento'), findsNothing);
     });
 
     testWidgets('el detalle muestra cambios y oculta valores sensibles', (

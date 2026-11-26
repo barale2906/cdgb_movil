@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/choice_filter_bar.dart';
+import 'package:sga_bojanini/core/widgets/form_fields.dart';
 import 'package:sga_bojanini/core/widgets/paged_list_view.dart';
 import 'package:sga_bojanini/features/audit/application/audit_providers.dart';
 import 'package:sga_bojanini/features/audit/data/audit_log.dart';
@@ -39,7 +40,11 @@ class _AuditPageState extends ConsumerState<AuditPage> {
           },
           selected: _filter.period,
           onSelected: (period) => setState(
-            () => _filter = AuditFilter(action: _filter.action, period: period),
+            () => _filter = AuditFilter(
+              action: _filter.action,
+              auditableType: _filter.auditableType,
+              period: period,
+            ),
           ),
         ),
         const SizedBox(height: AppSpacing.sm),
@@ -51,7 +56,22 @@ class _AuditPageState extends ConsumerState<AuditPage> {
           },
           selected: _filter.action,
           onSelected: (action) => setState(
-            () => _filter = AuditFilter(action: action, period: _filter.period),
+            () => _filter = AuditFilter(
+              action: action,
+              auditableType: _filter.auditableType,
+              period: _filter.period,
+            ),
+          ),
+        ),
+        _TypeFilter(
+          period: _filter.period,
+          selected: _filter.auditableType,
+          onChanged: (type) => setState(
+            () => _filter = AuditFilter(
+              action: _filter.action,
+              auditableType: type,
+              period: _filter.period,
+            ),
           ),
         ),
         _SummaryLine(period: _filter.period),
@@ -70,6 +90,44 @@ class _AuditPageState extends ConsumerState<AuditPage> {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// Filtro por tipo de elemento: las opciones salen del resumen del periodo
+/// (los tipos que sí tienen registros). Sin resumen, no se muestra.
+class _TypeFilter extends ConsumerWidget {
+  const _TypeFilter({
+    required this.period,
+    required this.selected,
+    required this.onChanged,
+  });
+
+  final AuditPeriod period;
+  final String? selected;
+  final ValueChanged<String?> onChanged;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final types = ref.watch(auditSummaryProvider(period)).value?.byType.keys;
+    if (types == null || types.isEmpty) return const SizedBox.shrink();
+    final l10n = AppLocalizations.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.md,
+        AppSpacing.sm,
+        AppSpacing.md,
+        0,
+      ),
+      child: OptionDropdown<String>(
+        label: l10n.auditEntityFilter,
+        nullLabel: l10n.auditAllEntities,
+        options: {
+          for (final type in types) type: auditEntityName(type, l10n),
+        },
+        value: selected,
+        onChanged: onChanged,
+      ),
     );
   }
 }

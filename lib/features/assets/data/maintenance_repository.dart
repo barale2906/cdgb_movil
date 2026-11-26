@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
+import 'package:sga_bojanini/core/signing/signoff.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/features/assets/data/asset_maintenance.dart';
 
@@ -48,6 +49,7 @@ class CompleteMaintenanceRequest {
     this.recommendations,
     this.parts = const [],
     this.cost,
+    this.signoff,
   });
 
   /// Hora de Colombia en la que se hizo (no puede ser futura).
@@ -62,6 +64,9 @@ class CompleteMaintenanceRequest {
   final String? recommendations;
   final List<ReplacedPart> parts;
   final double? cost;
+
+  /// Firmas opcionales de quien entrega y quien recibe el equipo.
+  final ConfirmRequest? signoff;
 
   Map<String, Object> toJson() => {
     'performed_at': ColombiaTime.format(performedAt),
@@ -85,6 +90,7 @@ class CompleteMaintenanceRequest {
           },
       ],
     'cost': ?cost,
+    ...?signoff?.toJson().cast<String, Object>(),
   };
 }
 

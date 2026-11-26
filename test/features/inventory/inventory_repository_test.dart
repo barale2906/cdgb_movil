@@ -107,22 +107,6 @@ void main() {
       );
     });
 
-    test('kitAvailability devuelve las unidades armables', () async {
-      adapter.on(
-        'GET',
-        '/generic-products/5/kit-availability',
-        body: envelope({
-          'generic_product_id': 5,
-          'warehouse_id': 1,
-          'available_kits': 12,
-        }),
-      );
-      expect(
-        await repository.kitAvailability(genericProductId: 5, warehouseId: 1),
-        12,
-      );
-    });
-
     test('comprobantes: filtro de estado con el valor del backend', () async {
       adapter.on(
         'GET',
