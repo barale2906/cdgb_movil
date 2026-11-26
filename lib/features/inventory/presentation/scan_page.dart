@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sga_bojanini/core/router/redirect.dart';
 import 'package:sga_bojanini/core/widgets/barcode_scanner_view.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
@@ -8,7 +9,7 @@ import 'package:sga_bojanini/l10n/app_localizations.dart';
 class ScanPage extends ConsumerWidget {
   const ScanPage({super.key});
 
-  static const path = '/scan';
+  static const String path = Routes.scan;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

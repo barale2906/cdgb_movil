@@ -507,5 +507,231 @@
         "type": "String"
       }
     }
-  }
+  },
+  "notificationsTitle": "Notificaciones",
+  "notificationsOpen": "Abrir notificaciones",
+  "notificationsUnreadCount": "{count, plural, =0{Sin notificaciones nuevas} =1{1 notificación sin leer} other{{count} notificaciones sin leer}}",
+  "@notificationsUnreadCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notificationsEmpty": "No tiene notificaciones.",
+  "notificationsEmptyUnread": "No tiene notificaciones sin leer.",
+  "notificationsFilterAll": "Todas",
+  "notificationsFilterUnread": "Sin leer",
+  "notificationsMarkAllRead": "Marcar todas como leídas",
+  "notificationsAllRead": "Todas las notificaciones quedaron leídas.",
+  "severityCritical": "Crítica",
+  "severityWarning": "Advertencia",
+  "severityInfo": "Información",
+  "severitySuccess": "Listo",
+  "notificationUnread": "Sin leer",
+  "dashInventory": "Inventario",
+  "dashProducts": "Productos",
+  "dashUnits": "Unidades en stock",
+  "dashStockHealth": "Estado del stock",
+  "dashStockOk": "Suficiente",
+  "dashStockLow": "Bajo reorden",
+  "dashStockCritical": "Crítico",
+  "dashExpiring": "Vencimientos de lotes",
+  "dashExpiringToday": "Hoy",
+  "dashExpiring7": "7 días",
+  "dashExpiring30": "30 días",
+  "dashMovementsToday": "Movimientos hoy",
+  "dashTopConsumed": "Más consumidos (30 días)",
+  "dashPurchasing": "Compras",
+  "dashPendingOrders": "Órdenes por aprobar",
+  "dashApprovedOrders": "Órdenes aprobadas",
+  "dashMonthTotal": "Compras del mes",
+  "dashMonitoring": "Monitoreo",
+  "dashActiveSensors": "Sensores activos",
+  "dashAlertsToday": "Alertas hoy",
+  "dashReadingsToday": "Lecturas hoy",
+  "dashAlerts": "Alertas recientes",
+  "dashNoAlerts": "Sin alertas pendientes.",
+  "dashActivity": "Actividad reciente",
+  "dashNoActivity": "Sin actividad reciente.",
+  "dashQuickActions": "Accesos rápidos",
+  "dashScan": "Escanear",
+  "dashNewMovement": "Nuevo movimiento",
+  "dashBlockError": "No se pudo cargar este bloque.",
+  "auditCreated": "Creó",
+  "auditUpdated": "Modificó",
+  "auditDeleted": "Eliminó",
+  "auditUnknown": "Acción",
+  "monitoringEmpty": "No tiene sensores asignados.",
+  "sensorTypeTemperature": "Temperatura",
+  "sensorTypeHumidity": "Humedad",
+  "sensorLastReading": "Última lectura",
+  "sensorNoReadings": "Sin lecturas aún",
+  "sensorOutOfRange": "Fuera de rango",
+  "sensorInRange": "En rango",
+  "sensorLimits": "Rango permitido: {min}–{max} {unit}",
+  "@sensorLimits": {
+    "placeholders": {
+      "min": {
+        "type": "String"
+      },
+      "max": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "sensorZone": "Zona",
+  "sensorDetailTitle": "Sensor",
+  "calibrationValid": "Calibración vigente",
+  "calibrationExpiring": "Calibración por vencer",
+  "calibrationExpired": "Calibración vencida",
+  "calibrationMissing": "Sin certificado",
+  "calibrationDaysLeft": "{days, plural, =0{Vence hoy} =1{Vence en 1 día} other{Vence en {days} días}}",
+  "@calibrationDaysLeft": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "periodDay": "24 h",
+  "periodWeek": "7 días",
+  "periodMonth": "30 días",
+  "readingsStats": "Resumen del periodo",
+  "statMin": "Mínimo",
+  "statMax": "Máximo",
+  "statAvg": "Promedio",
+  "statCount": "Lecturas",
+  "readingsEmptyPeriod": "No hay lecturas en este periodo.",
+  "trendTitle": "Tendencia",
+  "trendNone": "Sin tendencia significativa en el periodo.",
+  "trendUp": "Tendencia al alza",
+  "trendDown": "Tendencia a la baja",
+  "trendConfidence": "Confianza {level}",
+  "@trendConfidence": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "confidenceHigh": "alta",
+  "confidenceMedium": "media",
+  "confidenceLow": "baja",
+  "readingRegister": "Registrar lectura",
+  "readingValue": "Valor ({unit})",
+  "@readingValue": {
+    "placeholders": {
+      "unit": {
+        "type": "String"
+      }
+    }
+  },
+  "readingWhen": "Fecha y hora de la lectura",
+  "readingSaved": "Lectura registrada.",
+  "readingAlerts": "{count, plural, =1{La lectura generó 1 alerta.} other{La lectura generó {count} alertas.}}",
+  "@readingAlerts": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "calibrationsTitle": "Calibraciones",
+  "calibrationsEmpty": "Sin certificados de calibración.",
+  "calibrationDownload": "Descargar certificado",
+  "calibrationCurrent": "Vigente",
+  "calibrationReplaced": "Reemplazado",
+  "alertRulesTitle": "Reglas de alerta",
+  "alertRulesEmpty": "Sin reglas de alerta.",
+  "alertAbove": "Por encima de {threshold}",
+  "@alertAbove": {
+    "placeholders": {
+      "threshold": {
+        "type": "String"
+      }
+    }
+  },
+  "alertBelow": "Por debajo de {threshold}",
+  "@alertBelow": {
+    "placeholders": {
+      "threshold": {
+        "type": "String"
+      }
+    }
+  },
+  "alertOutOfRange": "Fuera del rango permitido",
+  "alertTrendUp": "Tendencia al alza",
+  "alertTrendDown": "Tendencia a la baja",
+  "alertConsecutive": "{count} lecturas seguidas",
+  "@alertConsecutive": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conditionsReportAction": "Reporte de condiciones (PDF)",
+  "reportsCatalogTitle": "Elija un reporte",
+  "reportsMyExports": "Mis exportaciones",
+  "reportInventory": "Inventario",
+  "reportInventoryHint": "Existencias por almacén.",
+  "reportMovements": "Movimientos",
+  "reportMovementsHint": "Entradas, salidas y demás movimientos.",
+  "reportExpiring": "Por vencer",
+  "reportExpiringHint": "Lotes próximos a vencer.",
+  "reportPurchases": "Compras",
+  "reportPurchasesHint": "Órdenes de compra del periodo.",
+  "reportConsumption": "Consumo",
+  "reportConsumptionHint": "Productos consumidos en el periodo.",
+  "reportConditions": "Condiciones de almacenamiento",
+  "reportConditionsHint": "Temperatura y humedad de un sensor.",
+  "reportAudit": "Auditoría",
+  "reportAuditHint": "Acciones registradas en el sistema.",
+  "reportFormat": "Formato",
+  "formatPdf": "PDF",
+  "formatExcel": "Excel",
+  "formatCsv": "CSV",
+  "reportGenerate": "Generar reporte",
+  "reportDateFrom": "Desde",
+  "reportDateTo": "Hasta",
+  "reportDays": "Días a considerar",
+  "reportSensor": "Sensor",
+  "reportMovementType": "Tipo de movimiento",
+  "reportAnyType": "Todos",
+  "reportPdfNeedsSensor": "Para el PDF de condiciones elija un sensor.",
+  "reportDateRangeInvalid": "La fecha final no puede ser anterior a la inicial.",
+  "reportQueued": "El reporte es grande y se está generando. Puede seguirlo en Mis exportaciones.",
+  "reportReady": "Reporte generado.",
+  "exportsEmpty": "No hay exportaciones.",
+  "exportQueued": "En cola",
+  "exportProcessing": "Procesando",
+  "exportReady": "Listo",
+  "exportFailed": "Falló",
+  "exportExpired": "Vencido",
+  "exportDownload": "Descargar",
+  "exportShare": "Compartir",
+  "exportOpen": "Abrir",
+  "exportCreatedAt": "Creado {date}",
+  "@exportCreatedAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "exportSize": "{size} KB",
+  "@exportSize": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "exportGone": "El reporte venció. Genérelo de nuevo desde Reportes.",
+  "exportFailedDetail": "No se pudo generar el reporte.",
+  "readingsExportAction": "Exportar lecturas (Excel)"
 }

@@ -58,6 +58,11 @@ final class RateLimitedException extends ApiException {
   const RateLimitedException(super.message) : super(statusCode: 429);
 }
 
+/// 410: el recurso existió y ya no está (p. ej. reporte expirado).
+final class GoneException extends ApiException {
+  const GoneException(super.message) : super(statusCode: 410);
+}
+
 /// 5xx o respuesta con formato inesperado.
 final class ServerException extends ApiException {
   const ServerException(super.message, {super.statusCode});

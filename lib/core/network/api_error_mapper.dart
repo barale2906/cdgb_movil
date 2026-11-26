@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
@@ -31,8 +33,7 @@ abstract final class ApiErrorMapper {
 
   static ApiException _fromResponse(Response<dynamic>? response) {
     final status = response?.statusCode ?? 0;
-    final body = response?.data;
-    final json = body is Json ? body : const <String, dynamic>{};
+    final json = _decodeBody(response?.data);
     final message = json['message'] as String? ?? '';
 
     return switch (status) {
@@ -48,8 +49,24 @@ abstract final class ApiErrorMapper {
       ),
       422 => ValidationException(message, errors: _parseErrors(json['errors'])),
       429 => RateLimitedException(message),
+      410 => GoneException(message),
       _ => ServerException(message, statusCode: status),
     };
+  }
+
+  /// Cuerpo del error como JSON. Con `ResponseType.bytes` (descargas) el
+  /// cuerpo de un error llega como bytes: se intenta leerlo como JSON.
+  static Json _decodeBody(Object? body) {
+    if (body is Json) return body;
+    if (body is List<int>) {
+      try {
+        final decoded = jsonDecode(utf8.decode(body));
+        if (decoded is Json) return decoded;
+      } on FormatException {
+        // No era JSON: se trata como un error sin detalle.
+      }
+    }
+    return const <String, dynamic>{};
   }
 
   static Map<String, List<String>> _parseErrors(Object? raw) {

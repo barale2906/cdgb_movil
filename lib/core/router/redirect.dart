@@ -10,6 +10,7 @@ abstract final class Routes {
   static const changePassword = '/profile/password';
   static const about = '/about';
   static const home = '/home';
+  static const scan = '/scan';
 }
 
 /// Guarda de rutas (sin I/O, para poder probarla). Devuelve la ruta a la que

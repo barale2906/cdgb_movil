@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sga_bojanini/core/utils/file_sharer.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
 import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/pdf_viewer.dart';
@@ -54,7 +55,7 @@ class DocumentPdfPage extends ConsumerWidget {
   ) async {
     final l10n = AppLocalizations.of(context);
     try {
-      await ref.read(pdfSharerProvider)(
+      await ref.read(fileSharerProvider)(
         bytes is Uint8List ? bytes : Uint8List.fromList(bytes),
         'comprobante-$documentId.pdf',
       );

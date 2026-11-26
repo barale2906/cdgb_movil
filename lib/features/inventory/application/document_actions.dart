@@ -1,15 +1,12 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
-import 'package:path_provider/path_provider.dart';
 import 'package:sga_bojanini/core/utils/submission_notifier.dart';
 import 'package:sga_bojanini/features/inventory/application/inventory_providers.dart';
 import 'package:sga_bojanini/features/inventory/data/inventory_repository.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_requests.dart';
-import 'package:share_plus/share_plus.dart';
 
 /// Confirma un comprobante con firma/PIN. Es una escritura: nunca se
 /// reintenta sola; tras un timeout hay que consultar el estado primero.
@@ -86,20 +83,3 @@ signatureImageProvider = FutureProvider.autoDispose
           .watch(inventoryRepositoryProvider)
           .signatureImage(key.documentId, key.role),
     );
-
-/// Comparte el PDF con otras apps. Se sustituye en pruebas.
-typedef PdfSharer = Future<void> Function(Uint8List bytes, String fileName);
-
-final Provider<PdfSharer> pdfSharerProvider = Provider<PdfSharer>(
-  (ref) => (bytes, fileName) async {
-    final dir = await getTemporaryDirectory();
-    final file = File('${dir.path}/$fileName');
-    await file.writeAsBytes(bytes, flush: true);
-    try {
-      await SharePlus.instance.share(ShareParams(files: [XFile(file.path)]));
-    } finally {
-      // El comprobante puede tener datos sensibles: no queda copia en disco.
-      if (file.existsSync()) await file.delete();
-    }
-  },
-);
