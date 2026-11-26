@@ -5,7 +5,9 @@ import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
 import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
+import 'package:sga_bojanini/features/clinical/data/procedure_match.dart';
 import 'package:sga_bojanini/features/clinical/data/procedure_record.dart';
+import 'package:sga_bojanini/features/clinical/data/sale_request.dart';
 
 /// Filtros de la lista de registros. El servidor no pagina esta lista: se
 /// acota siempre por fechas para no traer el historial completo.
@@ -49,6 +51,9 @@ class ClinicalRepository {
   /// Largo mínimo del término de búsqueda que acepta el servidor.
   static const minSearchLength = 3;
 
+  /// Largo mínimo del texto al buscar procedimientos.
+  static const minProcedureSearchLength = 2;
+
   final Dio _dio;
 
   /// Pacientes por documento (solo dígitos) o por nombre. El servidor
@@ -87,6 +92,26 @@ class ClinicalRepository {
     final response = await _dio.get<dynamic>('/patient-procedure-records/$id');
     return ProcedureRecord.fromJson(ApiResponse.object(response));
   });
+
+  /// Procedimientos por nombre o código, con su tarifa vigente.
+  Future<List<ProcedureMatch>> searchProcedures(String query) =>
+      apiCall(() async {
+        final response = await _dio.get<dynamic>(
+          '/medical-services/search',
+          queryParameters: {'q': query},
+        );
+        return ApiResponse.list(response, ProcedureMatch.fromJson);
+      });
+
+  /// Registra una venta (escritura: nunca se reintenta sola).
+  Future<ProcedureRecord> createRecord(SaleRecordRequest request) =>
+      apiCall(() async {
+        final response = await _dio.post<dynamic>(
+          '/patient-procedure-records',
+          data: request.toJson(),
+        );
+        return ProcedureRecord.fromJson(ApiResponse.object(response));
+      });
 
   Future<PatientHistory> history(String patientExternalId) => apiCall(() async {
     final response = await _dio.get<dynamic>(

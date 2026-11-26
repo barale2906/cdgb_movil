@@ -27,6 +27,12 @@ const _movementPermissions = [
   'movimientos.baja',
 ];
 
+/// Registrar una venta exige crear el registro y buscar el servicio.
+const _salePermissions = [
+  'registros_procedimientos.crear',
+  'servicios_medicos.ver',
+];
+
 /// Inicio: saludo, accesos rápidos, tablero (cada bloque solo con el permiso
 /// de su módulo) y accesos a los módulos del usuario.
 class HomePage extends ConsumerWidget {
@@ -43,6 +49,7 @@ class HomePage extends ConsumerWidget {
         permissions.can('stock.ver') &&
         permissions.canAny(_movementPermissions);
     final canScan = permissions.can('generic-products.barcode');
+    final canSell = permissions.canAll(_salePermissions);
 
     return plan.when(
       loading: () => const SkeletonList(),
@@ -65,7 +72,7 @@ class HomePage extends ConsumerWidget {
                 l10n.homeGreeting(name ?? ''),
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
-              if (canMove || canScan) ...[
+              if (canMove || canScan || canSell) ...[
                 const SizedBox(height: AppSpacing.lg),
                 Text(
                   l10n.dashQuickActions,
@@ -82,6 +89,14 @@ class HomePage extends ConsumerWidget {
                         icon: Icons.add,
                         expand: false,
                         onPressed: () => context.push('/inventory/new'),
+                      ),
+                    if (canSell)
+                      BojaniButton(
+                        label: l10n.saleAction,
+                        icon: Icons.point_of_sale,
+                        kind: BojaniButtonKind.secondary,
+                        expand: false,
+                        onPressed: () => context.push('/clinical-records/sale'),
                       ),
                     if (canScan)
                       BojaniButton(

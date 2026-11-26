@@ -2671,4 +2671,89 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get billingCancelled => 'Anulado';
+
+  @override
+  String get saleTitle => 'Registrar venta';
+
+  @override
+  String get saleAction => 'Registrar venta';
+
+  @override
+  String get saleChoosePatient => 'Elegir paciente';
+
+  @override
+  String get saleSearchPatient => 'Buscar paciente';
+
+  @override
+  String get saleChangePatient => 'Cambiar paciente';
+
+  @override
+  String get salePatientRequired => 'Elija el paciente al que se le vende.';
+
+  @override
+  String get saleServiceDate => 'Fecha de atención';
+
+  @override
+  String get saleSeller => 'Vendedor';
+
+  @override
+  String get saleReferrer => 'Remitente';
+
+  @override
+  String get saleServicesTitle => 'Servicios';
+
+  @override
+  String get saleAddService => 'Agregar servicio';
+
+  @override
+  String get saleChooseService => 'Elegir servicio';
+
+  @override
+  String get saleServiceSearchHint => 'Nombre o código del servicio';
+
+  @override
+  String saleServiceSearchPrompt(int count) {
+    return 'Escriba al menos $count caracteres del nombre o del código.';
+  }
+
+  @override
+  String get saleNoPrice => 'Sin tarifa';
+
+  @override
+  String get saleServicesRequired => 'Agregue al menos un servicio.';
+
+  @override
+  String get saleQuantity => 'Cantidad';
+
+  @override
+  String get saleUnitPrice => 'Valor unitario';
+
+  @override
+  String get saleTotal => 'Total de la venta';
+
+  @override
+  String get saleSubmit => 'Registrar venta';
+
+  @override
+  String get saleLineSaved => 'Registrado';
+
+  @override
+  String get saleLineFailed => 'No se registró';
+
+  @override
+  String get saleLineUnconfirmed => 'Sin confirmar';
+
+  @override
+  String get saleLineUnconfirmedHelp =>
+      'El servidor no respondió y puede que sí se haya registrado. Revise los registros del paciente antes de enviarla de nuevo.';
+
+  @override
+  String get saleLineNotRegistered => 'No se registró, enviar de nuevo';
+
+  @override
+  String get salePartialWarning =>
+      'Algunos servicios ya quedaron registrados y no se vuelven a enviar. Corrija lo pendiente y registre de nuevo.';
+
+  @override
+  String get saleDone => 'Venta registrada.';
 }

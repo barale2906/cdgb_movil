@@ -31,10 +31,13 @@ import 'package:sga_bojanini/features/auth/presentation/splash_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/catalog_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/product_detail_page.dart';
 import 'package:sga_bojanini/features/catalog/presentation/supplier_detail_page.dart';
+import 'package:sga_bojanini/features/clinical/application/clinical_permissions.dart';
 import 'package:sga_bojanini/features/clinical/data/medsys_patient.dart';
 import 'package:sga_bojanini/features/clinical/presentation/clinical_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/patient_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/record_detail_page.dart';
+import 'package:sga_bojanini/features/clinical/presentation/sale_page.dart';
+import 'package:sga_bojanini/features/clinical/presentation/sale_pickers.dart';
 import 'package:sga_bojanini/features/home/presentation/app_shell.dart';
 import 'package:sga_bojanini/features/home/presentation/home_page.dart';
 import 'package:sga_bojanini/features/home/presentation/more_page.dart';
@@ -180,6 +183,12 @@ Widget _sectionPage(AppSection section) => switch (section) {
 /// (cada ruta y acción valida el suyo, CLAUDE.md §5).
 GoRouterRedirect _requires(Ref ref, String permission) =>
     (context, state) => ref.read(permissionServiceProvider).can(permission)
+    ? null
+    : Routes.home;
+
+/// Como [_requires], exigiendo todos los permisos.
+GoRouterRedirect _requiresAll(Ref ref, List<String> permissions) =>
+    (context, state) => ref.read(permissionServiceProvider).canAll(permissions)
     ? null
     : Routes.home;
 
@@ -436,6 +445,15 @@ List<GoRoute> _clinicalRoutes(Ref ref) {
   const base = '/clinical-records';
   const permission = 'registros_procedimientos.ver';
   return [
+    GoRoute(
+      path: SalePage.path,
+      redirect: _requiresAll(ref, salePermissions),
+      builder: (_, _) => const SalePage(),
+      routes: [
+        GoRoute(path: 'patient', builder: (_, _) => const PatientPickerPage()),
+        GoRoute(path: 'service', builder: (_, _) => const ServicePickerPage()),
+      ],
+    ),
     GoRoute(
       path: '$base/records/:id',
       redirect: _requires(ref, permission),

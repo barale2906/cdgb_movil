@@ -16,3 +16,15 @@ final Provider<bool> canLookUpPatientsProvider = Provider<bool>(
   (ref) =>
       ref.watch(permissionServiceProvider).canAny(patientLookupPermissions),
 );
+
+/// Registrar una venta exige crear el registro y buscar el servicio
+/// (`medical-services/search`).
+const salePermissions = [
+  'registros_procedimientos.crear',
+  'servicios_medicos.ver',
+];
+
+/// El usuario puede registrar ventas.
+final Provider<bool> canSellProvider = Provider<bool>(
+  (ref) => ref.watch(permissionServiceProvider).canAll(salePermissions),
+);

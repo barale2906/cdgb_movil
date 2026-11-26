@@ -5031,6 +5031,168 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Anulado'**
   String get billingCancelled;
+
+  /// No description provided for @saleTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar venta'**
+  String get saleTitle;
+
+  /// No description provided for @saleAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar venta'**
+  String get saleAction;
+
+  /// No description provided for @saleChoosePatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Elegir paciente'**
+  String get saleChoosePatient;
+
+  /// No description provided for @saleSearchPatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar paciente'**
+  String get saleSearchPatient;
+
+  /// No description provided for @saleChangePatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambiar paciente'**
+  String get saleChangePatient;
+
+  /// No description provided for @salePatientRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Elija el paciente al que se le vende.'**
+  String get salePatientRequired;
+
+  /// No description provided for @saleServiceDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha de atención'**
+  String get saleServiceDate;
+
+  /// No description provided for @saleSeller.
+  ///
+  /// In es, this message translates to:
+  /// **'Vendedor'**
+  String get saleSeller;
+
+  /// No description provided for @saleReferrer.
+  ///
+  /// In es, this message translates to:
+  /// **'Remitente'**
+  String get saleReferrer;
+
+  /// No description provided for @saleServicesTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Servicios'**
+  String get saleServicesTitle;
+
+  /// No description provided for @saleAddService.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar servicio'**
+  String get saleAddService;
+
+  /// No description provided for @saleChooseService.
+  ///
+  /// In es, this message translates to:
+  /// **'Elegir servicio'**
+  String get saleChooseService;
+
+  /// No description provided for @saleServiceSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre o código del servicio'**
+  String get saleServiceSearchHint;
+
+  /// No description provided for @saleServiceSearchPrompt.
+  ///
+  /// In es, this message translates to:
+  /// **'Escriba al menos {count} caracteres del nombre o del código.'**
+  String saleServiceSearchPrompt(int count);
+
+  /// No description provided for @saleNoPrice.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin tarifa'**
+  String get saleNoPrice;
+
+  /// No description provided for @saleServicesRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregue al menos un servicio.'**
+  String get saleServicesRequired;
+
+  /// No description provided for @saleQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get saleQuantity;
+
+  /// No description provided for @saleUnitPrice.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor unitario'**
+  String get saleUnitPrice;
+
+  /// No description provided for @saleTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total de la venta'**
+  String get saleTotal;
+
+  /// No description provided for @saleSubmit.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar venta'**
+  String get saleSubmit;
+
+  /// No description provided for @saleLineSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrado'**
+  String get saleLineSaved;
+
+  /// No description provided for @saleLineFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'No se registró'**
+  String get saleLineFailed;
+
+  /// No description provided for @saleLineUnconfirmed.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin confirmar'**
+  String get saleLineUnconfirmed;
+
+  /// No description provided for @saleLineUnconfirmedHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'El servidor no respondió y puede que sí se haya registrado. Revise los registros del paciente antes de enviarla de nuevo.'**
+  String get saleLineUnconfirmedHelp;
+
+  /// No description provided for @saleLineNotRegistered.
+  ///
+  /// In es, this message translates to:
+  /// **'No se registró, enviar de nuevo'**
+  String get saleLineNotRegistered;
+
+  /// No description provided for @salePartialWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'Algunos servicios ya quedaron registrados y no se vuelven a enviar. Corrija lo pendiente y registre de nuevo.'**
+  String get salePartialWarning;
+
+  /// No description provided for @saleDone.
+  ///
+  /// In es, this message translates to:
+  /// **'Venta registrada.'**
+  String get saleDone;
 }
 
 class _AppLocalizationsDelegate

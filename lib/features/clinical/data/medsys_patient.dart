@@ -43,4 +43,18 @@ abstract class MedsysPatient with _$MedsysPatient {
   /// Nombre sin espacios dobles (MedSys concatena campos que pueden venir
   /// vacíos).
   String get displayName => name.replaceAll(RegExp(r'\s+'), ' ').trim();
+
+  /// Nombres y apellidos por separado, como los pide el servidor. MedSys
+  /// entrega `nombre1 nombre2 apellido1 apellido2` en un solo texto: con 4 o
+  /// más palabras los dos primeros son los nombres; con 3, un nombre y dos
+  /// apellidos (la misma regla del web).
+  ({String first, String last}) get splitName {
+    final parts = displayName.split(' ');
+    return switch (parts.length) {
+      >= 4 => (first: parts.take(2).join(' '), last: parts.skip(2).join(' ')),
+      3 => (first: parts.first, last: parts.skip(1).join(' ')),
+      2 => (first: parts.first, last: parts.last),
+      _ => (first: displayName, last: ''),
+    };
+  }
 }
