@@ -3000,4 +3000,182 @@ class AppLocalizationsEs extends AppLocalizations {
   String orderEvolutionCounter(int used, int max) {
     return '$used de $max';
   }
+
+  @override
+  String get costCentersTabCenters => 'Centros de costo';
+
+  @override
+  String get costCentersTabServices => 'Servicios';
+
+  @override
+  String get costCentersSearchHint => 'Nombre o código del centro';
+
+  @override
+  String get costCentersEmpty => 'No hay centros de costo.';
+
+  @override
+  String get costCenterExternal => 'Externo';
+
+  @override
+  String get costCenterInternal => 'Interno';
+
+  @override
+  String get servicesEmpty => 'No hay servicios registrados.';
+
+  @override
+  String servicePricesTitle(String name) {
+    return 'Tarifas de $name';
+  }
+
+  @override
+  String get servicePricesEmpty =>
+      'Este procedimiento no tiene tarifas registradas.';
+
+  @override
+  String get servicePriceCurrent => 'Vigente';
+
+  @override
+  String servicePriceFrom(String date) {
+    return 'Desde $date';
+  }
+
+  @override
+  String servicePriceUntil(String date) {
+    return 'hasta $date';
+  }
+
+  @override
+  String get consumptionsTabList => 'Consumos';
+
+  @override
+  String get consumptionsTabProjection => 'Proyección';
+
+  @override
+  String get consumptionsEmpty => 'No hay consumos registrados.';
+
+  @override
+  String get syncPending => 'Pendiente';
+
+  @override
+  String get syncSynced => 'Sincronizado';
+
+  @override
+  String get syncFailed => 'Fallido';
+
+  @override
+  String get consumptionNew => 'Nuevo consumo';
+
+  @override
+  String get consumptionDetailTitle => 'Consumo';
+
+  @override
+  String get consumptionProductUnknown => 'Insumo';
+
+  @override
+  String get consumptionLot => 'Lote';
+
+  @override
+  String consumptionLotValue(String lot) {
+    return 'Lote $lot';
+  }
+
+  @override
+  String get consumptionQuantity => 'Cantidad';
+
+  @override
+  String get consumptionDate => 'Fecha del consumo';
+
+  @override
+  String get consumptionSyncedAt => 'Sincronizado el';
+
+  @override
+  String get consumptionAppointment => 'Cita';
+
+  @override
+  String get consumptionPatient => 'Paciente';
+
+  @override
+  String get consumptionServiceType => 'Servicio';
+
+  @override
+  String get consumptionSyncStatus => 'Historia clínica';
+
+  @override
+  String get consumptionRetrySync => 'Reintentar sincronización';
+
+  @override
+  String get consumptionRetryConfirm =>
+      'Se volverá a enviar el consumo a la historia clínica.';
+
+  @override
+  String get consumptionRetryQueued => 'Sincronización reencolada.';
+
+  @override
+  String get consumptionRetryTimeout =>
+      'No se recibió respuesta del servidor. Actualice el consumo antes de repetirlo: es posible que sí se haya reencolado.';
+
+  @override
+  String get consumptionFormTitle => 'Registrar consumo';
+
+  @override
+  String get consumptionWarehouse => 'Almacén';
+
+  @override
+  String get consumptionCostCenter => 'Centro de costo';
+
+  @override
+  String get consumptionAppointmentField => 'Código de la cita (opcional)';
+
+  @override
+  String get consumptionPatientField =>
+      'Identificación del paciente (opcional)';
+
+  @override
+  String get consumptionServiceField => 'Servicio (opcional)';
+
+  @override
+  String get consumptionSyncNote =>
+      'Con cita y paciente, el consumo también se envía a la historia clínica.';
+
+  @override
+  String get consumptionItemsTitle => 'Insumos';
+
+  @override
+  String get consumptionItemsRequired => 'Agregue al menos un insumo.';
+
+  @override
+  String get consumptionSubmit => 'Registrar consumo';
+
+  @override
+  String get consumptionSaved => 'Consumo registrado.';
+
+  @override
+  String get consumptionUnconfirmed =>
+      'No se recibió respuesta del servidor. El consumo pudo haberse registrado: revise la lista de consumos antes de repetirlo.';
+
+  @override
+  String get consumptionNotSaved =>
+      'Ya revisé: no se registró, enviar de nuevo';
+
+  @override
+  String projectionDays(int days) {
+    return '$days días';
+  }
+
+  @override
+  String get projectionEmpty => 'No hay citas futuras con consumo previsto.';
+
+  @override
+  String projectionAverage(int count, String avg) {
+    return '$count citas · promedio $avg por cita';
+  }
+
+  @override
+  String projectionUnits(int units) {
+    return '$units u.';
+  }
+
+  @override
+  String get projectionNote =>
+      'Estimado con las citas futuras de MedSys y el promedio de los últimos 90 días.';
 }

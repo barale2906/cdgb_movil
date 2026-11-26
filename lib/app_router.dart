@@ -40,6 +40,12 @@ import 'package:sga_bojanini/features/clinical/presentation/evolution_form_page.
 import 'package:sga_bojanini/features/clinical/presentation/patient_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/record_detail_page.dart';
 import 'package:sga_bojanini/features/clinical/presentation/sale_page.dart';
+import 'package:sga_bojanini/features/consumptions/application/consumption_permissions.dart';
+import 'package:sga_bojanini/features/consumptions/presentation/consumption_detail_page.dart';
+import 'package:sga_bojanini/features/consumptions/presentation/consumption_paths.dart';
+import 'package:sga_bojanini/features/consumptions/presentation/consumptions_page.dart';
+import 'package:sga_bojanini/features/consumptions/presentation/new_consumption_page.dart';
+import 'package:sga_bojanini/features/cost_centers/presentation/cost_centers_page.dart';
 import 'package:sga_bojanini/features/home/presentation/app_shell.dart';
 import 'package:sga_bojanini/features/home/presentation/home_page.dart';
 import 'package:sga_bojanini/features/home/presentation/more_page.dart';
@@ -147,6 +153,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ..._monitoringRoutes(ref),
       ..._clinicalRoutes(ref),
       ..._serviceOrderRoutes(ref),
+      ..._consumptionRoutes(ref),
       GoRoute(
         path: NotificationsPage.path,
         redirect: _requires(ref, notificationsPermission),
@@ -185,6 +192,8 @@ Widget _sectionPage(AppSection section) => switch (section) {
   AppSection.reports => const ReportsPage(),
   AppSection.clinicalRecords => const ClinicalPage(),
   AppSection.serviceOrders => const ServiceOrdersPage(),
+  AppSection.costCenters => const CostCentersPage(),
+  AppSection.consumptions => const ConsumptionsPage(),
   _ => SectionPlaceholderPage(section: section),
 };
 
@@ -517,5 +526,23 @@ List<GoRoute> _serviceOrderRoutes(Ref ref) => [
     redirect: _requires(ref, 'ordenes_servicio.ver'),
     builder: (_, state) =>
         OrderDetailPage(orderNumber: state.pathParameters['number']!),
+  ),
+];
+
+/// Consumos: nuevo consumo (con su selector de insumos) y detalle (la lista es
+/// la sección `/consumptions`). `new` va antes de `:id`.
+List<GoRoute> _consumptionRoutes(Ref ref) => [
+  GoRoute(
+    path: ConsumptionPaths.newConsumption,
+    redirect: _requiresAll(ref, newConsumptionPermissions),
+    builder: (_, _) => const NewConsumptionPage(),
+    routes: [
+      GoRoute(path: 'product', builder: (_, _) => const ProductPickerPage()),
+    ],
+  ),
+  GoRoute(
+    path: '${AppSection.consumptions.path}/:id',
+    redirect: _requires(ref, 'consumos.ver'),
+    builder: (_, state) => ConsumptionDetailPage(consumptionId: _id(state)),
   ),
 ];

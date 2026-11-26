@@ -5613,6 +5613,318 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'{used} de {max}'**
   String orderEvolutionCounter(int used, int max);
+
+  /// No description provided for @costCentersTabCenters.
+  ///
+  /// In es, this message translates to:
+  /// **'Centros de costo'**
+  String get costCentersTabCenters;
+
+  /// No description provided for @costCentersTabServices.
+  ///
+  /// In es, this message translates to:
+  /// **'Servicios'**
+  String get costCentersTabServices;
+
+  /// No description provided for @costCentersSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre o código del centro'**
+  String get costCentersSearchHint;
+
+  /// No description provided for @costCentersEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay centros de costo.'**
+  String get costCentersEmpty;
+
+  /// No description provided for @costCenterExternal.
+  ///
+  /// In es, this message translates to:
+  /// **'Externo'**
+  String get costCenterExternal;
+
+  /// No description provided for @costCenterInternal.
+  ///
+  /// In es, this message translates to:
+  /// **'Interno'**
+  String get costCenterInternal;
+
+  /// No description provided for @servicesEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay servicios registrados.'**
+  String get servicesEmpty;
+
+  /// No description provided for @servicePricesTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Tarifas de {name}'**
+  String servicePricesTitle(String name);
+
+  /// No description provided for @servicePricesEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'Este procedimiento no tiene tarifas registradas.'**
+  String get servicePricesEmpty;
+
+  /// No description provided for @servicePriceCurrent.
+  ///
+  /// In es, this message translates to:
+  /// **'Vigente'**
+  String get servicePriceCurrent;
+
+  /// No description provided for @servicePriceFrom.
+  ///
+  /// In es, this message translates to:
+  /// **'Desde {date}'**
+  String servicePriceFrom(String date);
+
+  /// No description provided for @servicePriceUntil.
+  ///
+  /// In es, this message translates to:
+  /// **'hasta {date}'**
+  String servicePriceUntil(String date);
+
+  /// No description provided for @consumptionsTabList.
+  ///
+  /// In es, this message translates to:
+  /// **'Consumos'**
+  String get consumptionsTabList;
+
+  /// No description provided for @consumptionsTabProjection.
+  ///
+  /// In es, this message translates to:
+  /// **'Proyección'**
+  String get consumptionsTabProjection;
+
+  /// No description provided for @consumptionsEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay consumos registrados.'**
+  String get consumptionsEmpty;
+
+  /// No description provided for @syncPending.
+  ///
+  /// In es, this message translates to:
+  /// **'Pendiente'**
+  String get syncPending;
+
+  /// No description provided for @syncSynced.
+  ///
+  /// In es, this message translates to:
+  /// **'Sincronizado'**
+  String get syncSynced;
+
+  /// No description provided for @syncFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'Fallido'**
+  String get syncFailed;
+
+  /// No description provided for @consumptionNew.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo consumo'**
+  String get consumptionNew;
+
+  /// No description provided for @consumptionDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Consumo'**
+  String get consumptionDetailTitle;
+
+  /// No description provided for @consumptionProductUnknown.
+  ///
+  /// In es, this message translates to:
+  /// **'Insumo'**
+  String get consumptionProductUnknown;
+
+  /// No description provided for @consumptionLot.
+  ///
+  /// In es, this message translates to:
+  /// **'Lote'**
+  String get consumptionLot;
+
+  /// No description provided for @consumptionLotValue.
+  ///
+  /// In es, this message translates to:
+  /// **'Lote {lot}'**
+  String consumptionLotValue(String lot);
+
+  /// No description provided for @consumptionQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get consumptionQuantity;
+
+  /// No description provided for @consumptionDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha del consumo'**
+  String get consumptionDate;
+
+  /// No description provided for @consumptionSyncedAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Sincronizado el'**
+  String get consumptionSyncedAt;
+
+  /// No description provided for @consumptionAppointment.
+  ///
+  /// In es, this message translates to:
+  /// **'Cita'**
+  String get consumptionAppointment;
+
+  /// No description provided for @consumptionPatient.
+  ///
+  /// In es, this message translates to:
+  /// **'Paciente'**
+  String get consumptionPatient;
+
+  /// No description provided for @consumptionServiceType.
+  ///
+  /// In es, this message translates to:
+  /// **'Servicio'**
+  String get consumptionServiceType;
+
+  /// No description provided for @consumptionSyncStatus.
+  ///
+  /// In es, this message translates to:
+  /// **'Historia clínica'**
+  String get consumptionSyncStatus;
+
+  /// No description provided for @consumptionRetrySync.
+  ///
+  /// In es, this message translates to:
+  /// **'Reintentar sincronización'**
+  String get consumptionRetrySync;
+
+  /// No description provided for @consumptionRetryConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Se volverá a enviar el consumo a la historia clínica.'**
+  String get consumptionRetryConfirm;
+
+  /// No description provided for @consumptionRetryQueued.
+  ///
+  /// In es, this message translates to:
+  /// **'Sincronización reencolada.'**
+  String get consumptionRetryQueued;
+
+  /// No description provided for @consumptionRetryTimeout.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Actualice el consumo antes de repetirlo: es posible que sí se haya reencolado.'**
+  String get consumptionRetryTimeout;
+
+  /// No description provided for @consumptionFormTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar consumo'**
+  String get consumptionFormTitle;
+
+  /// No description provided for @consumptionWarehouse.
+  ///
+  /// In es, this message translates to:
+  /// **'Almacén'**
+  String get consumptionWarehouse;
+
+  /// No description provided for @consumptionCostCenter.
+  ///
+  /// In es, this message translates to:
+  /// **'Centro de costo'**
+  String get consumptionCostCenter;
+
+  /// No description provided for @consumptionAppointmentField.
+  ///
+  /// In es, this message translates to:
+  /// **'Código de la cita (opcional)'**
+  String get consumptionAppointmentField;
+
+  /// No description provided for @consumptionPatientField.
+  ///
+  /// In es, this message translates to:
+  /// **'Identificación del paciente (opcional)'**
+  String get consumptionPatientField;
+
+  /// No description provided for @consumptionServiceField.
+  ///
+  /// In es, this message translates to:
+  /// **'Servicio (opcional)'**
+  String get consumptionServiceField;
+
+  /// No description provided for @consumptionSyncNote.
+  ///
+  /// In es, this message translates to:
+  /// **'Con cita y paciente, el consumo también se envía a la historia clínica.'**
+  String get consumptionSyncNote;
+
+  /// No description provided for @consumptionItemsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Insumos'**
+  String get consumptionItemsTitle;
+
+  /// No description provided for @consumptionItemsRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregue al menos un insumo.'**
+  String get consumptionItemsRequired;
+
+  /// No description provided for @consumptionSubmit.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar consumo'**
+  String get consumptionSubmit;
+
+  /// No description provided for @consumptionSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Consumo registrado.'**
+  String get consumptionSaved;
+
+  /// No description provided for @consumptionUnconfirmed.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. El consumo pudo haberse registrado: revise la lista de consumos antes de repetirlo.'**
+  String get consumptionUnconfirmed;
+
+  /// No description provided for @consumptionNotSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Ya revisé: no se registró, enviar de nuevo'**
+  String get consumptionNotSaved;
+
+  /// No description provided for @projectionDays.
+  ///
+  /// In es, this message translates to:
+  /// **'{days} días'**
+  String projectionDays(int days);
+
+  /// No description provided for @projectionEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay citas futuras con consumo previsto.'**
+  String get projectionEmpty;
+
+  /// No description provided for @projectionAverage.
+  ///
+  /// In es, this message translates to:
+  /// **'{count} citas · promedio {avg} por cita'**
+  String projectionAverage(int count, String avg);
+
+  /// No description provided for @projectionUnits.
+  ///
+  /// In es, this message translates to:
+  /// **'{units} u.'**
+  String projectionUnits(int units);
+
+  /// No description provided for @projectionNote.
+  ///
+  /// In es, this message translates to:
+  /// **'Estimado con las citas futuras de MedSys y el promedio de los últimos 90 días.'**
+  String get projectionNote;
 }
 
 class _AppLocalizationsDelegate

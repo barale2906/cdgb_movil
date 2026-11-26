@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "message": "Árbol de servicios médicos",
+  "data": [
+    {
+      "id": 1, "type": "service", "type_label": "Servicio", "parent_id": null, "code": "URG", "external_code": null,
+      "name": "Urgencias", "description": null, "is_active": true,
+      "children": [
+        { "id": 3, "type": "procedure", "type_label": "Procedimiento", "parent_id": 1, "code": "CUR-001", "external_code": null, "name": "Curaciones simples", "description": null, "is_active": true, "children": [] },
+        { "id": 5, "type": "procedure", "type_label": "Procedimiento", "parent_id": 1, "code": "SUT-001", "external_code": null, "name": "Sutura simple", "description": null, "is_active": true, "children": [] }
+      ]
+    }
+  ]
+}

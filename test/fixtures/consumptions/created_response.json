@@ -1,0 +1,25 @@
+{
+  "success": true,
+  "message": "Consumo registrado correctamente",
+  "data": {
+    "records": [
+      {
+        "id": 29,
+        "appointment_id": null,
+        "patient_identifier": null,
+        "service_type": null,
+        "product_id": null,
+        "product_code": null,
+        "product_name": "Guantes",
+        "batch_id": null,
+        "lot_number": null,
+        "quantity": 10,
+        "user_id": 2,
+        "consumed_at": "2026-11-23 08:00:00",
+        "sync_status": "pending",
+        "synced_to_hc_at": null
+      }
+    ],
+    "total_items": 1
+  }
+}

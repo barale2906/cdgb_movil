@@ -2,6 +2,33 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [0.10.0+10] - 2026-11-26
+### Añadido
+- Fase 6 · Registros clínicos: lista de los últimos 30 días con filtro por documento, detalle del registro, ficha del paciente (resumen, citas activas e historial) y búsqueda de pacientes de MedSys por documento o nombre.
+- Fase 6 · Registrar venta: paciente de MedSys, fecha, vendedor, remitente y uno o más servicios con cantidad y valor. Un registro por servicio, enviados uno por uno y sin reintentos automáticos: lo ya registrado se bloquea y un tiempo de espera agotado deja la línea «sin confirmar» hasta que la persona revise.
+- Fase 6 · Evoluciones clínicas: listar, agregar (con la plantilla del servicio precargada) y editar, y medicamentos aplicados en el detalle del registro.
+- Fase 6 · Órdenes de servicio: búsqueda por número, descuentos por aprobar, detalle con aprobar descuento, facturar y anular (con confirmación), y nueva orden con paciente de MedSys, procedimientos, descuento por línea, insumos desde un almacén y evolución clínica obligatoria por procedimiento (como el web).
+- Fase 6 · Consumos: lista con filtro por estado de sincronización, detalle, registro de un consumo (almacén, centro de costo, insumos, cita y paciente opcionales) y reintento de sincronización; con permiso de integraciones, proyección de consumo por servicio según las citas futuras de MedSys.
+- Fase 6 · Centros de costo y servicios: centros de costo, árbol de servicios y procedimientos, y tarifas (solo lectura).
+- Accesos rápidos en Inicio: «Registrar venta» y «Nueva orden».
+- Seguridad: en las compilaciones de producción la app se oculta en la vista de aplicaciones recientes y bloquea capturas de pantalla (los datos de pacientes no quedan visibles en un teléfono compartido).
+
+### Cambiado
+- La búsqueda de pacientes de MedSys la habilitan también `registros_procedimientos.crear` y `ordenes_servicio.crear` (requiere el backend con la rama `feature/medsys-permisos-clinicos`).
+- Los modelos y selectores compartidos entre registros clínicos y órdenes pasaron a `core` (sin cambios para la persona usuaria).
+
+### Requiere el backend
+- **Desplegar primero el backend** (ramas `feature/medsys-permisos-clinicos` y `feature/ordenes-servicio-atomicas`): sin la primera, los roles que no tienen `integraciones.ver` verían la pestaña de pacientes con un error de permiso; sin la segunda, una orden que falla a la mitad puede quedar guardada parcialmente (la app lo advierte).
+
+### Notas
+- Las evoluciones se muestran como texto simple y se guardan como párrafos: la app no tiene editor de texto enriquecido; editar una evolución con negritas o listas las pierde.
+- Los consumos muestran «Insumo» cuando el backend no envía el nombre del producto (el recurso `ConsumptionRecordResource` lee campos que el modelo no tiene).
+- Anular una orden no devuelve al inventario los insumos que ya salieron (límite del backend); el diálogo lo advierte.
+
+### Pendiente
+- Editar y eliminar registros de procedimientos; eliminar evoluciones.
+- Citas y análisis de demanda de `scheduling/*`: dependen de una integración externa y por defecto devuelven datos simulados; se dejan fuera hasta definir su fuente real.
+
 ## [0.9.0+9] - 2026-11-25
 ### Añadido
 - Fase 5 · Activos: lista con indicadores, búsqueda y filtros; ficha con datos, perfil técnico, historial de ubicaciones y bitácora, comentarios, planes de mantenimiento y hoja de vida en PDF; escáner de la etiqueta; cambio de estado.

@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "message": "Listado de centros de costo",
+  "data": [
+    { "id": 1, "code": "FARM", "name": "Farmacia", "type": "internal", "type_label": "Interno", "is_external": false, "description": null, "is_active": true },
+    { "id": 2, "code": "PAC", "name": "Pacientes externos", "type": "external", "type_label": "Externo", "is_external": true, "description": "Salidas a paciente", "is_active": true }
+  ]
+}
