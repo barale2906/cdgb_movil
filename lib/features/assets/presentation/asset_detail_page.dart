@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/alert_banner.dart';
@@ -99,6 +100,14 @@ class _DataTab extends ConsumerWidget {
     final textTheme = Theme.of(context).textTheme;
     final next = asset.nextMaintenance;
     final pending = asset.pendingTransfer;
+    // Un traslado pendiente bloquea otro (409) y un activo dado de baja ya no
+    // se traslada.
+    final canRequestTransfer =
+        ref
+            .watch(permissionServiceProvider)
+            .can('activos_traslados.solicitar') &&
+        pending == null &&
+        !asset.isRetired;
     return RefreshIndicator(
       onRefresh: () => ref.refresh(assetDetailProvider(asset.id).future),
       child: ListView(
@@ -174,6 +183,14 @@ class _DataTab extends ConsumerWidget {
           ],
           TechnicalProfileSection(profile: asset.technicalProfile),
           const SizedBox(height: AppSpacing.lg),
+          if (canRequestTransfer) ...[
+            BojaniButton(
+              label: l10n.transferRequestAction,
+              icon: Icons.swap_horiz,
+              onPressed: () => context.push('/assets/${asset.id}/transfer'),
+            ),
+            const SizedBox(height: AppSpacing.sm),
+          ],
           BojaniButton(
             label: l10n.assetLifeSheet,
             icon: Icons.picture_as_pdf_outlined,

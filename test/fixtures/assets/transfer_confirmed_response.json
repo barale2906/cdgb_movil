@@ -1,0 +1,54 @@
+{
+ "success": true,
+ "message": "Traslado",
+ "data": {
+  "id": 11,
+  "asset": {
+   "id": 8,
+   "code": "000008",
+   "name": "Portátil administrativo"
+  },
+  "type": "relocation",
+  "type_label": "Traslado interno",
+  "status": "confirmed",
+  "status_label": "Confirmado",
+  "requires_signature": false,
+  "from": "Sede Principal · Bodega",
+  "to": "Sede Principal · Urgencias · Sala 1",
+  "from_place_id": 5,
+  "to_place_id": 4,
+  "external_destination": null,
+  "supplier": null,
+  "from_responsible": null,
+  "to_responsible": {
+   "id": 3,
+   "name": "Usuario Prueba"
+  },
+  "expected_return_date": null,
+  "resulting_status": null,
+  "reason": null,
+  "requested_by": {
+   "id": 3,
+   "name": "Usuario Prueba"
+  },
+  "confirmed_at": "2026-11-20T09:00:00-05:00",
+  "cancel_reason": null,
+  "signatures": [
+   {
+    "role": "delivered_by",
+    "method": "registered",
+    "signer_name": "Usuario Prueba",
+    "signer_document": "1020304050",
+    "signed_at": "2026-11-20T09:00:00-05:00"
+   },
+   {
+    "role": "received_by",
+    "method": "pin",
+    "signer_name": "Otra Persona",
+    "signer_document": "1098765432",
+    "signed_at": "2026-11-20T09:00:00-05:00"
+   }
+  ],
+  "created_at": "2026-11-20T08:00:00-05:00"
+ }
+}

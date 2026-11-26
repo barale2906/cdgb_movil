@@ -185,6 +185,21 @@ class AppHarness {
         'GET',
         '/assets/7/comments',
         body: fixture('assets/comments_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/transfers',
+        body: fixture('assets/transfers_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/transfers/12',
+        body: fixture('assets/transfer_pending_response.json'),
+      )
+      ..on(
+        'GET',
+        '/assets/transfers/11',
+        body: fixture('assets/transfer_confirmed_response.json'),
       );
   }
 

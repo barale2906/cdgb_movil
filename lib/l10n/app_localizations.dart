@@ -4125,6 +4125,240 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Traslado pendiente de firma: {type}'**
   String assetPendingTransfer(String type);
+
+  /// No description provided for @assetsTabAssets.
+  ///
+  /// In es, this message translates to:
+  /// **'Activos'**
+  String get assetsTabAssets;
+
+  /// No description provided for @assetsTabTransfers.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslados'**
+  String get assetsTabTransfers;
+
+  /// No description provided for @transfersEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay traslados para mostrar.'**
+  String get transfersEmpty;
+
+  /// No description provided for @transferStatusPending.
+  ///
+  /// In es, this message translates to:
+  /// **'Pendiente de firma'**
+  String get transferStatusPending;
+
+  /// No description provided for @transferStatusConfirmed.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirmado'**
+  String get transferStatusConfirmed;
+
+  /// No description provided for @transferStatusCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelado'**
+  String get transferStatusCancelled;
+
+  /// No description provided for @transferTypeRelocation.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslado interno'**
+  String get transferTypeRelocation;
+
+  /// No description provided for @transferTypeExternalRepair.
+  ///
+  /// In es, this message translates to:
+  /// **'Salida a reparación externa'**
+  String get transferTypeExternalRepair;
+
+  /// No description provided for @transferTypeLoan.
+  ///
+  /// In es, this message translates to:
+  /// **'Préstamo externo'**
+  String get transferTypeLoan;
+
+  /// No description provided for @transferTypeReturn.
+  ///
+  /// In es, this message translates to:
+  /// **'Retorno a las instalaciones'**
+  String get transferTypeReturn;
+
+  /// No description provided for @transferTypeRetirement.
+  ///
+  /// In es, this message translates to:
+  /// **'Baja'**
+  String get transferTypeRetirement;
+
+  /// No description provided for @transferDetailTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslado'**
+  String get transferDetailTitle;
+
+  /// No description provided for @transferFrom.
+  ///
+  /// In es, this message translates to:
+  /// **'Origen'**
+  String get transferFrom;
+
+  /// No description provided for @transferTo.
+  ///
+  /// In es, this message translates to:
+  /// **'Destino'**
+  String get transferTo;
+
+  /// No description provided for @transferExternalDestination.
+  ///
+  /// In es, this message translates to:
+  /// **'Destino externo'**
+  String get transferExternalDestination;
+
+  /// No description provided for @transferFromResponsible.
+  ///
+  /// In es, this message translates to:
+  /// **'Responsable anterior'**
+  String get transferFromResponsible;
+
+  /// No description provided for @transferToResponsible.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo responsable'**
+  String get transferToResponsible;
+
+  /// No description provided for @transferExpectedReturn.
+  ///
+  /// In es, this message translates to:
+  /// **'Retorno esperado'**
+  String get transferExpectedReturn;
+
+  /// No description provided for @transferReason.
+  ///
+  /// In es, this message translates to:
+  /// **'Motivo'**
+  String get transferReason;
+
+  /// No description provided for @transferRequestedBy.
+  ///
+  /// In es, this message translates to:
+  /// **'Solicitado por'**
+  String get transferRequestedBy;
+
+  /// No description provided for @transferConfirmedAt.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirmado'**
+  String get transferConfirmedAt;
+
+  /// No description provided for @transferCancelReason.
+  ///
+  /// In es, this message translates to:
+  /// **'Motivo de la cancelación'**
+  String get transferCancelReason;
+
+  /// No description provided for @transferAct.
+  ///
+  /// In es, this message translates to:
+  /// **'Acta del traslado (PDF)'**
+  String get transferAct;
+
+  /// No description provided for @transferCancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar traslado'**
+  String get transferCancel;
+
+  /// No description provided for @transferCancelTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar traslado'**
+  String get transferCancelTitle;
+
+  /// No description provided for @transferCancelled.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslado cancelado.'**
+  String get transferCancelled;
+
+  /// No description provided for @transferConfirmed.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslado confirmado.'**
+  String get transferConfirmed;
+
+  /// No description provided for @transferTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Antes de repetirlo, actualice el traslado: es posible que el cambio sí se haya registrado.'**
+  String get transferTimeoutWarning;
+
+  /// No description provided for @transferRequestTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Solicitar traslado'**
+  String get transferRequestTitle;
+
+  /// No description provided for @transferRequestAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Solicitar traslado'**
+  String get transferRequestAction;
+
+  /// No description provided for @transferType.
+  ///
+  /// In es, this message translates to:
+  /// **'Tipo de traslado'**
+  String get transferType;
+
+  /// No description provided for @transferNeedsSignature.
+  ///
+  /// In es, this message translates to:
+  /// **'Este tipo de traslado queda pendiente hasta que se confirme con las firmas de quien entrega y de quien recibe.'**
+  String get transferNeedsSignature;
+
+  /// No description provided for @transferSite.
+  ///
+  /// In es, this message translates to:
+  /// **'Sede'**
+  String get transferSite;
+
+  /// No description provided for @transferPlace.
+  ///
+  /// In es, this message translates to:
+  /// **'Lugar'**
+  String get transferPlace;
+
+  /// No description provided for @transferNewResponsible.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo responsable'**
+  String get transferNewResponsible;
+
+  /// No description provided for @transferKeepResponsible.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantener el actual'**
+  String get transferKeepResponsible;
+
+  /// No description provided for @transferReasonOptional.
+  ///
+  /// In es, this message translates to:
+  /// **'Motivo (opcional)'**
+  String get transferReasonOptional;
+
+  /// No description provided for @transferRequestedPending.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslado solicitado. Falta confirmarlo con las firmas.'**
+  String get transferRequestedPending;
+
+  /// No description provided for @transferApplied.
+  ///
+  /// In es, this message translates to:
+  /// **'Traslado aplicado.'**
+  String get transferApplied;
 }
 
 class _AppLocalizationsDelegate

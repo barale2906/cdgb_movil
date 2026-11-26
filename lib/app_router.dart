@@ -10,8 +10,12 @@ import 'package:sga_bojanini/core/router/redirect.dart';
 import 'package:sga_bojanini/core/widgets/pdf_preview_page.dart';
 import 'package:sga_bojanini/features/about/presentation/about_page.dart';
 import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
+import 'package:sga_bojanini/features/assets/application/transfers_providers.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_detail_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/assets_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/transfer_confirm_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/transfer_detail_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/transfer_request_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/change_password_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/locked_page.dart';
 import 'package:sga_bojanini/features/auth/presentation/login_page.dart';
@@ -176,10 +180,34 @@ int _id(GoRouterState state) => int.parse(state.pathParameters['id']!);
 /// Ficha y hoja de vida de un activo (la lista es la sección `/assets`).
 List<GoRoute> _assetRoutes(Ref ref) => [
   GoRoute(
+    path: '/assets/transfers/:id',
+    redirect: _requires(ref, 'activos.ver'),
+    builder: (_, state) => TransferDetailPage(transferId: _id(state)),
+    routes: [
+      GoRoute(
+        path: 'confirm',
+        redirect: _requires(ref, 'activos_traslados.confirmar'),
+        builder: (_, state) => TransferConfirmPage(transferId: _id(state)),
+      ),
+      GoRoute(
+        path: 'act',
+        builder: (_, state) => PdfPreviewPage(
+          provider: transferActProvider(_id(state)),
+          fileName: 'acta-traslado-${_id(state)}.pdf',
+        ),
+      ),
+    ],
+  ),
+  GoRoute(
     path: '/assets/:id',
     redirect: _requires(ref, 'activos.ver'),
     builder: (_, state) => AssetDetailPage(assetId: _id(state)),
     routes: [
+      GoRoute(
+        path: 'transfer',
+        redirect: _requires(ref, 'activos_traslados.solicitar'),
+        builder: (_, state) => TransferRequestPage(assetId: _id(state)),
+      ),
       GoRoute(
         path: 'life-sheet',
         builder: (_, state) => PdfPreviewPage(

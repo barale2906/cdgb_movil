@@ -12,6 +12,7 @@ import 'package:sga_bojanini/core/widgets/api_error_message.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/confirm_dialog.dart';
+import 'package:sga_bojanini/core/widgets/text_prompt_dialog.dart';
 import 'package:sga_bojanini/features/purchasing/application/order_actions.dart';
 import 'package:sga_bojanini/features/purchasing/data/order_status.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
@@ -61,69 +62,13 @@ Future<String?> askComments(
   required String title,
   required String confirmLabel,
   bool destructive = false,
-}) => showDialog<String>(
-  context: context,
-  builder: (_) => _CommentsDialog(
-    title: title,
-    confirmLabel: confirmLabel,
-    destructive: destructive,
-  ),
+}) => promptText(
+  context,
+  title: title,
+  confirmLabel: confirmLabel,
+  fieldLabel: AppLocalizations.of(context).fieldCommentsOptional,
+  destructive: destructive,
 );
-
-class _CommentsDialog extends StatefulWidget {
-  const _CommentsDialog({
-    required this.title,
-    required this.confirmLabel,
-    required this.destructive,
-  });
-
-  final String title;
-  final String confirmLabel;
-  final bool destructive;
-
-  @override
-  State<_CommentsDialog> createState() => _CommentsDialogState();
-}
-
-class _CommentsDialogState extends State<_CommentsDialog> {
-  final _controller = TextEditingController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    return AlertDialog(
-      title: Text(widget.title),
-      content: TextField(
-        controller: _controller,
-        maxLines: 3,
-        decoration: InputDecoration(labelText: l10n.fieldCommentsOptional),
-      ),
-      actionsPadding: const EdgeInsets.all(AppSpacing.md),
-      actionsOverflowDirection: VerticalDirection.down,
-      actions: [
-        BojaniButton(
-          label: widget.confirmLabel,
-          kind: widget.destructive
-              ? BojaniButtonKind.destructive
-              : BojaniButtonKind.primary,
-          onPressed: () => Navigator.of(context).pop(_controller.text),
-        ),
-        const SizedBox(height: AppSpacing.sm),
-        BojaniButton(
-          label: l10n.actionCancel,
-          kind: BojaniButtonKind.tertiary,
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-      ],
-    );
-  }
-}
 
 /// Botones del flujo de una orden según su estado y los permisos del
 /// usuario. [permissionPrefix] es `ordenes_compra` o `ordenes_gasto`: ambos

@@ -2194,4 +2194,124 @@ class AppLocalizationsEs extends AppLocalizations {
   String assetPendingTransfer(String type) {
     return 'Traslado pendiente de firma: $type';
   }
+
+  @override
+  String get assetsTabAssets => 'Activos';
+
+  @override
+  String get assetsTabTransfers => 'Traslados';
+
+  @override
+  String get transfersEmpty => 'No hay traslados para mostrar.';
+
+  @override
+  String get transferStatusPending => 'Pendiente de firma';
+
+  @override
+  String get transferStatusConfirmed => 'Confirmado';
+
+  @override
+  String get transferStatusCancelled => 'Cancelado';
+
+  @override
+  String get transferTypeRelocation => 'Traslado interno';
+
+  @override
+  String get transferTypeExternalRepair => 'Salida a reparación externa';
+
+  @override
+  String get transferTypeLoan => 'Préstamo externo';
+
+  @override
+  String get transferTypeReturn => 'Retorno a las instalaciones';
+
+  @override
+  String get transferTypeRetirement => 'Baja';
+
+  @override
+  String get transferDetailTitle => 'Traslado';
+
+  @override
+  String get transferFrom => 'Origen';
+
+  @override
+  String get transferTo => 'Destino';
+
+  @override
+  String get transferExternalDestination => 'Destino externo';
+
+  @override
+  String get transferFromResponsible => 'Responsable anterior';
+
+  @override
+  String get transferToResponsible => 'Nuevo responsable';
+
+  @override
+  String get transferExpectedReturn => 'Retorno esperado';
+
+  @override
+  String get transferReason => 'Motivo';
+
+  @override
+  String get transferRequestedBy => 'Solicitado por';
+
+  @override
+  String get transferConfirmedAt => 'Confirmado';
+
+  @override
+  String get transferCancelReason => 'Motivo de la cancelación';
+
+  @override
+  String get transferAct => 'Acta del traslado (PDF)';
+
+  @override
+  String get transferCancel => 'Cancelar traslado';
+
+  @override
+  String get transferCancelTitle => 'Cancelar traslado';
+
+  @override
+  String get transferCancelled => 'Traslado cancelado.';
+
+  @override
+  String get transferConfirmed => 'Traslado confirmado.';
+
+  @override
+  String get transferTimeoutWarning =>
+      'No se recibió respuesta del servidor. Antes de repetirlo, actualice el traslado: es posible que el cambio sí se haya registrado.';
+
+  @override
+  String get transferRequestTitle => 'Solicitar traslado';
+
+  @override
+  String get transferRequestAction => 'Solicitar traslado';
+
+  @override
+  String get transferType => 'Tipo de traslado';
+
+  @override
+  String get transferNeedsSignature =>
+      'Este tipo de traslado queda pendiente hasta que se confirme con las firmas de quien entrega y de quien recibe.';
+
+  @override
+  String get transferSite => 'Sede';
+
+  @override
+  String get transferPlace => 'Lugar';
+
+  @override
+  String get transferNewResponsible => 'Nuevo responsable';
+
+  @override
+  String get transferKeepResponsible => 'Mantener el actual';
+
+  @override
+  String get transferReasonOptional => 'Motivo (opcional)';
+
+  @override
+  String get transferRequestedPending =>
+      'Traslado solicitado. Falta confirmarlo con las firmas.';
+
+  @override
+  String get transferApplied => 'Traslado aplicado.';
 }

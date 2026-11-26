@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sga_bojanini/core/models/named_ref.dart';
 import 'package:sga_bojanini/core/utils/json_converters.dart';
 
 part 'asset_catalogs.freezed.dart';
@@ -43,6 +44,7 @@ abstract class CatalogOption with _$CatalogOption {
 abstract class AssetFilters with _$AssetFilters {
   const factory AssetFilters({
     @Default([]) List<AssetSite> sites,
+    @Default([]) List<NamedRef> users,
     @Default([]) List<CatalogOption> transferTypes,
     @Default([]) List<CatalogOption> maintenanceResults,
     @Default([]) List<CatalogOption> documentTypes,
