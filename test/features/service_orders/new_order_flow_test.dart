@@ -237,7 +237,15 @@ void main() {
     await tester.tap(find.text('Ya revisé: no se creó, enviar de nuevo'));
     await AppHarness.settle(tester);
     await submit(tester);
-    expect(harness.adapter.callsTo('POST', '/service-orders'), hasLength(2));
+    final calls = harness.adapter.callsTo('POST', '/service-orders');
+    expect(calls, hasLength(2));
+    final first = calls.first.headers['Idempotency-Key'];
+    expect(first, isA<String>());
+    expect(
+      calls.last.headers['Idempotency-Key'],
+      first,
+      reason: 'el reenvío de la misma orden lleva la misma clave',
+    );
   });
 
   group('evolución clínica', () {

@@ -1269,9 +1269,6 @@
   "saleDone": "Venta registrada.",
   "serviceOrderTabOrders": "Órdenes",
   "serviceOrderTabDiscounts": "Descuentos",
-  "serviceOrderLookupHint": "Número de orden",
-  "serviceOrderLookupAction": "Buscar orden",
-  "serviceOrderLookupHelp": "Escriba el número completo, por ejemplo OS-20261126-000001.",
   "serviceOrderNew": "Nueva orden",
   "serviceOrderTitle": "Orden de servicio",
   "serviceOrderStatusApproved": "Aprobada",
@@ -1747,5 +1744,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "serviceOrderSearchHint": "Buscar por número de orden o documento",
+  "serviceOrdersEmpty": "No hay órdenes para mostrar."
 }

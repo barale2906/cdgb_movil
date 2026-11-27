@@ -38,6 +38,11 @@ void main() {
     harness.adapter
       ..on(
         'GET',
+        '/service-orders',
+        body: body('orders_list_response.json'),
+      )
+      ..on(
+        'GET',
         '/service-orders/discounts',
         body: body('discounts_response.json'),
       )
@@ -70,25 +75,30 @@ void main() {
   }) async {
     harness.adapter.on('GET', '/service-orders/$_number', body: body(order));
     await openOrders(tester, permissions: permissions);
-    await tester.enterText(find.byType(TextField).first, _number.toLowerCase());
-    await tester.tap(find.text('Buscar orden'));
+    await tester.tap(find.text(_number));
     await AppHarness.settle(tester);
   }
 
   group('sección', () {
-    testWidgets('solo con ver: búsqueda por número y sin pestañas ni crear', (
+    testWidgets('solo con ver: lista y búsqueda, sin pestañas ni crear', (
       tester,
     ) async {
       await openOrders(tester);
 
-      expect(find.text('Número de orden'), findsOneWidget);
+      expect(
+        find.text('Buscar por número de orden o documento'),
+        findsOneWidget,
+      );
+      expect(find.text(_number), findsOneWidget);
+      expect(find.text('OS-20261125-000002'), findsOneWidget);
+      expect(find.text('Ana María Pérez Gómez'), findsOneWidget);
+      expect(find.text('SIN FACTURAR'), findsOneWidget);
+      expect(find.text('FACTURADO'), findsOneWidget);
       expect(find.text('Descuentos'), findsNothing);
       expect(find.text('Nueva orden'), findsNothing);
     });
 
-    testWidgets('buscar abre la orden con el número en mayúsculas', (
-      tester,
-    ) async {
+    testWidgets('tocar una orden de la lista abre su detalle', (tester) async {
       await openDetail(tester, permissions: _view);
 
       expect(
@@ -98,12 +108,62 @@ void main() {
       expect(find.text('Curaciones simples'), findsOneWidget);
     });
 
-    testWidgets('la búsqueda vacía pide el número', (tester) async {
+    testWidgets('buscar por texto filtra por número de orden en mayúsculas', (
+      tester,
+    ) async {
       await openOrders(tester);
-      await tester.tap(find.text('Buscar orden'));
+      await tester.enterText(find.byType(TextField).first, 'os-2026112');
+      await tester.pump(const Duration(milliseconds: 500));
       await AppHarness.settle(tester);
 
-      expect(find.text('Este campo es obligatorio.'), findsOneWidget);
+      final last = harness.adapter.callsTo('GET', '/service-orders').last;
+      expect(last.queryParameters['order_number'], 'OS-2026112');
+      expect(last.queryParameters.containsKey('patient_document'), isFalse);
+    });
+
+    testWidgets('buscar solo con dígitos filtra por documento', (tester) async {
+      await openOrders(tester);
+      await tester.enterText(find.byType(TextField).first, '1020304051');
+      await tester.pump(const Duration(milliseconds: 500));
+      await AppHarness.settle(tester);
+
+      final last = harness.adapter.callsTo('GET', '/service-orders').last;
+      expect(last.queryParameters['patient_document'], '1020304051');
+      expect(last.queryParameters.containsKey('order_number'), isFalse);
+    });
+
+    testWidgets('el filtro de facturación se pide al servidor', (tester) async {
+      await openOrders(tester);
+      await tester.tap(find.widgetWithText(ChoiceChip, 'Sin facturar'));
+      await AppHarness.settle(tester);
+
+      expect(
+        harness.adapter
+            .callsTo('GET', '/service-orders')
+            .last
+            .queryParameters['billing_status'],
+        'null',
+      );
+      await tester.tap(find.widgetWithText(ChoiceChip, 'Anulado'));
+      await AppHarness.settle(tester);
+      expect(
+        harness.adapter
+            .callsTo('GET', '/service-orders')
+            .last
+            .queryParameters['billing_status'],
+        'cancelled',
+      );
+    });
+
+    testWidgets('sin órdenes: mensaje', (tester) async {
+      harness.adapter.on(
+        'GET',
+        '/service-orders',
+        body: pagedBody(<dynamic>[]),
+      );
+      await openOrders(tester);
+
+      expect(find.text('No hay órdenes para mostrar.'), findsOneWidget);
     });
 
     testWidgets('con crear y ver servicios aparece nueva orden', (
@@ -382,8 +442,7 @@ void main() {
         body: errorBody('Orden $_number no encontrada.'),
       );
       await openOrders(tester);
-      await tester.enterText(find.byType(TextField).first, _number);
-      await tester.tap(find.text('Buscar orden'));
+      await tester.tap(find.text(_number));
       await AppHarness.settle(tester);
 
       expect(find.textContaining('no encontrada'), findsOneWidget);

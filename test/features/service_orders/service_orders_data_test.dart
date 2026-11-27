@@ -4,6 +4,7 @@ import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/features/service_orders/data/new_order_request.dart';
+import 'package:sga_bojanini/features/service_orders/data/order_query.dart';
 import 'package:sga_bojanini/features/service_orders/data/service_order.dart';
 import 'package:sga_bojanini/features/service_orders/data/service_orders_repository.dart';
 
@@ -179,6 +180,57 @@ void main() {
       repository = container.read(serviceOrdersRepositoryProvider);
     });
 
+    test('lista pagina y manda los filtros que entiende el servidor', () async {
+      adapter.on(
+        'GET',
+        '/service-orders',
+        body: fixture('service_orders/orders_list_response.json'),
+      );
+
+      final page = await repository.list(
+        const OrderQuery(
+          search: ' os-2026 ',
+          billing: OrderBillingFilter.billed,
+        ),
+        page: 2,
+      );
+
+      expect(page.items, hasLength(2));
+      expect(page.items.last.orderNumber, 'OS-20261125-000002');
+      expect(adapter.callsTo('GET', '/service-orders').single.queryParameters, {
+        'order_number': 'OS-2026',
+        'billing_status': 'billed',
+        'page': 2,
+        'per_page': 25,
+      });
+    });
+
+    test('crear envía la clave de idempotencia solo si se le da una', () async {
+      adapter.on(
+        'POST',
+        '/service-orders',
+        status: 201,
+        body: fixture('service_orders/order_pending_response.json'),
+      );
+      const request = NewOrderRequest(
+        patientExternalId: 'EXT-1',
+        patientDocument: '1020304050',
+        patientFirstName: 'Ana',
+        patientLastName: 'Pérez',
+        serviceDate: '2026-11-26',
+        lines: [
+          OrderLineRequest(medicalServiceId: 1, quantity: 1, unitPrice: 1000),
+        ],
+      );
+
+      await repository.create(request, idempotencyKey: 'clave-1');
+      await repository.create(request);
+
+      final calls = adapter.callsTo('POST', '/service-orders').toList();
+      expect(calls.first.headers['Idempotency-Key'], 'clave-1');
+      expect(calls.last.headers.containsKey('Idempotency-Key'), isFalse);
+    });
+
     test('consulta una orden por número (codificado en la ruta)', () async {
       adapter.on(
         'GET',
@@ -260,6 +312,42 @@ void main() {
       expect(
         adapter.callsTo('POST', '/service-orders').single.data,
         request.toJson(),
+      );
+    });
+  });
+
+  group('OrderQuery', () {
+    test('sin filtros no manda parámetros', () {
+      expect(const OrderQuery().toParams(), isEmpty);
+    });
+
+    test(
+      'solo dígitos busca por documento; otro texto, por número de orden',
+      () {
+        expect(const OrderQuery(search: ' 1020304050 ').toParams(), {
+          'patient_document': '1020304050',
+        });
+        expect(const OrderQuery(search: 'os-20261126').toParams(), {
+          'order_number': 'OS-20261126',
+        });
+      },
+    );
+
+    test('«sin facturar» se pide como null y «todas» no manda estado', () {
+      expect(
+        const OrderQuery(billing: OrderBillingFilter.unbilled).toParams(),
+        {'billing_status': 'null'},
+      );
+      expect(
+        const OrderQuery(billing: OrderBillingFilter.cancelled).toParams(),
+        {'billing_status': 'cancelled'},
+      );
+    });
+
+    test('dos consultas iguales son iguales (clave del proveedor)', () {
+      expect(
+        const OrderQuery(search: 'a', billing: OrderBillingFilter.billed),
+        const OrderQuery(search: 'a', billing: OrderBillingFilter.billed),
       );
     });
   });

@@ -5206,24 +5206,6 @@ abstract class AppLocalizations {
   /// **'Descuentos'**
   String get serviceOrderTabDiscounts;
 
-  /// No description provided for @serviceOrderLookupHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Número de orden'**
-  String get serviceOrderLookupHint;
-
-  /// No description provided for @serviceOrderLookupAction.
-  ///
-  /// In es, this message translates to:
-  /// **'Buscar orden'**
-  String get serviceOrderLookupAction;
-
-  /// No description provided for @serviceOrderLookupHelp.
-  ///
-  /// In es, this message translates to:
-  /// **'Escriba el número completo, por ejemplo OS-20261126-000001.'**
-  String get serviceOrderLookupHelp;
-
   /// No description provided for @serviceOrderNew.
   ///
   /// In es, this message translates to:
@@ -6963,6 +6945,18 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Sin definir'**
   String get optionUnset;
+
+  /// No description provided for @serviceOrderSearchHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Buscar por número de orden o documento'**
+  String get serviceOrderSearchHint;
+
+  /// No description provided for @serviceOrdersEmpty.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay órdenes para mostrar.'**
+  String get serviceOrdersEmpty;
 }
 
 class _AppLocalizationsDelegate

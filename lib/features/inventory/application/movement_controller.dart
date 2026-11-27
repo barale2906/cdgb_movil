@@ -1,46 +1,63 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sga_bojanini/core/network/idempotency.dart';
 import 'package:sga_bojanini/core/utils/submission_notifier.dart';
 import 'package:sga_bojanini/features/inventory/application/inventory_providers.dart';
 import 'package:sga_bojanini/features/inventory/data/inventory_repository.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_requests.dart';
 
-/// Registra movimientos. Un solo envío en vuelo; nunca reintenta (la API no
-/// tiene idempotencia). Al terminar, refresca stock, lotes y comprobantes.
+/// Registra movimientos. Un solo envío en vuelo y nunca reintenta solo; cada
+/// envío lleva una clave de idempotencia para no duplicar el comprobante si el
+/// usuario lo repite. Al terminar, refresca stock, lotes y comprobantes.
 class MovementController extends SubmissionNotifier {
   InventoryRepository get _repository => ref.read(inventoryRepositoryProvider);
 
-  Future<MovementDocument?> entry(EntryRequest request) =>
-      _document(() => _repository.registerEntry(request));
+  final _keys = IdempotencyKeyHolder();
 
-  Future<MovementDocument?> exit(ExitRequest request) =>
-      _document(() => _repository.registerExit(request));
+  Future<MovementDocument?> entry(EntryRequest request) => _send(
+    request.toJson(),
+    (key) => _repository.registerEntry(request, idempotencyKey: key),
+  );
 
-  Future<MovementDocument?> transfer(TransferRequest request) =>
-      _document(() => _repository.registerTransfer(request));
+  Future<MovementDocument?> exit(ExitRequest request) => _send(
+    request.toJson(),
+    (key) => _repository.registerExit(request, idempotencyKey: key),
+  );
 
-  Future<MovementLine?> adjustment(AdjustmentRequest request) =>
-      _line(() => _repository.registerAdjustment(request));
+  Future<MovementDocument?> transfer(TransferRequest request) => _send(
+    request.toJson(),
+    (key) => _repository.registerTransfer(request, idempotencyKey: key),
+  );
 
-  Future<MovementLine?> returnStock(ReturnRequest request) =>
-      _line(() => _repository.registerReturn(request));
+  Future<MovementLine?> adjustment(AdjustmentRequest request) => _send(
+    request.toJson(),
+    (key) => _repository.registerAdjustment(request, idempotencyKey: key),
+  );
 
-  Future<MovementLine?> writeOff(WriteOffRequest request) =>
-      _line(() => _repository.registerWriteOff(request));
+  Future<MovementLine?> returnStock(ReturnRequest request) => _send(
+    request.toJson(),
+    (key) => _repository.registerReturn(request, idempotencyKey: key),
+  );
 
-  Future<MovementLine?> loss(LossRequest request) =>
-      _line(() => _repository.registerLoss(request));
+  Future<MovementLine?> writeOff(WriteOffRequest request) => _send(
+    request.toJson(),
+    (key) => _repository.registerWriteOff(request, idempotencyKey: key),
+  );
 
-  Future<MovementDocument?> _document(
-    Future<MovementDocument> Function() call,
+  Future<MovementLine?> loss(LossRequest request) => _send(
+    request.toJson(),
+    (key) => _repository.registerLoss(request, idempotencyKey: key),
+  );
+
+  /// Envía con una clave de idempotencia estable mientras el contenido no
+  /// cambie; tras un tiempo de espera agotado se conserva para el reenvío.
+  Future<T?> _send<T extends Object>(
+    Map<String, dynamic> body,
+    Future<T> Function(String key) call,
   ) async {
-    final result = await runValue(call);
-    if (result != null) _refreshLists();
-    return result;
-  }
-
-  Future<MovementLine?> _line(Future<MovementLine> Function() call) async {
-    final result = await runValue(call);
+    final key = _keys.keyFor(body);
+    final result = await runValue(() => call(key));
+    _keys.settle(succeeded: result != null, error: state.error);
     if (result != null) _refreshLists();
     return result;
   }
