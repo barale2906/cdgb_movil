@@ -15,6 +15,7 @@ import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/scan_product.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/features/dashboard/application/dashboard_providers.dart';
+import 'package:sga_bojanini/features/dashboard/presentation/activity_block.dart';
 import 'package:sga_bojanini/features/dashboard/presentation/dashboard_blocks.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 

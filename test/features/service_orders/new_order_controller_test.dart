@@ -9,6 +9,7 @@ import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/features/service_orders/application/new_order_controller.dart';
+import 'package:sga_bojanini/features/service_orders/application/order_draft.dart';
 
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/fixtures.dart';

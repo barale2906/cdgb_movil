@@ -9,6 +9,7 @@ import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/signing/signoff.dart';
 import 'package:sga_bojanini/features/inventory/data/batch.dart';
+import 'package:sga_bojanini/features/inventory/data/inventory_queries.dart';
 import 'package:sga_bojanini/features/inventory/data/inventory_repository.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_requests.dart';

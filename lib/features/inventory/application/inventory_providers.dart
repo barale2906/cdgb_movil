@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/misc.dart'
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/paging/paged_notifier.dart';
 import 'package:sga_bojanini/features/inventory/data/batch.dart';
+import 'package:sga_bojanini/features/inventory/data/inventory_queries.dart';
 import 'package:sga_bojanini/features/inventory/data/inventory_repository.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
 import 'package:sga_bojanini/features/inventory/data/stock_item.dart';

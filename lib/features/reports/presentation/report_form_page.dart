@@ -23,16 +23,6 @@ import 'package:sga_bojanini/features/reports/presentation/report_labels.dart';
 import 'package:sga_bojanini/features/reports/presentation/report_viewer_page.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
-const _movementTypes = [
-  'entry',
-  'exit',
-  'transfer',
-  'adjustment',
-  'return',
-  'expiration_write_off',
-  'loss',
-];
-
 const _defaultExpiringDays = 30;
 
 /// Filtros y formato de un reporte; al generar lo muestra (PDF), lo
@@ -213,8 +203,8 @@ class _ReportFormPageState extends ConsumerState<ReportFormPage> {
                         OptionDropdown<String>(
                           label: l10n.reportMovementType,
                           options: {
-                            for (final t in _movementTypes)
-                              t: _movementLabel(l10n, t),
+                            for (final t in movementReportTypes)
+                              t: movementTypeLabel(l10n, t),
                           },
                           value: _movementType,
                           nullLabel: l10n.reportAnyType,
@@ -290,15 +280,4 @@ class _ReportFormPageState extends ConsumerState<ReportFormPage> {
     }
     return null;
   }
-
-  static String _movementLabel(AppLocalizations l10n, String type) =>
-      switch (type) {
-        'entry' => l10n.movementEntry,
-        'exit' => l10n.movementExit,
-        'transfer' => l10n.movementTransfer,
-        'adjustment' => l10n.movementAdjustment,
-        'return' => l10n.movementReturn,
-        'expiration_write_off' => l10n.movementWriteOff,
-        _ => l10n.movementLoss,
-      };
 }
