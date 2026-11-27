@@ -6,7 +6,7 @@ import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/choice_filter_bar.dart';
 import 'package:sga_bojanini/core/widgets/paged_list_view.dart';
 import 'package:sga_bojanini/features/inventory/application/inventory_providers.dart';
-import 'package:sga_bojanini/features/inventory/data/inventory_repository.dart';
+import 'package:sga_bojanini/features/inventory/data/inventory_queries.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
 import 'package:sga_bojanini/features/inventory/presentation/inventory_labels.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';

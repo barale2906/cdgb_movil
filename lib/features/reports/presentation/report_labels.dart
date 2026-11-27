@@ -41,3 +41,24 @@ extension ReportFormatLabels on ReportFormat {
     ReportFormat.csv => l10n.formatCsv,
   };
 }
+
+/// Tipos de movimiento que admite el reporte de movimientos.
+const movementReportTypes = [
+  'entry',
+  'exit',
+  'transfer',
+  'adjustment',
+  'return',
+  'expiration_write_off',
+  'loss',
+];
+
+String movementTypeLabel(AppLocalizations l10n, String type) => switch (type) {
+  'entry' => l10n.movementEntry,
+  'exit' => l10n.movementExit,
+  'transfer' => l10n.movementTransfer,
+  'adjustment' => l10n.movementAdjustment,
+  'return' => l10n.movementReturn,
+  'expiration_write_off' => l10n.movementWriteOff,
+  _ => l10n.movementLoss,
+};
