@@ -64,6 +64,15 @@ class ErrorInterceptor extends Interceptor {
 /// cuerpos ni parámetros (podrían contener contraseñas, tokens o datos
 /// de pacientes).
 class SafeLogInterceptor extends Interceptor {
+  /// [sink] recibe cada línea (por defecto, el registro de `dart:developer`).
+  SafeLogInterceptor({void Function(String message)? sink})
+    : _sink = sink ?? _developerLog;
+
+  final void Function(String message) _sink;
+
+  static void _developerLog(String message) =>
+      developer.log(message, name: 'http');
+
   @override
   void onResponse(
     Response<dynamic> response,
@@ -80,9 +89,8 @@ class SafeLogInterceptor extends Interceptor {
   }
 
   void _log(RequestOptions options, int? status) {
-    developer.log(
+    _sink(
       '${options.method} ${options.uri.path} → ${status ?? 'sin respuesta'}',
-      name: 'http',
     );
   }
 }
