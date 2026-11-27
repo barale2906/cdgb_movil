@@ -3,16 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
-import 'package:sga_bojanini/core/config/app_environment.dart';
-import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
-import 'package:sga_bojanini/core/widgets/api_error_message.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/empty_state.dart';
 import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
+import 'package:sga_bojanini/core/widgets/write_feedback.dart';
 import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
@@ -49,16 +47,11 @@ class _AssetCommentsTabState extends ConsumerState<AssetCommentsTab> {
       AppSnackbar.show(context, l10n.assetCommentAdded);
       return;
     }
-    AppSnackbar.show(
+    showWriteError(
       context,
-      ApiErrorMessage.ofWrite(
-        l10n,
-        ref.read(addCommentControllerProvider).error,
-        isProd: ref.read(appEnvironmentProvider).env == AppEnv.prod,
-        timeoutWarning: l10n.assetCommentTimeoutWarning,
-      ),
-      kind: AppSnackbarKind.error,
-      closeLabel: l10n.actionClose,
+      ref,
+      error: ref.read(addCommentControllerProvider).error,
+      timeoutWarning: l10n.assetCommentTimeoutWarning,
     );
   }
 

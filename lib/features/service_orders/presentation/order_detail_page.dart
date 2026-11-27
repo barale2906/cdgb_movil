@@ -3,11 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/clinical/procedure_record.dart';
-import 'package:sga_bojanini/core/config/app_environment.dart';
-import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
-import 'package:sga_bojanini/core/widgets/api_error_message.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
 import 'package:sga_bojanini/core/widgets/billing_chip.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
@@ -16,6 +13,7 @@ import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/info_row.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
+import 'package:sga_bojanini/core/widgets/write_feedback.dart';
 import 'package:sga_bojanini/features/service_orders/application/order_actions.dart';
 import 'package:sga_bojanini/features/service_orders/application/service_order_permissions.dart';
 import 'package:sga_bojanini/features/service_orders/application/service_orders_providers.dart';
@@ -290,16 +288,11 @@ class _Actions extends ConsumerWidget {
       return;
     }
     final state = ref.read(serviceOrderActionsProvider);
-    AppSnackbar.show(
+    showWriteError(
       context,
-      ApiErrorMessage.ofWrite(
-        l10n,
-        state.error,
-        isProd: ref.read(appEnvironmentProvider).env == AppEnv.prod,
-        timeoutWarning: l10n.serviceOrderActionTimeout,
-      ),
-      kind: AppSnackbarKind.error,
-      closeLabel: l10n.actionClose,
+      ref,
+      error: state.error,
+      timeoutWarning: l10n.serviceOrderActionTimeout,
     );
   }
 }
