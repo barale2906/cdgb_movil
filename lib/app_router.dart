@@ -70,9 +70,12 @@ import 'package:sga_bojanini/features/monitoring/presentation/monitoring_page.da
 import 'package:sga_bojanini/features/monitoring/presentation/sensor_detail_page.dart';
 import 'package:sga_bojanini/features/notifications/application/notifications_providers.dart';
 import 'package:sga_bojanini/features/notifications/presentation/notifications_page.dart';
+import 'package:sga_bojanini/features/purchasing/application/draft_permissions.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/consolidate_page.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/consolidated_order_detail_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/expense_draft_page.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/expense_order_detail_page.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/purchase_draft_page.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/purchase_order_detail_page.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/purchasing_page.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/receive_expense_page.dart';
@@ -310,6 +313,19 @@ List<GoRoute> _purchasingRoutes(Ref ref) {
   const base = '/purchasing';
   return [
     GoRoute(
+      path: PurchaseDraftPage.newPath,
+      redirect: _requiresAll(ref, newPurchasePermissions),
+      builder: (_, _) => const PurchaseDraftPage(),
+      routes: [
+        GoRoute(path: 'product', builder: (_, _) => const ProductPickerPage()),
+      ],
+    ),
+    GoRoute(
+      path: ExpenseDraftPage.newPath,
+      redirect: _requiresAll(ref, newExpensePermissions),
+      builder: (_, _) => const ExpenseDraftPage(),
+    ),
+    GoRoute(
       path: '$base/orders/:id',
       redirect: _requires(ref, 'ordenes_compra.ver'),
       builder: (_, state) => PurchaseOrderDetailPage(orderId: _id(state)),
@@ -318,6 +334,11 @@ List<GoRoute> _purchasingRoutes(Ref ref) {
           path: 'receive',
           redirect: _requires(ref, 'ordenes_compra.recibir'),
           builder: (_, state) => ReceivePurchasePage(orderId: _id(state)),
+        ),
+        GoRoute(
+          path: 'edit',
+          redirect: _requiresAll(ref, newPurchasePermissions),
+          builder: (_, state) => PurchaseDraftEditPage(orderId: _id(state)),
         ),
       ],
     ),
@@ -330,6 +351,11 @@ List<GoRoute> _purchasingRoutes(Ref ref) {
           path: 'receive',
           redirect: _requires(ref, 'ordenes_gasto.recibir'),
           builder: (_, state) => ReceiveExpensePage(orderId: _id(state)),
+        ),
+        GoRoute(
+          path: 'edit',
+          redirect: _requiresAll(ref, newExpensePermissions),
+          builder: (_, state) => ExpenseDraftEditPage(orderId: _id(state)),
         ),
       ],
     ),

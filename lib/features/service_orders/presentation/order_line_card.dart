@@ -10,14 +10,6 @@ import 'package:sga_bojanini/features/service_orders/application/service_order_p
 import 'package:sga_bojanini/features/service_orders/presentation/supplies_section.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
-/// Pesos sin separadores: `25000` (nunca `25.000`, que se leería como 25).
-String plainNumber(double? value) {
-  if (value == null) return '';
-  return value == value.roundToDouble()
-      ? value.toInt().toString()
-      : value.toString();
-}
-
 /// Un procedimiento de la orden: cantidad, valor, descuento e insumos.
 class OrderLineCard extends ConsumerStatefulWidget {
   const OrderLineCard({required this.line, super.key});
@@ -33,10 +25,10 @@ class _OrderLineCardState extends ConsumerState<OrderLineCard> {
     text: widget.line.quantity?.toString() ?? '',
   );
   late final TextEditingController _price = TextEditingController(
-    text: plainNumber(widget.line.unitPrice),
+    text: AppFormat.plain(widget.line.unitPrice),
   );
   late final TextEditingController _discount = TextEditingController(
-    text: plainNumber(widget.line.discountValue),
+    text: AppFormat.plain(widget.line.discountValue),
   );
   late final TextEditingController _evolution = TextEditingController(
     text: widget.line.evolution,

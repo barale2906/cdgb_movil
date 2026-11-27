@@ -148,6 +148,7 @@ class _Content extends ConsumerWidget {
           actions: expenseOrderActionsProvider,
           onReceive: () =>
               context.push('/purchasing/expenses/${order.id}/receive'),
+          onEdit: () => context.push('/purchasing/expenses/${order.id}/edit'),
         ),
         if (permissions.can('ordenes_gasto.pagos') && order.balance > 0)
           BojaniButton(

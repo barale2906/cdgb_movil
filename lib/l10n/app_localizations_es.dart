@@ -3356,4 +3356,120 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get auditAllEntities => 'Todos los elementos';
+
+  @override
+  String get orderDraftEdit => 'Editar borrador';
+
+  @override
+  String get orderDraftDelete => 'Eliminar borrador';
+
+  @override
+  String get orderDraftDeleteBody =>
+      'El borrador se eliminará y no se puede deshacer.';
+
+  @override
+  String get orderDraftDeleted => 'Borrador eliminado.';
+
+  @override
+  String get orderNewPurchase => 'Nueva orden de compra';
+
+  @override
+  String get orderNewExpense => 'Nueva orden de gasto';
+
+  @override
+  String get draftPurchaseTitle => 'Nueva orden de compra';
+
+  @override
+  String get draftPurchaseEditTitle => 'Editar orden de compra';
+
+  @override
+  String get draftExpenseTitle => 'Nueva orden de gasto';
+
+  @override
+  String get draftExpenseEditTitle => 'Editar orden de gasto';
+
+  @override
+  String get draftSupplier => 'Proveedor';
+
+  @override
+  String get draftSupplierRequired => 'Elija el proveedor.';
+
+  @override
+  String get draftSupplierHintExpense =>
+      'Solo proveedores habilitados para gastos.';
+
+  @override
+  String get draftWarehouse => 'Almacén que recibe';
+
+  @override
+  String get draftCostCenter => 'Centro de costo (opcional)';
+
+  @override
+  String get draftExpectedDate => 'Fecha esperada de entrega (opcional)';
+
+  @override
+  String get draftNotes => 'Observaciones (opcional)';
+
+  @override
+  String get draftItems => 'Líneas';
+
+  @override
+  String get draftItemsRequired => 'Agregue al menos una línea.';
+
+  @override
+  String get draftAddProduct => 'Agregar producto';
+
+  @override
+  String get draftAddExpenseLine => 'Agregar concepto';
+
+  @override
+  String get draftVariant => 'Marca o presentación comercial';
+
+  @override
+  String get draftPresentation => 'Presentación';
+
+  @override
+  String get draftPresentationRequired => 'Elija la presentación.';
+
+  @override
+  String get draftPickProduct => 'Elegir producto';
+
+  @override
+  String get draftNoVariants => 'Este producto no tiene variantes registradas.';
+
+  @override
+  String get draftDescription => 'Descripción';
+
+  @override
+  String get draftUnit => 'Unidad';
+
+  @override
+  String get draftQuantity => 'Cantidad';
+
+  @override
+  String get draftUnitPrice => 'Valor unitario';
+
+  @override
+  String get draftTaxRate => 'IVA % (opcional)';
+
+  @override
+  String get draftTaxInvalid => 'Debe estar entre 0 y 100.';
+
+  @override
+  String draftTotal(String amount) {
+    return 'Total estimado: $amount';
+  }
+
+  @override
+  String get draftSave => 'Guardar borrador';
+
+  @override
+  String get draftSaved => 'Borrador guardado.';
+
+  @override
+  String get draftTimeout =>
+      'No se recibió respuesta del servidor. Revise la lista de órdenes antes de repetirlo: es posible que sí se haya guardado.';
+
+  @override
+  String get draftNotSaved => 'Ya revisé: no se guardó, enviar de nuevo';
 }

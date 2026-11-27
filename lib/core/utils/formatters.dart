@@ -17,6 +17,15 @@ abstract final class AppFormat {
   static double? parseDecimal(String? text) =>
       double.tryParse((text ?? '').trim().replaceAll(',', '.'));
 
+  /// Número sin separadores para editarlo en un campo: `25000` (nunca
+  /// `25.000`, que se leería como 25); vacío si es `null`.
+  static String plain(double? value) {
+    if (value == null) return '';
+    return value == value.roundToDouble()
+        ? value.toInt().toString()
+        : value.toString();
+  }
+
   /// Porcentaje con un decimal como máximo: `87,5 %`.
   static String percent(num value) => '${decimal(value, maxDecimals: 1)} %';
 

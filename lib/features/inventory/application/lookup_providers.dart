@@ -4,18 +4,10 @@ import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
 import 'package:sga_bojanini/features/inventory/data/batch.dart';
 import 'package:sga_bojanini/features/inventory/data/inventory_repository.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
-import 'package:sga_bojanini/features/inventory/data/product_presentation.dart';
 
 final FutureProvider<List<CostCenterRef>> costCentersProvider =
     FutureProvider.autoDispose<List<CostCenterRef>>(
       (ref) => ref.watch(inventoryRepositoryProvider).costCenters(),
-    );
-
-final FutureProviderFamily<List<ProductPresentation>, int>
-presentationsProvider = FutureProvider.autoDispose
-    .family<List<ProductPresentation>, int>(
-      (ref, genericId) =>
-          ref.watch(inventoryRepositoryProvider).presentations(genericId),
     );
 
 /// Consulta de lotes de un producto para los selectores de movimientos.

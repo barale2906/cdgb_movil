@@ -8,7 +8,6 @@ import 'package:sga_bojanini/core/signing/signoff.dart';
 import 'package:sga_bojanini/features/inventory/data/batch.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_requests.dart';
-import 'package:sga_bojanini/features/inventory/data/product_presentation.dart';
 import 'package:sga_bojanini/features/inventory/data/stock_item.dart';
 
 /// Filtros de lotes del listado paginado.
@@ -141,14 +140,6 @@ class InventoryRepository {
     );
     return ApiResponse.list(response, CostCenterRef.fromJson);
   });
-
-  Future<List<ProductPresentation>> presentations(int genericProductId) =>
-      apiCall(() async {
-        final response = await _dio.get<dynamic>(
-          '/generic-products/$genericProductId/presentations',
-        );
-        return ApiResponse.list(response, ProductPresentation.fromJson);
-      });
 
   // ---- Comprobantes y movimientos ----
 

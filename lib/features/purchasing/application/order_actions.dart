@@ -29,6 +29,16 @@ abstract class OrderActions extends SubmissionNotifier {
 
   Future<bool> cancel(int id) => _done(id, () => repository.cancel(id));
 
+  /// Elimina un borrador (irreversible).
+  Future<bool> delete(int id) async {
+    final done = await run(() => repository.delete(id));
+    final error = state.error;
+    final timedOut =
+        error is NetworkException && error.kind == NetworkFailureKind.timeout;
+    if (done || timedOut) invalidateAfterChange(id);
+    return done;
+  }
+
   Future<bool> receive(int id, List<Map<String, Object?>> items) =>
       _done(id, () => repository.receive(id, items));
 

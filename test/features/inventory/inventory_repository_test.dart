@@ -135,20 +135,13 @@ void main() {
     });
 
     test('centros de costo y presentaciones', () async {
-      adapter
-        ..on(
-          'GET',
-          '/cost-centers',
-          body: fixture('inventory/cost_centers_response.json'),
-        )
-        ..on(
-          'GET',
-          '/generic-products/5/presentations',
-          body: fixture('inventory/presentations_response.json'),
-        );
+      adapter.on(
+        'GET',
+        '/cost-centers',
+        body: fixture('inventory/cost_centers_response.json'),
+      );
       final centers = await repository.costCenters();
       expect(centers.last.isExternal, isTrue);
-      expect((await repository.presentations(5)).single.name, 'Caja x 100');
     });
   });
 

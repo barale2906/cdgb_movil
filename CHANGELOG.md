@@ -2,6 +2,17 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [1.2.0+13] - 2026-11-26
+### Añadido
+- Compras: crear, editar y eliminar borradores de **órdenes de compra** (proveedor, almacén, centro de costo y fecha opcionales, y líneas de producto con variante, presentación, cantidad, valor e IVA) y de **órdenes de gasto** (proveedor habilitado para gastos y conceptos con descripción, unidad, cantidad, valor e IVA). Se guardan con un solo envío y sin reintentos; tras un tiempo de espera agotado el reenvío queda bloqueado hasta que la persona revise la lista. Los botones de editar y eliminar aparecen en el detalle de un borrador, con el permiso de crear.
+
+### Cambiado
+- El proveedor y las presentaciones de producto pasan a `core` para que catálogo, inventario y compras los compartan (sin cambios para la persona usuaria).
+- Una sola función para mostrar números en campos de edición (`AppFormat.plain`).
+
+### Pendiente
+- Crear proveedores de gasto, adjuntar la factura, crear/editar activos y programar mantenimientos, avisos push (Firebase), aviso de actualización y pruebas en teléfono real. Lista completa en `docs/plan/08-pendientes.md`.
+
 ## [1.1.0+12] - 2026-11-26
 ### Añadido
 - Sin conexión: almacenes, productos, proveedores, centros de costo y servicios se guardan al consultarlos y, sin red, se muestra la última copia. Se borra al cerrar sesión (teléfonos compartidos). Las búsquedas con texto y todas las escrituras siguen siendo en línea.

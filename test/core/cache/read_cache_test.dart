@@ -4,11 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/core/cache/read_cache.dart';
 import 'package:sga_bojanini/core/catalog/cost_center_providers.dart';
 import 'package:sga_bojanini/core/catalog/product_repository.dart';
+import 'package:sga_bojanini/core/catalog/supplier_repository.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/warehouse/warehouse_repository.dart';
-import 'package:sga_bojanini/features/catalog/data/supplier_repository.dart';
 import 'package:sga_bojanini/features/cost_centers/data/cost_centers_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

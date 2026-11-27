@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/core/catalog/product_repository.dart';
+import 'package:sga_bojanini/core/catalog/supplier_repository.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 import 'package:sga_bojanini/core/warehouse/warehouse_capacity_repository.dart';
-import 'package:sga_bojanini/features/catalog/data/supplier_repository.dart';
 
 import '../../helpers/fake_http_adapter.dart';
 import '../../helpers/fixtures.dart';

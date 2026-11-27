@@ -6255,6 +6255,228 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Todos los elementos'**
   String get auditAllEntities;
+
+  /// No description provided for @orderDraftEdit.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar borrador'**
+  String get orderDraftEdit;
+
+  /// No description provided for @orderDraftDelete.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar borrador'**
+  String get orderDraftDelete;
+
+  /// No description provided for @orderDraftDeleteBody.
+  ///
+  /// In es, this message translates to:
+  /// **'El borrador se eliminará y no se puede deshacer.'**
+  String get orderDraftDeleteBody;
+
+  /// No description provided for @orderDraftDeleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Borrador eliminado.'**
+  String get orderDraftDeleted;
+
+  /// No description provided for @orderNewPurchase.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva orden de compra'**
+  String get orderNewPurchase;
+
+  /// No description provided for @orderNewExpense.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva orden de gasto'**
+  String get orderNewExpense;
+
+  /// No description provided for @draftPurchaseTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva orden de compra'**
+  String get draftPurchaseTitle;
+
+  /// No description provided for @draftPurchaseEditTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar orden de compra'**
+  String get draftPurchaseEditTitle;
+
+  /// No description provided for @draftExpenseTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Nueva orden de gasto'**
+  String get draftExpenseTitle;
+
+  /// No description provided for @draftExpenseEditTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar orden de gasto'**
+  String get draftExpenseEditTitle;
+
+  /// No description provided for @draftSupplier.
+  ///
+  /// In es, this message translates to:
+  /// **'Proveedor'**
+  String get draftSupplier;
+
+  /// No description provided for @draftSupplierRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Elija el proveedor.'**
+  String get draftSupplierRequired;
+
+  /// No description provided for @draftSupplierHintExpense.
+  ///
+  /// In es, this message translates to:
+  /// **'Solo proveedores habilitados para gastos.'**
+  String get draftSupplierHintExpense;
+
+  /// No description provided for @draftWarehouse.
+  ///
+  /// In es, this message translates to:
+  /// **'Almacén que recibe'**
+  String get draftWarehouse;
+
+  /// No description provided for @draftCostCenter.
+  ///
+  /// In es, this message translates to:
+  /// **'Centro de costo (opcional)'**
+  String get draftCostCenter;
+
+  /// No description provided for @draftExpectedDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha esperada de entrega (opcional)'**
+  String get draftExpectedDate;
+
+  /// No description provided for @draftNotes.
+  ///
+  /// In es, this message translates to:
+  /// **'Observaciones (opcional)'**
+  String get draftNotes;
+
+  /// No description provided for @draftItems.
+  ///
+  /// In es, this message translates to:
+  /// **'Líneas'**
+  String get draftItems;
+
+  /// No description provided for @draftItemsRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregue al menos una línea.'**
+  String get draftItemsRequired;
+
+  /// No description provided for @draftAddProduct.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar producto'**
+  String get draftAddProduct;
+
+  /// No description provided for @draftAddExpenseLine.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar concepto'**
+  String get draftAddExpenseLine;
+
+  /// No description provided for @draftVariant.
+  ///
+  /// In es, this message translates to:
+  /// **'Marca o presentación comercial'**
+  String get draftVariant;
+
+  /// No description provided for @draftPresentation.
+  ///
+  /// In es, this message translates to:
+  /// **'Presentación'**
+  String get draftPresentation;
+
+  /// No description provided for @draftPresentationRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Elija la presentación.'**
+  String get draftPresentationRequired;
+
+  /// No description provided for @draftPickProduct.
+  ///
+  /// In es, this message translates to:
+  /// **'Elegir producto'**
+  String get draftPickProduct;
+
+  /// No description provided for @draftNoVariants.
+  ///
+  /// In es, this message translates to:
+  /// **'Este producto no tiene variantes registradas.'**
+  String get draftNoVariants;
+
+  /// No description provided for @draftDescription.
+  ///
+  /// In es, this message translates to:
+  /// **'Descripción'**
+  String get draftDescription;
+
+  /// No description provided for @draftUnit.
+  ///
+  /// In es, this message translates to:
+  /// **'Unidad'**
+  String get draftUnit;
+
+  /// No description provided for @draftQuantity.
+  ///
+  /// In es, this message translates to:
+  /// **'Cantidad'**
+  String get draftQuantity;
+
+  /// No description provided for @draftUnitPrice.
+  ///
+  /// In es, this message translates to:
+  /// **'Valor unitario'**
+  String get draftUnitPrice;
+
+  /// No description provided for @draftTaxRate.
+  ///
+  /// In es, this message translates to:
+  /// **'IVA % (opcional)'**
+  String get draftTaxRate;
+
+  /// No description provided for @draftTaxInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Debe estar entre 0 y 100.'**
+  String get draftTaxInvalid;
+
+  /// No description provided for @draftTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total estimado: {amount}'**
+  String draftTotal(String amount);
+
+  /// No description provided for @draftSave.
+  ///
+  /// In es, this message translates to:
+  /// **'Guardar borrador'**
+  String get draftSave;
+
+  /// No description provided for @draftSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Borrador guardado.'**
+  String get draftSaved;
+
+  /// No description provided for @draftTimeout.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise la lista de órdenes antes de repetirlo: es posible que sí se haya guardado.'**
+  String get draftTimeout;
+
+  /// No description provided for @draftNotSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Ya revisé: no se guardó, enviar de nuevo'**
+  String get draftNotSaved;
 }
 
 class _AppLocalizationsDelegate

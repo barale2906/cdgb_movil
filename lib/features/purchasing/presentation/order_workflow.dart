@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/config/app_environment.dart';
 import 'package:sga_bojanini/core/config/app_environment_provider.dart';
@@ -83,6 +84,7 @@ class OrderWorkflowButtons extends ConsumerWidget {
     required this.permissionPrefix,
     required this.actions,
     required this.onReceive,
+    required this.onEdit,
     super.key,
   });
 
@@ -93,6 +95,9 @@ class OrderWorkflowButtons extends ConsumerWidget {
 
   /// Abre la pantalla de recepción de la orden.
   final VoidCallback onReceive;
+
+  /// Abre el formulario del borrador para modificarlo.
+  final VoidCallback onEdit;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -144,6 +149,27 @@ class OrderWorkflowButtons extends ConsumerWidget {
       await run((n) => n.cancel(orderId), l10n.orderCancelled);
     }
 
+    Future<void> deleteDraft() async {
+      final confirmed = await ConfirmDialog.show(
+        context,
+        title: l10n.orderDraftDelete,
+        message: l10n.orderDraftDeleteBody,
+        confirmLabel: l10n.orderDraftDelete,
+        destructive: true,
+      );
+      if (!confirmed || !context.mounted) return;
+      final done = await ref.read(actions.notifier).delete(orderId);
+      if (!context.mounted) return;
+      showOrderResult(
+        context,
+        ref,
+        done: done,
+        successMessage: l10n.orderDraftDeleted,
+        error: ref.read(actions).error,
+      );
+      if (done && context.mounted) context.pop();
+    }
+
     final buttons = <Widget>[
       if (status == OrderStatus.draft && can('crear'))
         BojaniButton(
@@ -153,6 +179,20 @@ class OrderWorkflowButtons extends ConsumerWidget {
           onPressed: () =>
               unawaited(run((n) => n.submit(orderId), l10n.orderSubmitted)),
         ),
+      if (status == OrderStatus.draft && can('crear')) ...[
+        BojaniButton(
+          label: l10n.orderDraftEdit,
+          icon: Icons.edit_outlined,
+          kind: BojaniButtonKind.secondary,
+          onPressed: busy ? null : onEdit,
+        ),
+        BojaniButton(
+          label: l10n.orderDraftDelete,
+          icon: Icons.delete_outline,
+          kind: BojaniButtonKind.destructive,
+          onPressed: busy ? null : () => unawaited(deleteDraft()),
+        ),
+      ],
       if (status == OrderStatus.pendingApproval && can('aprobar')) ...[
         BojaniButton(
           label: l10n.orderApprove,

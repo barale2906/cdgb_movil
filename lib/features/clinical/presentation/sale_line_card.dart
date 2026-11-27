@@ -28,16 +28,8 @@ class _SaleLineCardState extends ConsumerState<SaleLineCard> {
     text: widget.line.quantity?.toString() ?? '',
   );
   late final TextEditingController _price = TextEditingController(
-    text: _plain(widget.line.unitPrice),
+    text: AppFormat.plain(widget.line.unitPrice),
   );
-
-  /// Pesos sin separadores: `25000` (nunca `25.000`, que se leería como 25).
-  static String _plain(double? value) {
-    if (value == null) return '';
-    return value == value.roundToDouble()
-        ? value.toInt().toString()
-        : value.toString();
-  }
 
   @override
   void dispose() {

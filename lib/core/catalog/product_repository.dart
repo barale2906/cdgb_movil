@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/cache/read_cache.dart';
 import 'package:sga_bojanini/core/catalog/generic_product.dart';
+import 'package:sga_bojanini/core/catalog/product_presentation.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
@@ -60,6 +61,16 @@ class ProductRepository {
     final value = ApiResponse.object(response)['available_kits'];
     return value is num ? value.toDouble() : 0;
   });
+
+  /// Presentaciones (caja, blíster…) de un producto, con su factor a unidad
+  /// base.
+  Future<List<ProductPresentation>> presentations(int genericProductId) =>
+      apiCall(() async {
+        final response = await _dio.get<dynamic>(
+          '/generic-products/$genericProductId/presentations',
+        );
+        return ApiResponse.list(response, ProductPresentation.fromJson);
+      });
 
   Future<GenericProduct> product(int id) => apiCall(() async {
     final response = await _dio.get<dynamic>('/generic-products/$id');

@@ -4,6 +4,7 @@ import 'package:sga_bojanini/core/catalog/product_repository.dart';
 import 'package:sga_bojanini/core/network/no_auto_retry.dart';
 
 import '../../helpers/fake_http_adapter.dart';
+import '../../helpers/fixtures.dart';
 import '../../helpers/in_memory_token_store.dart';
 import '../../helpers/test_container.dart';
 
@@ -51,5 +52,15 @@ void main() {
       await repository.kitAvailability(genericProductId: 5, warehouseId: 1),
       0,
     );
+  });
+
+  test('presentaciones del producto con su factor a unidad base', () async {
+    adapter.on(
+      'GET',
+      '/generic-products/5/presentations',
+      body: fixture('inventory/presentations_response.json'),
+    );
+    final presentations = await repository.presentations(5);
+    expect(presentations.single.name, 'Caja x 100');
   });
 }

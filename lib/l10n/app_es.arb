@@ -1608,5 +1608,49 @@
     }
   },
   "auditEntityFilter": "Elemento",
-  "auditAllEntities": "Todos los elementos"
+  "auditAllEntities": "Todos los elementos",
+  "orderDraftEdit": "Editar borrador",
+  "orderDraftDelete": "Eliminar borrador",
+  "orderDraftDeleteBody": "El borrador se eliminará y no se puede deshacer.",
+  "orderDraftDeleted": "Borrador eliminado.",
+  "orderNewPurchase": "Nueva orden de compra",
+  "orderNewExpense": "Nueva orden de gasto",
+  "draftPurchaseTitle": "Nueva orden de compra",
+  "draftPurchaseEditTitle": "Editar orden de compra",
+  "draftExpenseTitle": "Nueva orden de gasto",
+  "draftExpenseEditTitle": "Editar orden de gasto",
+  "draftSupplier": "Proveedor",
+  "draftSupplierRequired": "Elija el proveedor.",
+  "draftSupplierHintExpense": "Solo proveedores habilitados para gastos.",
+  "draftWarehouse": "Almacén que recibe",
+  "draftCostCenter": "Centro de costo (opcional)",
+  "draftExpectedDate": "Fecha esperada de entrega (opcional)",
+  "draftNotes": "Observaciones (opcional)",
+  "draftItems": "Líneas",
+  "draftItemsRequired": "Agregue al menos una línea.",
+  "draftAddProduct": "Agregar producto",
+  "draftAddExpenseLine": "Agregar concepto",
+  "draftVariant": "Marca o presentación comercial",
+  "draftPresentation": "Presentación",
+  "draftPresentationRequired": "Elija la presentación.",
+  "draftPickProduct": "Elegir producto",
+  "draftNoVariants": "Este producto no tiene variantes registradas.",
+  "draftDescription": "Descripción",
+  "draftUnit": "Unidad",
+  "draftQuantity": "Cantidad",
+  "draftUnitPrice": "Valor unitario",
+  "draftTaxRate": "IVA % (opcional)",
+  "draftTaxInvalid": "Debe estar entre 0 y 100.",
+  "draftTotal": "Total estimado: {amount}",
+  "@draftTotal": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "draftSave": "Guardar borrador",
+  "draftSaved": "Borrador guardado.",
+  "draftTimeout": "No se recibió respuesta del servidor. Revise la lista de órdenes antes de repetirlo: es posible que sí se haya guardado.",
+  "draftNotSaved": "Ya revisé: no se guardó, enviar de nuevo"
 }
