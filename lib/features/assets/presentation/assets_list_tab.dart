@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/widgets/choice_filter_bar.dart';
@@ -12,6 +13,7 @@ import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
 import 'package:sga_bojanini/features/assets/data/asset.dart';
 import 'package:sga_bojanini/features/assets/data/asset_enums.dart';
 import 'package:sga_bojanini/features/assets/data/assets_repository.dart';
+import 'package:sga_bojanini/features/assets/presentation/asset_form_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_labels.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_scan.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_stats_header.dart';
@@ -59,9 +61,22 @@ class _AssetsListTabState extends ConsumerState<AssetsListTab> {
               AppSpacing.md,
               AppSpacing.sm,
             ),
-            child: SearchField(
-              hint: l10n.assetSearchHint,
-              onChanged: (value) => setState(() => _search = value),
+            child: Row(
+              children: [
+                Expanded(
+                  child: SearchField(
+                    hint: l10n.assetSearchHint,
+                    onChanged: (value) => setState(() => _search = value),
+                  ),
+                ),
+                if (ref.watch(permissionServiceProvider).can('activos.crear'))
+                  IconButton.filledTonal(
+                    tooltip: l10n.assetNewAction,
+                    icon: const Icon(Icons.add),
+                    onPressed: () =>
+                        unawaited(context.push(AssetFormPage.newPath)),
+                  ),
+              ],
             ),
           ),
           ChoiceFilterBar<_Filter>(

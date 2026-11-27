@@ -134,6 +134,11 @@ abstract class Asset with _$Asset {
 
   bool get isRetired => status == AssetStatus.retired;
 
+  /// La hoja de vida técnica solo existe en equipos biomédicos y de cómputo.
+  bool get supportsTechnicalProfile =>
+      requiresMaintenance &&
+      (assetType == AssetType.biomedical || assetType == AssetType.computing);
+
   /// Descripción corta del lugar: "Sede · Lugar" o la ubicación externa.
   String? get locationLabel {
     if (location.isOffPremises) return location.offPremisesLocation;

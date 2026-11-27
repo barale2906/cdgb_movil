@@ -5329,7 +5329,7 @@ abstract class AppLocalizations {
   /// No description provided for @serviceOrderCancelConfirm.
   ///
   /// In es, this message translates to:
-  /// **'Se anulará la orden {number}. Anular no devuelve al inventario los insumos que ya salieron.'**
+  /// **'Se anulará la orden {number}. Los insumos que ya salieron volverán al inventario.'**
   String serviceOrderCancelConfirm(String number);
 
   /// No description provided for @serviceOrderCancelled.
@@ -6477,6 +6477,492 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Ya revisé: no se guardó, enviar de nuevo'**
   String get draftNotSaved;
+
+  /// No description provided for @assetNewTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo activo'**
+  String get assetNewTitle;
+
+  /// No description provided for @assetEditTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar activo'**
+  String get assetEditTitle;
+
+  /// No description provided for @assetNewAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo activo'**
+  String get assetNewAction;
+
+  /// No description provided for @assetEditAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar datos'**
+  String get assetEditAction;
+
+  /// No description provided for @assetFormName.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre'**
+  String get assetFormName;
+
+  /// No description provided for @assetFormPlace.
+  ///
+  /// In es, this message translates to:
+  /// **'Lugar'**
+  String get assetFormPlace;
+
+  /// No description provided for @assetFormSite.
+  ///
+  /// In es, this message translates to:
+  /// **'Sede'**
+  String get assetFormSite;
+
+  /// No description provided for @assetFormInitialStatus.
+  ///
+  /// In es, this message translates to:
+  /// **'Estado inicial'**
+  String get assetFormInitialStatus;
+
+  /// No description provided for @assetFormInitialStatusDefault.
+  ///
+  /// In es, this message translates to:
+  /// **'Operativo (por defecto)'**
+  String get assetFormInitialStatusDefault;
+
+  /// No description provided for @assetFormInitialComment.
+  ///
+  /// In es, this message translates to:
+  /// **'Comentario inicial (opcional)'**
+  String get assetFormInitialComment;
+
+  /// No description provided for @assetFormKeepResponsible.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin responsable'**
+  String get assetFormKeepResponsible;
+
+  /// No description provided for @assetFormNoSupplier.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin proveedor'**
+  String get assetFormNoSupplier;
+
+  /// No description provided for @assetFormOptional.
+  ///
+  /// In es, this message translates to:
+  /// **'{label} (opcional)'**
+  String assetFormOptional(Object label);
+
+  /// No description provided for @assetFormCodeInfo.
+  ///
+  /// In es, this message translates to:
+  /// **'El código se genera automáticamente al guardar.'**
+  String get assetFormCodeInfo;
+
+  /// No description provided for @assetFormLocationInfo.
+  ///
+  /// In es, this message translates to:
+  /// **'La ubicación y el estado se cambian después con traslados y con «Cambiar estado».'**
+  String get assetFormLocationInfo;
+
+  /// No description provided for @assetFormAcquisitionValueInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingrese un valor válido, sin letras.'**
+  String get assetFormAcquisitionValueInvalid;
+
+  /// No description provided for @assetCreated.
+  ///
+  /// In es, this message translates to:
+  /// **'Activo registrado.'**
+  String get assetCreated;
+
+  /// No description provided for @assetUpdated.
+  ///
+  /// In es, this message translates to:
+  /// **'Datos del activo guardados.'**
+  String get assetUpdated;
+
+  /// No description provided for @assetFormTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise la lista de activos antes de volver a guardar para no duplicarlo.'**
+  String get assetFormTimeoutWarning;
+
+  /// No description provided for @assetDelete.
+  ///
+  /// In es, this message translates to:
+  /// **'Eliminar activo'**
+  String get assetDelete;
+
+  /// No description provided for @assetDeleteBody.
+  ///
+  /// In es, this message translates to:
+  /// **'Se eliminará el activo {name}. Use esta opción solo si lo registró por error; si ya tiene mantenimientos o traslados, el sistema no lo permitirá y deberá darlo de baja.'**
+  String assetDeleteBody(String name);
+
+  /// No description provided for @assetDeleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Activo eliminado.'**
+  String get assetDeleted;
+
+  /// No description provided for @assetDeleteTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise la lista de activos antes de intentarlo de nuevo.'**
+  String get assetDeleteTimeoutWarning;
+
+  /// No description provided for @techProfileEdit.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar hoja de vida técnica'**
+  String get techProfileEdit;
+
+  /// No description provided for @techProfileTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Hoja de vida técnica'**
+  String get techProfileTitle;
+
+  /// No description provided for @techProfileSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Hoja de vida técnica guardada.'**
+  String get techProfileSaved;
+
+  /// No description provided for @techProfileTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Abra la ficha del activo y revise la hoja de vida antes de volver a guardar.'**
+  String get techProfileTimeoutWarning;
+
+  /// No description provided for @techProfileGeneral.
+  ///
+  /// In es, this message translates to:
+  /// **'Datos generales'**
+  String get techProfileGeneral;
+
+  /// No description provided for @techProfileBiomedical.
+  ///
+  /// In es, this message translates to:
+  /// **'Equipo biomédico'**
+  String get techProfileBiomedical;
+
+  /// No description provided for @techProfileComputing.
+  ///
+  /// In es, this message translates to:
+  /// **'Equipo de cómputo'**
+  String get techProfileComputing;
+
+  /// No description provided for @techAcquisitionPurchase.
+  ///
+  /// In es, this message translates to:
+  /// **'Compra'**
+  String get techAcquisitionPurchase;
+
+  /// No description provided for @techAcquisitionDonation.
+  ///
+  /// In es, this message translates to:
+  /// **'Donación'**
+  String get techAcquisitionDonation;
+
+  /// No description provided for @techAcquisitionComodato.
+  ///
+  /// In es, this message translates to:
+  /// **'Comodato'**
+  String get techAcquisitionComodato;
+
+  /// No description provided for @techAcquisitionLeasing.
+  ///
+  /// In es, this message translates to:
+  /// **'Leasing'**
+  String get techAcquisitionLeasing;
+
+  /// No description provided for @techRiskI.
+  ///
+  /// In es, this message translates to:
+  /// **'Clase I · riesgo bajo'**
+  String get techRiskI;
+
+  /// No description provided for @techRiskIIa.
+  ///
+  /// In es, this message translates to:
+  /// **'Clase IIa · riesgo moderado'**
+  String get techRiskIIa;
+
+  /// No description provided for @techRiskIIb.
+  ///
+  /// In es, this message translates to:
+  /// **'Clase IIb · riesgo alto'**
+  String get techRiskIIb;
+
+  /// No description provided for @techRiskIII.
+  ///
+  /// In es, this message translates to:
+  /// **'Clase III · riesgo muy alto'**
+  String get techRiskIII;
+
+  /// No description provided for @techClassDiagnosis.
+  ///
+  /// In es, this message translates to:
+  /// **'Diagnóstico'**
+  String get techClassDiagnosis;
+
+  /// No description provided for @techClassTreatment.
+  ///
+  /// In es, this message translates to:
+  /// **'Tratamiento'**
+  String get techClassTreatment;
+
+  /// No description provided for @techClassRehabilitation.
+  ///
+  /// In es, this message translates to:
+  /// **'Rehabilitación'**
+  String get techClassRehabilitation;
+
+  /// No description provided for @techClassPrevention.
+  ///
+  /// In es, this message translates to:
+  /// **'Prevención'**
+  String get techClassPrevention;
+
+  /// No description provided for @techClassLaboratory.
+  ///
+  /// In es, this message translates to:
+  /// **'Análisis de laboratorio'**
+  String get techClassLaboratory;
+
+  /// No description provided for @techPowerElectric.
+  ///
+  /// In es, this message translates to:
+  /// **'Eléctrica'**
+  String get techPowerElectric;
+
+  /// No description provided for @techPowerBattery.
+  ///
+  /// In es, this message translates to:
+  /// **'Batería'**
+  String get techPowerBattery;
+
+  /// No description provided for @techPowerPneumatic.
+  ///
+  /// In es, this message translates to:
+  /// **'Neumática'**
+  String get techPowerPneumatic;
+
+  /// No description provided for @techPowerMechanical.
+  ///
+  /// In es, this message translates to:
+  /// **'Mecánica'**
+  String get techPowerMechanical;
+
+  /// No description provided for @techPowerOther.
+  ///
+  /// In es, this message translates to:
+  /// **'Otra'**
+  String get techPowerOther;
+
+  /// No description provided for @techYearInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingrese un año entre 1900 y {max}.'**
+  String techYearInvalid(int max);
+
+  /// No description provided for @techUsefulLifeInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingrese de 1 a 100 años.'**
+  String get techUsefulLifeInvalid;
+
+  /// No description provided for @techIpInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingrese una dirección IP válida.'**
+  String get techIpInvalid;
+
+  /// No description provided for @techMacInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingrese una dirección MAC válida (por ejemplo 00:1A:2B:3C:4D:5E).'**
+  String get techMacInvalid;
+
+  /// No description provided for @techNotApplicable.
+  ///
+  /// In es, this message translates to:
+  /// **'La hoja de vida técnica solo aplica a equipos biomédicos y de cómputo.'**
+  String get techNotApplicable;
+
+  /// No description provided for @maintenanceScheduleAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Programar mantenimiento'**
+  String get maintenanceScheduleAction;
+
+  /// No description provided for @maintenanceScheduleTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Programar mantenimiento'**
+  String get maintenanceScheduleTitle;
+
+  /// No description provided for @maintenanceType.
+  ///
+  /// In es, this message translates to:
+  /// **'Tipo de mantenimiento'**
+  String get maintenanceType;
+
+  /// No description provided for @maintenanceScheduledOn.
+  ///
+  /// In es, this message translates to:
+  /// **'Fecha programada'**
+  String get maintenanceScheduledOn;
+
+  /// No description provided for @maintenanceReportedFailureRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Describa la falla reportada para el mantenimiento correctivo.'**
+  String get maintenanceReportedFailureRequired;
+
+  /// No description provided for @maintenancePerformer.
+  ///
+  /// In es, this message translates to:
+  /// **'Quién lo realizará'**
+  String get maintenancePerformer;
+
+  /// No description provided for @maintenancePerformerUndefined.
+  ///
+  /// In es, this message translates to:
+  /// **'Por definir'**
+  String get maintenancePerformerUndefined;
+
+  /// No description provided for @maintenanceScheduled.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantenimiento programado.'**
+  String get maintenanceScheduled;
+
+  /// No description provided for @maintenanceScheduleTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise los mantenimientos del activo antes de volver a programarlo.'**
+  String get maintenanceScheduleTimeoutWarning;
+
+  /// No description provided for @maintenanceRescheduleAction.
+  ///
+  /// In es, this message translates to:
+  /// **'Reprogramar'**
+  String get maintenanceRescheduleAction;
+
+  /// No description provided for @maintenanceRescheduleTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Reprogramar mantenimiento'**
+  String get maintenanceRescheduleTitle;
+
+  /// No description provided for @maintenanceRescheduled.
+  ///
+  /// In es, this message translates to:
+  /// **'Mantenimiento reprogramado.'**
+  String get maintenanceRescheduled;
+
+  /// No description provided for @maintenanceRescheduleTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Abra el mantenimiento y revise su fecha antes de volver a guardar.'**
+  String get maintenanceRescheduleTimeoutWarning;
+
+  /// No description provided for @planAdd.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar plan'**
+  String get planAdd;
+
+  /// No description provided for @planNewTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo plan de mantenimiento'**
+  String get planNewTitle;
+
+  /// No description provided for @planEditTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar plan de mantenimiento'**
+  String get planEditTitle;
+
+  /// No description provided for @planEdit.
+  ///
+  /// In es, this message translates to:
+  /// **'Editar plan'**
+  String get planEdit;
+
+  /// No description provided for @planFrequencyValue.
+  ///
+  /// In es, this message translates to:
+  /// **'Cada cuánto'**
+  String get planFrequencyValue;
+
+  /// No description provided for @planFrequencyUnit.
+  ///
+  /// In es, this message translates to:
+  /// **'Unidad'**
+  String get planFrequencyUnit;
+
+  /// No description provided for @planFrequencyInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingrese un número entero de 1 a 3650.'**
+  String get planFrequencyInvalid;
+
+  /// No description provided for @planStartDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Primera fecha'**
+  String get planStartDate;
+
+  /// No description provided for @planActive.
+  ///
+  /// In es, this message translates to:
+  /// **'Plan activo'**
+  String get planActive;
+
+  /// No description provided for @planActiveHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'Un plan inactivo deja de generar mantenimientos; no se elimina.'**
+  String get planActiveHelp;
+
+  /// No description provided for @planCorrectiveNotPlannable.
+  ///
+  /// In es, this message translates to:
+  /// **'El mantenimiento correctivo no se planifica: regístrelo como mantenimiento puntual.'**
+  String get planCorrectiveNotPlannable;
+
+  /// No description provided for @planSaved.
+  ///
+  /// In es, this message translates to:
+  /// **'Plan guardado.'**
+  String get planSaved;
+
+  /// No description provided for @planTimeoutWarning.
+  ///
+  /// In es, this message translates to:
+  /// **'No se recibió respuesta del servidor. Revise los planes del activo antes de volver a guardar.'**
+  String get planTimeoutWarning;
+
+  /// No description provided for @planNotFound.
+  ///
+  /// In es, this message translates to:
+  /// **'No se encontró el plan. Vuelva a la ficha del activo y actualice.'**
+  String get planNotFound;
+
+  /// No description provided for @optionUnset.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin definir'**
+  String get optionUnset;
 }
 
 class _AppLocalizationsDelegate

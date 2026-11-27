@@ -56,9 +56,10 @@ void main() {
       expect(_order('order_cancelled_response.json').canBill, isFalse);
     });
 
-    test('anular: salvo que ya esté anulada', () {
+    test('anular: solo sin facturar', () {
+      expect(_order('order_pending_response.json').canCancel, isTrue);
       expect(_order('order_approved_response.json').canCancel, isTrue);
-      expect(_order('order_billed_response.json').canCancel, isTrue);
+      expect(_order('order_billed_response.json').canCancel, isFalse);
       expect(_order('order_cancelled_response.json').canCancel, isFalse);
       expect(_order('order_billed_response.json').isBilled, isTrue);
     });

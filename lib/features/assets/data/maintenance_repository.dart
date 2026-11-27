@@ -7,6 +7,7 @@ import 'package:sga_bojanini/core/network/dio_client.dart';
 import 'package:sga_bojanini/core/signing/signoff.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/features/assets/data/asset_maintenance.dart';
+import 'package:sga_bojanini/features/assets/data/maintenance_requests.dart';
 
 /// Filtros del listado de mantenimientos.
 @immutable
@@ -126,6 +127,57 @@ class MaintenanceRepository {
       '/assets/$assetId/maintenance-plans',
     );
     return ApiResponse.list(response, MaintenancePlan.fromJson);
+  });
+
+  /// Programa un mantenimiento puntual del activo. Escritura: no se reintenta.
+  Future<AssetMaintenance> schedule(
+    int assetId,
+    ScheduleMaintenanceRequest request,
+  ) => apiCall(() async {
+    final response = await _dio.post<dynamic>(
+      '/assets/$assetId/maintenances',
+      data: request.toJson(),
+    );
+    return AssetMaintenance.fromJson(ApiResponse.object(response));
+  });
+
+  /// Cambia la fecha (y la falla reportada) de un mantenimiento programado.
+  Future<AssetMaintenance> reschedule(
+    int id,
+    DateTime date, {
+    String? reportedFailure,
+  }) => apiCall(() async {
+    final response = await _dio.put<dynamic>(
+      '/assets/maintenances/$id',
+      data: {
+        'scheduled_date': ColombiaTime.formatDate(date),
+        if ((reportedFailure ?? '').trim().isNotEmpty)
+          'reported_failure': reportedFailure!.trim(),
+      },
+    );
+    return AssetMaintenance.fromJson(ApiResponse.object(response));
+  });
+
+  Future<MaintenancePlan> createPlan(
+    int assetId,
+    MaintenancePlanRequest request,
+  ) => apiCall(() async {
+    final response = await _dio.post<dynamic>(
+      '/assets/$assetId/maintenance-plans',
+      data: request.toJson(),
+    );
+    return MaintenancePlan.fromJson(ApiResponse.object(response));
+  });
+
+  Future<MaintenancePlan> updatePlan(
+    int planId,
+    MaintenancePlanRequest request,
+  ) => apiCall(() async {
+    final response = await _dio.put<dynamic>(
+      '/assets/maintenance-plans/$planId',
+      data: request.toJson(),
+    );
+    return MaintenancePlan.fromJson(ApiResponse.object(response));
   });
 
   Future<AssetMaintenance> start(int id) => _post(id, 'start');

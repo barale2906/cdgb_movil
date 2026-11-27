@@ -14,6 +14,7 @@ const _creator = [
   'ordenes_servicio.crear',
   'servicios_medicos.ver',
 ];
+const List<String> _canceller = [..._creator, 'ordenes_servicio.editar'];
 const _approver = ['ordenes_servicio.ver', 'ordenes_servicio.aprobar'];
 
 void main() {
@@ -245,7 +246,9 @@ void main() {
       expect(find.text('Marcar como facturada'), findsNothing);
     });
 
-    testWidgets('anular advierte que no devuelve insumos', (tester) async {
+    testWidgets('anular advierte que los insumos vuelven al inventario', (
+      tester,
+    ) async {
       harness.adapter.on(
         'POST',
         '/service-orders/$_number/cancel',
@@ -253,7 +256,7 @@ void main() {
       );
       await openDetail(
         tester,
-        permissions: _creator,
+        permissions: _canceller,
         order: 'order_approved_response.json',
       );
       harness.adapter.on(
@@ -264,7 +267,7 @@ void main() {
 
       await tester.tap(find.text('Anular orden'));
       await AppHarness.settle(tester);
-      expect(find.textContaining('no devuelve al inventario'), findsOneWidget);
+      expect(find.textContaining('volverán al inventario'), findsOneWidget);
       await tester.tap(find.text('Anular orden').last);
       await AppHarness.settle(tester);
 
@@ -276,7 +279,7 @@ void main() {
     testWidgets('cancelar el diálogo no envía nada', (tester) async {
       await openDetail(
         tester,
-        permissions: _creator,
+        permissions: _canceller,
         order: 'order_approved_response.json',
       );
 
@@ -289,6 +292,28 @@ void main() {
         harness.adapter.callsTo('POST', '/service-orders/$_number/cancel'),
         isEmpty,
       );
+    });
+
+    testWidgets('sin el permiso de editar no aparece anular', (tester) async {
+      await openDetail(
+        tester,
+        permissions: _creator,
+        order: 'order_approved_response.json',
+      );
+
+      expect(find.text('Marcar como facturada'), findsOneWidget);
+      expect(find.text('Anular orden'), findsNothing);
+    });
+
+    testWidgets('una orden facturada ya no se puede anular', (tester) async {
+      await openDetail(
+        tester,
+        permissions: _canceller,
+        order: 'order_billed_response.json',
+      );
+
+      expect(find.text('FACTURADO'), findsOneWidget);
+      expect(find.text('Anular orden'), findsNothing);
     });
 
     testWidgets('un 409 del servidor se muestra tal cual', (tester) async {

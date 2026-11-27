@@ -2831,7 +2831,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String serviceOrderCancelConfirm(String number) {
-    return 'Se anulará la orden $number. Anular no devuelve al inventario los insumos que ya salieron.';
+    return 'Se anulará la orden $number. Los insumos que ya salieron volverán al inventario.';
   }
 
   @override
@@ -3472,4 +3472,268 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get draftNotSaved => 'Ya revisé: no se guardó, enviar de nuevo';
+
+  @override
+  String get assetNewTitle => 'Nuevo activo';
+
+  @override
+  String get assetEditTitle => 'Editar activo';
+
+  @override
+  String get assetNewAction => 'Nuevo activo';
+
+  @override
+  String get assetEditAction => 'Editar datos';
+
+  @override
+  String get assetFormName => 'Nombre';
+
+  @override
+  String get assetFormPlace => 'Lugar';
+
+  @override
+  String get assetFormSite => 'Sede';
+
+  @override
+  String get assetFormInitialStatus => 'Estado inicial';
+
+  @override
+  String get assetFormInitialStatusDefault => 'Operativo (por defecto)';
+
+  @override
+  String get assetFormInitialComment => 'Comentario inicial (opcional)';
+
+  @override
+  String get assetFormKeepResponsible => 'Sin responsable';
+
+  @override
+  String get assetFormNoSupplier => 'Sin proveedor';
+
+  @override
+  String assetFormOptional(Object label) {
+    return '$label (opcional)';
+  }
+
+  @override
+  String get assetFormCodeInfo =>
+      'El código se genera automáticamente al guardar.';
+
+  @override
+  String get assetFormLocationInfo =>
+      'La ubicación y el estado se cambian después con traslados y con «Cambiar estado».';
+
+  @override
+  String get assetFormAcquisitionValueInvalid =>
+      'Ingrese un valor válido, sin letras.';
+
+  @override
+  String get assetCreated => 'Activo registrado.';
+
+  @override
+  String get assetUpdated => 'Datos del activo guardados.';
+
+  @override
+  String get assetFormTimeoutWarning =>
+      'No se recibió respuesta del servidor. Revise la lista de activos antes de volver a guardar para no duplicarlo.';
+
+  @override
+  String get assetDelete => 'Eliminar activo';
+
+  @override
+  String assetDeleteBody(String name) {
+    return 'Se eliminará el activo $name. Use esta opción solo si lo registró por error; si ya tiene mantenimientos o traslados, el sistema no lo permitirá y deberá darlo de baja.';
+  }
+
+  @override
+  String get assetDeleted => 'Activo eliminado.';
+
+  @override
+  String get assetDeleteTimeoutWarning =>
+      'No se recibió respuesta del servidor. Revise la lista de activos antes de intentarlo de nuevo.';
+
+  @override
+  String get techProfileEdit => 'Editar hoja de vida técnica';
+
+  @override
+  String get techProfileTitle => 'Hoja de vida técnica';
+
+  @override
+  String get techProfileSaved => 'Hoja de vida técnica guardada.';
+
+  @override
+  String get techProfileTimeoutWarning =>
+      'No se recibió respuesta del servidor. Abra la ficha del activo y revise la hoja de vida antes de volver a guardar.';
+
+  @override
+  String get techProfileGeneral => 'Datos generales';
+
+  @override
+  String get techProfileBiomedical => 'Equipo biomédico';
+
+  @override
+  String get techProfileComputing => 'Equipo de cómputo';
+
+  @override
+  String get techAcquisitionPurchase => 'Compra';
+
+  @override
+  String get techAcquisitionDonation => 'Donación';
+
+  @override
+  String get techAcquisitionComodato => 'Comodato';
+
+  @override
+  String get techAcquisitionLeasing => 'Leasing';
+
+  @override
+  String get techRiskI => 'Clase I · riesgo bajo';
+
+  @override
+  String get techRiskIIa => 'Clase IIa · riesgo moderado';
+
+  @override
+  String get techRiskIIb => 'Clase IIb · riesgo alto';
+
+  @override
+  String get techRiskIII => 'Clase III · riesgo muy alto';
+
+  @override
+  String get techClassDiagnosis => 'Diagnóstico';
+
+  @override
+  String get techClassTreatment => 'Tratamiento';
+
+  @override
+  String get techClassRehabilitation => 'Rehabilitación';
+
+  @override
+  String get techClassPrevention => 'Prevención';
+
+  @override
+  String get techClassLaboratory => 'Análisis de laboratorio';
+
+  @override
+  String get techPowerElectric => 'Eléctrica';
+
+  @override
+  String get techPowerBattery => 'Batería';
+
+  @override
+  String get techPowerPneumatic => 'Neumática';
+
+  @override
+  String get techPowerMechanical => 'Mecánica';
+
+  @override
+  String get techPowerOther => 'Otra';
+
+  @override
+  String techYearInvalid(int max) {
+    return 'Ingrese un año entre 1900 y $max.';
+  }
+
+  @override
+  String get techUsefulLifeInvalid => 'Ingrese de 1 a 100 años.';
+
+  @override
+  String get techIpInvalid => 'Ingrese una dirección IP válida.';
+
+  @override
+  String get techMacInvalid =>
+      'Ingrese una dirección MAC válida (por ejemplo 00:1A:2B:3C:4D:5E).';
+
+  @override
+  String get techNotApplicable =>
+      'La hoja de vida técnica solo aplica a equipos biomédicos y de cómputo.';
+
+  @override
+  String get maintenanceScheduleAction => 'Programar mantenimiento';
+
+  @override
+  String get maintenanceScheduleTitle => 'Programar mantenimiento';
+
+  @override
+  String get maintenanceType => 'Tipo de mantenimiento';
+
+  @override
+  String get maintenanceScheduledOn => 'Fecha programada';
+
+  @override
+  String get maintenanceReportedFailureRequired =>
+      'Describa la falla reportada para el mantenimiento correctivo.';
+
+  @override
+  String get maintenancePerformer => 'Quién lo realizará';
+
+  @override
+  String get maintenancePerformerUndefined => 'Por definir';
+
+  @override
+  String get maintenanceScheduled => 'Mantenimiento programado.';
+
+  @override
+  String get maintenanceScheduleTimeoutWarning =>
+      'No se recibió respuesta del servidor. Revise los mantenimientos del activo antes de volver a programarlo.';
+
+  @override
+  String get maintenanceRescheduleAction => 'Reprogramar';
+
+  @override
+  String get maintenanceRescheduleTitle => 'Reprogramar mantenimiento';
+
+  @override
+  String get maintenanceRescheduled => 'Mantenimiento reprogramado.';
+
+  @override
+  String get maintenanceRescheduleTimeoutWarning =>
+      'No se recibió respuesta del servidor. Abra el mantenimiento y revise su fecha antes de volver a guardar.';
+
+  @override
+  String get planAdd => 'Agregar plan';
+
+  @override
+  String get planNewTitle => 'Nuevo plan de mantenimiento';
+
+  @override
+  String get planEditTitle => 'Editar plan de mantenimiento';
+
+  @override
+  String get planEdit => 'Editar plan';
+
+  @override
+  String get planFrequencyValue => 'Cada cuánto';
+
+  @override
+  String get planFrequencyUnit => 'Unidad';
+
+  @override
+  String get planFrequencyInvalid => 'Ingrese un número entero de 1 a 3650.';
+
+  @override
+  String get planStartDate => 'Primera fecha';
+
+  @override
+  String get planActive => 'Plan activo';
+
+  @override
+  String get planActiveHelp =>
+      'Un plan inactivo deja de generar mantenimientos; no se elimina.';
+
+  @override
+  String get planCorrectiveNotPlannable =>
+      'El mantenimiento correctivo no se planifica: regístrelo como mantenimiento puntual.';
+
+  @override
+  String get planSaved => 'Plan guardado.';
+
+  @override
+  String get planTimeoutWarning =>
+      'No se recibió respuesta del servidor. Revise los planes del activo antes de volver a guardar.';
+
+  @override
+  String get planNotFound =>
+      'No se encontró el plan. Vuelva a la ficha del activo y actualice.';
+
+  @override
+  String get optionUnset => 'Sin definir';
 }

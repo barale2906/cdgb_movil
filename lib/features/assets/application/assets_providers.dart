@@ -8,6 +8,7 @@ import 'package:sga_bojanini/core/paging/paged_notifier.dart';
 import 'package:sga_bojanini/core/utils/submission_notifier.dart';
 import 'package:sga_bojanini/features/assets/data/asset.dart';
 import 'package:sga_bojanini/features/assets/data/asset_catalogs.dart';
+import 'package:sga_bojanini/features/assets/data/asset_draft.dart';
 import 'package:sga_bojanini/features/assets/data/asset_enums.dart';
 import 'package:sga_bojanini/features/assets/data/asset_events.dart';
 import 'package:sga_bojanini/features/assets/data/assets_repository.dart';
@@ -126,4 +127,63 @@ final NotifierProvider<ChangeStatusController, SubmissionState>
 changeStatusControllerProvider =
     NotifierProvider.autoDispose<ChangeStatusController, SubmissionState>(
       ChangeStatusController.new,
+    );
+
+/// Crear, editar y eliminar un activo, y guardar su hoja de vida técnica.
+/// Escrituras: botón bloqueado en vuelo y sin reintentos; tras un timeout se
+/// consulta la lista antes de repetir (un reintento podría duplicar el
+/// activo).
+class AssetFormController extends SubmissionNotifier {
+  AssetsRepository get _repository => ref.read(assetsRepositoryProvider);
+
+  /// Devuelve el activo creado o `null` si falló.
+  Future<Asset?> create(AssetDraft draft) async {
+    final asset = await runValue(() => _repository.create(draft));
+    if (asset != null) _refreshLists();
+    return asset;
+  }
+
+  Future<bool> update(int id, AssetDraft draft) async {
+    final asset = await runValue(() => _repository.update(id, draft));
+    if (asset != null) _refresh(id);
+    return asset != null;
+  }
+
+  Future<bool> delete(int id) async {
+    final done = await run(() => _repository.delete(id));
+    if (done) _refreshLists();
+    return done;
+  }
+
+  Future<bool> saveTechnicalProfile(
+    int id,
+    Map<String, Object?> profile,
+  ) async {
+    final done = await run(
+      () => _repository.updateTechnicalProfile(id, profile),
+    );
+    if (done) _refresh(id);
+    return done;
+  }
+
+  void _refresh(int id) {
+    if (!ref.mounted) return;
+    ref
+      ..invalidate(assetDetailProvider(id))
+      ..invalidate(assetMovementsProvider(id));
+    _refreshLists();
+  }
+
+  void _refreshLists() {
+    if (!ref.mounted) return;
+    ref
+      ..invalidate(assetListProvider)
+      ..invalidate(assetStatisticsProvider);
+  }
+}
+
+final NotifierProvider<AssetFormController, SubmissionState>
+assetFormControllerProvider =
+    NotifierProvider.autoDispose<AssetFormController, SubmissionState>(
+      AssetFormController.new,
     );

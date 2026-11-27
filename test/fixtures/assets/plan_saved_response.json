@@ -1,0 +1,21 @@
+{
+ "success": true,
+ "message": "Plan creado",
+ "data": {
+  "id": 4,
+  "asset_id": 7,
+  "maintenance_type": "preventive",
+  "maintenance_type_label": "Preventivo",
+  "frequency_value": 6,
+  "frequency_unit": "months",
+  "frequency_label": "Cada 6 meses",
+  "start_date": "2025-01-01",
+  "performed_by_type": "internal",
+  "performed_by_type_label": "Interno",
+  "technician": null,
+  "supplier": null,
+  "notes": null,
+  "is_active": true,
+  "next_date": "2026-11-10"
+ }
+}

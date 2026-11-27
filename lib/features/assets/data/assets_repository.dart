@@ -6,6 +6,7 @@ import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
 import 'package:sga_bojanini/features/assets/data/asset.dart';
 import 'package:sga_bojanini/features/assets/data/asset_catalogs.dart';
+import 'package:sga_bojanini/features/assets/data/asset_draft.dart';
 import 'package:sga_bojanini/features/assets/data/asset_enums.dart';
 import 'package:sga_bojanini/features/assets/data/asset_events.dart';
 
@@ -137,6 +138,40 @@ class AssetsRepository {
         );
         return Asset.fromJson(ApiResponse.object(response));
       });
+
+  /// Registra un activo; el servidor genera el código. Escritura: no se
+  /// reintenta.
+  Future<Asset> create(AssetDraft draft) => apiCall(() async {
+    final response = await _dio.post<dynamic>(
+      '/assets',
+      data: draft.toCreateJson(),
+    );
+    return Asset.fromJson(ApiResponse.object(response));
+  });
+
+  /// Edita los datos generales (ubicación, responsable y estado no cambian
+  /// aquí). Escritura: no se reintenta.
+  Future<Asset> update(int id, AssetDraft draft) => apiCall(() async {
+    final response = await _dio.put<dynamic>(
+      '/assets/$id',
+      data: draft.toUpdateJson(),
+    );
+    return Asset.fromJson(ApiResponse.object(response));
+  });
+
+  /// Elimina (borrado lógico) un activo registrado por error; el servidor
+  /// lo rechaza si ya tiene mantenimientos o traslados.
+  Future<void> delete(int id) => apiCall(() async {
+    await _dio.delete<dynamic>('/assets/$id');
+  });
+
+  /// Guarda la hoja de vida técnica: solo cambian los campos enviados.
+  Future<void> updateTechnicalProfile(
+    int id,
+    Map<String, Object?> profile,
+  ) => apiCall(() async {
+    await _dio.put<dynamic>('/assets/$id/technical-profile', data: profile);
+  });
 
   /// Hoja de vida en PDF (binario).
   Future<Uint8List> lifeSheet(int id) => apiCall(() async {

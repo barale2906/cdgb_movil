@@ -17,11 +17,16 @@ import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
 import 'package:sga_bojanini/features/assets/application/maintenance_providers.dart';
 import 'package:sga_bojanini/features/assets/application/transfers_providers.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_detail_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/asset_form_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/assets_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/complete_maintenance_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/document_upload_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/maintenance_detail_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/maintenance_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/maintenance_plan_form_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/reschedule_maintenance_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/schedule_maintenance_page.dart';
+import 'package:sga_bojanini/features/assets/presentation/technical_profile_form_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_confirm_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_detail_page.dart';
 import 'package:sga_bojanini/features/assets/presentation/transfer_request_page.dart';
@@ -243,6 +248,12 @@ List<GoRoute> _maintenanceRoutes(Ref ref) => [
             CompleteMaintenancePage(maintenanceId: _id(state)),
       ),
       GoRoute(
+        path: 'reschedule',
+        redirect: _requires(ref, 'activos_mantenimientos.programar'),
+        builder: (_, state) =>
+            RescheduleMaintenancePage(maintenanceId: _id(state)),
+      ),
+      GoRoute(
         path: 'report',
         builder: (_, state) => PdfPreviewPage(
           provider: maintenanceReportProvider(_id(state)),
@@ -274,11 +285,45 @@ List<GoRoute> _assetRoutes(Ref ref) => [
       ),
     ],
   ),
+  // Antes de `/assets/:id`: "new" no es un identificador.
+  GoRoute(
+    path: AssetFormPage.newPath,
+    redirect: _requires(ref, 'activos.crear'),
+    builder: (_, _) => const AssetFormPage(),
+  ),
   GoRoute(
     path: '/assets/:id',
     redirect: _requires(ref, 'activos.ver'),
     builder: (_, state) => AssetDetailPage(assetId: _id(state)),
     routes: [
+      GoRoute(
+        path: 'edit',
+        redirect: _requires(ref, 'activos.editar'),
+        builder: (_, state) => AssetFormPage(assetId: _id(state)),
+      ),
+      GoRoute(
+        path: 'technical-profile',
+        redirect: _requires(ref, 'activos.editar'),
+        builder: (_, state) => TechnicalProfileFormPage(assetId: _id(state)),
+      ),
+      GoRoute(
+        path: 'maintenance/new',
+        redirect: _requires(ref, 'activos_mantenimientos.programar'),
+        builder: (_, state) => ScheduleMaintenancePage(assetId: _id(state)),
+      ),
+      GoRoute(
+        path: 'plans/new',
+        redirect: _requires(ref, 'activos_mantenimientos.programar'),
+        builder: (_, state) => MaintenancePlanFormPage(assetId: _id(state)),
+      ),
+      GoRoute(
+        path: 'plans/:planId/edit',
+        redirect: _requires(ref, 'activos_mantenimientos.programar'),
+        builder: (_, state) => MaintenancePlanFormPage(
+          assetId: _id(state),
+          planId: int.parse(state.pathParameters['planId']!),
+        ),
+      ),
       GoRoute(
         path: 'transfer',
         redirect: _requires(ref, 'activos_traslados.solicitar'),

@@ -45,6 +45,11 @@ Map<String, dynamic> _$CatalogOptionToJson(_CatalogOption instance) =>
 
 _AssetFilters _$AssetFiltersFromJson(Map<String, dynamic> json) =>
     _AssetFilters(
+      categories:
+          (json['categories'] as List<dynamic>?)
+              ?.map((e) => AssetCategory.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       sites:
           (json['sites'] as List<dynamic>?)
               ?.map((e) => AssetSite.fromJson(e as Map<String, dynamic>))
@@ -84,6 +89,7 @@ _AssetFilters _$AssetFiltersFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$AssetFiltersToJson(_AssetFilters instance) =>
     <String, dynamic>{
+      'categories': instance.categories.map((e) => e.toJson()).toList(),
       'sites': instance.sites.map((e) => e.toJson()).toList(),
       'users': instance.users.map((e) => e.toJson()).toList(),
       'suppliers': instance.suppliers.map((e) => e.toJson()).toList(),
