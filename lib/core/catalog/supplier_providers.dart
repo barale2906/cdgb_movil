@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
-import 'package:sga_bojanini/features/catalog/data/supplier.dart';
-import 'package:sga_bojanini/features/catalog/data/supplier_repository.dart';
+import 'package:sga_bojanini/core/catalog/supplier.dart';
+import 'package:sga_bojanini/core/catalog/supplier_repository.dart';
 
 final FutureProviderFamily<List<Supplier>, String> supplierSearchProvider =
     FutureProvider.autoDispose.family<List<Supplier>, String>(

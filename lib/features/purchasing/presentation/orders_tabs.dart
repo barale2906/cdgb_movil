@@ -4,12 +4,15 @@ import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/widgets/choice_filter_bar.dart';
 import 'package:sga_bojanini/core/widgets/paged_list_view.dart';
+import 'package:sga_bojanini/features/purchasing/application/draft_permissions.dart';
 import 'package:sga_bojanini/features/purchasing/application/orders_providers.dart';
 import 'package:sga_bojanini/features/purchasing/data/expense_order.dart';
 import 'package:sga_bojanini/features/purchasing/data/order_status.dart';
 import 'package:sga_bojanini/features/purchasing/data/orders_repository.dart';
 import 'package:sga_bojanini/features/purchasing/data/purchase_order.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/expense_draft_page.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/order_widgets.dart';
+import 'package:sga_bojanini/features/purchasing/presentation/purchase_draft_page.dart';
 import 'package:sga_bojanini/features/purchasing/presentation/purchasing_labels.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
@@ -29,7 +32,7 @@ class _PurchaseOrdersTabState extends ConsumerState<PurchaseOrdersTab> {
     final l10n = AppLocalizations.of(context);
     final provider = purchaseOrderListProvider(OrderQuery(status: _status));
     final notifier = ref.read(provider.notifier);
-    return Column(
+    final content = Column(
       children: [
         const SizedBox(height: AppSpacing.sm),
         OrderStatusFilterBar(
@@ -56,6 +59,12 @@ class _PurchaseOrdersTabState extends ConsumerState<PurchaseOrdersTab> {
         ),
       ],
     );
+    return _WithCreateButton(
+      label: l10n.orderNewPurchase,
+      visible: ref.watch(canCreatePurchaseProvider),
+      path: PurchaseDraftPage.newPath,
+      child: content,
+    );
   }
 }
 
@@ -78,7 +87,7 @@ class _ExpenseOrdersTabState extends ConsumerState<ExpenseOrdersTab> {
       OrderQuery(status: _status, paymentStatus: _payment),
     );
     final notifier = ref.read(provider.notifier);
-    return Column(
+    final content = Column(
       children: [
         const SizedBox(height: AppSpacing.sm),
         OrderStatusFilterBar(
@@ -123,5 +132,41 @@ class _ExpenseOrdersTabState extends ConsumerState<ExpenseOrdersTab> {
         ),
       ],
     );
+    return _WithCreateButton(
+      label: l10n.orderNewExpense,
+      visible: ref.watch(canCreateExpenseProvider),
+      path: ExpenseDraftPage.newPath,
+      child: content,
+    );
   }
+}
+
+/// Contenido de una pestaña con el botón flotante para crear un borrador.
+class _WithCreateButton extends StatelessWidget {
+  const _WithCreateButton({
+    required this.label,
+    required this.visible,
+    required this.path,
+    required this.child,
+  });
+
+  final String label;
+  final bool visible;
+  final String path;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: Colors.transparent,
+    floatingActionButton: visible
+        ? FloatingActionButton.extended(
+            // Dos pestañas pueden estar construidas a la vez.
+            heroTag: null,
+            onPressed: () => context.push(path),
+            icon: const Icon(Icons.add),
+            label: Text(label),
+          )
+        : null,
+    body: child,
+  );
 }

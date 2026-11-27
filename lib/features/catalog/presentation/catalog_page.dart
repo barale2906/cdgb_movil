@@ -4,10 +4,10 @@ import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/catalog/generic_product.dart';
 import 'package:sga_bojanini/core/catalog/product_providers.dart';
+import 'package:sga_bojanini/core/catalog/supplier.dart';
+import 'package:sga_bojanini/core/catalog/supplier_providers.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/widgets/searchable_list.dart';
-import 'package:sga_bojanini/features/catalog/application/catalog_providers.dart';
-import 'package:sga_bojanini/features/catalog/data/supplier.dart';
 import 'package:sga_bojanini/features/catalog/presentation/product_widgets.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 

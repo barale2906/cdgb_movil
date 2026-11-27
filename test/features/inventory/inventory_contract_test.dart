@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sga_bojanini/core/auth/my_signature.dart';
+import 'package:sga_bojanini/core/catalog/product_presentation.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/features/inventory/data/batch.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
-import 'package:sga_bojanini/features/inventory/data/product_presentation.dart';
 import 'package:sga_bojanini/features/inventory/data/stock_item.dart';
 
 import '../../helpers/fixtures.dart';

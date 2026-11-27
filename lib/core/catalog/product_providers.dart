@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show FutureProviderFamily;
 import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/catalog/generic_product.dart';
+import 'package:sga_bojanini/core/catalog/product_presentation.dart';
 import 'package:sga_bojanini/core/catalog/product_repository.dart';
 import 'package:sga_bojanini/core/warehouse/active_warehouse.dart';
 
@@ -29,6 +30,14 @@ final FutureProviderFamily<double?, int> kitAvailabilityProvider =
             warehouseId: warehouseId,
           );
     });
+
+/// Presentaciones de un producto.
+final FutureProviderFamily<List<ProductPresentation>, int>
+presentationsProvider = FutureProvider.autoDispose
+    .family<List<ProductPresentation>, int>(
+      (ref, genericId) =>
+          ref.watch(productRepositoryProvider).presentations(genericId),
+    );
 
 final FutureProviderFamily<GenericProduct, int> productDetailProvider =
     FutureProvider.autoDispose.family<GenericProduct, int>(

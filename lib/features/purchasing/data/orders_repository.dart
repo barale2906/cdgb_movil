@@ -63,6 +63,23 @@ class OrdersRepository<T> {
     return _parse(ApiResponse.object(response));
   });
 
+  /// Crea un borrador (escritura: nunca se reintenta sola).
+  Future<T> create(Map<String, Object> body) => apiCall(() async {
+    final response = await dio.post<dynamic>('/$path', data: body);
+    return _parse(ApiResponse.object(response));
+  });
+
+  /// Reemplaza los datos de un borrador.
+  Future<T> update(int id, Map<String, Object> body) => apiCall(() async {
+    final response = await dio.put<dynamic>('/$path/$id', data: body);
+    return _parse(ApiResponse.object(response));
+  });
+
+  Future<void> delete(int id) => apiCall(() async {
+    final response = await dio.delete<dynamic>('/$path/$id');
+    ApiResponse.message(response);
+  });
+
   Future<T> submit(int id) => _action(id, 'submit');
 
   Future<T> approve(int id, {String? comments}) =>

@@ -109,6 +109,7 @@ class _Content extends StatelessWidget {
           actions: purchaseOrderActionsProvider,
           onReceive: () =>
               context.push('/purchasing/orders/${order.id}/receive'),
+          onEdit: () => context.push('/purchasing/orders/${order.id}/edit'),
         ),
       ],
     );
