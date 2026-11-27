@@ -238,4 +238,127 @@ void main() {
 
     expect(find.text('Insulina NPH'), findsOneWidget);
   });
+
+  group('ficha: por vencer en otros almacenes y proveedores de variante', () {
+    Future<void> openProduct(
+      WidgetTester tester,
+      List<String> permissions,
+    ) async {
+      harness = AppHarness(initialPrefs: {'active_warehouse_id': 1});
+      tester.view
+        ..physicalSize = const Size(800, 2400)
+        ..devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      harness.adapter
+        ..on(
+          'GET',
+          '/generic-products/5/batches/other-warehouses-expiring',
+          body: fixture('catalog/other_warehouses_expiring_response.json'),
+        )
+        ..on(
+          'GET',
+          '/variants/50/suppliers',
+          body: fixture('catalog/variant_suppliers_response.json'),
+        );
+      await openCatalog(tester, permissions: permissions);
+      await tester.tap(find.text('Gasa estéril 10x10'));
+      await AppHarness.settle(tester);
+    }
+
+    testWidgets('con lotes.ver lista los lotes de otros almacenes', (
+      tester,
+    ) async {
+      await openProduct(tester, [
+        'generic-products.ver',
+        'lotes.ver',
+        'almacenes.ver',
+      ]);
+
+      expect(find.text('Por vencer en otros almacenes'), findsOneWidget);
+      expect(
+        find.text(
+          'Lotes que vencen en los próximos 90 días fuera del almacén activo.',
+        ),
+        findsOneWidget,
+      );
+      expect(find.text('Lote L-2026-77'), findsOneWidget);
+      expect(find.text('Bodega Norte · vence el 15/01/2027'), findsOneWidget);
+      expect(find.text('en 49 días'), findsOneWidget);
+      expect(find.text('12,5'), findsOneWidget);
+      expect(
+        harness.adapter
+            .callsTo(
+              'GET',
+              '/generic-products/5/batches/other-warehouses-expiring',
+            )
+            .single
+            .queryParameters,
+        {'exclude_warehouse_id': 1},
+      );
+    });
+
+    testWidgets('sin lotes.ver no se consulta ni se muestra', (tester) async {
+      await openProduct(tester, ['generic-products.ver']);
+
+      expect(find.text('Por vencer en otros almacenes'), findsNothing);
+      expect(
+        harness.adapter.callsTo(
+          'GET',
+          '/generic-products/5/batches/other-warehouses-expiring',
+        ),
+        isEmpty,
+      );
+    });
+
+    testWidgets('sin saldos no aparece la sección', (tester) async {
+      harness = AppHarness();
+      tester.view
+        ..physicalSize = const Size(800, 2400)
+        ..devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      harness.adapter.on(
+        'GET',
+        '/generic-products/5/batches/other-warehouses-expiring',
+        body: envelope({'days': 90, 'items': <dynamic>[]}),
+      );
+      await openCatalog(
+        tester,
+        permissions: ['generic-products.ver', 'lotes.ver'],
+      );
+      await tester.tap(find.text('Gasa estéril 10x10'));
+      await AppHarness.settle(tester);
+
+      expect(find.text('Por vencer en otros almacenes'), findsNothing);
+    });
+
+    testWidgets('proveedores de la variante se piden al abrir la sección', (
+      tester,
+    ) async {
+      await openProduct(tester, ['generic-products.ver', 'proveedores.ver']);
+      expect(
+        harness.adapter.callsTo('GET', '/variants/50/suppliers'),
+        isEmpty,
+        reason: 'no se consulta hasta abrir la sección',
+      );
+
+      await tester.tap(find.text('Proveedores').last);
+      await AppHarness.settle(tester);
+
+      expect(
+        harness.adapter.callsTo('GET', '/variants/50/suppliers'),
+        hasLength(1),
+      );
+      expect(find.text('Proveedor Uno S.A.S.'), findsOneWidget);
+      expect(find.text('Servicios Dos'), findsOneWidget);
+    });
+
+    testWidgets('sin proveedores.ver no hay sección de proveedores', (
+      tester,
+    ) async {
+      await openProduct(tester, ['generic-products.ver']);
+
+      expect(find.text('Proveedores'), findsNothing);
+      expect(harness.adapter.callsTo('GET', '/variants/50/suppliers'), isEmpty);
+    });
+  });
 }

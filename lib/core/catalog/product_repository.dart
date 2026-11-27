@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/cache/read_cache.dart';
+import 'package:sga_bojanini/core/catalog/expiring_elsewhere.dart';
 import 'package:sga_bojanini/core/catalog/generic_product.dart';
 import 'package:sga_bojanini/core/catalog/product_presentation.dart';
+import 'package:sga_bojanini/core/catalog/supplier.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
@@ -60,6 +62,26 @@ class ProductRepository {
     );
     final value = ApiResponse.object(response)['available_kits'];
     return value is num ? value.toDouble() : 0;
+  });
+
+  /// Lotes del producto que vencen pronto en otros almacenes (`lotes.ver`).
+  /// El servidor decide la ventana de días y solo devuelve los almacenes a
+  /// los que el usuario tiene acceso.
+  Future<ExpiringElsewhere> otherWarehousesExpiring({
+    required int genericProductId,
+    int? excludeWarehouseId,
+  }) => apiCall(() async {
+    final response = await _dio.get<dynamic>(
+      '/generic-products/$genericProductId/batches/other-warehouses-expiring',
+      queryParameters: {'exclude_warehouse_id': ?excludeWarehouseId},
+    );
+    return ExpiringElsewhere.fromJson(ApiResponse.object(response));
+  });
+
+  /// Proveedores de una variante (`proveedores.ver`).
+  Future<List<Supplier>> variantSuppliers(int variantId) => apiCall(() async {
+    final response = await _dio.get<dynamic>('/variants/$variantId/suppliers');
+    return ApiResponse.list(response, Supplier.fromJson);
   });
 
   /// Presentaciones (caja, blíster…) de un producto, con su factor a unidad

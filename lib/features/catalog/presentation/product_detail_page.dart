@@ -9,6 +9,7 @@ import 'package:sga_bojanini/core/widgets/info_row.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
+import 'package:sga_bojanini/features/catalog/presentation/product_extra_sections.dart';
 import 'package:sga_bojanini/features/catalog/presentation/product_widgets.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
 
@@ -113,6 +114,7 @@ class _Content extends StatelessWidget {
         ],
         if (product.productType == ProductType.kit)
           _KitAvailability(productId: product.id),
+        ExpiringElsewhereSection(productId: product.id),
         if (product.components.isNotEmpty) ...[
           const SizedBox(height: AppSpacing.md),
           Text(l10n.productKitComponents, style: textTheme.titleSmall),
@@ -178,6 +180,7 @@ class _VariantCard extends StatelessWidget {
                 value: variant.commercialPresentation,
               ),
               InfoRow(label: l10n.variantRisk, value: variant.riskLevel),
+              VariantSuppliers(variantId: variant.id),
               for (final registration in variant.sanitaryRegistrations)
                 Padding(
                   padding: const EdgeInsets.only(bottom: AppSpacing.xs),
