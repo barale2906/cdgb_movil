@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
-import 'package:sga_bojanini/core/config/app_environment.dart';
-import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
-import 'package:sga_bojanini/core/widgets/api_error_message.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/confirm_dialog.dart';
@@ -17,6 +14,7 @@ import 'package:sga_bojanini/core/widgets/info_row.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/core/widgets/text_prompt_dialog.dart';
+import 'package:sga_bojanini/core/widgets/write_feedback.dart';
 import 'package:sga_bojanini/features/assets/application/maintenance_providers.dart';
 import 'package:sga_bojanini/features/assets/data/asset_maintenance.dart';
 import 'package:sga_bojanini/features/assets/presentation/maintenance_labels.dart';
@@ -259,16 +257,11 @@ class _Content extends ConsumerWidget {
       AppSnackbar.show(context, successMessage);
       return;
     }
-    AppSnackbar.show(
+    showWriteError(
       context,
-      ApiErrorMessage.ofWrite(
-        l10n,
-        ref.read(maintenanceActionsProvider).error,
-        isProd: ref.read(appEnvironmentProvider).env == AppEnv.prod,
-        timeoutWarning: l10n.maintenanceTimeoutWarning,
-      ),
-      kind: AppSnackbarKind.error,
-      closeLabel: l10n.actionClose,
+      ref,
+      error: ref.read(maintenanceActionsProvider).error,
+      timeoutWarning: l10n.maintenanceTimeoutWarning,
     );
   }
 }

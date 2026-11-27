@@ -20,6 +20,7 @@ import 'package:sga_bojanini/core/widgets/empty_state.dart';
 import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
+import 'package:sga_bojanini/core/widgets/write_feedback.dart';
 import 'package:sga_bojanini/features/assets/application/documents_providers.dart';
 import 'package:sga_bojanini/features/assets/data/asset_document.dart';
 import 'package:sga_bojanini/features/assets/data/documents_repository.dart';
@@ -240,16 +241,11 @@ class _DocumentTile extends ConsumerWidget {
       AppSnackbar.show(context, l10n.assetDocumentDeleted);
       return;
     }
-    AppSnackbar.show(
+    showWriteError(
       context,
-      ApiErrorMessage.ofWrite(
-        l10n,
-        ref.read(documentActionsProvider).error,
-        isProd: ref.read(appEnvironmentProvider).env == AppEnv.prod,
-        timeoutWarning: l10n.assetDocumentTimeoutWarning,
-      ),
-      kind: AppSnackbarKind.error,
-      closeLabel: l10n.actionClose,
+      ref,
+      error: ref.read(documentActionsProvider).error,
+      timeoutWarning: l10n.assetDocumentTimeoutWarning,
     );
   }
 }

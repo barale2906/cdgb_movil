@@ -3,11 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
-import 'package:sga_bojanini/core/config/app_environment.dart';
-import 'package:sga_bojanini/core/config/app_environment_provider.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
-import 'package:sga_bojanini/core/widgets/api_error_message.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/confirm_dialog.dart';
@@ -16,6 +13,7 @@ import 'package:sga_bojanini/core/widgets/error_state.dart';
 import 'package:sga_bojanini/core/widgets/offline_banner.dart';
 import 'package:sga_bojanini/core/widgets/skeleton.dart';
 import 'package:sga_bojanini/core/widgets/status_chip.dart';
+import 'package:sga_bojanini/core/widgets/write_feedback.dart';
 import 'package:sga_bojanini/features/monitoring/application/monitoring_providers.dart';
 import 'package:sga_bojanini/features/monitoring/data/monitoring_models.dart';
 import 'package:sga_bojanini/features/monitoring/presentation/alert_rule_form_sheet.dart';
@@ -184,16 +182,11 @@ class _RuleTile extends ConsumerWidget {
 
   void _showError(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
-    AppSnackbar.show(
+    showWriteError(
       context,
-      ApiErrorMessage.ofWrite(
-        l10n,
-        ref.read(alertRuleActionsProvider).error,
-        isProd: ref.read(appEnvironmentProvider).env == AppEnv.prod,
-        timeoutWarning: l10n.alertRuleTimeout,
-      ),
-      kind: AppSnackbarKind.error,
-      closeLabel: l10n.actionClose,
+      ref,
+      error: ref.read(alertRuleActionsProvider).error,
+      timeoutWarning: l10n.alertRuleTimeout,
     );
   }
 }

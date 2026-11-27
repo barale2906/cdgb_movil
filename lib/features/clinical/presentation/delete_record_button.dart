@@ -5,12 +5,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sga_bojanini/core/auth/permission_service.dart';
 import 'package:sga_bojanini/core/clinical/procedure_record.dart';
-import 'package:sga_bojanini/core/config/app_environment.dart';
-import 'package:sga_bojanini/core/config/app_environment_provider.dart';
-import 'package:sga_bojanini/core/widgets/api_error_message.dart';
 import 'package:sga_bojanini/core/widgets/app_snackbar.dart';
 import 'package:sga_bojanini/core/widgets/bojani_button.dart';
 import 'package:sga_bojanini/core/widgets/confirm_dialog.dart';
+import 'package:sga_bojanini/core/widgets/write_feedback.dart';
 import 'package:sga_bojanini/features/clinical/application/record_actions.dart';
 import 'package:sga_bojanini/features/clinical/presentation/clinical_labels.dart';
 import 'package:sga_bojanini/l10n/app_localizations.dart';
@@ -68,16 +66,11 @@ class DeleteRecordButton extends ConsumerWidget {
       context.pop();
       return;
     }
-    AppSnackbar.show(
+    showWriteError(
       context,
-      ApiErrorMessage.ofWrite(
-        l10n,
-        ref.read(recordActionsProvider).error,
-        isProd: ref.read(appEnvironmentProvider).env == AppEnv.prod,
-        timeoutWarning: l10n.clinicalRecordDeleteTimeout,
-      ),
-      kind: AppSnackbarKind.error,
-      closeLabel: l10n.actionClose,
+      ref,
+      error: ref.read(recordActionsProvider).error,
+      timeoutWarning: l10n.clinicalRecordDeleteTimeout,
     );
   }
 }
