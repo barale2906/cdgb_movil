@@ -9,6 +9,7 @@ import 'package:sga_bojanini/core/clinical/medsys_patient.dart';
 import 'package:sga_bojanini/core/clinical/procedure_match.dart';
 import 'package:sga_bojanini/core/clock/clock.dart';
 import 'package:sga_bojanini/core/network/api_exception.dart';
+import 'package:sga_bojanini/core/network/idempotency.dart';
 import 'package:sga_bojanini/core/utils/clinical_text.dart';
 import 'package:sga_bojanini/core/utils/colombia_time.dart';
 import 'package:sga_bojanini/features/service_orders/data/new_order_request.dart';
@@ -213,11 +214,12 @@ class NewOrderState {
 }
 
 /// Nueva orden de servicio: paciente de MedSys y uno o más procedimientos con
-/// descuento e insumos opcionales. Se envía **una sola vez y sin
-/// reintentos** (la API no tiene idempotencia): tras un timeout el usuario
-/// revisa si la orden se creó antes de repetir.
+/// descuento e insumos opcionales. Se envía **sin reintentos automáticos**:
+/// tras un timeout el usuario revisa si la orden se creó antes de repetir, y
+/// el reenvío lleva la misma clave de idempotencia.
 class NewOrderNotifier extends Notifier<NewOrderState> {
   int _nextKey = 0;
+  final _keys = IdempotencyKeyHolder();
 
   @override
   NewOrderState build() => NewOrderState(serviceDate: _today());
@@ -360,29 +362,34 @@ class NewOrderNotifier extends Notifier<NewOrderState> {
     if (patient == null || !state.canSubmit(_today())) return null;
     state = state.copyWith(isSubmitting: true, error: () => null);
     final names = patient.splitName;
+    final request = NewOrderRequest(
+      patientExternalId: patient.code,
+      patientDocument: patient.document,
+      patientFirstName: names.first,
+      patientLastName: names.last,
+      patientEmail: patient.email,
+      patientAddress: patient.address,
+      patientPhone: patient.phone,
+      serviceDate: ColombiaTime.formatDate(state.serviceDate),
+      seller: state.seller,
+      referrer: state.referrer,
+      notes: state.notes,
+      lines: [for (final line in state.lines) _request(line)],
+    );
+    // La misma clave mientras la orden no cambie: si tras un tiempo de espera
+    // el usuario confirma que no se creó y repite, un envío ya guardado no se
+    // duplica.
+    final key = _keys.keyFor(request.toJson());
     try {
       final order = await ref
           .read(serviceOrdersRepositoryProvider)
-          .create(
-            NewOrderRequest(
-              patientExternalId: patient.code,
-              patientDocument: patient.document,
-              patientFirstName: names.first,
-              patientLastName: names.last,
-              patientEmail: patient.email,
-              patientAddress: patient.address,
-              patientPhone: patient.phone,
-              serviceDate: ColombiaTime.formatDate(state.serviceDate),
-              seller: state.seller,
-              referrer: state.referrer,
-              notes: state.notes,
-              lines: [for (final line in state.lines) _request(line)],
-            ),
-          );
+          .create(request, idempotencyKey: key);
+      _keys.release();
       if (!ref.mounted) return null;
       state = state.copyWith(isSubmitting: false, created: order);
       return order;
     } on ApiException catch (error) {
+      _keys.settle(succeeded: false, error: error);
       if (!ref.mounted) return null;
       state = state.copyWith(isSubmitting: false, error: () => error);
       return null;

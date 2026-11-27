@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/network/api_error_mapper.dart';
 import 'package:sga_bojanini/core/network/api_response.dart';
 import 'package:sga_bojanini/core/network/dio_client.dart';
+import 'package:sga_bojanini/core/network/idempotency.dart';
 import 'package:sga_bojanini/core/signing/signoff.dart';
 import 'package:sga_bojanini/features/inventory/data/batch.dart';
 import 'package:sga_bojanini/features/inventory/data/movement_document.dart';
@@ -180,28 +181,71 @@ class InventoryRepository {
     return ApiResponse.page(response, MovementLine.fromJson);
   });
 
-  // ---- Registro de operaciones (escrituras: nunca se reintentan) ----
+  // ---- Registro de operaciones: nunca se reintentan solas; la clave de
+  // idempotencia evita duplicados si el usuario repite el envío ----
 
-  Future<MovementDocument> registerEntry(EntryRequest request) =>
-      _postDocument('/movements/entry', request.toJson());
+  Future<MovementDocument> registerEntry(
+    EntryRequest request, {
+    String? idempotencyKey,
+  }) => _postDocument(
+    '/movements/entry',
+    request.toJson(),
+    idempotencyKey,
+  );
 
-  Future<MovementDocument> registerExit(ExitRequest request) =>
-      _postDocument('/movements/exit', request.toJson());
+  Future<MovementDocument> registerExit(
+    ExitRequest request, {
+    String? idempotencyKey,
+  }) => _postDocument(
+    '/movements/exit',
+    request.toJson(),
+    idempotencyKey,
+  );
 
-  Future<MovementDocument> registerTransfer(TransferRequest request) =>
-      _postDocument('/movements/transfer', request.toJson());
+  Future<MovementDocument> registerTransfer(
+    TransferRequest request, {
+    String? idempotencyKey,
+  }) => _postDocument(
+    '/movements/transfer',
+    request.toJson(),
+    idempotencyKey,
+  );
 
-  Future<MovementLine> registerAdjustment(AdjustmentRequest request) =>
-      _postLine('/movements/adjustment', request.toJson());
+  Future<MovementLine> registerAdjustment(
+    AdjustmentRequest request, {
+    String? idempotencyKey,
+  }) => _postLine(
+    '/movements/adjustment',
+    request.toJson(),
+    idempotencyKey,
+  );
 
-  Future<MovementLine> registerReturn(ReturnRequest request) =>
-      _postLine('/movements/return', request.toJson());
+  Future<MovementLine> registerReturn(
+    ReturnRequest request, {
+    String? idempotencyKey,
+  }) => _postLine(
+    '/movements/return',
+    request.toJson(),
+    idempotencyKey,
+  );
 
-  Future<MovementLine> registerWriteOff(WriteOffRequest request) =>
-      _postLine('/movements/write-off', request.toJson());
+  Future<MovementLine> registerWriteOff(
+    WriteOffRequest request, {
+    String? idempotencyKey,
+  }) => _postLine(
+    '/movements/write-off',
+    request.toJson(),
+    idempotencyKey,
+  );
 
-  Future<MovementLine> registerLoss(LossRequest request) =>
-      _postLine('/movements/loss', request.toJson());
+  Future<MovementLine> registerLoss(
+    LossRequest request, {
+    String? idempotencyKey,
+  }) => _postLine(
+    '/movements/loss',
+    request.toJson(),
+    idempotencyKey,
+  );
 
   Future<MovementDocument> confirm(int documentId, ConfirmRequest request) =>
       apiCall(() async {
@@ -241,14 +285,29 @@ class InventoryRepository {
         return ApiResponse.object(response)['signature_data'] as String?;
       });
 
-  Future<MovementDocument> _postDocument(String path, Json body) =>
-      apiCall(() async {
-        final response = await _dio.post<dynamic>(path, data: body);
-        return MovementDocument.fromJson(ApiResponse.object(response));
-      });
+  Future<MovementDocument> _postDocument(
+    String path,
+    Json body,
+    String? idempotencyKey,
+  ) => apiCall(() async {
+    final response = await _dio.post<dynamic>(
+      path,
+      data: body,
+      options: Options(headers: IdempotencyKey.headers(idempotencyKey)),
+    );
+    return MovementDocument.fromJson(ApiResponse.object(response));
+  });
 
-  Future<MovementLine> _postLine(String path, Json body) => apiCall(() async {
-    final response = await _dio.post<dynamic>(path, data: body);
+  Future<MovementLine> _postLine(
+    String path,
+    Json body,
+    String? idempotencyKey,
+  ) => apiCall(() async {
+    final response = await _dio.post<dynamic>(
+      path,
+      data: body,
+      options: Options(headers: IdempotencyKey.headers(idempotencyKey)),
+    );
     return MovementLine.fromJson(ApiResponse.object(response));
   });
 }

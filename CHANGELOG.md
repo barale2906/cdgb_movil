@@ -2,6 +2,19 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [1.4.0+15] - 2026-11-27
+### Añadido
+- Órdenes de servicio: la sección ahora **lista las órdenes** (la más reciente primero, con paginación), con búsqueda por número de orden o por documento del paciente y filtro por estado de facturación (todas, sin facturar, facturadas, anuladas). Reemplaza la búsqueda por número exacto. **Requiere el backend actualizado.**
+
+### Cambiado
+- Movimientos de inventario y creación de órdenes envían una **clave de idempotencia**: si un envío se repite tras un tiempo de espera agotado, el servidor devuelve el registro ya guardado en vez de duplicarlo. La app sigue sin reenviar sola y pide revisar antes de repetir. Con un backend anterior la clave se ignora.
+
+### Backend (desplegar antes que la app)
+- `GET /service-orders` (listado paginado) y la cabecera `Idempotency-Key` (requiere `php artisan migrate`: tabla `idempotency_keys`).
+
+### Pendiente
+- Firebase (avisos push), aviso de actualización y pruebas en teléfono real. Lista completa en `docs/plan/08-pendientes.md`.
+
 ## [1.3.0+14] - 2026-11-27
 ### Añadido
 - Activos: registrar un activo nuevo (botón «+» en la lista, con el permiso de crear) y editar sus datos generales. El código lo genera el servidor; la ubicación y el estado iniciales se eligen solo al registrar.

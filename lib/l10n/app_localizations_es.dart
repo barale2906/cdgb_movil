@@ -2764,16 +2764,6 @@ class AppLocalizationsEs extends AppLocalizations {
   String get serviceOrderTabDiscounts => 'Descuentos';
 
   @override
-  String get serviceOrderLookupHint => 'Número de orden';
-
-  @override
-  String get serviceOrderLookupAction => 'Buscar orden';
-
-  @override
-  String get serviceOrderLookupHelp =>
-      'Escriba el número completo, por ejemplo OS-20261126-000001.';
-
-  @override
   String get serviceOrderNew => 'Nueva orden';
 
   @override
@@ -3736,4 +3726,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get optionUnset => 'Sin definir';
+
+  @override
+  String get serviceOrderSearchHint => 'Buscar por número de orden o documento';
+
+  @override
+  String get serviceOrdersEmpty => 'No hay órdenes para mostrar.';
 }
