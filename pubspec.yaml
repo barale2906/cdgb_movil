@@ -3,7 +3,7 @@ description: "SGA Bojanini - app móvil para empleados de la Clínica Bojanini."
 publish_to: 'none'
 
 # x.y.z+build — el build SIEMPRE crece (Android no instala versiones menores).
-version: 1.2.0+13
+version: 1.3.0+14
 
 environment:
   sdk: ^3.10.8

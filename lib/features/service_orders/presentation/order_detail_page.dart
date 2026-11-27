@@ -189,6 +189,7 @@ class _Actions extends ConsumerWidget {
     final canApprove =
         ref.watch(canApproveDiscountProvider) && order.hasPendingDiscount;
     final canManage = ref.watch(canManageBillingProvider);
+    final canCancel = ref.watch(canCancelOrderProvider);
     final number = order.orderNumber;
 
     Future<void> run({
@@ -254,7 +255,7 @@ class _Actions extends ConsumerWidget {
               ),
             ),
         ],
-        if (canManage && order.canCancel) ...[
+        if (canCancel && order.canCancel) ...[
           const SizedBox(height: AppSpacing.sm),
           BojaniButton(
             label: l10n.serviceOrderCancel,

@@ -8,6 +8,7 @@ import 'package:sga_bojanini/core/utils/submission_notifier.dart';
 import 'package:sga_bojanini/features/assets/application/assets_providers.dart';
 import 'package:sga_bojanini/features/assets/data/asset_maintenance.dart';
 import 'package:sga_bojanini/features/assets/data/maintenance_repository.dart';
+import 'package:sga_bojanini/features/assets/data/maintenance_requests.dart';
 
 class MaintenanceListNotifier extends PagedNotifier<AssetMaintenance> {
   MaintenanceListNotifier(this.query);
@@ -62,21 +63,60 @@ class MaintenanceActions extends SubmissionNotifier {
   Future<bool> cancel(int id, String reason) =>
       _change(id, () => _repository.cancel(id, reason));
 
-  Future<bool> _change(
-    int id,
-    Future<AssetMaintenance> Function() action,
+  /// Programa un mantenimiento puntual; devuelve `true` si el servidor lo creó.
+  Future<bool> schedule(int assetId, ScheduleMaintenanceRequest request) =>
+      _change(
+        null,
+        () => _repository.schedule(assetId, request),
+        assetId: assetId,
+      );
+
+  Future<bool> reschedule(int id, DateTime date, {String? reportedFailure}) =>
+      _change(
+        id,
+        () =>
+            _repository.reschedule(id, date, reportedFailure: reportedFailure),
+      );
+
+  Future<bool> createPlan(int assetId, MaintenancePlanRequest request) =>
+      _savePlan(assetId, () => _repository.createPlan(assetId, request));
+
+  Future<bool> updatePlan(
+    int assetId,
+    int planId,
+    MaintenancePlanRequest request,
+  ) => _savePlan(assetId, () => _repository.updatePlan(planId, request));
+
+  Future<bool> _savePlan(
+    int assetId,
+    Future<MaintenancePlan> Function() action,
   ) async {
+    final plan = await runValue(action);
+    if (plan != null && ref.mounted) {
+      ref
+        ..invalidate(maintenancePlansProvider(assetId))
+        ..invalidate(assetDetailProvider(assetId));
+    }
+    return plan != null;
+  }
+
+  Future<bool> _change(
+    int? id,
+    Future<AssetMaintenance> Function() action, {
+    int? assetId,
+  }) async {
     final maintenance = await runValue(action);
+    if (!ref.mounted) return maintenance != null;
+    if (id != null) ref.invalidate(maintenanceDetailProvider(id));
     ref
-      ..invalidate(maintenanceDetailProvider(id))
       ..invalidate(maintenanceListProvider)
       ..invalidate(assetListProvider)
       ..invalidate(assetStatisticsProvider);
-    final assetId = maintenance?.asset?.id;
-    if (assetId != null) {
+    final affectedAsset = maintenance?.asset?.id ?? assetId;
+    if (affectedAsset != null) {
       ref
-        ..invalidate(assetDetailProvider(assetId))
-        ..invalidate(assetMovementsProvider(assetId));
+        ..invalidate(assetDetailProvider(affectedAsset))
+        ..invalidate(assetMovementsProvider(affectedAsset));
     }
     return maintenance != null;
   }

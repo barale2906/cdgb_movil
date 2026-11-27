@@ -24,6 +24,7 @@ import 'package:sga_bojanini/features/assets/presentation/asset_comments_tab.dar
 import 'package:sga_bojanini/features/assets/presentation/asset_documents_tab.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_history_tab.dart';
 import 'package:sga_bojanini/features/assets/presentation/asset_labels.dart';
+import 'package:sga_bojanini/features/assets/presentation/asset_management_actions.dart';
 import 'package:sga_bojanini/features/assets/presentation/change_status_dialog.dart';
 import 'package:sga_bojanini/features/assets/presentation/maintenance_plans_section.dart';
 import 'package:sga_bojanini/features/assets/presentation/technical_profile_section.dart';
@@ -208,7 +209,11 @@ class _DataTab extends ConsumerWidget {
             ),
           ],
           TechnicalProfileSection(profile: asset.technicalProfile),
-          if (canViewMaintenance) MaintenancePlansSection(assetId: asset.id),
+          if (canViewMaintenance)
+            MaintenancePlansSection(
+              assetId: asset.id,
+              canEdit: asset.requiresMaintenance && !asset.isRetired,
+            ),
           const SizedBox(height: AppSpacing.lg),
           if (canRequestTransfer) ...[
             BojaniButton(
@@ -227,6 +232,7 @@ class _DataTab extends ConsumerWidget {
             ),
             const SizedBox(height: AppSpacing.sm),
           ],
+          AssetManagementActions(asset: asset),
           BojaniButton(
             label: l10n.assetLifeSheet,
             icon: Icons.picture_as_pdf_outlined,

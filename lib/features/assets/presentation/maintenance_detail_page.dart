@@ -74,6 +74,7 @@ class _Content extends ConsumerWidget {
     final permissions = ref.watch(permissionServiceProvider);
     final canExecute = permissions.can('activos_mantenimientos.ejecutar');
     final canCancel = permissions.can('activos_mantenimientos.cancelar');
+    final canReschedule = permissions.can('activos_mantenimientos.programar');
     final busy = ref.watch(maintenanceActionsProvider).isSubmitting;
     String? date(String? raw) => raw == null ? null : AppFormat.date(raw);
     String? dateTime(String? raw) =>
@@ -182,6 +183,17 @@ class _Content extends ConsumerWidget {
             onPressed: busy
                 ? null
                 : () => context.push('/maintenance/${item.id}/complete'),
+          ),
+          const SizedBox(height: AppSpacing.sm),
+        ],
+        if (item.canStart && canReschedule) ...[
+          BojaniButton(
+            label: l10n.maintenanceRescheduleAction,
+            icon: Icons.event_repeat_outlined,
+            kind: BojaniButtonKind.secondary,
+            onPressed: busy
+                ? null
+                : () => context.push('/maintenance/${item.id}/reschedule'),
           ),
           const SizedBox(height: AppSpacing.sm),
         ],

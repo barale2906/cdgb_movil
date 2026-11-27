@@ -1,0 +1,58 @@
+{
+ "success": true,
+ "message": "Activo registrado",
+ "data": {
+  "id": 42,
+  "code": "000042",
+  "name": "Bomba de infusión",
+  "description": "Equipo de urgencias",
+  "category": {
+   "id": 2,
+   "code": "BIO",
+   "name": "Equipos biomédicos"
+  },
+  "asset_type": "biomedical",
+  "asset_type_label": "Biomédico",
+  "requires_maintenance": true,
+  "status": "operational",
+  "status_label": "Operativo",
+  "location": {
+   "is_off_premises": false,
+   "off_premises_location": null,
+   "place_id": 4,
+   "place_name": "Urgencias · Sala 1",
+   "site_id": 1,
+   "site_name": "Sede Principal"
+  },
+  "responsible": {
+   "id": 3,
+   "name": "Usuario Prueba"
+  },
+  "brand": null,
+  "model": null,
+  "serial": "SN-0042",
+  "acquisition_date": null,
+  "acquisition_value": null,
+  "supplier": null,
+  "supplier_id": null,
+  "invoice_number": null,
+  "warranty_until": null,
+  "retired_at": null,
+  "retirement_reason": null,
+  "notes": null,
+  "next_maintenance": null,
+  "pending_transfer": null,
+  "technical_profile": null,
+  "counts": {
+   "comments": 2,
+   "documents": 1,
+   "maintenance_plans": 1
+  },
+  "created_by": {
+   "id": 3,
+   "name": "Usuario Prueba"
+  },
+  "created_at": "2024-03-11T09:00:00-05:00",
+  "updated_at": "2026-11-01T09:00:00-05:00"
+ }
+}

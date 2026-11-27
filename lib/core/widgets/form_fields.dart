@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
@@ -109,6 +110,11 @@ class AsyncOptionDropdown<T extends Object> extends StatelessWidget {
   }
 }
 
+DateTime _within(DateTime date, DateTime first, DateTime last) {
+  if (date.isBefore(first)) return first;
+  return date.isAfter(last) ? last : date;
+}
+
 /// Selector de fecha (calendario) con formato `DD/MM/AAAA`.
 class DateField extends StatelessWidget {
   const DateField({
@@ -139,12 +145,15 @@ class DateField extends StatelessWidget {
       builder: (state) => InkWell(
         borderRadius: BorderRadius.circular(AppRadius.control),
         onTap: () async {
-          final now = DateTime.now();
+          final first = firstDate ?? DateTime(2000);
+          final last = lastDate ?? DateTime(2099, 12, 31);
           final picked = await showDatePicker(
             context: context,
-            initialDate: value ?? now,
-            firstDate: firstDate ?? DateTime(2000),
-            lastDate: lastDate ?? DateTime(2099, 12, 31),
+            // Un valor guardado fuera del rango (p. ej. una fecha ya vencida)
+            // no puede ser la fecha inicial del calendario.
+            initialDate: _within(value ?? DateTime.now(), first, last),
+            firstDate: first,
+            lastDate: last,
             helpText: l10n.pickDate,
           );
           if (picked != null) onChanged(picked);
@@ -166,6 +175,43 @@ class DateField extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Campo de texto de formulario con límite de largo y teclado opcionales.
+class LabeledTextField extends StatelessWidget {
+  const LabeledTextField({
+    required this.label,
+    required this.controller,
+    super.key,
+    this.validator,
+    this.keyboardType,
+    this.maxLines = 1,
+    this.maxLength,
+    this.textCapitalization = TextCapitalization.none,
+  });
+
+  final String label;
+  final TextEditingController controller;
+  final FormFieldValidator<String>? validator;
+  final TextInputType? keyboardType;
+  final int maxLines;
+  final int? maxLength;
+  final TextCapitalization textCapitalization;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      validator: validator,
+      keyboardType: keyboardType,
+      maxLines: maxLines,
+      textCapitalization: textCapitalization,
+      inputFormatters: [
+        if (maxLength != null) LengthLimitingTextInputFormatter(maxLength),
+      ],
+      decoration: InputDecoration(labelText: label),
     );
   }
 }

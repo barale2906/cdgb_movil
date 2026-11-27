@@ -2,6 +2,26 @@
 
 Formato: [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/). Versionado: `x.y.z+build`.
 
+## [1.3.0+14] - 2026-11-27
+### Añadido
+- Activos: registrar un activo nuevo (botón «+» en la lista, con el permiso de crear) y editar sus datos generales. El código lo genera el servidor; la ubicación y el estado iniciales se eligen solo al registrar.
+- Activos: editar la hoja de vida técnica de equipos biomédicos y de cómputo (se conservan las especificaciones y licencias que ya tenga). La ficha ahora muestra con texto claro la forma de adquisición, la clasificación de riesgo, la clase biomédica y la fuente de energía.
+- Activos: eliminar un activo registrado por error (borrado lógico). Si ya tiene mantenimientos o traslados el servidor lo rechaza y se debe dar de baja.
+- Mantenimientos: programar un mantenimiento puntual desde la ficha (el correctivo exige describir la falla), reprogramar uno programado y crear o editar planes periódicos. Los planes no se eliminan: se desactivan.
+
+### Cambiado
+- Órdenes de servicio: anular una orden **devuelve los insumos al inventario** (mismo lote y ubicación) y solo se permite en órdenes sin facturar. Anular requiere el permiso de editar órdenes (superusuarios y coordinadores). **Requiere el backend actualizado.**
+
+### Corregido
+- El calendario de los formularios ya no falla al abrirse con una fecha anterior a la mínima permitida (por ejemplo, al reprogramar un mantenimiento vencido).
+
+### Backend (desplegar antes que la app)
+- `POST /service-orders/{n}/cancel` devuelve los insumos y exige `ordenes_servicio.editar`; una orden facturada responde 409.
+- Nuevos o mejorados, aún sin uso en la app: `Idempotency-Key` en movimientos y órdenes (requiere `php artisan migrate`), `GET /service-orders` paginado y paginación opcional en `GET /patient-procedure-records`. El menú de Catálogo del web usa ahora `generic-products.*`.
+
+### Pendiente
+- Firebase (avisos push), aviso de actualización y pruebas en teléfono real. Usar `Idempotency-Key` y `GET /service-orders` en la app. Lista completa en `docs/plan/08-pendientes.md`.
+
 ## [1.2.0+13] - 2026-11-26
 ### Añadido
 - Compras: crear, editar y eliminar borradores de **órdenes de compra** (proveedor, almacén, centro de costo y fecha opcionales, y líneas de producto con variante, presentación, cantidad, valor e IVA) y de **órdenes de gasto** (proveedor habilitado para gastos y conceptos con descripción, unidad, cantidad, valor e IVA). Se guardan con un solo envío y sin reintentos; tras un tiempo de espera agotado el reenvío queda bloqueado hasta que la persona revise la lista. Los botones de editar y eliminar aparecen en el detalle de un borrador, con el permiso de crear.

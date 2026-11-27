@@ -2,7 +2,22 @@
  "success": true,
  "message": "Catálogos",
  "data": {
-  "categories": [],
+  "categories": [
+   {
+    "id": 2,
+    "code": "BIO",
+    "name": "Equipos biomédicos",
+    "asset_type": "biomedical",
+    "requires_maintenance": true
+   },
+   {
+    "id": 3,
+    "code": "MOB",
+    "name": "Mobiliario",
+    "asset_type": "general",
+    "requires_maintenance": false
+   }
+  ],
   "sites": [
    {
     "id": 1,

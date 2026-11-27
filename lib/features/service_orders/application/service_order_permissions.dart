@@ -16,13 +16,19 @@ final Provider<bool> canApproveDiscountProvider = Provider<bool>(
   (ref) => ref.watch(permissionServiceProvider).can('ordenes_servicio.aprobar'),
 );
 
-/// El backend solo exige `ordenes_servicio.ver` para facturar y anular; la app
-/// lo reserva a quien crea o aprueba órdenes.
+/// El backend solo exige `ordenes_servicio.ver` para facturar; la app lo
+/// reserva a quien crea o aprueba órdenes.
 final Provider<bool> canManageBillingProvider = Provider<bool>(
   (ref) => ref.watch(permissionServiceProvider).canAny([
     'ordenes_servicio.crear',
     'ordenes_servicio.aprobar',
   ]),
+);
+
+/// Anular devuelve los insumos al inventario: el servidor exige
+/// `ordenes_servicio.editar` (superusuarios y coordinadores).
+final Provider<bool> canCancelOrderProvider = Provider<bool>(
+  (ref) => ref.watch(permissionServiceProvider).can('ordenes_servicio.editar'),
 );
 
 final Provider<bool> canAddSuppliesProvider = Provider<bool>(

@@ -75,7 +75,9 @@ abstract class ServiceOrder with _$ServiceOrder {
   /// que todavía puede cambiar).
   bool get canBill => billingStatus == null && !hasPendingDiscount;
 
-  bool get canCancel => !isCancelled;
+  /// Solo se anula una orden sin facturar: la facturada ya corresponde a la
+  /// atención del paciente y el servidor la rechaza.
+  bool get canCancel => billingStatus == null;
 }
 
 /// Orden con descuentos por aprobar (`GET /service-orders/discounts`).
