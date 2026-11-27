@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sga_bojanini/core/theme/app_tokens.dart';
 import 'package:sga_bojanini/core/utils/formatters.dart';
 import 'package:sga_bojanini/core/warehouse/warehouse_capacity.dart';
 import 'package:sga_bojanini/core/widgets/usage_bar.dart';
@@ -33,7 +34,7 @@ class CapacityBars extends StatelessWidget {
           ),
           percent: volume.usagePct,
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: AppSpacing.md),
         UsageBar(
           label: l10n.capacityWeight,
           detail: _detail(

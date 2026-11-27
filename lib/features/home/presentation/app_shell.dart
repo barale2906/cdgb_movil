@@ -125,10 +125,9 @@ class _ProfileAvatar extends ConsumerWidget {
         backgroundColor: AppColors.dark,
         child: Text(
           initial,
-          style: const TextStyle(
-            color: AppColors.onDark,
-            fontWeight: FontWeight.w600,
-          ),
+          style: Theme.of(
+            context,
+          ).textTheme.labelLarge?.copyWith(color: AppColors.onDark),
         ),
       ),
     );

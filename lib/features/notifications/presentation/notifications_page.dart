@@ -156,9 +156,10 @@ class _NotificationTile extends StatelessWidget {
         onTap: onTap,
         title: Text(
           notification.title,
+          // Sin leer: el estilo de título (más pesado), no solo el color.
           style: notification.isRead
               ? textTheme.bodyLarge
-              : textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w700),
+              : textTheme.titleSmall,
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

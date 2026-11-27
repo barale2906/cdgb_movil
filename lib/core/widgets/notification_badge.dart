@@ -41,12 +41,13 @@ class NotificationBadge extends StatelessWidget {
               ),
               child: Text(
                 text,
-                style: const TextStyle(
-                  color: AppColors.onDark,
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                  height: 1,
-                ),
+                style:
+                    Theme.of(
+                      context,
+                    ).textTheme.labelSmall?.copyWith(
+                      color: AppColors.onDark,
+                      height: 1,
+                    ),
               ),
             ),
           ),

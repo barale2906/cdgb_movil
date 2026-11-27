@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../helpers/app_harness.dart';
 import '../helpers/fixtures.dart';
+import '../helpers/text_scale.dart';
 
 /// Texto escalable hasta 200 % (CLAUDE.md §6): las pantallas principales no
 /// deben desbordarse en un teléfono de 360 dp de ancho con el texto al doble.
@@ -13,17 +14,6 @@ void main() {
   late AppHarness harness;
 
   setUp(() => harness = AppHarness());
-
-  void phoneWithDoubleText(WidgetTester tester) {
-    tester.view
-      ..physicalSize = const Size(360, 4000)
-      ..devicePixelRatio = 1;
-    tester.platformDispatcher.textScaleFactorTestValue = 2;
-    addTearDown(() {
-      tester.view.reset();
-      tester.platformDispatcher.clearTextScaleFactorTestValue();
-    });
-  }
 
   void stubAll(List<String> permissions, String menu) {
     harness
