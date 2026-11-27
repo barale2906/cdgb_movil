@@ -20,6 +20,9 @@ class AlertBanner extends StatelessWidget {
   final String? actionLabel;
   final VoidCallback? onAction;
 
+  /// Escala de texto a partir de la cual la acción pasa debajo del mensaje.
+  static const _stackScale = 1.3;
+
   @override
   Widget build(BuildContext context) {
     final colors = context.statusColors;
@@ -31,6 +34,15 @@ class AlertBanner extends StatelessWidget {
       StatusKind.special => colors.special,
     };
     final textTheme = Theme.of(context).textTheme;
+    // Con texto muy grande el botón no cabe al lado del mensaje: va debajo.
+    final stacked = MediaQuery.textScalerOf(context).scale(1) > _stackScale;
+    final text = Text(
+      message,
+      style: textTheme.bodyMedium?.copyWith(color: palette.text),
+    );
+    final action = actionLabel != null && onAction != null
+        ? TextButton(onPressed: onAction, child: Text(actionLabel!))
+        : null;
 
     return Semantics(
       container: true,
@@ -44,17 +56,21 @@ class AlertBanner extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.md),
           child: Row(
+            crossAxisAlignment: stacked
+                ? CrossAxisAlignment.start
+                : CrossAxisAlignment.center,
             children: [
               Icon(icon ?? Icons.info_outline, color: palette.icon),
               const SizedBox(width: AppSpacing.sm + AppSpacing.xs),
               Expanded(
-                child: Text(
-                  message,
-                  style: textTheme.bodyMedium?.copyWith(color: palette.text),
-                ),
+                child: stacked
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [text, ?action],
+                      )
+                    : text,
               ),
-              if (actionLabel != null && onAction != null)
-                TextButton(onPressed: onAction, child: Text(actionLabel!)),
+              if (!stacked) ?action,
             ],
           ),
         ),
