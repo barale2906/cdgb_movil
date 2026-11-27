@@ -3732,4 +3732,33 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get serviceOrdersEmpty => 'No hay órdenes para mostrar.';
+
+  @override
+  String get productExpiringElsewhere => 'Por vencer en otros almacenes';
+
+  @override
+  String productExpiringElsewhereHelp(int days) {
+    return 'Lotes que vencen en los próximos $days días fuera del almacén activo.';
+  }
+
+  @override
+  String expiringBatchTitle(String lot) {
+    return 'Lote $lot';
+  }
+
+  @override
+  String expiringBatchSubtitle(String warehouse, String date) {
+    return '$warehouse · vence el $date';
+  }
+
+  @override
+  String expiringBatchDays(int days) {
+    return 'en $days días';
+  }
+
+  @override
+  String get variantSuppliers => 'Proveedores';
+
+  @override
+  String get variantNoSuppliers => 'Sin proveedores registrados.';
 }

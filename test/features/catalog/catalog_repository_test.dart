@@ -104,4 +104,64 @@ void main() {
         .capacity(1);
     expect(capacity.zones, hasLength(2));
   });
+
+  group('ficha de producto: lotes por vencer y proveedores de variante', () {
+    test(
+      'otros almacenes: envía el almacén a excluir y lee los saldos',
+      () async {
+        adapter.on(
+          'GET',
+          '/generic-products/5/batches/other-warehouses-expiring',
+          body: fixture('catalog/other_warehouses_expiring_response.json'),
+        );
+        final repository = container.read(productRepositoryProvider);
+
+        final result = await repository.otherWarehousesExpiring(
+          genericProductId: 5,
+          excludeWarehouseId: 1,
+        );
+        await repository.otherWarehousesExpiring(genericProductId: 5);
+
+        expect(result.days, 90);
+        expect(result.items, hasLength(2));
+        expect(result.items.first.lotNumber, 'L-2026-77');
+        expect(result.items.first.warehouse?.name, 'Bodega Norte');
+        expect(result.items.first.daysUntilExpiry, 49);
+        expect(result.items.last.quantity, 12.5, reason: 'llega como texto');
+        final calls = adapter
+            .callsTo(
+              'GET',
+              '/generic-products/5/batches/other-warehouses-expiring',
+            )
+            .toList();
+        expect(calls.first.queryParameters, {'exclude_warehouse_id': 1});
+        expect(calls.last.queryParameters, isEmpty);
+      },
+    );
+
+    test('sin saldos devuelve una lista vacía', () async {
+      adapter.on(
+        'GET',
+        '/generic-products/5/batches/other-warehouses-expiring',
+        body: envelope({'days': 90, 'items': <dynamic>[]}),
+      );
+      final result = await container
+          .read(productRepositoryProvider)
+          .otherWarehousesExpiring(genericProductId: 5);
+      expect(result.items, isEmpty);
+    });
+
+    test('proveedores de una variante', () async {
+      adapter.on(
+        'GET',
+        '/variants/50/suppliers',
+        body: fixture('catalog/variant_suppliers_response.json'),
+      );
+      final suppliers = await container
+          .read(productRepositoryProvider)
+          .variantSuppliers(50);
+      expect(suppliers, hasLength(2));
+      expect(suppliers.first.name, isNotEmpty);
+    });
+  });
 }

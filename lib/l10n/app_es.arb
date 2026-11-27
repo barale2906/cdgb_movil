@@ -1746,5 +1746,43 @@
     }
   },
   "serviceOrderSearchHint": "Buscar por número de orden o documento",
-  "serviceOrdersEmpty": "No hay órdenes para mostrar."
+  "serviceOrdersEmpty": "No hay órdenes para mostrar.",
+  "productExpiringElsewhere": "Por vencer en otros almacenes",
+  "productExpiringElsewhereHelp": "Lotes que vencen en los próximos {days} días fuera del almacén activo.",
+  "@productExpiringElsewhereHelp": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "expiringBatchTitle": "Lote {lot}",
+  "@expiringBatchTitle": {
+    "placeholders": {
+      "lot": {
+        "type": "String"
+      }
+    }
+  },
+  "expiringBatchSubtitle": "{warehouse} · vence el {date}",
+  "@expiringBatchSubtitle": {
+    "placeholders": {
+      "warehouse": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "expiringBatchDays": "en {days} días",
+  "@expiringBatchDays": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "variantSuppliers": "Proveedores",
+  "variantNoSuppliers": "Sin proveedores registrados."
 }

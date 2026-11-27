@@ -1,0 +1,35 @@
+{
+ "success": true,
+ "message": "Saldos próximos a vencer en otros almacenes",
+ "data": {
+  "days": 90,
+  "items": [
+   {
+    "batch_id": 41,
+    "lot_number": "L-2026-77",
+    "expiration_date": "2027-01-15",
+    "days_until_expiry": 49,
+    "lab_brand": "MarcaX",
+    "warehouse": {
+     "id": 2,
+     "code": "ALM-02",
+     "name": "Bodega Norte"
+    },
+    "quantity": 30.0
+   },
+   {
+    "batch_id": 44,
+    "lot_number": "L-2026-81",
+    "expiration_date": "2027-02-20",
+    "days_until_expiry": 85,
+    "lab_brand": "MarcaX",
+    "warehouse": {
+     "id": 3,
+     "code": "ALM-03",
+     "name": "Sede Sur"
+    },
+    "quantity": "12.500"
+   }
+  ]
+ }
+}

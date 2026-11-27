@@ -6957,6 +6957,48 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'No hay órdenes para mostrar.'**
   String get serviceOrdersEmpty;
+
+  /// No description provided for @productExpiringElsewhere.
+  ///
+  /// In es, this message translates to:
+  /// **'Por vencer en otros almacenes'**
+  String get productExpiringElsewhere;
+
+  /// No description provided for @productExpiringElsewhereHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'Lotes que vencen en los próximos {days} días fuera del almacén activo.'**
+  String productExpiringElsewhereHelp(int days);
+
+  /// No description provided for @expiringBatchTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Lote {lot}'**
+  String expiringBatchTitle(String lot);
+
+  /// No description provided for @expiringBatchSubtitle.
+  ///
+  /// In es, this message translates to:
+  /// **'{warehouse} · vence el {date}'**
+  String expiringBatchSubtitle(String warehouse, String date);
+
+  /// No description provided for @expiringBatchDays.
+  ///
+  /// In es, this message translates to:
+  /// **'en {days} días'**
+  String expiringBatchDays(int days);
+
+  /// No description provided for @variantSuppliers.
+  ///
+  /// In es, this message translates to:
+  /// **'Proveedores'**
+  String get variantSuppliers;
+
+  /// No description provided for @variantNoSuppliers.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin proveedores registrados.'**
+  String get variantNoSuppliers;
 }
 
 class _AppLocalizationsDelegate
