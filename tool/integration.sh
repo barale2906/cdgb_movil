@@ -19,5 +19,8 @@ if [[ "$target" == "usb" ]]; then "$adb" reverse tcp:8000 tcp:8000; fi
 
 tests=("${@:-integration_test}")
 info "flutter test ${tests[*]} --flavor $flavor ($file)"
+# Usuarios por rol (opcional): integration_test/test_users_flat.local.json
+roles="integration_test/test_users_flat.local.json"
+extra=(); [[ -f "$roles" ]] && extra=(--dart-define-from-file="$roles")
 exec flutter test "${tests[@]}" --flavor "$flavor" \
-  --dart-define-from-file="$file" --dart-define-from-file="$creds"
+  --dart-define-from-file="$file" --dart-define-from-file="$creds" "${extra[@]}"

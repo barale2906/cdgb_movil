@@ -27,8 +27,9 @@ void main() {
 
     // Producto, ubicación, lote, vencimiento y cantidad.
     await app.tapText('Seleccionar');
-    await app.enterInFirstField('Androcell');
-    await app.tapText('Androcell', last: true);
+    await app.enter('Buscar por nombre o código de barras', 'Androcell');
+    // Se toca por el código: el nombre también está en el buscador.
+    await app.tapText('000001');
     await app.pickFirst('Variante');
     await app.pickFirst('Ubicación');
     await app.enter('Número de lote', lot);

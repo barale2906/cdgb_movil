@@ -50,7 +50,29 @@ class AppDriver {
       await tester.pump(const Duration(milliseconds: 200));
       if (finder.evaluate().isNotEmpty) return;
     }
-    fail('No apareció $reason en ${timeout.inSeconds} s');
+    fail(
+      'No apareció $reason en ${timeout.inSeconds} s.\n'
+      'En pantalla: ${_visible()}',
+    );
+  }
+
+  /// Textos y listas visibles (para diagnosticar un fallo).
+  String _visible() {
+    final texts = [
+      for (final w in find.byType(Text).evaluate().map((e) => e.widget))
+        if (w is Text && (w.data ?? '').trim().isNotEmpty) w.data!.trim(),
+    ];
+    final dropdowns = [
+      for (final w
+          in find
+              .byType(DropdownButtonFormField)
+              .evaluate()
+              .map(
+                (e) => e.widget,
+              ))
+        if (w is DropdownButtonFormField) 'lista:${w.decoration.labelText}',
+    ];
+    return [...dropdowns, ...texts].take(150).join(' | ');
   }
 
   Future<void> waitForText(String text, {Duration? timeout}) => waitFor(
@@ -101,14 +123,6 @@ class AppDriver {
     await tester.ensureVisible(finder);
     await tester.enterText(finder, text);
     await tester.pump();
-  }
-
-  /// Escribe en el primer campo de texto visible (p. ej. el buscador de una
-  /// pantalla de selección).
-  Future<void> enterInFirstField(String text) async {
-    await waitFor(find.byType(TextField), reason: 'un campo de búsqueda');
-    await tester.enterText(find.byType(TextField).first, text);
-    await settle(const Duration(seconds: 3));
   }
 
   Future<void> pick(String label, String option) async {
@@ -165,10 +179,15 @@ class AppDriver {
     await settle();
   }
 
-  Future<void> login() async {
+  /// Inicia sesión con el usuario de pruebas general o con [email] y
+  /// [password] (usuarios por rol de `test_users_flat.local.json`).
+  Future<void> login({String? email, String? password}) async {
     await waitForText('Iniciar sesión');
-    await tester.enterText(find.byType(TextFormField).at(0), _email);
-    await tester.enterText(find.byType(TextFormField).at(1), _password);
+    await tester.enterText(find.byType(TextFormField).at(0), email ?? _email);
+    await tester.enterText(
+      find.byType(TextFormField).at(1),
+      password ?? _password,
+    );
     await tester.tap(find.text('Ingresar'));
     await settle(const Duration(seconds: 3));
     await waitFor(
